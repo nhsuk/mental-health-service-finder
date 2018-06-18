@@ -1,0 +1,45 @@
+{% extends 'layout.nunjucks' %}
+
+{% block meta %}
+  <meta name='robots' content='noindex'>
+{% endblock %}
+
+{% block header %}
+<h1 class="local-header--title--question local-header--title__step">You have to be registered with a GP to refer yourself</h1>
+{% endblock %}
+
+{% block content %}
+{% if errorMessage or outsideOfEnglandPostcodeFlag %}
+<div class="error-summary">
+  <h2 class="local-header--error error-summary-heading">
+    {% if (outsideOfEnglandPostcodeFlag) %}
+      {% include 'includes/outOfEnglandMessage.nunjucks' %}
+    {% elif errorMessage %}
+      {{ errorMessage }}
+    {% endif %}
+  </h2>
+</div>
+{% endif %}
+
+<form method="get" class="form" action="{{ siteRoot }}/gp-results">
+  <div class="reading-width">
+    <div class="form-item-wrapper">
+      <div class="form-group {% if errorMessage %} error {% endif %}">
+        <h3>
+          <label class="form-label-bold" for="gp-lookup">Tell us your GP surgery:</label>
+        </h3>
+        <p>For example, surgery name, doctor's name of postcode</p>
+          <div class="form-group">
+            <input autocomplete="off" type="text" class="form-control" name="gp-lookup" id="gp-lookup" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-item-wrapper">
+      <div class="form-group">
+        <input type="submit" class="button" value="Find services">
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}

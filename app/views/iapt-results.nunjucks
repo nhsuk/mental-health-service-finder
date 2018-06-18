@@ -1,0 +1,28 @@
+{% extends 'layout.nunjucks' %}
+
+{% block meta %}
+  <meta name='robots' content='noindex'>
+{% endblock %}
+
+{% block header %}
+<h1 class="local-header--title--question">Psychologial therapies services</h1>
+{% endblock %}
+
+{% block content %}
+<div class="results">
+  <h2 data-results="{{services.length}}" data-term="{{location}}" class="local-header--title--question">Results</h2>
+
+  <div class="grid-row">
+    <ol class="results">
+      {% for service in services %}
+        <li class="results__item results__item--nearby" data-index="{{loop.index}}">
+          <div class="results__details results__details--nearby">
+            {% include "includes/iapt-result-item.nunjucks" %}
+          </div>
+          <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
+        </li>
+      {% endfor %}
+    </ol>
+  </div>
+</div>
+{% endblock %}
