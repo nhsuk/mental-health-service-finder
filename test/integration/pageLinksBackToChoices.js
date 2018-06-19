@@ -15,17 +15,19 @@ describe('Page links back to Choices', () => {
     const path = routes[route].path;
     const res = await chai.request(server).get(`${constants.siteRoot}${path}`);
 
-    it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {
-      const $ = cheerio.load(res.text);
+    describe(`for page ${path}`, () => {
+      it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {
+        const $ = cheerio.load(res.text);
 
-      expect($($('div.breadcrumb a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search', `for page ${path}`);
-    });
+        expect($($('div.breadcrumb a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search');
+      });
 
-    it('the banner should link back to Choices IAPT service search', () => {
-      const $ = cheerio.load(res.text);
+      it('the banner should link back to Choices IAPT service search', () => {
+        const $ = cheerio.load(res.text);
 
-      expect($('.back-to-choices').attr('href'))
-        .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008', `for page ${path}`);
+        expect($('.back-to-choices').attr('href'))
+          .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
+      });
     });
   });
 });

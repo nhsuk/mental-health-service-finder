@@ -19,23 +19,25 @@ describe('Page attributes', () => {
 
     const $ = cheerio.load(res.text);
 
-    describe('status', () => {
-      it('should be html and 200 response code', () => {
-        iExpect.htmlWith200Status(res);
+    describe(`for page ${path}`, () => {
+      describe('status', () => {
+        it('should be html and 200 response code', () => {
+          iExpect.htmlWith200Status(res);
+        });
       });
-    });
 
-    describe('titles', () => {
-      it('should be \'Find IAPT services - NHS.UK\'', () => {
-        expect($('title').text()).to.equal('Find IAPT services - NHS.UK', `for page ${path}`);
+      describe('titles', () => {
+        it('should be \'Find IAPT services - NHS.UK\'', () => {
+          expect($('title').text()).to.equal('Find IAPT services - NHS.UK');
+        });
       });
-    });
 
-    describe('h1s', () => {
-      it('should be correct', () => {
-        const pageTitle = routes[route].title;
+      describe('h1s', () => {
+        it('should be correct', () => {
+          const pageTitle = routes[route].title;
 
-        expect($('h1.local-header--title--question').text()).to.equal(pageTitle, `for page ${path}`);
+          expect($('h1.local-header--title--question').text()).to.equal(pageTitle);
+        });
       });
     });
   });
