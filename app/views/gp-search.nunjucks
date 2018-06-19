@@ -1,9 +1,5 @@
 {% extends 'layout.nunjucks' %}
 
-{% block meta %}
-  <meta name='robots' content='noindex'>
-{% endblock %}
-
 {% block header %}
 <h1 class="local-header--title--question local-header--title__step">You have to be registered with a GP to refer yourself</h1>
 {% endblock %}

@@ -18,38 +18,23 @@ describe('Start page', () => {
     expect($('.local-header--title--question').text()).to.equal('Get help with stress, anxiety or depression');
   });
 
-  it('should be indexed', async () => {
-    const res = await chai.request(server).get(`${constants.siteRoot}`);
-    const $ = cheerio.load(res.text);
-    expect($('meta[name=robots]').attr('content')).to.equal(undefined);
-  });
-
-  it('should link to the \'Symptoms\' page', async () => {
-    const res = await chai.request(server).get(`${constants.siteRoot}`);
-    const $ = cheerio.load(res.text);
-    const symptomsPage = `${constants.siteRoot}/symptoms`;
-
-    expect($('.start-button').attr('href'))
-      .to.equal(symptomsPage);
-  });
-
-  describe('return to Choices services', () => {
-    it('the breadcrumb should have a link back to the Choices IAPT search', async () => {
+  describe('return to Choices links', () => {
+    it('the breadcrumb should have a link back to Choices \'Services near you\'', async () => {
       const res = await chai.request(server).get(`${constants.siteRoot}`);
 
       const $ = cheerio.load(res.text);
 
       expect($($('div.breadcrumb a')[1]).attr('href'))
-        .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
+        .to.equal('https://www.nhs.uk/service-search');
     });
 
-    it('the page should have a link back to the Choices service search', async () => {
+    it('the banner should link back to Choices IAPT service search', async () => {
       const res = await chai.request(server).get(`${constants.siteRoot}`);
 
       const $ = cheerio.load(res.text);
 
       expect($('.back-to-choices').attr('href'))
-        .to.equal('https://www.nhs.uk/service-search');
+        .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
     });
   });
 });

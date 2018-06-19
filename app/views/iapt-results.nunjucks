@@ -1,9 +1,5 @@
 {% extends 'layout.nunjucks' %}
 
-{% block meta %}
-  <meta name='robots' content='noindex'>
-{% endblock %}
-
 {% block header %}
 <h1 class="local-header--title--question">Psychologial therapies services</h1>
 {% endblock %}
