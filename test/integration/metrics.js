@@ -8,7 +8,7 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe('metrics end point', () => {
+describe.skip('metrics end point', () => {
   let responseText;
 
   before('make request to /metrics endpoint', async () => {
