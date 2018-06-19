@@ -8,8 +8,8 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe('redirection', () => {
-  it('should redirect root requests to /find-a-chlamydia-test/', async () => {
+describe('Application behaviour', () => {
+  it('should redirect root requests to /find-mental-health-services/', async () => {
     const res = await chai.request(server).get('/');
     expect(res).to.have.status(200);
     expect(res).to.be.html;

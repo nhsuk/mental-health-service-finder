@@ -10,7 +10,7 @@ const locals = require('../app/middleware/locals');
 const helmet = require('./helmet');
 const log = require('../app/lib/logger');
 const promBundle = require('../app/lib/prometheus/bundle').middleware;
-const router = require('./routes');
+const router = require('./router');
 
 module.exports = (app, config) => {
   // eslint-disable-next-line no-param-reassign
