@@ -1,6 +1,10 @@
-const log = require('./app/lib/logger');
+const requireEnv = require('require-environment-variables');
+
 const app = require('./server');
 const applicationStarts = require('./app/lib/prometheus/counters').applicationStarts;
+const log = require('./app/lib/logger');
+
+requireEnv(['API_HOSTNAME', 'API_KEY']);
 
 app.listen(app.port, () => {
   applicationStarts.inc(1);
