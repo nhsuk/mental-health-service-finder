@@ -58,7 +58,9 @@ typings/
 .env
 
 # code compiled by brunch
-public/js
+public/js/*
+# allow vendor JS to be controlled
+!public/js/vendor
 
 # css files
 *.css
