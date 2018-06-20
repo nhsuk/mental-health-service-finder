@@ -23,7 +23,7 @@
   <h3>4. First session</h3>
   <p>Waiting times vary but 9 out of 10 people have their first therapy session within 6 weeks.</p>
 
-  <a href="{{ siteRoot }}/gp-search" class="button start-button start_button_tracking" role="button">Continue</a>
+  <a href="{{ siteRoot }}/search" class="button start-button start_button_tracking" role="button">Continue</a>
 </div>
 
 {% endblock %}

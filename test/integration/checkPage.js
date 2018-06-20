@@ -17,6 +17,6 @@ describe('Check page', () => {
     const $ = cheerio.load(res.text);
 
     expect($('.start-button').text()).to.equal('Continue');
-    expect($('.start-button').prop('href')).to.equal(`${constants.siteRoot}${routes.gpSearch.path}`);
+    expect($('.start-button').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}`);
   });
 });

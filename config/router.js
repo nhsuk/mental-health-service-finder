@@ -8,7 +8,7 @@ router.get(routes.start.path, (req, res) => res.render('start'));
 
 router.get(routes.check.path, (req, res) => res.render('check'));
 
-router.get(routes.gpSearch.path, (req, res) => res.render('gp-search'));
+router.get(routes.search.path, (req, res) => res.render('search'));
 
 router.get(
   routes.gpResults.path,

@@ -12,7 +12,7 @@ chai.use(chaiHttp);
 
 describe('Search page', () => {
   it('has a link to the next page', async () => {
-    const res = await chai.request(server).get(`${constants.siteRoot}${routes.gpSearch.path}`);
+    const res = await chai.request(server).get(`${constants.siteRoot}${routes.search.path}`);
 
     const $ = cheerio.load(res.text);
 
