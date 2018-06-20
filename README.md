@@ -57,6 +57,9 @@ environment.
 | `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                                                                                        |                           | No         |
 | `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                                              |                           | No         |
 | `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)                                                              | test:test                 |            |
+| `API_HOSTNAME`                     | The hostname of the [Azure Search API](https://docs.microsoft.com/en-gb/rest/api/searchservice/)                                                         | Depends on environment      | Yes        |
+| `API_KEY`                          | `api-key` for calling the [Azure Search API](https://docs.microsoft.com/en-us/rest/api/searchservice/#calling-the-apis)                                    | Depends on environment    | Yes        |
+| `API_VERSION`                      | The version of the [Azure Search API](https://docs.microsoft.com/en-us/azure/search/search-api-versions)                                                 | Depends on environment      | Yes        |
 
 ## FAQ
 

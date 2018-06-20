@@ -13,10 +13,6 @@ const promBundle = require('../app/lib/prometheus/bundle').middleware;
 const router = require('./router');
 
 module.exports = (app, config) => {
-  // eslint-disable-next-line no-param-reassign
-  app.locals.siteRoot = constants.siteRoot;
-  // eslint-disable-next-line no-param-reassign
-  app.locals.assetsUrl = constants.assetsUrl;
   // start collecting default metrics
   promBundle.promClient.collectDefaultMetrics();
 
