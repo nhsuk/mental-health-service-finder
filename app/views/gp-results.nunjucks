@@ -10,7 +10,7 @@
 
   <div class="grid-row">
     <ol class="results">
-      {% for service in services %}
+      {% for result in results %}
         <li class="results__item results__item--nearby" data-index="{{loop.index}}">
           <div class="results__details results__details--nearby">
             {% include "includes/gp-result-item.nunjucks" %}

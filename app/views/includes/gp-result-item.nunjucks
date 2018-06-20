@@ -1,34 +1,34 @@
-{% set distance = service.distance | float | round(1) %}
+{% set distance = result.distance | float | round(1) %}
 
-{% if service.distance %}
+{% if result.distance %}
   <p class="results__address results__address-distance">
-    <span class="sr-only">{{ service.name }} is </span>{{ distance }} miles away
+    <span class="sr-only">{{ result.name }} is </span>{{ distance }} miles away
   </p>
 {% endif %}
 
 <h3 class="results__name">
-  {{ service.name }}
+  {{ result.OrganisationName }}
 </h3>
 
-<p><a href="{{ siteRoot }}/iapt-results?ccg={{service.ccg}}">This is my GP</a></p>
-
-{% if service.address %}
+{% if result.address %}
   <p class="results__address results__address-lines">
-    {% if service.address.fullAddress %} {{ service.address.fullAddress }} {% endif %}
+    {% if result.address.fullAddress %} {{ result.address.fullAddress }} {% endif %}
   </p>
 {% endif %}
 
-{% if service.contacts %}
+{% if result.Postcode %}
+  <p class="results__address results__address-lines">
+  {{ result.Address1 }}, {{ result.City}}, {{ result.County }}, {{ result.Postcode }}
+  </p>
+{% endif %}
+
+<p><a href="{{ siteRoot }}/iapt-results?ccg={{result.CCG[0]}}">This is my GP</a></p>
+
+{% if result.contacts %}
   <p class="results__address results__telephone">
-    {% if service.contacts.telephoneNumber %} 
-      <a href="tel:{{ service.contacts.telephoneNumber }}" class="results__telephone--mobile" class="telephone_tracking"> {{ service.contacts.telephoneNumber }} </a>
-      <span class="results__telephone--desktop"> {{ service.contacts.telephoneNumber }} </span>
+    {% if result.contacts.telephoneNumber %} 
+      <a href="tel:{{ result.contacts.telephoneNumber }}" class="results__telephone--mobile" class="telephone_tracking"> {{ result.contacts.telephoneNumber }} </a>
+      <span class="results__telephone--desktop"> {{ result.contacts.telephoneNumber }} </span>
     {% endif %}
-  </p>
-{% endif %}
-
-{% if service.address %}
-  <p class="results__item__link">
-    <a class="maplink" href="{{service.mapUrl}}" class="maps_tracking">See map and directions<span class="sr-only"> for {{ service.name }} at {{ service.address.fullAddress }}</span></a>
   </p>
 {% endif %}
