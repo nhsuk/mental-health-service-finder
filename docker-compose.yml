@@ -10,7 +10,7 @@ services:
     command: yarn run start-watch
     environment:
       API_HOSTNAME: ${API_HOSTNAME}
-      API_KEY: ${API_KEY}
+      API_KEY: ${API_KEY-notARealKey}
       NODE_ENV: ${NODE_ENV-development}
 
   frontend:

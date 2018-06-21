@@ -1,5 +1,8 @@
 const request = require('request');
+
 const config = require('../../config/config');
+const createBody = require('../lib/requests/createBody');
+const headers = require('../lib/requests/headers');
 const log = require('../lib/logger');
 // // TODO: change to be for gp lookups
 // const errorCounter = require('../lib/prometheus/counters').errorPageViews;
@@ -9,41 +12,27 @@ function getGPs(req, res, next) {
   // TODO: Request GPs
   // Process results
   // Render results
-  // res.locals.services = [
-  //   { ccg: '00A', name: 'GP result one' },
-  //   { ccg: '99Q', name: 'GP result two' },
-  // ];
 
   const query = req.query.query;
-  const apiKey = config.api.key;
   const apiVersion = config.api.version;
-  const apiHost = config.api.host;
+  const apiHost = process.env.API_HOSTNAME; // config.api.host;
   const apiOrgIndex = config.api.indexes.orgLookup;
 
   const options = {
-    // TODO: Build this somewhere else
-    body: JSON.stringify({
-      filter: 'OrganisationTypeID eq \'GPB\'',
-      search: query, // TODO: Handle no input. Maybe change the name
-      searchFields: 'OrganisationName,OrganisationAliases,Postcode',
-      select: 'OrganisationName,Address1,Address2,Address3,City,County,Postcode,CCG',
-      suggesterName: 'orgname-suggester',
-      top: 10,
-    }),
-    headers: {
-      'Content-Type': 'application/json',
-      'api-key': apiKey,
-    },
-    url: `https://${apiHost}/indexes/${apiOrgIndex}/docs/suggest?api-version=${apiVersion}`,
+    body: JSON.stringify(createBody(query)),
+    headers,
+    url: `${apiHost}/indexes/${apiOrgIndex}/docs/suggest?api-version=${apiVersion}`,
   };
-  log.debug(options);
+  // console.log(options);
 
   request.post(options, (error, response, body) => {
-    // TODO: Test around an empty body - what happens when 403?
-    const pbody = JSON.parse(body);
-    log.debug(pbody);
-    console.log(pbody);
+    // TODO: Test around an empty body - what happens when 403/500?
+    // console.log(error);
+    // console.log(pbody);
     if (!error && response.statusCode === 200) {
+      console.log('*************BODY POPPING*******************');
+      const pbody = JSON.parse(body);
+      // log.debug(pbody);
       const results = pbody.value;
       // TODO: The address needs stitching together
       res.locals.results = results || [];

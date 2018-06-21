@@ -16,7 +16,7 @@ describe('IAPT results page', () => {
     // TODO: Mock request to API
     // Check the correct information is being displayed
     // Check there is a link to the referral URL when there is one and not when there isn't
-    const res = await chai.request(server).get(`${constants.siteRoot}${routes.gpResults.path}`);
+    const res = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}`);
 
     const $ = cheerio.load(res.text);
 

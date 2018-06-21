@@ -10,6 +10,17 @@
   {{ result.OrganisationName }}
 </h3>
 
+{% if result.OrganisationAliases.length > 1 %}
+  <p>
+    This surgery may also be known as:
+    <ul>
+      {% for alias in result.OrganisationAliases %}
+        <li style="border-top:none;">{{ alias }}</li>
+      {% endfor %}
+    </ul>
+  </p>
+{% endif %}
+
 {% if result.address %}
   <p class="results__address results__address-lines">
     {% if result.address.fullAddress %} {{ result.address.fullAddress }} {% endif %}
@@ -22,7 +33,7 @@
   </p>
 {% endif %}
 
-<p><a href="{{ siteRoot }}/iapt-results?ccg={{result.CCG[0]}}">This is my GP</a></p>
+<p><a class="button" href="{{ siteRoot }}/iapt-results?ccg={{result.CCG[0]}}">This is my GP</a></p>
 
 {% if result.contacts %}
   <p class="results__address results__telephone">
