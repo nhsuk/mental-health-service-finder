@@ -1,7 +1,7 @@
-function createBody(query) {
+function forGPRequest(searchTerm) {
   return {
     filter: 'OrganisationTypeID eq \'GPB\'',
-    search: query,
+    search: searchTerm,
     searchFields: 'OrganisationName,OrganisationAliases,City,Postcode',
     select: 'OrganisationName,OrganisationAliases,Address1,Address2,Address3,City,County,Postcode,CCG',
     suggesterName: 'orgname-suggester',
@@ -9,4 +9,13 @@ function createBody(query) {
   };
 }
 
-module.exports = createBody;
+function forIAPTRequest(ccg) {
+  return {
+    filter: `ServiceCodesProvided/any(c:search.in(c,'SRV0339')) and OrganisationTypeID ne 'TRU' and RelatedCCGs/any(g: g eq '${ccg}')`,
+  };
+}
+
+module.exports = {
+  forGPRequest,
+  forIAPTRequest,
+};

@@ -1,34 +1,3 @@
-{% set distance = service.distance | float | round(1) %}
+<h3 class="results__name">{{ result.OrganisationName }}</h3>
 
-{% if service.distance %}
-  <p class="results__address results__address-distance">
-    <span class="sr-only">{{ service.name }} is </span>{{ distance }} miles away
-  </p>
-{% endif %}
-
-<h3 class="results__name">
-  {{ service.name }}
-</h3>
-
-<p><a class="button" href="{{ service.referralUrl }}">Refer yourself online</a></p>
-
-{% if service.address %}
-  <p class="results__address results__address-lines">
-    {% if service.address.fullAddress %} {{ service.address.fullAddress }} {% endif %}
-  </p>
-{% endif %}
-
-{% if service.contacts %}
-  <p class="results__address results__telephone">
-    {% if service.contacts.telephoneNumber %} 
-      <a href="tel:{{ service.contacts.telephoneNumber }}" class="results__telephone--mobile" class="telephone_tracking"> {{ service.contacts.telephoneNumber }} </a>
-      <span class="results__telephone--desktop"> {{ service.contacts.telephoneNumber }} </span>
-    {% endif %}
-  </p>
-{% endif %}
-
-{% if service.address %}
-  <p class="results__item__link">
-    <a class="maplink" href="{{service.mapUrl}}" class="maps_tracking">See map and directions<span class="sr-only"> for {{ service.name }} at {{ service.address.fullAddress }}</span></a>
-  </p>
-{% endif %}
+<p><a class="button" href="{{ result.referralUrl }}">Refer yourself online</a></p>

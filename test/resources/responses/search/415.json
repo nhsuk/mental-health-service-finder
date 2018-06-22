@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "",
+    "message": "The request entity's media type 'text/plain' is not supported for this resource."
+  }
+}

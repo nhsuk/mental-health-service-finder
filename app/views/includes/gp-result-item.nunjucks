@@ -1,14 +1,4 @@
-{% set distance = result.distance | float | round(1) %}
-
-{% if result.distance %}
-  <p class="results__address results__address-distance">
-    <span class="sr-only">{{ result.name }} is </span>{{ distance }} miles away
-  </p>
-{% endif %}
-
-<h3 class="results__name">
-  {{ result.OrganisationName }}
-</h3>
+<h3 class="results__name">{{ result.OrganisationName }}</h3>
 
 {% if result.OrganisationAliases.length > 1 %}
   <p>
@@ -37,7 +27,7 @@
 
 {% if result.contacts %}
   <p class="results__address results__telephone">
-    {% if result.contacts.telephoneNumber %} 
+    {% if result.contacts.telephoneNumber %}
       <a href="tel:{{ result.contacts.telephoneNumber }}" class="results__telephone--mobile" class="telephone_tracking"> {{ result.contacts.telephoneNumber }} </a>
       <span class="results__telephone--desktop"> {{ result.contacts.telephoneNumber }} </span>
     {% endif %}

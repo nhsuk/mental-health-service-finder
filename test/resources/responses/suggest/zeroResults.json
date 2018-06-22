@@ -1,0 +1,4 @@
+{
+  "@odata.context": "https:\/\/dummy.url\/indexes('index-name')\/$metadata#docs(OrganisationName,OrganisationAliases,Address1,Address2,Address3,City,County,Postcode,CCG)",
+  "value": [ ]
+}

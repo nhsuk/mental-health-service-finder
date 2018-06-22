@@ -1,16 +1,17 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question">Psychologial therapies services</h1>
+<h1 class="local-header--title--question">Psychological therapies services</h1>
 {% endblock %}
 
 {% block content %}
 <div class="results">
-  <h2 data-results="{{services.length}}" data-term="{{location}}" class="local-header--title--question">Results</h2>
+  <h2 class="local-header--title--question">{{ results.length }} services are available</h2>
 
+  {% if results.length > 0 %}
   <div class="grid-row">
     <ol class="results">
-      {% for service in services %}
+      {% for result in results %}
         <li class="results__item results__item--nearby" data-index="{{loop.index}}">
           <div class="results__details results__details--nearby">
             {% include "includes/iapt-result-item.nunjucks" %}
@@ -20,5 +21,8 @@
       {% endfor %}
     </ol>
   </div>
+  {% else %}
+    <p class="no-results">No results</p>
+  {% endif %}
 </div>
 {% endblock %}

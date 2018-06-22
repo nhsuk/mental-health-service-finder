@@ -11,7 +11,8 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Page links back to Choices', () => {
-  Object.keys(routes).forEach(async (route) => {
+  const testRoutes = Object.keys(delete routes[routes.gpResults]);
+  testRoutes.forEach(async (route) => {
     const path = routes[route].path;
     const res = await chai.request(server).get(`${constants.siteRoot}${path}`);
 

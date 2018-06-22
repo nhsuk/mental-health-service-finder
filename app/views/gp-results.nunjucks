@@ -6,19 +6,23 @@
 
 {% block content %}
 <div class="results">
-  <h2 data-results="{{services.length}}" data-term="{{location}}" class="local-header--title--question">Select your GP surgery</h2>
+  <h2 class="local-header--title--question">Select your GP surgery</h2>
 
-  <div class="grid-row">
-    <ol class="results">
-      {% for result in results %}
-        <li class="results__item results__item--nearby" data-index="{{loop.index}}">
-          <div class="results__details results__details--nearby">
-            {% include "includes/gp-result-item.nunjucks" %}
-          </div>
-          <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
-        </li>
-      {% endfor %}
-    </ol>
+  {% if results.length > 0 %}
+    <div class="grid-row">
+      <ol class="results">
+        {% for result in results %}
+          <li class="results__item results__item--nearby" data-index="{{loop.index}}">
+            <div class="results__details results__details--nearby">
+              {% include "includes/gp-result-item.nunjucks" %}
+            </div>
+            <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
+          </li>
+        {% endfor %}
+      </ol>
   </div>
+  {% else %}
+    <p class="no-results">No results</p>
+  {% endif %}
 </div>
 {% endblock %}
