@@ -1,23 +1,13 @@
 const request = require('request');
 
-const config = require('../../config/config');
-const createBody = require('../lib/requests/createBody').forGPRequest;
-const headers = require('../lib/requests/headers');
-const log = require('../lib/logger');
+const buildOptions = require('../lib/requests/buildOptions').forGPSearch;
 const errorCounter = require('../lib/prometheus/counters').gpSuggestErrors;
+const log = require('../lib/logger');
 const requestHistogram = require('../lib/prometheus/histograms').gpSuggest;
 
 function getGPs(req, res, next) {
   const query = req.query.query;
-  const apiVersion = config.api.version;
-  const apiHost = process.env.API_HOSTNAME; // config.api.host;
-  const apiOrgIndex = config.api.indexes.orgLookup;
-
-  const options = {
-    body: JSON.stringify(createBody(query)),
-    headers,
-    url: `${apiHost}/indexes/${apiOrgIndex}/docs/suggest?api-version=${apiVersion}`,
-  };
+  const options = buildOptions(query);
 
   log.info({ gpSuggestRequest: options }, 'gp-suggest-request');
   const endTimer = requestHistogram.startTimer();

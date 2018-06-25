@@ -1,24 +1,13 @@
 const request = require('request');
 
-const config = require('../../config/config');
-const createBody = require('../lib/requests/createBody').forIAPTRequest;
-const headers = require('../lib/requests/headers');
-const log = require('../lib/logger');
+const buildOptions = require('../lib/requests/buildOptions').forIAPTSearch;
 const errorCounter = require('../lib/prometheus/counters').iaptSearchErrors;
+const log = require('../lib/logger');
 const requestHistogram = require('../lib/prometheus/histograms').iaptSearch;
 
 function getIAPTs(req, res, next) {
   const ccg = req.query.ccg;
-  const apiVersion = config.api.version;
-  const apiHost = process.env.API_HOSTNAME; // config.api.host;
-  const apiOrgIndex = config.api.indexes.orgLookup;
-
-  // TODO: Refactor this out
-  const options = {
-    body: JSON.stringify(createBody(ccg)),
-    headers,
-    url: `${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`,
-  };
+  const options = buildOptions(ccg);
 
   log.info({ iaptSearchRequest: options }, 'iapt-search-request');
   const endTimer = requestHistogram.startTimer();
