@@ -12,12 +12,14 @@ router.get(routes.search.path, (req, res) => res.render('search'));
 
 router.get(
   routes.gpResults.path,
+  // TODO: Add query validation
   getGPs,
   (req, res) => res.render('gp-results')
 );
 
 router.get(
   routes.iaptResults.path,
+  // TODO: Add query validation
   getIAPTs,
   (req, res) => res.render('iapt-results')
 );

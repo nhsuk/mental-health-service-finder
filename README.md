@@ -50,13 +50,16 @@ environment.
 
 | Variable                           | Description                                                                                                                                                | Default                   | Required   |
 | :--------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------ | :--------- |
-| `NODE_ENV`                         | Node environment                                                                                                                                           | development               |            |
-| `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                                          | Depends on `NODE_ENV`     |            |
-| `PORT`                             | Server port                                                                                                                                                | 3000                      |            |
-| `GOOGLE_ANALYTICS_TRACKING_ID`     | [Google Analytics](https://www.google.co.uk/analytics) property id                                                                                         |                           | No         |
-| `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                                                                                        |                           | No         |
-| `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                                              |                           | No         |
+| `API_HOSTNAME`                     | The fully qualified hostname (with protocol) of the [Azure Search API](https://docs.microsoft.com/en-gb/rest/api/searchservice/) | Depends on environment      | Yes        |
+| `API_KEY`                          | `api-key` for calling the [Azure Search API](https://docs.microsoft.com/en-us/rest/api/searchservice/#calling-the-apis)                                    | Depends on environment    | Yes        |
+| `API_VERSION`                      | The version of the [Azure Search API](https://docs.microsoft.com/en-us/azure/search/search-api-versions)                                                 | Depends on environment      | Yes        |
 | `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)                                                              | test:test                 |            |
+| `GOOGLE_ANALYTICS_TRACKING_ID`     | [Google Analytics](https://www.google.co.uk/analytics) property id                                                                                         |                           | No         |
+| `HOTJAR_ANALYTICS_TRACKING_ID`     | [Hotjar](https://www.hotjar.com/) tracking id                                                                                                              |                           | No         |
+| `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                                          | Depends on `NODE_ENV`     |            |
+| `NODE_ENV`                         | Node environment                                                                                                                                           | development               |            |
+| `PORT`                             | Server port                                                                                                                                                | 3000                      |            |
+| `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                                                                                        |                           | No         |
 
 ## FAQ
 

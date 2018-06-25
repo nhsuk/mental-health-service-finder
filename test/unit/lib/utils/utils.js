@@ -4,24 +4,6 @@ const utils = require('../../../../app/lib/utils/utils');
 const expect = chai.expect;
 
 describe('utils', () => {
-  describe('areEqual', () => {
-    it('should ignore case', () => {
-      const queryItem = 'professional';
-      const item = 'ProfeSsional';
-
-      const output = utils.areEqual(queryItem, item);
-      expect(output).to.equal(true);
-    });
-
-    it('should not ignore misspellings', () => {
-      const queryItem = 'professional';
-      const item = 'ProfeSional';
-
-      const output = utils.areEqual(queryItem, item);
-      expect(output).to.equal(false);
-    });
-  });
-
   describe('joinTruthyValues', () => {
     it('should return a string containing only truthy values', () => {
       const falseyValues = [null, undefined, 0, '', false];

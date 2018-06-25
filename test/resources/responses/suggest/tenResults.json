@@ -1,0 +1,173 @@
+{
+  "@odata.context": "https:\/\/dummy.url\/indexes('index-name')\/$metadata#docs(OrganisationName,OrganisationAliases,Address1,Address2,Address3,City,County,Postcode,CCG)",
+  "value": [
+    {
+      "@search.text": "LS1 8TL",
+      "OrganisationName": "One Medicare Llp-The Light",
+      "OrganisationAliases": [
+        "The Light NHS GP Surgery"
+      ],
+      "Address1": "Balcony Level 7",
+      "Address2": "The Light",
+      "Address3": "The Headrow",
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS1 8TL",
+      "CCG": [
+        "462893",
+        "NHS Leeds North CCG"
+      ]
+    },
+    {
+      "@search.text": "LS12 3HD",
+      "OrganisationName": "Armley Medical Centre",
+      "OrganisationAliases": [
+        "Dr G A Lees & Partners"
+      ],
+      "Address1": "Armley Moor Health Centre",
+      "Address2": "95 Town Street",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS12 3HD",
+      "CCG": [
+        "463248",
+        "NHS Leeds West CCG"
+      ]
+    },
+    {
+      "@search.text": "LS17 8AE",
+      "OrganisationName": "Shadwell Medical Centre",
+      "OrganisationAliases": [ ],
+      "Address1": "137 Shadwell Lane",
+      "Address2": null,
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS17 8AE",
+      "CCG": [
+        "462893",
+        "NHS Leeds North CCG"
+      ]
+    },
+    {
+      "@search.text": "LS10 2PE",
+      "OrganisationName": "Church Street Surgery",
+      "OrganisationAliases": [
+        "Dr S Hussain"
+      ],
+      "Address1": "57 Church Street",
+      "Address2": "Hunslet",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS10 2PE",
+      "CCG": [
+        "462913",
+        "NHS Leeds South And East CCG"
+      ]
+    },
+    {
+      "@search.text": "LS19 7JN",
+      "OrganisationName": "Yeadon Tarn Medical Practice",
+      "OrganisationAliases": [ ],
+      "Address1": "1 Suffolk Court Silver Lane",
+      "Address2": "Yeadon",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS19 7JN",
+      "CCG": [
+        "463248",
+        "NHS Leeds West CCG"
+      ]
+    },
+    {
+      "@search.text": "LS12 5SG",
+      "OrganisationName": "Hawthorn Surgery",
+      "OrganisationAliases": [
+        "Dr Devitt, Hawthorn Surgery, Wortley Beck Health Centre",
+        "Dr Gibbs, Hawthorn Surgery Wortley Beck Health Centre",
+        "Dr Shevlin P V & Partner",
+        "Hawthorn Surgery Second Floor Wortley Beck Health Centre",
+        "Wortley Beck Health Centre Hawthorn Surgery"
+      ],
+      "Address1": "Wortley Beck Health Centre",
+      "Address2": null,
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS12 5SG",
+      "CCG": [
+        "463248",
+        "NHS Leeds West CCG"
+      ]
+    },
+    {
+      "@search.text": "LS17 5DT",
+      "OrganisationName": "Alwoodley Medical Centre",
+      "OrganisationAliases": [ ],
+      "Address1": "Saxon Mount",
+      "Address2": "Moortown",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS17 5DT",
+      "CCG": [
+        "462893",
+        "NHS Leeds North CCG"
+      ]
+    },
+    {
+      "@search.text": "LS11 8LH",
+      "OrganisationName": "Leeds City Medical Practice",
+      "OrganisationAliases": [ ],
+      "Address1": "Beeston Hill Community Health Centre, 2nd Floor",
+      "Address2": "123 Cemetery Road",
+      "Address3": "Beeston",
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS11 8LH",
+      "CCG": [
+        "462913",
+        "NHS Leeds South And East CCG"
+      ]
+    },
+    {
+      "@search.text": "LS12 1HU",
+      "OrganisationName": "Priory View Medical Centre",
+      "OrganisationAliases": [
+        "Dr Burkill A D & Partners - Priory View Medical Centre"
+      ],
+      "Address1": "2A Green Lane",
+      "Address2": null,
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS12 1HU",
+      "CCG": [
+        "463248",
+        "NHS Leeds West CCG"
+      ]
+    },
+    {
+      "@search.text": "LS18 4SE",
+      "OrganisationName": "The New Croft Surgery",
+      "OrganisationAliases": [
+        "Dr Manock & Partners",
+        "Ireland Wood & Horsforth Medical Practice",
+        "The New Croft Surgery"
+      ],
+      "Address1": "Broadgate Lane",
+      "Address2": "Horsforth",
+      "Address3": null,
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS18 4SE",
+      "CCG": [
+        "463248",
+        "NHS Leeds West CCG"
+      ]
+    }
+  ]
+}

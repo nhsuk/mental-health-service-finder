@@ -1,46 +1,54 @@
-// const VError = require('verror').VError;
+const request = require('request');
 
-// const getServiceHistogram = require('../lib/prometheus/histograms').getServices;
-// const log = require('../lib/logger');
-// const mapResults = require('../lib/utils/mapResults');
+const config = require('../../config/config');
+const createBody = require('../lib/requests/createBody').forIAPTRequest;
+const headers = require('../lib/requests/headers');
+const log = require('../lib/logger');
+const errorCounter = require('../lib/prometheus/counters').iaptSearchErrors;
+const requestHistogram = require('../lib/prometheus/histograms').iaptSearch;
 
-// function handleError(error, next) {
-//   const errMsg = 'Error with services lookup';
-//   const newError = new VError(error.stack, errMsg);
+function getIAPTs(req, res, next) {
+  const ccg = req.query.ccg;
+  const apiVersion = config.api.version;
+  const apiHost = process.env.API_HOSTNAME; // config.api.host;
+  const apiOrgIndex = config.api.indexes.orgLookup;
 
-//   log.error({ err: newError }, errMsg);
-//   next(newError);
-// }
+  // TODO: Refactor this out
+  const options = {
+    body: JSON.stringify(createBody(ccg)),
+    headers,
+    url: `${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`,
+  };
 
-async function getIAPTs(req, res, next) {
-  res.locals.services = [
-    { name: 'IAPT result one', referralUrl: 'https://www.google.co.uk' },
-    { name: 'IAPT result two', referralUrl: 'https://www.google.co.uk' },
-  ];
-  next();
-  // const location = res.locals.location;
-  // // const resultsLimit = res.locals.RESULTS_LIMIT;
-  // const postcodeLocationDetails = res.locals.postcodeLocationDetails;
+  log.info({ iaptSearchRequest: options }, 'iapt-search-request');
+  const endTimer = requestHistogram.startTimer();
 
-  // // TODO: Add some logging for the request duration
-  // const endTimer = getServiceHistogram.startTimer();
-  // const results = (resultCount) => {
-  //   endTimer();
-  //   log.info({
-  //     location,
-  //     postcodeLocationDetails,
-  //     resultCount,
-  //   }, 'getServices');
-  // };
-  // res.locals.results = mapResults(results);
-
-  // try {
-  //   // TODO: Use flexi-finder APIs
-  //   log.debug('Request flexi-finder results');
-  //   next();
-  // } catch (error) {
-  //   handleError(error, next);
-  // }
+  request.post(options, (error, response, body) => {
+    endTimer();
+    if (!error) {
+      log.info({ iaptSearchResponse: { body, response } }, 'iapt-search-response');
+      const statusCode = response.statusCode;
+      switch (statusCode) {
+        case 200: {
+          log.info(`${statusCode} response`, 'iapt-search-success');
+          const pbody = JSON.parse(body);
+          const results = pbody.value;
+          // TODO: The address needs stitching together
+          res.locals.results = results || [];
+          next();
+          break;
+        }
+        default: {
+          res.render('error');
+          break;
+        }
+      }
+    } else {
+      log.error({ iaptSearchError: { error } }, 'iapt-search-error');
+      errorCounter.inc(1);
+      next('error');
+    }
+  });
 }
 
 module.exports = getIAPTs;
