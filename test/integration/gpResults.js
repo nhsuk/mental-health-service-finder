@@ -49,12 +49,12 @@ describe('GP results page', () => {
         .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
     });
 
-    it('should display the number of results returned', () => {
+    it('should display all of the results that were returned', () => {
       expect($('.results__item').length).to.equal(10);
     });
 
     it('should display an address for each result', () => {
-      // TODO: Could do with extending this
+      // TODO: Could do with extending this once the results have been processed
       expect($('.results__address').length).to.equal(10);
     });
 
@@ -76,10 +76,6 @@ describe('GP results page', () => {
       const $ = cheerio.load(response.text);
 
       expect($('.no-results').text()).to.equal('No results');
-    });
-
-    it('should display \'please enter something to search by\' page when no input is given', async () => {
-      // This be dealt with by the search page
     });
   });
 
@@ -138,6 +134,19 @@ describe('GP results page', () => {
       const $ = cheerio.load(response.text);
 
       expect($('.local-header--title--question').text()).to.equal('Sorry, we are experiencing technical problems.');
+    });
+  });
+
+  describe('no query', () => {
+    it('should display an error message when no query is entered', async () => {
+      const query = '';
+
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.gpResults.path}?query=${query}`);
+      iExpect.htmlWith200Status(response);
+
+      const $ = cheerio.load(response.text);
+
+      expect($('.error-summary-heading').text().trim()).to.equal('Please enter something to find a GP');
     });
   });
 });

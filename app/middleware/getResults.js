@@ -22,7 +22,7 @@ function getResults(req, res, next, type) {
           log.info(`${statusCode} response`, `${type}-success`);
           const pbody = JSON.parse(body);
           const results = pbody.value;
-          // TODO: The address needs stitching together
+          // TODO: The results need processing for display
           res.locals.results = results || [];
           next();
           break;

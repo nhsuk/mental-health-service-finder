@@ -50,8 +50,8 @@ describe('IAPT results page', () => {
         .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
     });
 
-    it('should display the number of results returned for the practice searched for', () => {
-      // TODO:
+    it('should display all of the results that were returned', () => {
+      expect($('.results__item').length).to.equal(3);
     });
 
     it('should display contact information for each result', () => {

@@ -8,9 +8,7 @@
 {% if errorMessage or outsideOfEnglandPostcodeFlag %}
 <div class="error-summary">
   <h2 class="local-header--error error-summary-heading">
-    {% if (outsideOfEnglandPostcodeFlag) %}
-      {% include 'includes/outOfEnglandMessage.nunjucks' %}
-    {% elif errorMessage %}
+    {% if errorMessage %}
       {{ errorMessage }}
     {% endif %}
   </h2>
