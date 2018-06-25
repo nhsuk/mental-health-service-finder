@@ -3,7 +3,7 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
 const constants = require('../../app/lib/constants');
-const createBody = require('../../app/lib/requests/createBody').forGPRequest;
+const createBody = require('../../app/lib/requests/createBody');
 const iExpect = require('../lib/expectations');
 const nockRequests = require('../lib/nockRequests');
 const routes = require('../../config/routes');
@@ -23,7 +23,7 @@ describe('GP results page', () => {
 
     before('make request', async () => {
       const query = 'ls1';
-      const body = createBody(query);
+      const body = createBody(constants.types.GP, query);
 
       nockRequests.withResponseBody(path, body, 200, 'suggest/tenResults.json');
 
@@ -66,7 +66,7 @@ describe('GP results page', () => {
   describe('no results', () => {
     it('should display message when no results returned', async () => {
       const query = 'noresults';
-      const body = createBody(query);
+      const body = createBody(constants.types.GP, query);
 
       nockRequests.withResponseBody(path, body, 200, 'suggest/zeroResults.json');
 
@@ -86,7 +86,7 @@ describe('GP results page', () => {
   describe('bad api responses', () => {
     it('should display an error page for a 400 response', async () => {
       const query = '400response';
-      const body = createBody(query);
+      const body = createBody(constants.types.GP, query);
 
       nockRequests.withResponseBody(path, body, 400, 'suggest/400.json');
 
@@ -100,7 +100,7 @@ describe('GP results page', () => {
 
     it('should display an error page for a 403 response', async () => {
       const query = '403response';
-      const body = createBody(query);
+      const body = createBody(constants.types.GP, query);
 
       nockRequests.withNoResponseBody(path, body, 403);
 
@@ -114,7 +114,7 @@ describe('GP results page', () => {
 
     it('should display an error page for a 404 response', async () => {
       const query = '404response';
-      const body = createBody(query);
+      const body = createBody(constants.types.GP, query);
 
       nockRequests.withResponseBody(path, body, 404, 'suggest/404.json');
 
@@ -128,7 +128,7 @@ describe('GP results page', () => {
 
     it('should display an error page for a 415 response', async () => {
       const query = '415response';
-      const body = createBody(query);
+      const body = createBody(constants.types.GP, query);
 
       nockRequests.withResponseBody(path, body, 415, 'suggest/415.json');
 
