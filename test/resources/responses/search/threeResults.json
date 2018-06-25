@@ -19,39 +19,35 @@
       ]
     },
     {
-      "@search.text": "LS12 1HU",
-      "OrganisationName": "Priory View Medical Centre",
+      "@search.text": "LS12 3HD",
+      "OrganisationName": "Armley Medical Centre",
       "OrganisationAliases": [
-        "Dr Burkill A D & Partners - Priory View Medical Centre"
+        "Dr G A Lees & Partners"
       ],
-      "Address1": "2A Green Lane",
-      "Address2": null,
+      "Address1": "Armley Moor Health Centre",
+      "Address2": "95 Town Street",
       "Address3": null,
       "City": "Leeds",
       "County": "West Yorkshire",
-      "Postcode": "LS12 1HU",
+      "Postcode": "LS12 3HD",
       "CCG": [
         "463248",
         "NHS Leeds West CCG"
       ]
     },
     {
-      "@search.text": "LS18 4SE",
-      "OrganisationName": "The New Croft Surgery",
-      "OrganisationAliases": [
-        "Dr Manock & Partners",
-        "Ireland Wood & Horsforth Medical Practice",
-        "The New Croft Surgery"
-      ],
-      "Address1": "Broadgate Lane",
-      "Address2": "Horsforth",
+      "@search.text": "LS17 8AE",
+      "OrganisationName": "Shadwell Medical Centre",
+      "OrganisationAliases": [ ],
+      "Address1": "137 Shadwell Lane",
+      "Address2": null,
       "Address3": null,
       "City": "Leeds",
       "County": "West Yorkshire",
-      "Postcode": "LS18 4SE",
+      "Postcode": "LS17 8AE",
       "CCG": [
-        "463248",
-        "NHS Leeds West CCG"
+        "462893",
+        "NHS Leeds North CCG"
       ]
     }
   ]
