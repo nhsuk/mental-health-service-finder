@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
+const types = require('../app/lib/constants').types;
+const getResults = require('../app/middleware/getResults');
 const routes = require('./routes');
-const getIAPTs = require('../app/middleware/getIAPTs');
-const getGPs = require('../app/middleware/getGPs');
+const validateQuery = require('../app/middleware/validateQuery');
 
 router.get(routes.start.path, (req, res) => res.render('start'));
 
@@ -12,15 +13,14 @@ router.get(routes.search.path, (req, res) => res.render('search'));
 
 router.get(
   routes.gpResults.path,
-  // TODO: Add query validation
-  getGPs,
+  validateQuery,
+  (req, res, next) => getResults(req, res, next, types.GP),
   (req, res) => res.render('gp-results')
 );
 
 router.get(
   routes.iaptResults.path,
-  // TODO: Add query validation
-  getIAPTs,
+  (req, res, next) => getResults(req, res, next, types.IAPT),
   (req, res) => res.render('iapt-results')
 );
 

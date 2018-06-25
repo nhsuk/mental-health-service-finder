@@ -1,0 +1,22 @@
+{
+  "@odata.context": "https://service.domain/indexes('index-name')/$metadata#docs",
+  "value": [
+    {
+      "@search.text": "LS1 8TL",
+      "OrganisationName": "One Medicare Llp-The Light",
+      "OrganisationAliases": [
+        "The Light NHS GP Surgery"
+      ],
+      "Address1": "Balcony Level 7",
+      "Address2": "The Light",
+      "Address3": "The Headrow",
+      "City": "Leeds",
+      "County": "West Yorkshire",
+      "Postcode": "LS1 8TL",
+      "CCG": [
+        "462893",
+        "NHS Leeds North CCG"
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
 const constants = require('../../app/lib/constants');
-const createBody = require('../../app/lib/requests/createBody').forIAPTRequest;
+const createBody = require('../../app/lib/requests/createBody');
 const iExpect = require('../lib/expectations');
 const nockRequests = require('../lib/nockRequests');
 const routes = require('../../config/routes');
@@ -21,56 +21,97 @@ describe('IAPT results page', () => {
     let $;
     let response;
 
-    before('make request', async () => {
-      const ccg = 123456;
-      const body = createBody(ccg);
+    describe('multiple results', () => {
+      before('make request', async () => {
+        const query = 123456;
+        const body = createBody(constants.types.IAPT, query);
 
-      console.log(body);
-      nockRequests.withResponseBody(path, body, 200, 'search/threeResults.json');
+        nockRequests.withResponseBody(path, body, 200, 'search/threeResults.json');
 
-      response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?ccg=${ccg}`);
-      $ = cheerio.load(response.text);
-      iExpect.htmlWith200Status(response);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
+        $ = cheerio.load(response.text);
+        iExpect.htmlWith200Status(response);
+      });
+
+      it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
+        expect($('title').text()).to.equal('Find IAPT services - NHS.UK');
+      });
+
+      it('should have an H1 of \'Psychological therapies services\'', () => {
+        expect($('h1.local-header--title--question').text()).to.equal('Psychological therapies services');
+      });
+
+      it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {
+        expect($($('div.breadcrumb a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search');
+      });
+
+      it('the banner should link back to Choices IAPT service search', () => {
+        expect($('.back-to-choices').attr('href'))
+          .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
+      });
+
+      it('should display all of the results that were returned', () => {
+        expect($('.results__item').length).to.equal(3);
+      });
+
+      it('should report number of services plurally', () => {
+        expect($('h2.local-header--title--question').text()).to.equal('3 services are available');
+      });
+
+      it('should display contact information for each result', () => {
+        // TODO: Includes the website, the tel and email
+      });
+
+      it('should display a button to \'Refer yourself online\' for results with that option', () => {
+        // TODO: When the data is coming through...
+      });
     });
 
-    it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
-      expect($('title').text()).to.equal('Find IAPT services - NHS.UK');
+    describe('zero results', () => {
+      before('make request', async () => {
+        const query = 'zero results';
+        const body = createBody(constants.types.IAPT, query);
+
+        nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
+
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
+        $ = cheerio.load(response.text);
+        iExpect.htmlWith200Status(response);
+        expect($('.results__item').length).to.equal(0);
+      });
+
+      it('should display a message for zero results', () => {
+        expect($('h2.local-header--title--question').text()).to.equal('There are no services available for the selected CCG');
+      });
     });
 
-    it('should have an H1 of \'Psychological therapies services\'', () => {
-      expect($('h1.local-header--title--question').text()).to.equal('Psychological therapies services');
-    });
+    describe('one result', () => {
+      before('make request', async () => {
+        const query = 'one result';
+        const body = createBody(constants.types.IAPT, query);
 
-    it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {
-      expect($($('div.breadcrumb a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search');
-    });
+        nockRequests.withResponseBody(path, body, 200, 'search/oneResult.json');
 
-    it('the banner should link back to Choices IAPT service search', () => {
-      expect($('.back-to-choices').attr('href'))
-        .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
-    });
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
+        $ = cheerio.load(response.text);
+        iExpect.htmlWith200Status(response);
+        expect($('.results__item').length).to.equal(1);
+      });
 
-    it('should display the number of results returned for the practice searched for', () => {
-      // TODO:
-    });
-
-    it('should display contact information for each result', () => {
-      // TODO: Includes the website, the tel and email
-    });
-
-    it('should display a button to \'Refer yourself online\' for results with that option', () => {
-      // TODO: need to do this
+      it('should report number of services singularly', () => {
+        expect($('h2.local-header--title--question').text()).to.equal('1 service is available');
+      });
     });
   });
 
   describe('no results', () => {
     it('should display message when no results returned', async () => {
-      const ccg = 'noresults';
-      const body = createBody(ccg);
+      const query = 'noresults';
+      const body = createBody(constants.types.IAPT, query);
 
       nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?ccg=${ccg}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -85,12 +126,12 @@ describe('IAPT results page', () => {
 
   describe('bad api responses', () => {
     it('should display an error page for a 400 response', async () => {
-      const ccg = '400response';
-      const body = createBody(ccg);
+      const query = '400response';
+      const body = createBody(constants.types.IAPT, query);
 
       nockRequests.withResponseBody(path, body, 400, 'search/400.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?ccg=${ccg}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -99,12 +140,12 @@ describe('IAPT results page', () => {
     });
 
     it('should display an error page for a 403 response', async () => {
-      const ccg = '403response';
-      const body = createBody(ccg);
+      const query = '403response';
+      const body = createBody(constants.types.IAPT, query);
 
       nockRequests.withNoResponseBody(path, body, 403);
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?ccg=${ccg}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -113,12 +154,12 @@ describe('IAPT results page', () => {
     });
 
     it('should display an error page for a 404 response', async () => {
-      const ccg = '404response';
-      const body = createBody(ccg);
+      const query = '404response';
+      const body = createBody(constants.types.IAPT, query);
 
       nockRequests.withResponseBody(path, body, 404, 'search/404.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?ccg=${ccg}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -127,12 +168,12 @@ describe('IAPT results page', () => {
     });
 
     it('should display an error page for a 415 response', async () => {
-      const ccg = '415response';
-      const body = createBody(ccg);
+      const query = '415response';
+      const body = createBody(constants.types.IAPT, query);
 
       nockRequests.withResponseBody(path, body, 415, 'search/415.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?ccg=${ccg}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
