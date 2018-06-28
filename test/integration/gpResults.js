@@ -37,8 +37,8 @@ describe('GP results page', () => {
       expect($('title').text()).to.equal('Find IAPT services - NHS.UK');
     });
 
-    it('should have an H1 of \'GP Surgeries\'', () => {
-      expect($('h1.local-header--title--question').text()).to.equal('GP surgeries');
+    it('should have an H1 of \'Select your GP to get you to the right service\'', () => {
+      expect($('h1.local-header--title--question').text()).to.equal('Select your GP to see available services');
     });
 
     it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {
@@ -55,12 +55,16 @@ describe('GP results page', () => {
     });
 
     it('should display an address for each result', () => {
-      // TODO: Could do with extending this once the results have been processed
       expect($('.results__address').length).to.equal(10);
     });
 
+    it('should display all available address elements', () => {
+      expect($('.results__address').first().text().trim())
+        .to.equal('Balcony Level 7, The Light, The Headrow, Leeds, West Yorkshire, LS1 8TL');
+    });
+
     it('should display a button to select the GP', () => {
-      expect($('.button').length).to.equal(10);
+      expect($('p a:contains("This is my GP")').length).to.equal(10);
     });
   });
 

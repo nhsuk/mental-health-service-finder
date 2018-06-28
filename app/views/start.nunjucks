@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block header %}
-<h1 class="local-header--title--question">Get help with stress, anxiety or depression</h1>
+<h1 class="local-header--title--question">Find help with stress, anxiety or depression</h1>
 {% endblock %}
 
 {% block content %}
@@ -25,19 +25,15 @@
   <p>Psychological therapies may be delivered:</p>
 
   <ul>
-    <li>in a group</li>
-    <li>one-to-one</li>
-    <li>over the phone</li>
     <li>using a self-help book</li>
     <li>as an online course</li>
+    <li>over the phone</li>
+    <li>in a group</li>
+    <li>one-to-one</li>
   </ul>
 
-  <a href="{{ siteRoot }}/check" class="button start-button start_button_tracking" role="button">Start now</a>
-  <div class="callout callout--info">
-    <h2>If you need urgent help</h2>
-    <p>You can call the Samaritans 24 hours a day, 365 days a year using their free number</p>
-    <p><a href="tel:116123">116 123</a></p>
-  </div>
+  <a href="{{ siteRoot }}/check" class="button start-button start_button_tracking" role="button">Find help</a>
+  {% include "includes/urgent-help-callout.nunjucks" %}
 </div>
 
 {% endblock %}

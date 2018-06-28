@@ -1,12 +1,14 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question">GP surgeries</h1>
+<h1 class="local-header--title--question">Select your GP to see available services</h1>
 {% endblock %}
 
 {% block content %}
 <div class="results">
-  <h2 class="local-header--title--question">Select your GP surgery</h2>
+  <p class="local-header--title--question">We found {{results.length}} GP surgeries using '{{query}}'.</p>
+
+  <p>If your surgery is not here, check your spelling and <a href="{{siteRoot}}/search">search again</a>.
 
   {% if results.length > 0 %}
     <div class="grid-row">

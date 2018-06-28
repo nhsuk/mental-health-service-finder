@@ -12,7 +12,7 @@
   </p>
 {% endif %}
 
-<p><a class="button" href="{{ siteRoot }}/results?type=iapt&query={{result.CCG[0]}}">This is my GP</a></p>
+<p><a href="{{ siteRoot }}/results?type=iapt&query={{result.CCG[0]}}">This is my GP</a></p>
 
 {% if result.contacts %}
   <p class="results__address results__telephone">
