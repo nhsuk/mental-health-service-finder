@@ -1,13 +1,11 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question">GP surgeries</h1>
+  <h1 class="local-header--title--question">Select your GP to get you to the right service</h1>
 {% endblock %}
 
 {% block content %}
 <div class="results">
-  <h2 class="local-header--title--question">Select your GP surgery</h2>
-
   {% if results.length > 0 %}
     <div class="grid-row">
       <ol class="results">
