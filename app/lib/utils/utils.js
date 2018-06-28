@@ -1,3 +1,7 @@
+function deepClone(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
+
 function joinTruthyValues(obj) {
   return Object.values(obj)
     .filter(value => value)
@@ -9,6 +13,7 @@ function trim(string) {
 }
 
 module.exports = {
+  deepClone,
   joinTruthyValues,
   trim,
 };
