@@ -40,6 +40,18 @@ describe('Page attributes', () => {
           expect($('h1.local-header--title--question').text()).to.equal(pageTitle);
         });
       });
+
+      describe('meta tags', () => {
+        if (path !== routes.start) {
+          it('should include a robots noindex directive for all non \'start\' pages', () => {
+            expect($('meta[name=robots]').prop('content')).to.equal('noindex');
+          });
+        } else {
+          it('should include a robots nofollow directive for the \'start\' page', () => {
+            expect($('meta[name=robots]').prop('content')).to.equal('nofollow');
+          });
+        }
+      });
     });
   });
 });
