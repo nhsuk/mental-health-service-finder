@@ -17,6 +17,7 @@ describe('Search page', () => {
     const $ = cheerio.load(res.text);
 
     expect($('.button').val()).to.equal('Find services');
-    expect($('.form').prop('action')).to.equal(`${constants.siteRoot}${routes.gpResults.path}`);
+    expect($('.form').prop('action')).to.equal(`${constants.siteRoot}${routes.results.path}`);
+    expect($('.form input[name=type]').val().toUpperCase()).to.equal(`${constants.types.GP}`);
   });
 });

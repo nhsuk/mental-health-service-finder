@@ -16,6 +16,7 @@ chai.use(chaiHttp);
 describe('IAPT results page', () => {
   const organisationLookupIndex = 'organisationlookup3-index';
   const path = `/indexes/${organisationLookupIndex}/docs/search`;
+  const type = constants.types.IAPT;
 
   describe('happy path', () => {
     let $;
@@ -28,7 +29,7 @@ describe('IAPT results page', () => {
 
         nockRequests.withResponseBody(path, body, 200, 'search/threeResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWith200Status(response);
       });
@@ -74,7 +75,7 @@ describe('IAPT results page', () => {
 
         nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWith200Status(response);
         expect($('.results__item').length).to.equal(0);
@@ -92,7 +93,7 @@ describe('IAPT results page', () => {
 
         nockRequests.withResponseBody(path, body, 200, 'search/oneResult.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWith200Status(response);
         expect($('.results__item').length).to.equal(1);
@@ -111,7 +112,7 @@ describe('IAPT results page', () => {
 
       nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -131,7 +132,7 @@ describe('IAPT results page', () => {
 
       nockRequests.withResponseBody(path, body, 400, 'search/400.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -145,7 +146,7 @@ describe('IAPT results page', () => {
 
       nockRequests.withNoResponseBody(path, body, 403);
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -159,7 +160,7 @@ describe('IAPT results page', () => {
 
       nockRequests.withResponseBody(path, body, 404, 'search/404.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -173,7 +174,7 @@ describe('IAPT results page', () => {
 
       nockRequests.withResponseBody(path, body, 415, 'search/415.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.iaptResults.path}?query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);

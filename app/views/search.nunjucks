@@ -15,7 +15,8 @@
 </div>
 {% endif %}
 
-<form method="get" class="form" action="{{ siteRoot }}/gp-results">
+<form method="get" class="form" action="{{ siteRoot }}/results">
+  <input type="hidden" name="type" value="gp" />
   <div class="reading-width">
     <div class="form-item-wrapper">
       <div class="form-group {% if errorMessage %} error {% endif %}">

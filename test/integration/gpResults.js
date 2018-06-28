@@ -16,6 +16,7 @@ chai.use(chaiHttp);
 describe('GP results page', () => {
   const organisationLookupIndex = 'organisationlookup3-index';
   const path = `/indexes/${organisationLookupIndex}/docs/suggest`;
+  const type = constants.types.GP;
 
   describe('happy path', () => {
     let $;
@@ -27,7 +28,7 @@ describe('GP results page', () => {
 
       nockRequests.withResponseBody(path, body, 200, 'suggest/tenResults.json');
 
-      response = await chai.request(server).get(`${constants.siteRoot}${routes.gpResults.path}?query=${query}`);
+      response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       $ = cheerio.load(response.text);
       iExpect.htmlWith200Status(response);
     });
@@ -70,7 +71,7 @@ describe('GP results page', () => {
 
       nockRequests.withResponseBody(path, body, 200, 'suggest/zeroResults.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.gpResults.path}?query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -86,7 +87,7 @@ describe('GP results page', () => {
 
       nockRequests.withResponseBody(path, body, 400, 'suggest/400.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.gpResults.path}?query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -100,7 +101,7 @@ describe('GP results page', () => {
 
       nockRequests.withNoResponseBody(path, body, 403);
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.gpResults.path}?query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -114,7 +115,7 @@ describe('GP results page', () => {
 
       nockRequests.withResponseBody(path, body, 404, 'suggest/404.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.gpResults.path}?query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -128,7 +129,7 @@ describe('GP results page', () => {
 
       nockRequests.withResponseBody(path, body, 415, 'suggest/415.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.gpResults.path}?query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
@@ -141,7 +142,7 @@ describe('GP results page', () => {
     it('should display an error message when no query is entered', async () => {
       const query = '';
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.gpResults.path}?query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWith200Status(response);
 
       const $ = cheerio.load(response.text);
