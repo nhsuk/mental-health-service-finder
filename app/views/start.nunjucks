@@ -1,5 +1,9 @@
 {% extends 'layout.nunjucks' %}
 
+{% block robots %}
+  <meta name='robots' content='nofollow'>
+{% endblock %}
+
 {% block header %}
 <h1 class="local-header--title--question">Get help with stress, anxiety or depression</h1>
 {% endblock %}
