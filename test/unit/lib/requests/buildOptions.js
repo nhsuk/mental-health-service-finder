@@ -58,11 +58,11 @@ describe('buildOptions', () => {
       });
 
       it('should search the expected fields', () => {
-        expect(pbody.searchFields).to.equal('OrganisationName,OrganisationAliases,City,Postcode');
+        expect(pbody.searchFields).to.equal('OrganisationName,City,Postcode');
       });
 
       it('should select appropriate properties', () => {
-        expect(pbody.select).to.equal('OrganisationName,OrganisationAliases,Address1,Address2,Address3,City,County,Postcode,CCG');
+        expect(pbody.select).to.equal('OrganisationName,Address1,Address2,Address3,City,County,Postcode,CCG');
       });
 
       it('should run against the organisation suggester', () => {
