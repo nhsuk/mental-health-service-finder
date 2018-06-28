@@ -37,8 +37,8 @@ describe('GP results page', () => {
       expect($('title').text()).to.equal('Find IAPT services - NHS.UK');
     });
 
-    it('should have an H1 of \'GP Surgeries\'', () => {
-      expect($('h1.local-header--title--question').text()).to.equal('GP surgeries');
+    it('should have an H1 of \'Select your GP to get you to the right service\'', () => {
+      expect($('h1.local-header--title--question').text()).to.equal('Select your GP to get you to the right service');
     });
 
     it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {

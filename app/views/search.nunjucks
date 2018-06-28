@@ -1,7 +1,7 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question local-header--title__step">You have to be registered with a GP to refer yourself</h1>
+<h1 class="local-header--title--question local-header--title__step">We need to know your GP to get you to the right service</h1>
 {% endblock %}
 
 {% block content %}
@@ -23,7 +23,7 @@
         <h3>
           <label class="form-label-bold" for="query">Tell us your GP surgery:</label>
         </h3>
-        <p>For example, surgery name, doctor's name of postcode</p>
+        <p>For example, surgery or street name</p>
           <div class="form-group">
             <input autocomplete="off" type="text" class="form-control" name="query" id="query" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
           </div>
@@ -32,7 +32,7 @@
     </div>
     <div class="form-item-wrapper">
       <div class="form-group">
-        <input type="submit" class="button" value="Find services">
+        <input type="submit" class="button" value="Find your GP surgery">
       </div>
     </div>
   </div>

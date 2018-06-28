@@ -1,6 +1,6 @@
 module.exports = {
-  check: { path: '/check', title: 'What happens when you refer yourself' },
+  check: { path: '/check', title: 'What happens after you refer yourself' },
   results: { path: '/results' },
-  search: { path: '/search', title: 'You have to be registered with a GP to refer yourself' },
-  start: { path: '/', title: 'Get help with stress, anxiety or depression' },
+  search: { path: '/search', title: 'We need to know your GP to get you to the right service' },
+  start: { path: '/', title: 'Find help with stress, anxiety or depression' },
 };
