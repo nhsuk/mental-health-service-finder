@@ -1,7 +1,7 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question">What happens when you refer yourself</h1>
+<h1 class="local-header--title--question">What happens after you refer yourself</h1>
 {% endblock %}
 
 {% block content %}
@@ -14,16 +14,17 @@
 {% endif %}
 
 <div class="reading-width">
-  <h3>1. Find a psychological therapies service</h3>
-  <p>Contact the service by phone, email or online form.</p>
-  <h3>2. Assessment</h3>
-  <p>Someone from the service will get in touch, usually within 2 weeks. They'll ask for more details about the problems you're having.</p>
-  <h3>3. Confirmation</h3>
-  <p>You'll get an email or letter telling you which therapy the service recommends for you, and when and where your first session is.</p>
-  <h3>4. First session</h3>
-  <p>Waiting times vary but 9 out of 10 people have their first therapy session within 6 weeks.</p>
+  <h2>You’ll have an assessment</h2>
+  <p>Someone from the psychological therapies service will get in touch, usually in 1-2 weeks. They’ll ask about the problems you’re having.</p>
+  <h2>The service will recommend a therapy for you </h2>
+  <p>The therapy will depend on what problems you’re experiencing and how severe they are.</p>
+  <p>They will also tell you how long you’ll wait for your first therapy session.</p>
+  <a href="{{ siteRoot }}/search" class="button start-button start_button_tracking" role="button">Next</a>
 
-  <a href="{{ siteRoot }}/search" class="button start-button start_button_tracking" role="button">Continue</a>
+  <div class="callout callout--info">
+    <h2>If you need urgent help</h2>
+    <p>You can call Samaritans free on <a href="tel:116123">116 123</a> or email <a href="mailto:jo@samaritans.org">jo@samaritans.org</a>
+  </div>
 </div>
 
 {% endblock %}

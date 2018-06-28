@@ -1,15 +1,4 @@
-<h3 class="results__name">{{ result.OrganisationName }}</h3>
-
-{% if result.OrganisationAliases.length > 1 %}
-  <p>
-    This surgery may also be known as:
-    <ul>
-      {% for alias in result.OrganisationAliases %}
-        <li style="border-top:none;">{{ alias }}</li>
-      {% endfor %}
-    </ul>
-  </p>
-{% endif %}
+<h3 class="results__name"><a href="{{ siteRoot }}/iapt-results?query={{result.CCG[0]}}">{{ result.OrganisationName }}</a></h3>
 
 {% if result.address %}
   <p class="results__address results__address-lines">
@@ -22,14 +11,26 @@
   {{ result.Address1 }}, {{ result.City}}, {{ result.County }}, {{ result.Postcode }}
   </p>
 {% endif %}
-
-<p><a class="button" href="{{ siteRoot }}/iapt-results?query={{result.CCG[0]}}">This is my GP</a></p>
-
-{% if result.contacts %}
-  <p class="results__address results__telephone">
-    {% if result.contacts.telephoneNumber %}
-      <a href="tel:{{ result.contacts.telephoneNumber }}" class="results__telephone--mobile" class="telephone_tracking"> {{ result.contacts.telephoneNumber }} </a>
-      <span class="results__telephone--desktop"> {{ result.contacts.telephoneNumber }} </span>
-    {% endif %}
+<!--
+  {% if result.contacts %}
+    <p class="results__address results__telephone">
+      {% if result.contacts.telephoneNumber %}
+        <a href="tel:{{ result.contacts.telephoneNumber }}" class="results__telephone--mobile" class="telephone_tracking"> {{ result.contacts.telephoneNumber }} </a>
+        <span class="results__telephone--desktop"> {{ result.contacts.telephoneNumber }} </span>
+      {% endif %}
+    </p>
+  {% endif %}
+-->
+<!--
+  <p><a class="button" href="{{ siteRoot }}/iapt-results?query={{result.CCG[0]}}">This is my GP</a></p>
+-->
+{% if result.OrganisationAliases.length > 1 %}
+  <p>
+    This surgery may also be known as:
+    <ul>
+      {% for alias in result.OrganisationAliases %}
+        <li style="border-top:none;">{{ alias }}</li>
+      {% endfor %}
+    </ul>
   </p>
 {% endif %}

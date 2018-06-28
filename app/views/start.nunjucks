@@ -1,7 +1,7 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question">Get help with stress, anxiety or depression</h1>
+<h1 class="local-header--title--question">Find help with stress, anxiety or depression</h1>
 {% endblock %}
 
 {% block content %}
@@ -14,25 +14,24 @@
 {% endif %}
 
 <div class="reading-width">
-  <p>You can refer yourself directly to a psychologival therapies service without seeing your GP.</p>
+  <p>You can refer yourself directly to a psychological therapies service without seeing your GP.</p>
 
-  <p>These services offer therapies like CBT and conselling for common mental health problems like stress, anxiety, depression, OCD and PTSD.</p>
+  <p>These offer therapies like CBT and counselling for common mental health problems like stress, anxiety, depression, OCD and PTSD.</p>
 
-  <p>Psychological therapies may be delivered:</p>
+  <p>You may be offered psychological therapies:</p>
 
   <ul>
-    <li>in a group</li>
-    <li>one-to-one</li>
-    <li>over the phone</li>
     <li>using a self-help book</li>
     <li>as an online course</li>
+    <li>over the phone</li>
+    <li>in a group</li>
+    <li>one-to-one</li>
   </ul>
 
-  <a href="{{ siteRoot }}/check" class="button start-button start_button_tracking" role="button">Start now</a>
+  <a href="{{ siteRoot }}/check" class="button start-button start_button_tracking" role="button">Find help</a>
   <div class="callout callout--info">
     <h2>If you need urgent help</h2>
-    <p>You can call the Samaritans 24 hours a day, 365 days a year using their free number</p>
-    <p><a href="tel:116123">116 123</a></p>
+    <p>You can call Samaritans free on <a href="tel:116123">116 123</a> or email <a href="mailto:jo@samaritans.org">jo@samaritans.org</a>
   </div>
 </div>
 
