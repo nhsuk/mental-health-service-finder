@@ -5,8 +5,9 @@ const errorCounter = require('../lib/prometheus/counters').searchErrors;
 const log = require('../lib/logger');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;
 
-function getResults(req, res, next, type) {
-  const query = req.query.query;
+function getResults(req, res, next) {
+  const query = res.locals.query;
+  const type = res.locals.type;
   const options = buildOptions(type, query);
 
   log.info({ request: options }, `${type}-request`);
@@ -24,7 +25,7 @@ function getResults(req, res, next, type) {
           const results = pbody.value;
           // TODO: The results need processing for display
           res.locals.results = results || [];
-          next();
+          res.render(`${type.toLowerCase()}-results`);
           break;
         }
         default: {
