@@ -8,7 +8,7 @@
 
 {% if result.Postcode %}
   <p class="results__address results__address-lines">
-  {{ result.Address1 }}, {{ result.City}}, {{ result.County }}, {{ result.Postcode }}
+  {{ result.Address }}
   </p>
 {% endif %}
 

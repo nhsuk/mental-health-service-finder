@@ -3,6 +3,7 @@ const request = require('request');
 const buildOptions = require('../lib/requests/buildOptions');
 const errorCounter = require('../lib/prometheus/counters').searchErrors;
 const log = require('../lib/logger');
+const processResults = require('../lib/processResults');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;
 
 function getResults(req, res, next) {
@@ -22,10 +23,7 @@ function getResults(req, res, next) {
         case 200: {
           log.info(`${statusCode} response`, `${type}-success`);
           try {
-            const pbody = JSON.parse(body);
-            const results = pbody.value;
-            // TODO: The results need processing for display
-            res.locals.results = results || [];
+            res.locals.results = processResults(body);
             res.render(`${type.toLowerCase()}-results`);
           } catch (err) {
             next(err);
