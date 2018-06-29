@@ -1,6 +1,5 @@
 const router = require('express').Router();
 
-// const types = require('../app/lib/constants').types;
 const getResults = require('../app/middleware/getResults');
 const routes = require('./routes');
 const validateRequest = require('../app/middleware/validateRequest');

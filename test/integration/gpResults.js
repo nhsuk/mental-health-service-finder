@@ -30,7 +30,7 @@ describe('GP results page', () => {
 
       response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       $ = cheerio.load(response.text);
-      iExpect.htmlWith200Status(response);
+      iExpect.htmlWithStatus(response, 200);
     });
 
     it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
@@ -76,7 +76,7 @@ describe('GP results page', () => {
       nockRequests.withResponseBody(path, body, 200, 'suggest/zeroResults.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWith200Status(response);
+      iExpect.htmlWithStatus(response, 200);
 
       const $ = cheerio.load(response.text);
 
@@ -92,7 +92,7 @@ describe('GP results page', () => {
       nockRequests.withResponseBody(path, body, 400, 'suggest/400.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWith200Status(response);
+      iExpect.htmlWithStatus(response, 500);
 
       const $ = cheerio.load(response.text);
 
@@ -106,7 +106,7 @@ describe('GP results page', () => {
       nockRequests.withNoResponseBody(path, body, 403);
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWith200Status(response);
+      iExpect.htmlWithStatus(response, 500);
 
       const $ = cheerio.load(response.text);
 
@@ -120,7 +120,7 @@ describe('GP results page', () => {
       nockRequests.withResponseBody(path, body, 404, 'suggest/404.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWith200Status(response);
+      iExpect.htmlWithStatus(response, 500);
 
       const $ = cheerio.load(response.text);
 
@@ -134,7 +134,21 @@ describe('GP results page', () => {
       nockRequests.withResponseBody(path, body, 415, 'suggest/415.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWith200Status(response);
+      iExpect.htmlWithStatus(response, 500);
+
+      const $ = cheerio.load(response.text);
+
+      expect($('.local-header--title--question').text()).to.equal('Sorry, we are experiencing technical problems.');
+    });
+
+    it('should display an error page for a response that can not be parsed', async () => {
+      const query = 'notJSON';
+      const body = createBody(constants.types.GP, query);
+
+      nockRequests.withNoResponseBody(path, body, 500);
+
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      iExpect.htmlWithStatus(response, 500);
 
       const $ = cheerio.load(response.text);
 
@@ -147,7 +161,7 @@ describe('GP results page', () => {
       const query = '';
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWith200Status(response);
+      iExpect.htmlWithStatus(response, 200);
 
       const $ = cheerio.load(response.text);
 

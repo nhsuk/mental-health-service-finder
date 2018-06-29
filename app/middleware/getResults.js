@@ -21,22 +21,27 @@ function getResults(req, res, next) {
       switch (statusCode) {
         case 200: {
           log.info(`${statusCode} response`, `${type}-success`);
-          const pbody = JSON.parse(body);
-          const results = pbody.value;
-          // TODO: The results need processing for display
-          res.locals.results = results || [];
-          res.render(`${type.toLowerCase()}-results`);
+          try {
+            const pbody = JSON.parse(body);
+            const results = pbody.value;
+            // TODO: The results need processing for display
+            res.locals.results = results || [];
+            res.render(`${type.toLowerCase()}-results`);
+          } catch (err) {
+            next(err);
+          }
           break;
         }
         default: {
-          res.render('error');
+          next('error');
           break;
         }
       }
     } else {
-      log.error({ error: { error } }, `${type}-error`);
       errorCounter(type).inc(1);
-      next('error');
+      // eslint-disable-next-line no-param-reassign
+      error.msg = `${type}-error`;
+      next(error);
     }
   });
 }

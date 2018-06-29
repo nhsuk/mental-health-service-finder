@@ -31,7 +31,7 @@ describe('IAPT results page', () => {
 
         response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
         $ = cheerio.load(response.text);
-        iExpect.htmlWith200Status(response);
+        iExpect.htmlWithStatus(response, 200);
       });
 
       it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
@@ -77,7 +77,7 @@ describe('IAPT results page', () => {
 
         response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
         $ = cheerio.load(response.text);
-        iExpect.htmlWith200Status(response);
+        iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(0);
       });
 
@@ -95,7 +95,7 @@ describe('IAPT results page', () => {
 
         response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
         $ = cheerio.load(response.text);
-        iExpect.htmlWith200Status(response);
+        iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(1);
       });
 
@@ -113,7 +113,7 @@ describe('IAPT results page', () => {
       nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWith200Status(response);
+      iExpect.htmlWithStatus(response, 200);
 
       const $ = cheerio.load(response.text);
 
@@ -133,7 +133,7 @@ describe('IAPT results page', () => {
       nockRequests.withResponseBody(path, body, 400, 'search/400.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWith200Status(response);
+      iExpect.htmlWithStatus(response, 500);
 
       const $ = cheerio.load(response.text);
 
@@ -147,7 +147,7 @@ describe('IAPT results page', () => {
       nockRequests.withNoResponseBody(path, body, 403);
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWith200Status(response);
+      iExpect.htmlWithStatus(response, 500);
 
       const $ = cheerio.load(response.text);
 
@@ -161,7 +161,7 @@ describe('IAPT results page', () => {
       nockRequests.withResponseBody(path, body, 404, 'search/404.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWith200Status(response);
+      iExpect.htmlWithStatus(response, 500);
 
       const $ = cheerio.load(response.text);
 
@@ -175,7 +175,7 @@ describe('IAPT results page', () => {
       nockRequests.withResponseBody(path, body, 415, 'search/415.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWith200Status(response);
+      iExpect.htmlWithStatus(response, 500);
 
       const $ = cheerio.load(response.text);
 

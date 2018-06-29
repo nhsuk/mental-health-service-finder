@@ -25,7 +25,7 @@ describe('Page attributes', () => {
     describe(`for page ${path}`, () => {
       describe('status', () => {
         it('should be html and 200 response code', () => {
-          iExpect.htmlWith200Status(res);
+          iExpect.htmlWithStatus(res, 200);
         });
       });
 
