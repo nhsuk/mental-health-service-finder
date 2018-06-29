@@ -61,10 +61,16 @@ describe('IAPT results page', () => {
 
       it('should display contact information for each result', () => {
         // TODO: Includes the website, the tel and email
+        // Expect to see website, tel & email
       });
 
       it('should display a button to \'Refer yourself online\' for results with that option', () => {
-        // TODO: When the data is coming through...
+        // TODO: When the data is coming through test where the href is for...
+        expect($('.button').length).to.equal(3);
+      });
+
+      it('should display a metric referring to the waiting time for first session', () => {
+        // TODO: When the data is coming through test where the href is for...
       });
     });
 

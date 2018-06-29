@@ -1,3 +1,17 @@
 <h3 class="results__name">{{ result.OrganisationName }}</h3>
 
+{% if result.website %}
+  <p><a href="{{ result.website }}">{{ result.website }}</a></p>
+{% endif %}
+
+{% if result.telephone %}
+  <p class="results__address results__telephone">
+    Tel: <a href="tel:{{ result.telephone }}" class="telephone_tracking"> {{ result.telephone }} </a>
+  </p>
+{% endif %}
+
+{% if result.email %}
+  <p>Email: <a href="{{ result.email }}">{{ result.email }}</a></p>
+{% endif %}
+
 <p><a class="button" href="{{ result.referralUrl }}">Refer yourself online</a></p>

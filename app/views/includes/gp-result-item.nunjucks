@@ -1,24 +1,9 @@
 <h3 class="results__name">{{ result.OrganisationName }}</h3>
 
-{% if result.address %}
+{% if result.fullAddress %}
   <p class="results__address results__address-lines">
-    {% if result.address.fullAddress %} {{ result.address.fullAddress }} {% endif %}
-  </p>
-{% endif %}
-
-{% if result.Postcode %}
-  <p class="results__address results__address-lines">
-  {{ result.Address }}
+  {{ result.fullAddress }}
   </p>
 {% endif %}
 
 <p><a href="{{ siteRoot }}/results?type=iapt&query={{result.CCG[0]}}">This is my GP</a></p>
-
-{% if result.contacts %}
-  <p class="results__address results__telephone">
-    {% if result.contacts.telephoneNumber %}
-      <a href="tel:{{ result.contacts.telephoneNumber }}" class="results__telephone--mobile" class="telephone_tracking"> {{ result.contacts.telephoneNumber }} </a>
-      <span class="results__telephone--desktop"> {{ result.contacts.telephoneNumber }} </span>
-    {% endif %}
-  </p>
-{% endif %}
