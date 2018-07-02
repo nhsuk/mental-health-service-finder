@@ -58,15 +58,37 @@ describe('mapResults', () => {
   });
 
   describe('for IAPT type', () => {
-    // const type = types.IAPT;
+    const type = types.IAPT;
 
-    // it('should not add a property for \'fullAddress\' when there is no address information', () => {
-    //   const noValue = '{ "value": [{},{}] }';
-    //   const results = mapResults(noValue, type);
+    it('should not add a property for \'email\', \'telephone\' or \'website\' when there information', () => {
+      const noValue = '{ "value": [{},{}] }';
+      const results = mapResults(noValue, type);
 
-    //   expect(results).to.be.an('array');
-    //   expect(results.length).to.equal(2);
-    //   results.forEach(item => expect(item.fullAddress).to.be.undefined);
-    // });
+      expect(results).to.be.an('array');
+      expect(results.length).to.equal(2);
+      results.forEach(item => expect(item.email).to.be.undefined);
+      results.forEach(item => expect(item.telephone).to.be.undefined);
+      results.forEach(item => expect(item.website).to.be.undefined);
+    });
+
+    it('should add a property for \'email\', \'telephone\' or \'website\' when there information', () => {
+      const email = 'name@domain.com';
+      const telephone = '0800 123 456';
+      const website = 'https://a.web.site';
+      const contacts = JSON.stringify([
+        { OrganisationContactMethodType: 'Telephone', OrganisationContactValue: telephone },
+        { OrganisationContactMethodType: 'Email', OrganisationContactValue: email },
+        { OrganisationContactMethodType: 'Website', OrganisationContactValue: website },
+      ]);
+      const noValue = { value: [{ Contacts: contacts }, { Contacts: contacts }] };
+
+      const results = mapResults(JSON.stringify(noValue), type);
+
+      expect(results).to.be.an('array');
+      expect(results.length).to.equal(2);
+      results.forEach(item => expect(item.email).to.equal(email));
+      results.forEach(item => expect(item.telephone).to.equal(telephone));
+      results.forEach(item => expect(item.website).to.equal(website));
+    });
   });
 });

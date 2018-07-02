@@ -1,6 +1,5 @@
 const chai = require('chai');
 
-const deepClone = require('../../../app/lib/utils/utils').deepClone;
 const mapIAPTResults = require('../../../app/lib/mapIAPTResults');
 
 const expect = chai.expect;
@@ -34,29 +33,14 @@ describe('mapIAPTResults', () => {
     const email = 'name@domain.com';
     const telephone = '0800 123 456';
     const website = 'https://a.web.site';
-    const contacts = `[
-          {
-            "OrganisationContactType": "Primary",
-            "OrganisationContactAvailabilityType": "Office hours",
-            "OrganisationContactMethodType": "Telephone",
-            "OrganisationContactValue": "0800 123 456"
-          },
-          {
-            "OrganisationContactType": "Primary",
-            "OrganisationContactAvailabilityType": "Office hours",
-            "OrganisationContactMethodType": "Email",
-            "OrganisationContactValue": "name@domain.com"
-          },
-          {
-            "OrganisationContactType": "Primary",
-            "OrganisationContactAvailabilityType": "Office hours",
-            "OrganisationContactMethodType": "Website",
-            "OrganisationContactValue": "https://a.web.site"
-          }
-        ]`;
+    const contacts = [
+      { OrganisationContactMethodType: 'Telephone', OrganisationContactValue: telephone },
+      { OrganisationContactMethodType: 'Email', OrganisationContactValue: email },
+      { OrganisationContactMethodType: 'Website', OrganisationContactValue: website },
+    ];
 
     before('execute function', () => {
-      const input = { Contacts: contacts };
+      const input = { Contacts: JSON.stringify(contacts) };
 
       result = mapIAPTResults(input);
     });
