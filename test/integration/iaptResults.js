@@ -43,7 +43,7 @@ describe('IAPT results page', () => {
       });
 
       it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {
-        expect($($('div.breadcrumb a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search');
+        expect($('div.breadcrumb a').eq(1).attr('href')).to.equal('https://www.nhs.uk/service-search');
       });
 
       it('the banner should link back to Choices IAPT service search', () => {
@@ -60,8 +60,11 @@ describe('IAPT results page', () => {
       });
 
       it('should display contact information for each result', () => {
-        // TODO: Includes the website, the tel and email
-        // Expect to see website, tel & email
+        $('.results__item').each((i, item) => {
+          expect($(item).find('.results__email').text()).to.equal(`Email: email@result.${i}`);
+          expect($(item).find('.results__telephone').text()).to.equal(`Tel: result ${i} telephone`);
+          expect($(item).find('.results__website').text()).to.equal(`https://website.result.${i}`);
+        });
       });
 
       it('should display a button to \'Refer yourself online\' for results with that option', () => {

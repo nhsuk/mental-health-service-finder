@@ -16,7 +16,9 @@
       "CCG": [
         "462893",
         "NHS Leeds North CCG"
-      ]
+      ],
+"Contacts": "[{\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"result 0 telephone\"},{\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"email@result.0\"},{\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"https:\\/\\/website.result.0\"}]",
+      "Metrics": "[{\"MetricID\":6265,\"MetricName\":\"IAPT self-referral\",\"DisplayName\":\"Offers self-referral\",\"Description\":\"Whether the service offers self-referral for IAPT\",\"Value\":\"\",\"LinkUrl\":\"http:\\/\\/cnwl-iapt.uk\\/refer-yourself\",\"LinkText\":\"Click here to access self-referral form\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"HospitalSectorType\":\"Independent Sector\",\"MetricText\":\"[BandingName]\"},{\"MetricID\":6265,\"MetricName\":\"IAPT self-referral\",\"DisplayName\":\"Offers self-referral\",\"Description\":\"Whether the service offers self-referral for IAPT\",\"Value\":\"\",\"LinkUrl\":\"http:\\/\\/cnwl-iapt.uk\\/refer-yourself\",\"LinkText\":\"Click here to access self-referral form\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"HospitalSectorType\":\"NHS Sector\",\"MetricText\":\"[BandingName]\"}]"
     },
     {
       "@search.text": "LS12 3HD",
@@ -33,7 +35,8 @@
       "CCG": [
         "463248",
         "NHS Leeds West CCG"
-      ]
+      ],
+"Contacts": "[{\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"result 1 telephone\"},{\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"email@result.1\"},{\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"https:\\/\\/website.result.1\"}]"
     },
     {
       "@search.text": "LS17 8AE",
@@ -48,7 +51,8 @@
       "CCG": [
         "462893",
         "NHS Leeds North CCG"
-      ]
+      ],
+"Contacts": "[{\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"result 2 telephone\"},{\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"email@result.2\"},{\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"https:\\/\\/website.result.2\"}]"
     }
   ]
 }
