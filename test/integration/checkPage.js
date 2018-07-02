@@ -11,12 +11,20 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Check page', () => {
-  it('has a link to the next page', async () => {
+  let $;
+
+  before('request page', async () => {
     const res = await chai.request(server).get(`${constants.siteRoot}${routes.check.path}`);
 
-    const $ = cheerio.load(res.text);
+    $ = cheerio.load(res.text);
+  });
 
-    expect($('.start-button').text()).to.equal('Continue');
+  it('has a link to the next page', () => {
+    expect($('.start-button').text()).to.equal('Next');
     expect($('.start-button').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}`);
+  });
+
+  it('has a back link to the start page', () => {
+    expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}/`);
   });
 });

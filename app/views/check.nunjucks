@@ -1,29 +1,21 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question">What happens when you refer yourself</h1>
+<h1 class="local-header--title--question">What happens after you refer yourself</h1>
 {% endblock %}
 
 {% block content %}
-{% if errorMessage %}
-<div class="error-summary">
-  <h2 class="local-header--error error-summary-heading">
-    {{ errorMessage }}
-  </h2>
-</div>
-{% endif %}
 
 <div class="reading-width">
-  <h3>1. Find a psychological therapies service</h3>
-  <p>Contact the service by phone, email or online form.</p>
-  <h3>2. Assessment</h3>
-  <p>Someone from the service will get in touch, usually within 2 weeks. They'll ask for more details about the problems you're having.</p>
-  <h3>3. Confirmation</h3>
-  <p>You'll get an email or letter telling you which therapy the service recommends for you, and when and where your first session is.</p>
-  <h3>4. First session</h3>
-  <p>Waiting times vary but 9 out of 10 people have their first therapy session within 6 weeks.</p>
+  <h3>You'll have an assessment</h3>
+  <p>Someone from the psychological therapies service will get in tough, usually in 1-2 weeks. They'll ask about the problems you're having.</p>
+  <h3>The service will recommend a therapy for you</h3>
+  <p>The therapy will depend on what problems you're experiencing and how severe they are.</p>
+  <p>They will also tell you how long you'll wait for your first therapy session.</p>
 
-  <a href="{{ siteRoot }}/search" class="button start-button start_button_tracking" role="button">Continue</a>
+  <a href="{{ siteRoot }}/search" class="button start-button start_button_tracking" role="button">Next</a>
+  <p><a class="link-back" href="{{ siteRoot }}/">Back</a></p>
+  {% include "includes/urgent-help-callout.nunjucks" %}
 </div>
 
 {% endblock %}

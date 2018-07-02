@@ -60,7 +60,7 @@ module.exports = (app, config) => {
     const statusCode = err.statusCode || 500;
 
     errorCounter.inc(1);
-    log.error({ error: { err, req, res } }, 'Error');
+    log.error({ err, req, res }, err.message);
     res.status(statusCode);
     res.render('error', {
       error: app.get('env') === 'development' ? err : {},

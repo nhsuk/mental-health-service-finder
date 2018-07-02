@@ -11,12 +11,21 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Search page', () => {
-  it('has a link to the next page', async () => {
+  let $;
+
+  before('request page', async () => {
     const res = await chai.request(server).get(`${constants.siteRoot}${routes.search.path}`);
 
-    const $ = cheerio.load(res.text);
+    $ = cheerio.load(res.text);
+  });
 
-    expect($('.button').val()).to.equal('Find services');
-    expect($('.form').prop('action')).to.equal(`${constants.siteRoot}${routes.gpResults.path}`);
+  it('has a link to the next page', () => {
+    expect($('.button').val()).to.equal('Find your GP surgery');
+    expect($('.form').prop('action')).to.equal(`${constants.siteRoot}${routes.results.path}`);
+    expect($('.form input[name=type]').val().toUpperCase()).to.equal(`${constants.types.GP}`);
+  });
+
+  it('has a back link to the check page', () => {
+    expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.check.path}`);
   });
 });

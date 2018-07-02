@@ -3,10 +3,12 @@ const request = require('request');
 const buildOptions = require('../lib/requests/buildOptions');
 const errorCounter = require('../lib/prometheus/counters').searchErrors;
 const log = require('../lib/logger');
+const mapResults = require('../lib/mapResults');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;
 
-function getResults(req, res, next, type) {
-  const query = req.query.query;
+function getResults(req, res, next) {
+  const query = res.locals.query;
+  const type = res.locals.type;
   const options = buildOptions(type, query);
 
   log.info({ request: options }, `${type}-request`);
@@ -20,22 +22,24 @@ function getResults(req, res, next, type) {
       switch (statusCode) {
         case 200: {
           log.info(`${statusCode} response`, `${type}-success`);
-          const pbody = JSON.parse(body);
-          const results = pbody.value;
-          // TODO: The results need processing for display
-          res.locals.results = results || [];
-          next();
+          try {
+            res.locals.results = mapResults(body, type);
+            res.render(`${type.toLowerCase()}-results`);
+          } catch (err) {
+            next(err);
+          }
           break;
         }
         default: {
-          res.render('error');
+          next('error');
           break;
         }
       }
     } else {
-      log.error({ error: { error } }, `${type}-error`);
       errorCounter(type).inc(1);
-      next('error');
+      // eslint-disable-next-line no-param-reassign
+      error.msg = `${type}-error`;
+      next(error);
     }
   });
 }
