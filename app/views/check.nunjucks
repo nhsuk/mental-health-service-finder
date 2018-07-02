@@ -14,6 +14,7 @@
   <p>They will also tell you how long you'll wait for your first therapy session.</p>
 
   <a href="{{ siteRoot }}/search" class="button start-button start_button_tracking" role="button">Next</a>
+  <p><a class="link-back" href="{{ siteRoot }}/">Back</a></p>
   {% include "includes/urgent-help-callout.nunjucks" %}
 </div>
 

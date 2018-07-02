@@ -23,15 +23,21 @@ describe('IAPT results page', () => {
     let response;
 
     describe('multiple results', () => {
+      const gpQuery = 'pim';
+      const gpname = 'gpname';
       before('make request', async () => {
         const query = 123456;
         const body = createBody(constants.types.IAPT, query);
 
         nockRequests.withResponseBody(path, body, 200, 'search/threeResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}&gpquery=${gpQuery}&gpname=${gpname}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
+      });
+
+      it('has a back link to the start page', () => {
+        expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.results.path}?type=gp&query=${gpQuery}`);
       });
 
       it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
@@ -56,7 +62,7 @@ describe('IAPT results page', () => {
       });
 
       it('should report number of services plurally', () => {
-        expect($('h2.local-header--title--question').text()).to.equal('3 services are available');
+        expect($('h2').text()).to.equal(`3 services are available for '${gpname}'.`);
       });
 
       it('should display contact information for each result', () => {
@@ -86,38 +92,40 @@ describe('IAPT results page', () => {
     });
 
     describe('zero results', () => {
+      const gpName = 'gpName';
       before('make request', async () => {
         const query = 'zero results';
         const body = createBody(constants.types.IAPT, query);
 
         nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}&gpname=${gpName}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(0);
       });
 
       it('should display a message for zero results', () => {
-        expect($('h2.local-header--title--question').text()).to.equal('There are no services available for the selected CCG');
+        expect($('h2').text()).to.equal(`There are no services available for '${gpName}'.`);
       });
     });
 
     describe('one result', () => {
+      const gpName = 'gpName';
       before('make request', async () => {
         const query = 'one result';
         const body = createBody(constants.types.IAPT, query);
 
         nockRequests.withResponseBody(path, body, 200, 'search/oneResult.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}&gpname=${gpName}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(1);
       });
 
       it('should report number of services singularly', () => {
-        expect($('h2.local-header--title--question').text()).to.equal('1 service is available');
+        expect($('h2').text()).to.equal(`1 service is available for '${gpName}'.`);
       });
     });
   });

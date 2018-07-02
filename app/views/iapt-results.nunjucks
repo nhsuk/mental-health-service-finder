@@ -9,11 +9,11 @@
 {% block content %}
 <div class="results">
   {% if resultsLength === 0 %}
-    <h2 class="local-header--title--question">There are no services available for the selected CCG</h2>
+    <h2>There are no services available for '{{ gpname }}'.</h2>
   {% elif resultsLength === 1 %}
-    <h2 class="local-header--title--question">1 service is available</h2>
+    <h2>1 service is available for '{{ gpname}}'.</h2>
   {% else %}
-    <h2 class="local-header--title--question">{{ results.length }} services are available</h2>
+    <h2>{{ results.length }} services are available for '{{ gpname}}'.</h2>
   {% endif %}
 
   {% if resultsLength > 0 %}
@@ -32,5 +32,6 @@
   {% else %}
     <p class="no-results">No results</p>
   {% endif %}
+  <p><a class="link-back" href="{{ siteRoot }}/results?type=gp&query={{ gpquery | urlencode }}">Back</a></p>
 </div>
 {% endblock %}

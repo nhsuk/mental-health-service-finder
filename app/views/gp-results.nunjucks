@@ -26,5 +26,6 @@
   {% else %}
     <p class="no-results">No results</p>
   {% endif %}
+  <p><a class="link-back" href="{{ siteRoot }}/search">Back</a></p>
 </div>
 {% endblock %}

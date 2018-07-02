@@ -33,6 +33,10 @@ describe('GP results page', () => {
       iExpect.htmlWithStatus(response, 200);
     });
 
+    it('has a back link to the start page', () => {
+      expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}`);
+    });
+
     it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
       expect($('title').text()).to.equal('Find IAPT services - NHS.UK');
     });

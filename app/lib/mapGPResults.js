@@ -8,8 +8,6 @@ function mapGPResults(input) {
     input.County,
     input.Postcode,
   ].filter(Boolean).join(', ') || undefined;
-
-  return input;
 }
 
 module.exports = mapGPResults;

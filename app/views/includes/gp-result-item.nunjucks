@@ -6,4 +6,4 @@
   </p>
 {% endif %}
 
-<p><a href="{{ siteRoot }}/results?type=iapt&query={{result.CCG[0]}}">This is my GP</a></p>
+<p><a href="{{ siteRoot }}/results?type=iapt&query={{ result.CCG[0] }}&gpquery={{ query | urlencode }}&gpname={{ result.OrganisationName | urlencode }}">This is my GP</a></p>

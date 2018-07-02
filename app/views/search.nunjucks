@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+<div>
 {% if errorMessage or outsideOfEnglandPostcodeFlag %}
 <div class="error-summary">
   <h2 class="local-header--error error-summary-heading">
@@ -37,4 +38,6 @@
     </div>
   </div>
 </form>
+<p><a class="link-back" href="{{ siteRoot }}/check">Back</a></p>
+</div>
 {% endblock %}

@@ -15,9 +15,9 @@ describe('mapGPResults', () => {
       Postcode: '',
     };
 
-    const result = mapGPResults(input);
+    mapGPResults(input);
 
-    expect(result.fullAddress).to.be.undefined;
+    expect(input.fullAddress).to.be.undefined;
   });
 
   it('should return a comma separated string of all address information', () => {
@@ -30,11 +30,11 @@ describe('mapGPResults', () => {
       Postcode: 'Postcode',
     };
 
-    const result = mapGPResults(input);
+    mapGPResults(input);
 
     const expectedAddress = 'Address1, Address2, Address3, City, County, Postcode';
 
-    expect(result.fullAddress).to.equal(expectedAddress);
+    expect(input.fullAddress).to.equal(expectedAddress);
   });
 
   it('should return a comma separated string of all available address information', () => {
@@ -47,10 +47,10 @@ describe('mapGPResults', () => {
       Postcode: 'Postcode',
     };
 
-    const result = mapGPResults(input);
+    mapGPResults(input);
 
     const expectedAddress = 'Address1, Address3, County, Postcode';
 
-    expect(result.fullAddress).to.equal(expectedAddress);
+    expect(input.fullAddress).to.equal(expectedAddress);
   });
 });
