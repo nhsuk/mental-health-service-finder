@@ -68,8 +68,16 @@ describe('IAPT results page', () => {
       });
 
       it('should display a button to \'Refer yourself online\' for results with that option', () => {
-        // TODO: When the data is coming through test where the href is for...
-        expect($('.button').length).to.equal(3);
+        const selfReferralElements = $('.results__self_referral');
+        expect(selfReferralElements.length).to.equal(2);
+        expect(selfReferralElements.eq(0).find('a').prop('href')).to.equal('https://self.referral.0');
+        expect(selfReferralElements.eq(1).find('a').prop('href')).to.equal('https://self.referral.2');
+      });
+
+      it('should display a display a message about online referrals not being available when there is no available option', () => {
+        const noSelfReferral = $('.results__no_self_referral');
+        expect(noSelfReferral.length).to.equal(1);
+        expect(noSelfReferral.text()).to.equal('Online referrals not available');
       });
 
       it('should display a metric referring to the waiting time for first session', () => {

@@ -6,55 +6,69 @@ const expect = chai.expect;
 
 describe('mapIAPTResults', () => {
   describe('unhappy path', () => {
-    [null, ''].forEach((testCase) => {
-      let result;
+    [null, '', JSON.stringify([])].forEach((testCase) => {
+      let input;
+
       before(`execute function for ${testCase}`, () => {
-        const input = { Contacts: testCase };
-        result = mapIAPTResults(input);
+        input = { Contacts: testCase, Metrics: testCase };
+        mapIAPTResults(input);
       });
 
-      it('should return undefined when there is no website address', () => {
-        expect(result.website).to.equal(undefined);
+      it('should return undefined when contacts has no website address', () => {
+        expect(input.website).to.equal(undefined);
       });
 
-      it('should return undefined when there is no telephone number', () => {
-        expect(result.telephone).to.equal(undefined);
+      it('should return undefined when contacts has no telephone number', () => {
+        expect(input.telephone).to.equal(undefined);
       });
 
-      it('should return undefined when there is no email address', () => {
-        expect(result.email).to.equal(undefined);
+      it('should return undefined when contacts has no email address', () => {
+        expect(input.email).to.equal(undefined);
+      });
+
+      it('should return undefined when metrics does not contain self-referral', () => {
+        expect(input.selfReferral).to.equal(undefined);
       });
     });
   });
 
   describe('happy path', () => {
-    let result;
+    let input;
 
     const email = 'name@domain.com';
     const telephone = '0800 123 456';
     const website = 'https://a.web.site';
+    const linkUrl = 'https://self.referral.com';
     const contacts = [
       { OrganisationContactMethodType: 'Telephone', OrganisationContactValue: telephone },
       { OrganisationContactMethodType: 'Email', OrganisationContactValue: email },
       { OrganisationContactMethodType: 'Website', OrganisationContactValue: website },
     ];
+    const metrics = [{
+      LinkUrl: linkUrl,
+      MetricID: 6265,
+    }];
 
     before('execute function', () => {
-      const input = { Contacts: JSON.stringify(contacts) };
+      input = { Contacts: JSON.stringify(contacts), Metrics: JSON.stringify(metrics) };
 
-      result = mapIAPTResults(input);
+      mapIAPTResults(input);
     });
 
     it('should return the email address', () => {
-      expect(result.email).to.equal(email);
+      expect(input.email).to.equal(email);
     });
 
     it('should return the telephone number', () => {
-      expect(result.telephone).to.equal(telephone);
+      expect(input.telephone).to.equal(telephone);
     });
 
     it('should return the website address', () => {
-      expect(result.website).to.equal(website);
+      expect(input.website).to.equal(website);
+    });
+
+    it('should return the self-referral', () => {
+      expect(input.selfReferral).to.equal(linkUrl);
     });
   });
 });

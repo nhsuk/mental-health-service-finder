@@ -12,4 +12,8 @@
   <p class="results__email">Email: <a href="{{ result.email }}">{{ result.email }}</a></p>
 {% endif %}
 
-<p><a class="button" href="{{ result.referralUrl }}">Refer yourself online</a></p>
+{% if result.selfReferral %}
+  <p class="results__self_referral"><a class="button" href="{{ result.selfReferral }}">Refer yourself online</a></p>
+  {% else %}
+  <p class="results__no_self_referral">Online referrals not available</p>
+{% endif %}
