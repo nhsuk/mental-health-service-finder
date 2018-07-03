@@ -12,7 +12,7 @@ function forGPSearch(query) {
   return {
     body: JSON.stringify(createBody(constants.types.GP, query)),
     headers,
-    url: `${apiHost}/indexes/${apiOrgIndex}/docs/suggest?api-version=${apiVersion}`,
+    url: `${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`,
   };
 }
 

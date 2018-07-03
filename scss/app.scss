@@ -418,6 +418,9 @@ form {
           &:first-of-type {
             margin-top: 25px;
           }
+          .highlight {
+            background-color: $yellow-50;
+          }
         }
       }
       details {

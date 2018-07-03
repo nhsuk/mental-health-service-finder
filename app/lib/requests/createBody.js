@@ -2,12 +2,25 @@ const constants = require('../constants');
 const log = require('../logger');
 
 function forGPSearch(query) {
+  // TODO: Tidy this up
+  const search = query.split(' ');
+  const s = search.map(bit => `${bit}~`);
+  const sq = s.join(' ');
+  console.log('************************');
+  console.log(search);
+  console.log(s);
+  console.log(sq);
+  console.log('************************');
   return {
+    count: true,
     filter: 'OrganisationTypeID eq \'GPB\'',
-    search: query,
-    searchFields: 'OrganisationName,City,Postcode',
+    highlight: 'OrganisationName,Address1,Address2,Address3,Postcode',
+    highlightPostTag: '</span>',
+    highlightPreTag: '<span class="highlight">',
+    queryType: 'full',
+    search: sq,
+    searchFields: 'OrganisationName,Address1,Address2,Address3,Postcode',
     select: 'OrganisationName,Address1,Address2,Address3,City,County,Postcode,CCG',
-    suggesterName: 'orgname-suggester',
     top: 10,
   };
 }
