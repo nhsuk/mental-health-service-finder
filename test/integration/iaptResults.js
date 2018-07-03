@@ -62,7 +62,7 @@ describe('IAPT results page', () => {
       });
 
       it('should report number of services plurally', () => {
-        expect($('h2').text()).to.equal(`3 services are available for '${gpname}'.`);
+        expect($('p.local-header--title--question').text().trim()).to.equal(`3 services are available for '${gpname}'.`);
       });
 
       it('should display contact information for each result', () => {
@@ -106,7 +106,7 @@ describe('IAPT results page', () => {
       });
 
       it('should display a message for zero results', () => {
-        expect($('h2').text()).to.equal(`There are no services available for '${gpName}'.`);
+        expect($('p.local-header--title--question').text().trim()).to.equal(`There are no services available for '${gpName}'.`);
       });
     });
 
@@ -125,7 +125,7 @@ describe('IAPT results page', () => {
       });
 
       it('should report number of services singularly', () => {
-        expect($('h2').text()).to.equal(`1 service is available for '${gpName}'.`);
+        expect($('p.local-header--title--question').text().trim()).to.equal(`1 service is available for '${gpName}'.`);
       });
     });
   });
