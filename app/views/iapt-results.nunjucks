@@ -8,13 +8,15 @@
 
 {% block content %}
 <div class="results">
+  <p class="local-header--title--question">
   {% if resultsLength === 0 %}
-    <h2>There are no services available for '{{ gpname }}'.</h2>
+    There are no services available for '{{ gpname }}'.
   {% elif resultsLength === 1 %}
-    <h2>1 service is available for '{{ gpname}}'.</h2>
+    1 service is available for '{{ gpname}}'.
   {% else %}
-    <h2>{{ results.length }} services are available for '{{ gpname}}'.</h2>
+    {{ results.length }} services are available for '{{ gpname}}'.
   {% endif %}
+  </p>
 
   {% if resultsLength > 0 %}
   <div class="grid-row">
