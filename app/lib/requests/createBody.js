@@ -17,7 +17,6 @@ function forGPSearch(query) {
     highlight: 'OrganisationName,Address1,Address2,Address3,Postcode',
     highlightPostTag: '</span>',
     highlightPreTag: '<span class="highlight">',
-    queryType: 'full',
     search: sq,
     searchFields: 'OrganisationName,Address1,Address2,Address3,Postcode',
     select: 'OrganisationName,Address1,Address2,Address3,City,County,Postcode,CCG',
