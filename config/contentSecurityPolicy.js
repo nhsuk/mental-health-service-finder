@@ -11,6 +11,7 @@ module.exports = {
       '\'self\'',
     ],
     fontSrc: [
+      '\'self\'',
       '*.nhs.uk',
       '*.hotjar.com',
     ],
