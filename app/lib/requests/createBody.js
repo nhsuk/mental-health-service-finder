@@ -4,7 +4,7 @@ const log = require('../logger');
 function forGPSearch(query) {
   // TODO: Tidy this up
   const search = query.split(' ');
-  const s = search.map(bit => `${bit}~`);
+  const s = search.map(bit => `${bit}*`);
   const sq = s.join(' ');
   console.log('************************');
   console.log(search);
