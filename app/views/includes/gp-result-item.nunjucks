@@ -1,4 +1,4 @@
-<h3 class="results__name">{{ result.OrganisationNameHighlight | safe }}</h3>
+<h3 class="results__name">{{ result.organisationNameHighlight | safe }}</h3>
 
 {% if result.fullAddress %}
   <p class="results__address results__address-lines">
