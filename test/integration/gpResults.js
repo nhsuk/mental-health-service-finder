@@ -1,6 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
+const URL = require('url').URL;
 
 const constants = require('../../app/lib/constants');
 const createBody = require('../../app/lib/requests/createBody');
@@ -78,7 +79,20 @@ describe('GP results page', () => {
       });
 
       it('should display a link to select the GP', () => {
-        expect($('p a:contains("This is my GP")').length).to.equal(10);
+        expect($('.results__gp__selection').length).to.equal(10);
+      });
+
+      it('should construct the link to select the GP with the name of the gp and the query used to get the gp results', () => {
+        const results = $('.results__item');
+        expect(results.length).to.equal(resultCount);
+        results.each((i, elem) => {
+          const href = $(elem).find('.results__gp__selection').prop('href');
+          const searchParams = new URL(`http://domain.dummy${href}`).searchParams;
+          const gpName = $(elem).find('.results__name').text();
+          expect(searchParams.get('type')).to.equal('iapt');
+          expect(searchParams.get('gpquery')).to.equal(query);
+          expect(searchParams.get('gpname')).to.equal(gpName);
+        });
       });
 
       it('highlights should begin with the term searched for', () => {

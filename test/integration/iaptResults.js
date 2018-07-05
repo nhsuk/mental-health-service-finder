@@ -25,6 +25,7 @@ describe('IAPT results page', () => {
     describe('multiple results', () => {
       const gpQuery = 'pim';
       const gpname = 'gpname';
+
       before('make request', async () => {
         const query = 123456;
         const body = createBody(constants.types.IAPT, query);
