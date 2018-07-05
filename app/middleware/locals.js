@@ -10,6 +10,7 @@ module.exports = config =>
     res.locals.assetsUrl = constants.assetsUrl;
     res.locals.location = trim(req.query.location);
     res.locals.type = req.query.type && req.query.type.toUpperCase();
+    res.locals.query = req.query.query;
     res.locals.gpquery = req.query.gpquery;
     res.locals.gpname = req.query.gpname;
     next();
