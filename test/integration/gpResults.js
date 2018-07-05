@@ -131,18 +131,25 @@ describe('GP results page', () => {
   });
 
   describe('no results', () => {
-    it('should display message when no results returned', async () => {
-      const query = 'noresults';
-      const body = createBody(constants.types.GP, query);
+    const query = 'noresults';
+    let $;
 
+    before('make request', async () => {
+      const body = createBody(constants.types.GP, query);
       nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWithStatus(response, 200);
+      $ = cheerio.load(response.text);
+    });
 
-      const $ = cheerio.load(response.text);
+    it('should display no results message when no results returned', () => {
+      expect($('.local-header--title--question').text())
+        .to.equal(`Sorry, we couldn't find any GP surgeries matching '${query}'`);
+    });
 
-      expect($('.no-results').text()).to.equal('No results');
+    it('has a back link to the start page with the previously entered query', () => {
+      expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}?query=${query}`);
     });
   });
 
