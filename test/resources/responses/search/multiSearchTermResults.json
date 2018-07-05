@@ -3,6 +3,9 @@
   "value": [
     {
       "@search.text": "LS1 8TL",
+      "@search.highlights": {
+        "Postcode": [ "<span class='highlight'>LS1</span> 8TL" ]
+      },
       "OrganisationName": "One Medicare Llp-The Light",
       "OrganisationAliases": [
         "The Light NHS GP Surgery"
@@ -20,6 +23,9 @@
     },
     {
       "@search.text": "LS12 3HD",
+      "@search.highlights": {
+        "Postcode": [ "<span class='highlight'>LS12</span> 3HD" ]
+      },
       "OrganisationName": "Armley Medical Centre",
       "OrganisationAliases": [
         "Dr G A Lees & Partners"
@@ -37,6 +43,9 @@
     },
     {
       "@search.text": "LS17 8AE",
+      "@search.highlights": {
+        "Postcode": [ "<span class='highlight'>LS17</span> 8AE" ]
+      },
       "OrganisationName": "Shadwell Medical Centre",
       "OrganisationAliases": [ ],
       "Address1": "137 Shadwell Lane",
@@ -52,6 +61,9 @@
     },
     {
       "@search.text": "LS10 2PE",
+      "@search.highlights": {
+        "Postcode": [ "<span class='highlight'>LS10</span> 2PE" ]
+      },
       "OrganisationName": "Church Street Surgery",
       "OrganisationAliases": [
         "Dr S Hussain"
@@ -69,6 +81,9 @@
     },
     {
       "@search.text": "LS19 7JN",
+      "@search.highlights": {
+        "Postcode": [ "<span class='highlight'>LS19</span> 7JN" ]
+      },
       "OrganisationName": "Yeadon Tarn Medical Practice",
       "OrganisationAliases": [ ],
       "Address1": "1 Suffolk Court Silver Lane",
@@ -84,6 +99,9 @@
     },
     {
       "@search.text": "LS12 5SG",
+      "@search.highlights": {
+        "Postcode": [ "<span class='highlight'>LS12</span> 5SG" ]
+      },
       "OrganisationName": "Hawthorn Surgery",
       "OrganisationAliases": [
         "Dr Devitt, Hawthorn Surgery, Wortley Beck Health Centre",
@@ -105,6 +123,9 @@
     },
     {
       "@search.text": "LS17 5DT",
+      "@search.highlights": {
+        "Postcode": [ "<span class='highlight'>LS17</span> 5DT" ]
+      },
       "OrganisationName": "Alwoodley Medical Centre",
       "OrganisationAliases": [ ],
       "Address1": "Saxon Mount",
@@ -120,6 +141,9 @@
     },
     {
       "@search.text": "LS11 8LH",
+      "@search.highlights": {
+        "Postcode": [ "<span class='highlight'>LS11</span> 8LH" ]
+      },
       "OrganisationName": "Leeds City Medical Practice",
       "OrganisationAliases": [ ],
       "Address1": "Beeston Hill Community Health Centre, 2nd Floor",
@@ -135,6 +159,9 @@
     },
     {
       "@search.text": "LS12 1HU",
+      "@search.highlights": {
+        "Postcode": [ "<span class='highlight'>LS12</span> 1HU" ]
+      },
       "OrganisationName": "Priory View Medical Centre",
       "OrganisationAliases": [
         "Dr Burkill A D & Partners - Priory View Medical Centre"
@@ -152,6 +179,9 @@
     },
     {
       "@search.text": "LS18 4SE",
+      "@search.highlights": {
+        "Postcode": [ "<span class='highlight'>LS18</span> 4SE" ]
+      },
       "OrganisationName": "The New Croft Surgery",
       "OrganisationAliases": [
         "Dr Manock & Partners",

@@ -6,7 +6,7 @@
 
 {% block content %}
 <div>
-{% if errorMessage or outsideOfEnglandPostcodeFlag %}
+{% if errorMessage %}
 <div class="error-summary">
   <h2 class="local-header--error error-summary-heading">
     {% if errorMessage %}
@@ -26,7 +26,7 @@
         </h3>
         <p>For example, surgery or street name</p>
           <div class="form-group">
-            <input autocomplete="off" type="text" class="form-control" name="query" id="query" value=""{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+            <input autocomplete="off" type="text" class="form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
           </div>
         </div>
       </div>

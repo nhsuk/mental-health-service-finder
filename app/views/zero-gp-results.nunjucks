@@ -1,0 +1,16 @@
+{% extends 'layout.nunjucks' %}
+
+{% block header %}
+<h1 class="local-header--title--question">Sorry, we couldn't find any GP surgeries matching '{{ cleanQuery }}'</h1>
+{% endblock %}
+
+{% block content %}
+<div class="results">
+  <p>Please try:</p>
+    <ul>
+      <li>searching again using different search terms</li>
+      <li>checking your spelling</li>
+    </ul>
+  <p><a class="link-back" href="{{ siteRoot }}/search?query={{ cleanQuery }}">Back</a></p>
+</div>
+{% endblock %}

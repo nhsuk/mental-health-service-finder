@@ -1,13 +1,14 @@
 const request = require('request');
 
 const buildOptions = require('../lib/requests/buildOptions');
-const errorCounter = require('../lib/prometheus/counters').searchErrors;
+const errorCounter = require('../lib/prometheus/selectCounter').searchErrors;
 const log = require('../lib/logger');
 const mapResults = require('../lib/mapResults');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;
+const types = require('../lib/constants').types;
 
 function getResults(req, res, next) {
-  const query = res.locals.query;
+  const query = res.locals.cleanQuery;
   const type = res.locals.type;
   const options = buildOptions(type, query);
 
@@ -23,8 +24,14 @@ function getResults(req, res, next) {
         case 200: {
           log.info(`${statusCode} response`, `${type}-success`);
           try {
-            res.locals.results = mapResults(body, type);
-            res.render(`${type.toLowerCase()}-results`);
+            const results = mapResults(body, type);
+
+            if (results.length === 0 && type === types.GP) {
+              res.render(`zero-${type.toLowerCase()}-results`);
+            } else {
+              res.locals.results = results;
+              res.render(`${type.toLowerCase()}-results`);
+            }
           } catch (err) {
             next(err);
           }

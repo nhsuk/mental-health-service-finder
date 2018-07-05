@@ -12,9 +12,9 @@
   {% if resultsLength === 0 %}
     There are no services available for '{{ gpname }}'.
   {% elif resultsLength === 1 %}
-    1 service is available for '{{ gpname}}'.
+    1 service is available for '{{ gpname }}'.
   {% else %}
-    {{ results.length }} services are available for '{{ gpname}}'.
+    {{ results.length }} services are available for '{{ gpname }}'.
   {% endif %}
   </p>
 
@@ -22,7 +22,7 @@
   <div class="grid-row">
     <ol class="results">
       {% for result in results %}
-        <li class="results__item results__item--nearby" data-index="{{loop.index}}">
+        <li class="results__item results__item--nearby" data-index="{{ loop.index }}">
           <div class="results__details results__details--nearby">
             {% include "includes/iapt-result-item.nunjucks" %}
           </div>

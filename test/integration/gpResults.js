@@ -1,6 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
+const URL = require('url').URL;
 
 const constants = require('../../app/lib/constants');
 const createBody = require('../../app/lib/requests/createBody');
@@ -15,76 +16,140 @@ chai.use(chaiHttp);
 
 describe('GP results page', () => {
   const organisationLookupIndex = 'organisationlookup3-index';
-  const path = `/indexes/${organisationLookupIndex}/docs/suggest`;
+  const path = `/indexes/${organisationLookupIndex}/docs/search`;
   const type = constants.types.GP;
 
-  describe('happy path', () => {
-    let $;
-    let response;
-
-    before('make request', async () => {
+  describe('searches returning results', () => {
+    describe('basic, happy path', () => {
+      let $;
+      let response;
       const query = 'ls1';
-      const body = createBody(constants.types.GP, query);
+      const resultCount = 10;
 
-      nockRequests.withResponseBody(path, body, 200, 'suggest/tenResults.json');
+      before('make request', async () => {
+        const body = createBody(constants.types.GP, query);
 
-      response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      $ = cheerio.load(response.text);
-      iExpect.htmlWithStatus(response, 200);
+        nockRequests.withResponseBody(path, body, 200, 'search/multiSearchTermResults.json');
+
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+        $ = cheerio.load(response.text);
+        iExpect.htmlWithStatus(response, 200);
+      });
+
+      it('has a back link to the start page with the previously entered query', () => {
+        expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}?query=${query}`);
+      });
+
+      it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
+        expect($('title').text()).to.equal('Find IAPT services - NHS.UK');
+      });
+
+      it('should have an H1 of \'Select your GP to get you to the right service\'', () => {
+        expect($('h1.local-header--title--question').text()).to.equal('Select your GP to see available services');
+      });
+
+      it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {
+        expect($($('div.breadcrumb a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search');
+      });
+
+      it('the banner should link back to Choices IAPT service search', () => {
+        expect($('.back-to-choices').attr('href'))
+          .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
+      });
+
+      it('should display all of the results that were returned', () => {
+        expect($('.results__item').length).to.equal(resultCount);
+      });
+
+      it('should display an address for each result', () => {
+        expect($('.results__address').length).to.equal(resultCount);
+      });
+
+      it('should display the number of results returned', () => {
+        expect($('.results__count').text()).to.equal(resultCount.toString());
+      });
+
+      it('should display the search term', () => {
+        expect($('.results__search__term').text()).to.equal(`'${query}'`);
+      });
+
+      it('should display all available address elements', () => {
+        expect($('.results__address').first().text().trim())
+          .to.equal('Balcony Level 7, The Light, The Headrow, Leeds, West Yorkshire, LS1 8TL');
+      });
+
+      it('should display a link to select the GP', () => {
+        expect($('.results__gp__selection').length).to.equal(10);
+      });
+
+      it('should construct the link to select the GP with the name of the gp and the query used to get the gp results', () => {
+        const results = $('.results__item');
+        expect(results.length).to.equal(resultCount);
+        results.each((i, elem) => {
+          const href = $(elem).find('.results__gp__selection').prop('href');
+          const searchParams = new URL(`http://domain.dummy${href}`).searchParams;
+          const gpName = $(elem).find('.results__name').text();
+          expect(searchParams.get('type')).to.equal('iapt');
+          expect(searchParams.get('gpquery')).to.equal(query);
+          expect(searchParams.get('gpname')).to.equal(gpName);
+        });
+      });
+
+      it('highlights should begin with the term searched for', () => {
+        const highlights = $('.highlight');
+        expect(highlights.length).is.equal(10);
+        highlights.each((i, elem) => {
+          expect($(elem).text()).to.match(new RegExp(query, 'i'));
+        });
+      });
     });
 
-    it('has a back link to the start page', () => {
-      expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}`);
-    });
+    describe('multi term searches with additional whitespace', () => {
+      let $;
+      let response;
+      const cleanedQuery = 'a b c';
 
-    it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
-      expect($('title').text()).to.equal('Find IAPT services - NHS.UK');
-    });
+      before('make request', async () => {
+        const query = '   a   b   c   ';
+        const body = createBody(constants.types.GP, cleanedQuery);
 
-    it('should have an H1 of \'Select your GP to get you to the right service\'', () => {
-      expect($('h1.local-header--title--question').text()).to.equal('Select your GP to see available services');
-    });
+        nockRequests.withResponseBody(path, body, 200, 'search/tenResults.json');
 
-    it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {
-      expect($($('div.breadcrumb a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search');
-    });
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+        $ = cheerio.load(response.text);
+        iExpect.htmlWithStatus(response, 200);
+      });
 
-    it('the banner should link back to Choices IAPT service search', () => {
-      expect($('.back-to-choices').attr('href'))
-        .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
-    });
+      it('should display the search term', () => {
+        expect($('.results__search__term').text()).to.equal(`'${cleanedQuery}'`);
+      });
 
-    it('should display all of the results that were returned', () => {
-      expect($('.results__item').length).to.equal(10);
-    });
-
-    it('should display an address for each result', () => {
-      expect($('.results__address').length).to.equal(10);
-    });
-
-    it('should display all available address elements', () => {
-      expect($('.results__address').first().text().trim())
-        .to.equal('Balcony Level 7, The Light, The Headrow, Leeds, West Yorkshire, LS1 8TL');
-    });
-
-    it('should display a button to select the GP', () => {
-      expect($('p a:contains("This is my GP")').length).to.equal(10);
+      it('should reduce multiple character white space sequences to a single character', () => {
+        expect($('.results__item').length).to.equal(10);
+      });
     });
   });
 
   describe('no results', () => {
-    it('should display message when no results returned', async () => {
-      const query = 'noresults';
-      const body = createBody(constants.types.GP, query);
+    const query = 'noresults';
+    let $;
 
-      nockRequests.withResponseBody(path, body, 200, 'suggest/zeroResults.json');
+    before('make request', async () => {
+      const body = createBody(constants.types.GP, query);
+      nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWithStatus(response, 200);
+      $ = cheerio.load(response.text);
+    });
 
-      const $ = cheerio.load(response.text);
+    it('should display no results message when no results returned', () => {
+      expect($('.local-header--title--question').text())
+        .to.equal(`Sorry, we couldn't find any GP surgeries matching '${query}'`);
+    });
 
-      expect($('.no-results').text()).to.equal('No results');
+    it('has a back link to the start page with the previously entered query', () => {
+      expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}?query=${query}`);
     });
   });
 
@@ -93,7 +158,7 @@ describe('GP results page', () => {
       const query = '400response';
       const body = createBody(constants.types.GP, query);
 
-      nockRequests.withResponseBody(path, body, 400, 'suggest/400.json');
+      nockRequests.withResponseBody(path, body, 400, 'search/400.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWithStatus(response, 500);
@@ -121,7 +186,7 @@ describe('GP results page', () => {
       const query = '404response';
       const body = createBody(constants.types.GP, query);
 
-      nockRequests.withResponseBody(path, body, 404, 'suggest/404.json');
+      nockRequests.withResponseBody(path, body, 404, 'search/404.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWithStatus(response, 500);
@@ -135,7 +200,7 @@ describe('GP results page', () => {
       const query = '415response';
       const body = createBody(constants.types.GP, query);
 
-      nockRequests.withResponseBody(path, body, 415, 'suggest/415.json');
+      nockRequests.withResponseBody(path, body, 415, 'search/415.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
       iExpect.htmlWithStatus(response, 500);
@@ -160,7 +225,7 @@ describe('GP results page', () => {
     });
   });
 
-  describe('no query', () => {
+  describe('undesirable queries', () => {
     it('should display an error message when no query is entered', async () => {
       const query = '';
 
@@ -169,7 +234,18 @@ describe('GP results page', () => {
 
       const $ = cheerio.load(response.text);
 
-      expect($('.error-summary-heading').text().trim()).to.equal('Please enter something to find a GP');
+      expect($('.error-summary-heading').text().trim()).to.equal('Please enter a surgery or street name to find your GP surgery.');
+    });
+
+    it('should display an error message when the query only consists of white space', async () => {
+      const query = '%20';
+
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      iExpect.htmlWithStatus(response, 200);
+
+      const $ = cheerio.load(response.text);
+
+      expect($('.error-summary-heading').text().trim()).to.equal('Please enter a surgery or street name to find your GP surgery.');
     });
   });
 });
