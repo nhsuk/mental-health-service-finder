@@ -7,7 +7,7 @@ const mapResults = require('../lib/mapResults');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;
 
 function getResults(req, res, next) {
-  const query = res.locals.query;
+  const query = res.locals.cleanQuery;
   const type = res.locals.type;
   const options = buildOptions(type, query);
 

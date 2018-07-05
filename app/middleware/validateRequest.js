@@ -1,13 +1,14 @@
+const cleanQuery = require('../lib/cleanQuery');
 const emptyGPSearchCounter = require('../../app/lib/prometheus/selectCounter').emptyGPSearches;
 
 function validateRequest(req, res, next) {
-  // TODO: extend this to cover checking for the type param if not recognised
-  // go to a 404 page
-  if (!req.query.query) {
+  const query = req.query.query;
+  if (!query || !query.trim()) {
     emptyGPSearchCounter.inc(1);
-    res.locals.errorMessage = 'Please enter something to find a GP';
+    res.locals.errorMessage = 'Please enter a surgery or street name to find your GP surgery.';
     res.render('search');
   } else {
+    res.locals.cleanQuery = cleanQuery(query);
     next();
   }
 }

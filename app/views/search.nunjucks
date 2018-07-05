@@ -6,7 +6,7 @@
 
 {% block content %}
 <div>
-{% if errorMessage or outsideOfEnglandPostcodeFlag %}
+{% if errorMessage %}
 <div class="error-summary">
   <h2 class="local-header--error error-summary-heading">
     {% if errorMessage %}

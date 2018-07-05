@@ -6,15 +6,15 @@
 
 {% block content %}
 <div class="results">
-  <p class="local-header--title--question">We found {{results.length}} GP surgeries using '{{query}}'.</p>
+  <p class="local-header--title--question">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ cleanQuery }}'</span>.</p>
 
-  <p>If your surgery is not here, check your spelling and <a href="{{siteRoot}}/search">search again</a>.
+  <p>If your surgery is not here, check your spelling and <a href="{{ siteRoot }}/search">search again</a>.
 
   {% if results.length > 0 %}
     <div class="grid-row">
       <ol class="results">
         {% for result in results %}
-          <li class="results__item results__item--nearby" data-index="{{loop.index}}">
+          <li class="results__item results__item--nearby" data-index="{{ loop.index }}">
             <div class="results__details results__details--nearby">
               {% include "includes/gp-result-item.nunjucks" %}
             </div>

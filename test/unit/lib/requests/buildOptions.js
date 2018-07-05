@@ -40,54 +40,56 @@ describe('buildOptions', () => {
   });
 
   describe('for GP type', () => {
-    const query = 'search by this';
-    const options = buildOptions(constants.types.GP, query);
-    const body = JSON.parse(options.body);
+    describe('multi term query', () => {
+      const query = 'search by this';
+      const options = buildOptions(constants.types.GP, query);
+      const body = JSON.parse(options.body);
 
-    describe('body', () => {
-      const searchFields = 'OrganisationName,Address1,Address2,Address3,Postcode';
+      describe('body', () => {
+        const searchFields = 'OrganisationName,Address1,Address2,Address3,Postcode';
 
-      it('should only include expected keys', () => {
-        expect(Object.keys(body)).to.deep.equal(['count', 'filter', 'highlight', 'highlightPostTag', 'highlightPreTag', 'search', 'searchFields', 'select', 'top']);
+        it('should only include expected keys', () => {
+          expect(Object.keys(body)).to.deep.equal(['count', 'filter', 'highlight', 'highlightPostTag', 'highlightPreTag', 'search', 'searchFields', 'select', 'top']);
+        });
+
+        it('should filter by \'GPB\'', () => {
+          expect(body.filter).to.equal('OrganisationTypeID eq \'GPB\'');
+        });
+
+        it('should add an asterix to the end of each search term', () => {
+          expect(body.search).to.equal('search* by* this*');
+        });
+
+        it('should search the expected fields', () => {
+          expect(body.searchFields).to.equal(searchFields);
+        });
+
+        it('should select appropriate properties', () => {
+          expect(body.select).to.equal('OrganisationName,Address1,Address2,Address3,City,County,Postcode,CCG');
+        });
+
+        it('should highlight searched fields', () => {
+          expect(body.highlight).to.equal(searchFields);
+        });
+
+        it('should set the highlight tags', () => {
+          expect(body.highlightPreTag).to.equal('<span class="highlight">');
+          expect(body.highlightPostTag).to.equal('</span>');
+        });
+
+        it('should request a count of results', () => {
+          expect(body.count).to.equal(true);
+        });
+
+        it('should return the top 25 results', () => {
+          expect(body.top).to.equal(25);
+        });
       });
 
-      it('should filter by \'GPB\'', () => {
-        expect(body.filter).to.equal('OrganisationTypeID eq \'GPB\'');
-      });
-
-      it('should add an asterix to the end of each search term', () => {
-        expect(body.search).to.equal('search* by* this*');
-      });
-
-      it('should search the expected fields', () => {
-        expect(body.searchFields).to.equal(searchFields);
-      });
-
-      it('should select appropriate properties', () => {
-        expect(body.select).to.equal('OrganisationName,Address1,Address2,Address3,City,County,Postcode,CCG');
-      });
-
-      it('should highlight searched fields', () => {
-        expect(body.highlight).to.equal(searchFields);
-      });
-
-      it('should set the highlight tags', () => {
-        expect(body.highlightPreTag).to.equal('<span class="highlight">');
-        expect(body.highlightPostTag).to.equal('</span>');
-      });
-
-      it('should request a count of results', () => {
-        expect(body.count).to.equal(true);
-      });
-
-      it('should return the top 25 results', () => {
-        expect(body.top).to.equal(25);
-      });
-    });
-
-    describe('url', () => {
-      it('should return the search URL', () => {
-        expect(options.url).to.equal(`${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`);
+      describe('url', () => {
+        it('should return the search URL', () => {
+          expect(options.url).to.equal(`${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`);
+        });
       });
     });
   });
