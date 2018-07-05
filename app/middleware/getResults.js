@@ -1,7 +1,7 @@
 const request = require('request');
 
 const buildOptions = require('../lib/requests/buildOptions');
-const errorCounter = require('../lib/prometheus/counters').searchErrors;
+const errorCounter = require('../lib/prometheus/selectCounter').searchErrors;
 const log = require('../lib/logger');
 const mapResults = require('../lib/mapResults');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;

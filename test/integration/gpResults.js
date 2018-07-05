@@ -15,7 +15,7 @@ chai.use(chaiHttp);
 
 describe('GP results page', () => {
   const organisationLookupIndex = 'organisationlookup3-index';
-  const path = `/indexes/${organisationLookupIndex}/docs/suggest`;
+  const path = `/indexes/${organisationLookupIndex}/docs/search`;
   const type = constants.types.GP;
 
   describe('happy path', () => {
