@@ -1,27 +1,25 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question">Select your GP to see available services</h1>
+<h1>Select your GP to see available services</h1>
 {% endblock %}
 
 {% block content %}
-<div class="results">
-  <p class="local-header--title--question">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ cleanQuery }}'</span>.</p>
+<p class="nhsuk-body-l">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ cleanQuery }}'</span>.</p>
 
-  <p>If your surgery is not here, check your spelling and <a href="{{ siteRoot }}/search">search again</a>.</p>
+<p>If your surgery is not here, check your spelling and <a href="{{ siteRoot }}/search">search again</a>.</p>
 
-  <div class="grid-row">
-    <ol class="results">
-      {% for result in results %}
-        <li class="results__item results__item--nearby" data-index="{{ loop.index }}">
-          <div class="results__details results__details--nearby">
-            {% include "includes/gp-result-item.nunjucks" %}
-          </div>
-          <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
-        </li>
-      {% endfor %}
-    </ol>
-  </div>
-  <p><a class="link-back" href="{{ siteRoot }}/search?query={{ cleanQuery }}">Back</a></p>
+<div>
+  <ol class="inline-list">
+    {% for result in results %}
+      <li data-index="{{ loop.index }}">
+        <div>
+          {% include "includes/gp-result-item.nunjucks" %}
+        </div>
+        <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
+      </li>
+    {% endfor %}
+  </ol>
 </div>
+<p class="nhsuk-c-panel"><a class="link-back" href="{{ siteRoot }}/search?query={{ cleanQuery }}">Back</a></p>
 {% endblock %}

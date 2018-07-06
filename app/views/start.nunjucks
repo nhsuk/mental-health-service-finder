@@ -5,35 +5,22 @@
 {% endblock %}
 
 {% block header %}
-<h1 class="local-header--title--question">Find help with stress, anxiety or depression</h1>
+<h1>Find help with stress, anxiety or depression</h1>
 {% endblock %}
 
 {% block content %}
-{% if errorMessage %}
-<div class="error-summary">
-  <h2 class="local-header--error error-summary-heading">
-    {{ errorMessage }}
-  </h2>
-</div>
-{% endif %}
+<p class="nhsuk-body-l">You can refer yourself directly to a psychological therapies service without seeing your GP.</p>
+<p>These offer therapies like CBT and counselling for common mental health problems like stress, anxiety, depression, OCD and PTSD.</p>
+<p>You may be offered psychological therapies:</p>
 
-<div class="reading-width">
-  <p>You can refer yourself directly to a psychological therapies service without seeing your GP.</p>
+<ul class="nhsuk-list nhsuk-list-bullet">
+  <li>using a self-help book</li>
+  <li>as an online course</li>
+  <li>over the phone</li>
+  <li>in a group</li>
+  <li>one-to-one</li>
+</ul>
 
-  <p>These offer therapies like CBT and counselling for common mental health problems like stress, anxiety, depression, OCD and PTSD.</p>
-
-  <p>You may be offered psychological therapies:</p>
-
-  <ul>
-    <li>using a self-help book</li>
-    <li>as an online course</li>
-    <li>over the phone</li>
-    <li>in a group</li>
-    <li>one-to-one</li>
-  </ul>
-
-  <a href="{{ siteRoot }}/check" class="button start-button start_button_tracking" role="button">Find help</a>
-  {% include "includes/urgent-help-callout.nunjucks" %}
-</div>
-
+<p><a href="{{ siteRoot }}/check" class="button start-button start_button_tracking" role="button">Find help</a></p>
+{% include "includes/urgent-help-callout.nunjucks" %}
 {% endblock %}

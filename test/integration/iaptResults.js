@@ -46,7 +46,7 @@ describe('IAPT results page', () => {
       });
 
       it('should have an H1 of \'Psychological therapies services\'', () => {
-        expect($('h1.local-header--title--question').text()).to.equal('Psychological therapies services');
+        expect($('h1').text()).to.equal('Psychological therapies services');
       });
 
       it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {
@@ -205,7 +205,7 @@ describe('IAPT results page', () => {
 
       const $ = cheerio.load(response.text);
 
-      expect($('.local-header--title--question').text()).to.equal('Sorry, we are experiencing technical problems.');
+      expect($('h1').text()).to.equal('Sorry, we are experiencing technical problems.');
     });
   });
 });
