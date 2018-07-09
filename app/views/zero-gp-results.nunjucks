@@ -10,5 +10,9 @@
     <li>searching again using different search terms</li>
     <li>checking your spelling</li>
   </ul>
-<p class="nhsuk-c-panel"><a class="link-back" href="{{ siteRoot }}/search?query={{ cleanQuery }}">Back</a></p>
+{% endblock %}
+
+{% block back %}
+{% set href = siteRoot + "/search?query=" + cleanQuery %}
+{{ linkBack(href) }}
 {% endblock %}

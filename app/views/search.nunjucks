@@ -7,11 +7,7 @@
 {% block content %}
 {% if errorMessage %}
 <div class="error-summary">
-  <h2>
-    {% if errorMessage %}
-      {{ errorMessage }}
-    {% endif %}
-  </h2>
+  <h2>{% if errorMessage %} {{ errorMessage }} {% endif %}</h2>
 </div>
 {% endif %}
 
@@ -31,5 +27,9 @@
     </div>
   </div>
 </form>
-<p class="nhsuk-c-panel"><a class="link-back" href="{{ siteRoot }}/check">Back</a></p>
+{% endblock %}
+
+{% block back %}
+{% set href = siteRoot + "/check" %}
+{{ linkBack(href) }}
 {% endblock %}

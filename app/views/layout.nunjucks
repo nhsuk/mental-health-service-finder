@@ -93,9 +93,11 @@
           </div>
           <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
             <div class="nhsuk-reading-width">
-            <div class="nhsuk-page-content">
-            {% block content %}{% endblock %}
-            </div>
+              <div class="nhsuk-page-content">
+              {% from "includes/macro-link-back.nunjucks" import linkBack %}
+              {% block content %}{% endblock %}
+              {% block back %}{% endblock %}
+              </div>
             </div>
           </div>
           {% endblock %}

@@ -13,7 +13,11 @@
 <p>They will also tell you how long you'll wait for your first therapy session.</p>
 
 <p><a href="{{ siteRoot }}/search" class="button start-button start_button_tracking" role="button">Next</a></p>
-<p class="nhsuk-c-panel"><a class="link-back" href="{{ siteRoot }}/">Back</a></p>
+{% endblock %}
+
 {% include "includes/urgent-help-callout.nunjucks" %}
 
+{% block back %}
+{% set href = siteRoot + "/" %}
+{{ linkBack(href) }}
 {% endblock %}

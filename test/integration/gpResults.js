@@ -45,7 +45,7 @@ describe('GP results page', () => {
       });
 
       it('should have an H1 of \'Select your GP to get you to the right service\'', () => {
-        expect($('h1.local-header--title--question').text()).to.equal('Select your GP to see available services');
+        expect($('.nhsuk-page-heading h1').text()).to.equal('Select your GP to see available services');
       });
 
       it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {
@@ -144,7 +144,7 @@ describe('GP results page', () => {
     });
 
     it('should display no results message when no results returned', () => {
-      expect($('.local-header--title--question').text())
+      expect($('.nhsuk-page-heading h1').text())
         .to.equal(`Sorry, we couldn't find any GP surgeries matching '${query}'`);
     });
 
@@ -161,11 +161,7 @@ describe('GP results page', () => {
       nockRequests.withResponseBody(path, body, 400, 'search/400.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWithStatus(response, 500);
-
-      const $ = cheerio.load(response.text);
-
-      expect($('.local-header--title--question').text()).to.equal('Sorry, we are experiencing technical problems.');
+      iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a 403 response', async () => {
@@ -175,11 +171,7 @@ describe('GP results page', () => {
       nockRequests.withNoResponseBody(path, body, 403);
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWithStatus(response, 500);
-
-      const $ = cheerio.load(response.text);
-
-      expect($('.local-header--title--question').text()).to.equal('Sorry, we are experiencing technical problems.');
+      iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a 404 response', async () => {
@@ -189,11 +181,7 @@ describe('GP results page', () => {
       nockRequests.withResponseBody(path, body, 404, 'search/404.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWithStatus(response, 500);
-
-      const $ = cheerio.load(response.text);
-
-      expect($('.local-header--title--question').text()).to.equal('Sorry, we are experiencing technical problems.');
+      iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a 415 response', async () => {
@@ -203,11 +191,7 @@ describe('GP results page', () => {
       nockRequests.withResponseBody(path, body, 415, 'search/415.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWithStatus(response, 500);
-
-      const $ = cheerio.load(response.text);
-
-      expect($('.local-header--title--question').text()).to.equal('Sorry, we are experiencing technical problems.');
+      iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a response that can not be parsed', async () => {
@@ -217,11 +201,7 @@ describe('GP results page', () => {
       nockRequests.withNoResponseBody(path, body, 500);
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWithStatus(response, 500);
-
-      const $ = cheerio.load(response.text);
-
-      expect($('.local-header--title--question').text()).to.equal('Sorry, we are experiencing technical problems.');
+      iExpect.errorPageContent(response);
     });
   });
 
@@ -234,7 +214,7 @@ describe('GP results page', () => {
 
       const $ = cheerio.load(response.text);
 
-      expect($('.error-summary-heading').text().trim()).to.equal('Please enter a surgery or street name to find your GP surgery.');
+      expect($('.error-summary').text().trim()).to.equal('Please enter a surgery or street name to find your GP surgery.');
     });
 
     it('should display an error message when the query only consists of white space', async () => {
@@ -245,7 +225,7 @@ describe('GP results page', () => {
 
       const $ = cheerio.load(response.text);
 
-      expect($('.error-summary-heading').text().trim()).to.equal('Please enter a surgery or street name to find your GP surgery.');
+      expect($('.error-summary').text().trim()).to.equal('Please enter a surgery or street name to find your GP surgery.');
     });
   });
 });

@@ -25,6 +25,7 @@ describe('IAPT results page', () => {
     describe('multiple results', () => {
       const gpQuery = 'pim';
       const gpname = 'gpname';
+      const expectedResultsCount = 3;
 
       before('make request', async () => {
         const query = 123456;
@@ -59,11 +60,12 @@ describe('IAPT results page', () => {
       });
 
       it('should display all of the results that were returned', () => {
-        expect($('.results__item').length).to.equal(3);
+        expect($('.results__count').text()).to.equal(expectedResultsCount.toString());
+        expect($('.results__item').length).to.equal(expectedResultsCount);
       });
 
       it('should report number of services plurally', () => {
-        expect($('p.local-header--title--question').text().trim()).to.equal(`3 services are available for '${gpname}'.`);
+        expect($('.nhsuk-body-l').text().trim()).to.equal(`3 services are available for '${gpname}'.`);
       });
 
       it('should display contact information for each result', () => {
@@ -107,7 +109,7 @@ describe('IAPT results page', () => {
       });
 
       it('should display a message for zero results', () => {
-        expect($('p.local-header--title--question').text().trim()).to.equal(`There are no services available for '${gpName}'.`);
+        expect($('.nhsuk-body-l').text().trim()).to.equal(`There are no services available for '${gpName}'.`);
       });
     });
 
@@ -126,7 +128,7 @@ describe('IAPT results page', () => {
       });
 
       it('should report number of services singularly', () => {
-        expect($('p.local-header--title--question').text().trim()).to.equal(`1 service is available for '${gpName}'.`);
+        expect($('.nhsuk-body-l').text().trim()).to.equal(`1 service is available for '${gpName}'.`);
       });
     });
   });
@@ -159,11 +161,8 @@ describe('IAPT results page', () => {
       nockRequests.withResponseBody(path, body, 400, 'search/400.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWithStatus(response, 500);
 
-      const $ = cheerio.load(response.text);
-
-      expect($('.local-header--title--question').text()).to.equal('Sorry, we are experiencing technical problems.');
+      iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a 403 response', async () => {
@@ -173,11 +172,8 @@ describe('IAPT results page', () => {
       nockRequests.withNoResponseBody(path, body, 403);
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWithStatus(response, 500);
 
-      const $ = cheerio.load(response.text);
-
-      expect($('.local-header--title--question').text()).to.equal('Sorry, we are experiencing technical problems.');
+      iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a 404 response', async () => {
@@ -187,11 +183,8 @@ describe('IAPT results page', () => {
       nockRequests.withResponseBody(path, body, 404, 'search/404.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWithStatus(response, 500);
 
-      const $ = cheerio.load(response.text);
-
-      expect($('.local-header--title--question').text()).to.equal('Sorry, we are experiencing technical problems.');
+      iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a 415 response', async () => {
@@ -201,11 +194,8 @@ describe('IAPT results page', () => {
       nockRequests.withResponseBody(path, body, 415, 'search/415.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
-      iExpect.htmlWithStatus(response, 500);
 
-      const $ = cheerio.load(response.text);
-
-      expect($('h1').text()).to.equal('Sorry, we are experiencing technical problems.');
+      iExpect.errorPageContent(response);
     });
   });
 });

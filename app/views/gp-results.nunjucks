@@ -12,7 +12,7 @@
 <div>
   <ol class="inline-list">
     {% for result in results %}
-      <li data-index="{{ loop.index }}">
+      <li class="results__item" data-index="{{ loop.index }}">
         <div>
           {% include "includes/gp-result-item.nunjucks" %}
         </div>
@@ -21,5 +21,9 @@
     {% endfor %}
   </ol>
 </div>
-<p class="nhsuk-c-panel"><a class="link-back" href="{{ siteRoot }}/search?query={{ cleanQuery }}">Back</a></p>
+{% endblock %}
+
+{% block back %}
+{% set href = siteRoot + "/search?query=" + cleanQuery %}
+{{ linkBack(href) }}
 {% endblock %}

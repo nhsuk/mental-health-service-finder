@@ -1,7 +1,7 @@
 <h3 class="results__name">{{ result.organisationNameHighlight | safe }}</h3>
 
 {% if result.fullAddress %}
-  <p>{{ result.fullAddress | safe }}</p>
+  <p class="results__address">{{ result.fullAddress | safe }}</p>
 {% endif %}
 
 <p><a class="results__gp__selection" href="{{ siteRoot }}/results?type=iapt&query={{ result.CCG[0] }}&gpquery={{ cleanQuery | urlencode }}&gpname={{ result.OrganisationName | urlencode }}">This is my GP</a></p>
