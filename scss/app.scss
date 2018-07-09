@@ -58,7 +58,6 @@ body {
   border: 0;
 }
 
-.local-header,
 .notification-banner {
   &--question,
   > * {
@@ -82,25 +81,6 @@ body {
   }
   &__hiviz {
     background-color: $yellow-50;
-  }
-}
-
-.global-header {
-  &--inner {
-    padding-bottom: 16px;
-    padding-top: 16px;
-    @include media(tablet) {
-      padding-bottom: 24px;
-      padding-top: 24px;
-    }
-  }
-  &--link {
-    background: url(../images/logotype-nhs-colour__reverse.png) no-repeat;
-    background-size: contain;
-    display: block;
-    height: 32px;
-    text-indent: -999em;
-    width: 79px;
   }
 }
 

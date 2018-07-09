@@ -41,7 +41,7 @@ describe('GP results page', () => {
       });
 
       it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
-        expect($('title').text()).to.equal('Find IAPT services - NHS.UK');
+        expect($('head title').text()).to.equal('Find IAPT services - NHS.UK');
       });
 
       it('should have an H1 of \'Select your GP to get you to the right service\'', () => {

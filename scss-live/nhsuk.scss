@@ -18,6 +18,7 @@ $images-path: "../img";
 //@import "environment/settings/typography";
 
 @import "environment/tools/functions/colour";
+@import 'settings/colours-beta';
 //@import "environment/tools/functions/typography";
 
 @import "environment/tools/mixins/button";
@@ -50,7 +51,7 @@ $images-path: "../img";
 @import "units/quote";
 @import "units/table";
 
-@import "components/global-header";
+// @import "components/global-header";
 @import "components/global-footer";
 @import "components/notification-banner";
 @import "components/skiplinks";
@@ -68,7 +69,6 @@ $images-path: "../img";
 @import 'settings/media-queries-beta';
 @import 'settings/variables-beta';
 @import 'settings/fonts-beta';
-@import 'settings/colours-beta';
 @import 'settings/typography-beta';
 @import 'settings/icons-beta';
 
@@ -95,6 +95,7 @@ $images-path: "../img";
 // Components
 @import "components/global-footer-beta";
 @import "components/care-card";
+@import "components/navigation";
 
 // Hacks & Refactoring
 @import "overrides/defence-beta";
@@ -105,3 +106,4 @@ $images-path: "../img";
 
 // Common elements such as header, footer
 @import "common/index.scss";
+@import "common/header.scss";

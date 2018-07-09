@@ -31,7 +31,7 @@ describe('Page attributes', () => {
 
       describe('titles', () => {
         it('should be \'Find IAPT services - NHS.UK\'', () => {
-          expect($('title').text()).to.equal('Find IAPT services - NHS.UK');
+          expect($('head title').text()).to.equal('Find IAPT services - NHS.UK');
         });
       });
 
