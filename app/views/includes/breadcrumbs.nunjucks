@@ -1,7 +1,7 @@
 <div class="nhsuk-breadcrumb">
   <div class="nhsuk-o-width-container">
     <ol>
-      <li><a href="http://www.nhs.uk">Home</a></li>
+      <li><a href="https://www.nhs.uk">Home</a></li>
       <li><a href="https://www.nhs.uk/service-search">Services near you</a></li>
       <li class="breadcrumb__last">Find IAPT services</li>
     </ol>
