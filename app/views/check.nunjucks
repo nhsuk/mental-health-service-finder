@@ -5,7 +5,6 @@
 {% endblock %}
 
 {% block content %}
-
 <h3>You'll have an assessment</h3>
 <p>Someone from the psychological therapies service will get in touch, usually in 1-2 weeks. They'll ask about the problems you're having.</p>
 <h3>The service will recommend a therapy for you</h3>

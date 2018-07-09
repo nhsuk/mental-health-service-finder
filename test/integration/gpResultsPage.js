@@ -149,7 +149,7 @@ describe('GP results page', () => {
     });
 
     it('has a back link to the start page with the previously entered query', () => {
-      expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}?query=${query}`);
+      iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${query}`);
     });
   });
 

@@ -39,7 +39,7 @@ describe('IAPT results page', () => {
       });
 
       it('has a back link to the start page', () => {
-        expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.results.path}?type=gp&query=${gpQuery}`);
+        iExpect.backLinkContent($, `${constants.siteRoot}${routes.results.path}?type=gp&query=${gpQuery}`);
       });
 
       it('should have a title of \'Find IAPT services - NHS.UK\'', () => {

@@ -9,7 +9,7 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Application behaviour', () => {
-  it('should redirect root requests to /find-mental-health-services/', async () => {
+  it('should redirect root requests to /find-a-psychological-therapies-service', async () => {
     const res = await chai.request(server).get('/');
     expect(res).to.have.status(200);
     expect(res).to.be.html;
@@ -27,16 +27,5 @@ describe('Application behaviour', () => {
     expect(res).to.not.have.header('X-Powered-By');
     expect(res).to.have.header('X-Download-Options', 'noopen');
     expect(res).to.have.header('Strict-Transport-Security', 'max-age=15552000');
-  });
-});
-
-describe('An unknown page', () => {
-  it('should return a 404', async () => {
-    try {
-      await chai.request(server).get(`${constants.siteRoot}/not-known`);
-    } catch (err) {
-      expect(err).to.have.status(404);
-      expect(err.response).to.be.html;
-    }
   });
 });

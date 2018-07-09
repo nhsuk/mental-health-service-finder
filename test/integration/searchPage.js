@@ -3,6 +3,7 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
 const constants = require('../../app/lib/constants');
+const iExpect = require('../lib/expectations');
 const routes = require('../../config/routes');
 const server = require('../../server');
 
@@ -27,7 +28,7 @@ describe('Search page', () => {
     });
 
     it('has a back link to the check page', () => {
-      expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.check.path}`);
+      iExpect.backLinkContent($, `${constants.siteRoot}${routes.check.path}`);
     });
   });
 
