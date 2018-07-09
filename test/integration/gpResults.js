@@ -49,7 +49,7 @@ describe('GP results page', () => {
       });
 
       it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {
-        expect($($('div.breadcrumb a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search');
+        expect($($('.nhsuk-breadcrumb a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search');
       });
 
       it('the banner should link back to Choices IAPT service search', () => {

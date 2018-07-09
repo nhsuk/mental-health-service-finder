@@ -1,33 +1,51 @@
-
-.breadcrumb {
-  @include site-width-container;
-  background-color: $blue-10;
-  margin-bottom: 1em;
-
-  a {
-    font-size: inherit;
-    text-decoration: none;
-  }
-
-  a:visited {
-    color:#005EB8;
-  }
-
-  ul, ol {
-    padding: 6px 15px;
-    li {
-      margin: 0px;
-      font-size: 16px;
+.nhsuk-breadcrumb {
+  background: $nhsuk-white;
+  padding: 12px 0;
+  ol{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li{
       display: inline-block;
-
+      margin: 0;
+      font-size: 16px;
       &:after {
-        content: '\00A0\00A0\203A'; //Two NBSP and one right chevron
-        color: $grey-3;
+        content: '';
+        width: 6px;
+        height: 9px;
+        margin: 0 11px 0 16px;
+        display: inline-block;
+        background: url(images/icons/icon-chevron-right-grey.svg) 0 0 no-repeat;
+        background-size: 6px 9px;
+      }
+      &:first-child {
+        margin: 0;
+      }
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+      @media screen and (max-width: 989px) {
+        /*font-size: 14px;*/
+        &:after {
+          margin: 0 6px 0 11px;
+        }
+      }
+      @media screen and (max-width: 640px) {
+        display: none;
       }
     }
   }
-
-  &__last:after {
-    content: none !important;
+  p{
+    padding: 0 0 0 16px;
+    margin: 0;
+    background: url(images/icons/icon-chevron-left-blue.svg) left 3px no-repeat;
+    background-size: 8px 12px;
+    font-size: 14px;
+    display: none;
+    @media screen and (max-width: 640px) {
+      display: inline;
+    }
   }
 }
