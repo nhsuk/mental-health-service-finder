@@ -5,6 +5,7 @@ module.exports = {
     ],
     connectSrc: [
       '\'self\'',
+      'nhs.funnelback.co.uk',
       '*.hotjar.com:*',
     ],
     defaultSrc: [
