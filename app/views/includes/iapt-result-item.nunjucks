@@ -1,4 +1,4 @@
-<h3 class="results__name--iapt">{{ result.OrganisationName }}</h3>
+<h3 class="results__name">{{ result.OrganisationName }}</h3>
 
 {% if result.website %}
   <p class="results__website"><a href="{{ result.website }}">{{ result.website }}</a></p>

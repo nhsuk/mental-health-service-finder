@@ -12,7 +12,7 @@
 <div>
   <ol class="inline-list">
     {% for result in results %}
-      <li class="results__item" data-index="{{ loop.index }}">
+      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}">
         <div>
           {% include "includes/gp-result-item.nunjucks" %}
         </div>
