@@ -23,7 +23,6 @@
                 <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"/>
                 <image class="nhsuk-icon__search nhsuk-icon__search--fallback" src="/images/icons/icon-search-blue-20px.png" xlink:href="" />
               </svg>
-
               <span class="visually-hidden">Search</span>
             </button>
           </div>
@@ -37,19 +36,16 @@
                     <path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"/>
                     <image class="nhsuk-icon__search nhsuk-icon__search--fallback" src="/images/icons/icon-search-blue-20px.png" xlink:href="" />
                   </svg>
-
                   <span class="visually-hidden">Search</span>
                 </button>
               </div>
             </form>
-
             <div class="search-close">
               <button class="search-close__link">
                 <svg class="nhsuk-icon nhsuk-icon__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"/>
                   <image class="nhsuk-icon__close nhsuk-icon__close--fallback" src="" xlink:href="" />
                 </svg>
-
                 <span class="visually-hidden">Close search</span>
               </button>
             </div>
@@ -59,47 +55,6 @@
     </div>
   </div>
 </header>
-
-<script>
-  (function() {
-    var searchToggle = {
-      searchToggleButton: document.querySelector('.search-toggle__button'),
-      searchClose: document.querySelector('.search-close'),
-      search: document.querySelector('.search-container'),
-      menuSearchContainer: document.querySelector('.nhsuk-global-header__menusearch'),
-
-      doToggle: function(e) {
-        e.preventDefault();
-
-        if (this.searchToggleButton.hasAttribute("aria-expanded")) {
-          this.searchToggleButton.removeAttribute("aria-expanded")
-        } else {
-          this.searchToggleButton.setAttribute("aria-expanded", "true")
-        }
-
-        function toggleClass(ele, class1) {
-          var classes = ele.className;
-          var regex = new RegExp('\\b' + ' ' + class1 + '\\b');
-          var hasOne = classes.match(regex);
-          class1 = class1.replace(/\s+/g, '');
-          if (hasOne)
-            ele.className = classes.replace(regex, '');
-          else
-            ele.className = classes + ' ' + class1;
-        }
-
-        toggleClass(this.searchToggleButton, 'active');
-        toggleClass(this.search, 'js-show');
-        toggleClass(this.menuSearchContainer, 'js-show');
-
-      }
-    };
-
-    searchToggle.searchToggleButton.addEventListener('click', function(e) { searchToggle.doToggle(e); });
-    searchToggle.searchClose.addEventListener('click', function(e) { searchToggle.doToggle(e); });
-
-  }());
-</script>
 
 <nav class="c-nav-primary" id="c-nav-primary" role="navigation" aria-label="Primary navigation" aria-labelledby="mainmenulabel">
   <div class="nhsuk-global-nav">
@@ -115,36 +70,48 @@
       </button>
       </p>
       <ul class="c-nav-primary__list">
-        <li class="c-nav-primary__item c-nav-primary__item--mobile"><a href="https://www.nhs.uk" class="c-nav-primary__link">Home <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+        <li class="c-nav-primary__item c-nav-primary__item--mobile">
+          <a href="https://www.nhs.uk" class="c-nav-primary__link">Home<svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
               <image class="nhsuk-icon__chevron-right nhsuk-icon__chevron-right--fallback" src="" xlink:href="" />
             </svg>
-          </a></li>
-          <li class="c-nav-primary__item"><a href="https://www.nhs.uk/conditions/" class="c-nav-primary__link">Health A-Z <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
-                <image class="nhsuk-icon__chevron-right nhsuk-icon__chevron-right--fallback" src="" xlink:href="" />
-              </svg>
-            </a></li>
-            <li class="c-nav-primary__item"><a href="https://www.nhs.uk/livewell/" class="c-nav-primary__link">Live Well <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
-                  <image class="nhsuk-icon__chevron-right nhsuk-icon__chevron-right--fallback" src="" xlink:href="" />
-                </svg>
-              </a></li>
-              <li class="c-nav-primary__item"><a href="https://www.nhs.uk/conditions/social-care-and-support/" class="c-nav-primary__link">Care and support <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
-                    <image class="nhsuk-icon__chevron-right nhsuk-icon__chevron-right--fallback" src="" xlink:href="" />
-                  </svg>
-                </a></li>
-                <li class="c-nav-primary__item"><a href="https://www.nhs.uk/news/" class="c-nav-primary__link">Health news <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
-                      <image class="nhsuk-icon__chevron-right nhsuk-icon__chevron-right--fallback" src="" xlink:href="" />
-                    </svg>
-                  </a></li>
-                  <li class="c-nav-primary__item"><a href="https://www.nhs.uk/service-search/" class="c-nav-primary__link">Services near you <svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
-                        <image class="nhsuk-icon__chevron-right nhsuk-icon__chevron-right--fallback" src="" xlink:href="" />
-                      </svg>
-                    </a></li>
+          </a>
+        </li>
+        <li class="c-nav-primary__item">
+          <a href="https://www.nhs.uk/conditions/" class="c-nav-primary__link">Health A-Z<svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
+              <image class="nhsuk-icon__chevron-right nhsuk-icon__chevron-right--fallback" src="" xlink:href="" />
+            </svg>
+          </a>
+        </li>
+        <li class="c-nav-primary__item">
+          <a href="https://www.nhs.uk/livewell/" class="c-nav-primary__link">Live Well<svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
+              <image class="nhsuk-icon__chevron-right nhsuk-icon__chevron-right--fallback" src="" xlink:href="" />
+            </svg>
+          </a>
+        </li>
+        <li class="c-nav-primary__item">
+          <a href="https://www.nhs.uk/conditions/social-care-and-support/" class="c-nav-primary__link">Care and support<svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
+              <image class="nhsuk-icon__chevron-right nhsuk-icon__chevron-right--fallback" src="" xlink:href="" />
+            </svg>
+          </a>
+        </li>
+        <li class="c-nav-primary__item">
+          <a href="https://www.nhs.uk/news/" class="c-nav-primary__link">Health news<svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
+              <image class="nhsuk-icon__chevron-right nhsuk-icon__chevron-right--fallback" src="" xlink:href="" />
+            </svg>
+          </a>
+        </li>
+        <li class="c-nav-primary__item">
+          <a href="https://www.nhs.uk/service-search/" class="c-nav-primary__link">Services near you<svg class="nhsuk-icon nhsuk-icon__chevron-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"/>
+              <image class="nhsuk-icon__chevron-right nhsuk-icon__chevron-right--fallback" src="" xlink:href="" />
+            </svg>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
