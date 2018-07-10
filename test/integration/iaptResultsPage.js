@@ -4,6 +4,7 @@ const cheerio = require('cheerio');
 
 const constants = require('../../app/lib/constants');
 const createBody = require('../../app/lib/requests/createBody');
+const getHrefFromA = require('../lib/helpers').getHrefFromA;
 const iExpect = require('../lib/expectations');
 const nockRequests = require('../lib/nockRequests');
 const routes = require('../../config/routes');
@@ -70,17 +71,30 @@ describe('IAPT results page', () => {
 
       it('should display contact information for each result', () => {
         $('.results__item').each((i, item) => {
-          expect($(item).find('.results__email').text()).to.equal(`Email: email@result.${i}`);
-          expect($(item).find('.results__telephone').text()).to.equal(`Tel: result ${i} telephone`);
-          expect($(item).find('.results__website').text()).to.equal(`https://website.result.${i}`);
+          const email = $(item).find('.results__email');
+          expect(email.text()).to.equal(`Email: email@result.${i}`);
+          const emailHref = getHrefFromA(email);
+          expect(emailHref).to.equal(`mailto:email@result.${i}`);
+
+          const tel = $(item).find('.results__telephone');
+          expect(tel.text()).to.equal(`Tel: result ${i} telephone`);
+          const telHref = getHrefFromA(tel);
+          expect(telHref).to.equal(`tel:result ${i} telephone`);
+
+          const website = $(item).find('.results__website');
+          expect(website.text()).to.equal(`https://website.result.${i}`);
+          const websiteHref = getHrefFromA(website);
+          expect(websiteHref).to.equal(`https://website.result.${i}`);
         });
       });
 
       it('should display a button to \'Refer yourself online\' for results with that option', () => {
         const selfReferralElements = $('.results__self_referral');
         expect(selfReferralElements.length).to.equal(2);
-        expect(selfReferralElements.eq(0).find('a').prop('href')).to.equal('https://self.referral.0');
-        expect(selfReferralElements.eq(1).find('a').prop('href')).to.equal('https://self.referral.2');
+        const selfReferralElement0Href = getHrefFromA(selfReferralElements.eq(0));
+        const selfReferralElement2Href = getHrefFromA(selfReferralElements.eq(1));
+        expect(selfReferralElement0Href).to.equal('https://self.referral.0');
+        expect(selfReferralElement2Href).to.equal('https://self.referral.2');
       });
 
       it('should display a display a message about online referrals not being available when there is no available option', () => {

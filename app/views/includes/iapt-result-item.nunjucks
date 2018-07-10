@@ -9,7 +9,7 @@
 {% endif %}
 
 {% if result.email %}
-  <p class="results__email">Email: <a href="{{ result.email }}">{{ result.email }}</a></p>
+  <p class="results__email">Email: <a href="mailto:{{ result.email }}">{{ result.email }}</a></p>
 {% endif %}
 
 {% if result.selfReferral %}
