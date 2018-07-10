@@ -7,6 +7,8 @@ module.exports = {
       '\'self\'',
       'nhs.funnelback.co.uk',
       '*.hotjar.com:*',
+      '*.google-analytics.com',
+      '*.webtrendslive.com',
     ],
     defaultSrc: [
       '\'self\'',
