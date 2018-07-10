@@ -48,8 +48,8 @@ describe('GP results page', () => {
         expect($('.nhsuk-page-heading h1').text()).to.equal('Select your GP to see available services');
       });
 
-      it('the breadcrumb should have a link back to Choices \'Services near you\'', () => {
-        expect($($('.nhsuk-breadcrumb a')[1]).attr('href')).to.equal('https://www.nhs.uk/service-search');
+      it('the breadcrumbs should have 2 levels of links', () => {
+        iExpect.breadcrumbContent($);
       });
 
       it('the banner should link back to Choices IAPT service search', () => {

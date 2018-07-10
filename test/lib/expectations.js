@@ -8,6 +8,13 @@ function htmlWithStatus(res, status) {
   expect(res).to.be.html;
 }
 
+function breadcrumbContent($) {
+  expect($('.nhsuk-c-breadcrumb__item').eq(0).text().trim()).to.equal('Home');
+  expect($('.nhsuk-c-breadcrumb__item').eq(0).find('a').prop('href')).to.equal('https://www.nhs.uk');
+  expect($('.nhsuk-c-breadcrumb__item').eq(1).text().trim()).to.equal('Services near you');
+  expect($('.nhsuk-c-breadcrumb__item').eq(1).find('a').prop('href')).to.equal('https://www.nhs.uk/service-search');
+}
+
 // eslint-disable-next-line no-script-url
 function backLinkContent($, href = 'javascript:history.go(-1)', text = 'Back') {
   expect($('.link-back').prop('href')).to.equal(href);
@@ -39,6 +46,7 @@ function notFoundPageContent(response) {
 
 module.exports = {
   backLinkContent,
+  breadcrumbContent,
   errorPageContent,
   htmlWithStatus,
   notFoundPageContent,
