@@ -2,7 +2,7 @@ version: '2'
 
 services:
 
-  shsf-frontend:
+  mhsf-frontend:
     image: "nhsuk/mental-health-service-finder:${DOCKER_IMAGE_TAG}"
     environment:
       API_HOSTNAME: ${API_HOSTNAME}
