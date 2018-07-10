@@ -51,7 +51,6 @@ $images-path: "../img";
 @import "units/quote";
 @import "units/table";
 
-// @import "components/global-header";
 @import "components/global-footer";
 @import "components/notification-banner";
 @import "components/skiplinks";
@@ -105,5 +104,6 @@ $images-path: "../img";
 @import 'core/shared-beta';
 
 // Common elements such as header, footer
-@import "common/index.scss";
+@import "common/breadcrumb.scss";
 @import "common/header.scss";
+@import "common/index.scss";
