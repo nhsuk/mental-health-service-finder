@@ -3,7 +3,6 @@
 $grey: #E8EDEE;
 $border-grey: #BAC4C8;
 
-
 body {
   background-color:$grey;
   header {
@@ -34,180 +33,12 @@ body {
       }
     }
   }
-  .breadcrumb {
-    background-color: $white;
-  }
-  .local-header--title--question {
-    &.local-header--title__step {
-      margin-top: 10px;
-      padding-top: 0;
-    }
-  }
   p {
     &.local-header--step {
       display: block;
       font-size: 18px;
       font-weight: 400;
       margin-top: 0;
-    }
-  }
-  .details {
-    .summary--toggle {
-      padding-left: 25px;
-      position: relative;
-      &:visited, 
-      &:focus,
-      &:active {
-        color: $nhs-blue;
-      }
-      .caret {
-        margin-right: 15px;
-        -ms-transform: rotate(270deg); 
-        -webkit-transform: rotate(270deg); 
-        transform: rotate(270deg);
-        border-top: 10px dashed;
-        border-right: 7px solid transparent;
-        border-left: 7px solid transparent;
-        position: absolute;
-        left: 0;
-        top: 11px;
-      }
-    }
-    .details__content {
-      display: none;
-    }
-    &.open {
-      .summary--toggle {
-        .caret {
-          -ms-transform: rotate(360deg); 
-          -webkit-transform: rotate(360deg); 
-          transform: rotate(360deg);
-        }
-      }
-      .details__content {
-        display: block;
-      }
-    }
-    .summary--toggle {
-      font-size: 24px;
-      margin-top: 0;
-      padding-top: 0;
-      font-weight: 600;
-      line-height: 32px;
-    }
-    @include media(tablet) {
-      .summary--toggle {
-        font-size: 28px;
-      }
-    }
-    &__small {
-      .summary--toggle {
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 32px;
-        .caret {
-          top: 8px;
-        }
-      }
-    }
-    @include media(tablet) {
-      &__small {
-        .summary--toggle {
-          font-size: 20px;
-        }
-      }
-    }
-    &__results {
-      margin-top: 16px;
-    }
-  }
-  @include media(tablet) {
-    .mutliple-choice-choose {
-      .summary--toggle,
-      .details__content {
-        margin-left: 50px;
-      }
-    }
-  }
-  // Start page details
-  .details--country {
-    background-color: $white;
-    padding: 32px;
-    .details__content {
-      .details__opening-times,
-      .details__call-charges {
-        display: block;
-        margin-top: 0;
-        padding-top: 0;
-      }
-      .details__call-charges {
-        font-size: 16px;
-      }
-      .button {
-        width: 80%;
-        @include media(tablet) {
-          width: auto;
-        }
-      }
-    }
-  }
-  .recommend__tick {
-    display: inline-block;
-    margin-left: 15px;
-      &:before {
-        content: '';
-        display: inline-block;
-        height: 32px;
-        width: 17px;
-        border: solid $green;
-        border-width: 0 8px 8px 0;
-        transform: rotate(45deg);
-        margin-right: 20px;
-      }
-  }
-  .recommend__cross {
-    display: inline-block;
-    margin: 0 5px 0 15px;
-    width: 32px;
-    height: 32px;
-    &:before, &:after {
-      content: '';
-      position: absolute;
-      height: 33px;
-      width: 8px;
-      background-color: $red;
-      margin-top: 8px;
-    }
-    &:before {
-      transform: rotate(45deg);
-    }
-    &:after {
-      transform: rotate(-45deg);
-    }
-  }
-  .multiple-choice--description {
-    padding: 0 32px 32px 32px;
-    border: 3px solid $grey-3;
-    margin: 0 0 20px 0;
-    &:first-of-type {
-      margin: 32px 0 20px 0;
-    }
-    &:last-of-type {
-      margin: 0;
-    }
-    label {
-      span {
-        &.multiple--choice-option {
-          margin-top: 0;
-          font-weight: 600;
-        }
-        &.multiple--choice-option-description {
-          font-weight: 400;
-        }
-      }
-    }
-    &.multiple-choice--selected {
-      background-color: $white;
     }
   }
 }
@@ -223,11 +54,7 @@ body {
   clip: rect(0,0,0,0);
   border: 0;
 }
-.reading-width {
-  @include reading-width;
-}
 
-.local-header,
 .notification-banner {
   &--question,
   > * {
@@ -253,47 +80,6 @@ body {
     background-color: $yellow-50;
   }
 }
-.global-header {
-  &--inner {
-    padding-bottom: 16px;
-    padding-top: 16px;
-    @include media(tablet) {
-      padding-bottom: 24px;
-      padding-top: 24px;
-    }
-  }
-  &--link {
-    background: url(../images/logotype-nhs-colour__reverse.png) no-repeat;
-    background-size: contain;
-    display: block;
-    height: 32px;
-    text-indent: -999em;
-    width: 79px;
-  }
-}
-.global-footer {
-  &--inner {
-    padding-bottom: 96px;
-    padding-top: 32px;
-    &::before {
-      background: url(../images/logotype-nhs-colour.png) no-repeat;
-      background-size: contain;
-      content: "";
-      display: block;
-      height: 32px;
-      margin-bottom: 32px;
-      text-indent: -999em;
-      width: 79px;
-      @include media(desktop) {
-        margin-bottom: 48px;
-      }
-    }
-    @include media(desktop) {
-      padding-bottom: 128px;
-      padding-top: 48px;
-    }
-  }
-}
 
 /*
    Form elements
@@ -311,6 +97,7 @@ form {
     padding: 4px;
     background-color: $white;
     border: 2px solid #000;
+    margin: 20px 0;
     @include media(tablet) {
       font-size: 24px;
       line-height: 32px;
@@ -337,218 +124,6 @@ form {
     span {
       display: block;
       margin-top: 25px;
-    }
-  }
-}
-/*
-  Results page
-*/
-
-.page-section{
-  .grid-row {
-    margin: 0 -16px;
-    &:after {
-      clear: both;
-      content: "";
-      display: block;
-    }
-    @include media(desktop) {
-      > * {
-        margin-top: 0;
-      }
-    }
-    .column--two-thirds {
-      display:block;
-      padding:0 16px;
-      @include media(tablet) {
-        float: left;
-        width: 66.6667%;
-      }
-    }
-    .results {
-      list-style: none;
-      margin:0;
-      padding:0 16px;
-      li {
-        padding: 0;
-        border: none;
-        border-top: 2px solid $border-grey;
-        &.results__item {
-          background-color: $white;
-          padding: 32px;
-          margin-top: 35px;
-          &:first-of-type {
-            margin-top: 25px;
-          }
-          .highlight {
-            background-color: $yellow-50;
-          }
-        }
-      }
-      details {
-        margin-top: 16px;
-        .details__content {
-          margin-top: 16px;
-          margin-bottom: 32px;
-        }
-      }
-      .results__details {
-        .results__telephone {
-          .results__telephone--mobile {
-           display: block; 
-           @include media(tablet) {
-            display: none;
-            }
-          }
-          .results__telephone--desktop {
-            display: none;
-            margin-top: 0;
-            @include media(tablet) {
-              display: block;
-            }
-          }
-        }
-        p {
-          &.results__address-distance {
-            font-size: 16px;
-            margin-top: 0;
-          }
-        }
-      }
-      &__item {
-        margin-top:8px;
-        p {
-          padding:0;
-        }
-        &__link {
-          margin-top:8px;
-        }
-        &:first-child {
-          margin-top: 0;
-        }
-        &:after {
-          clear: both;
-          content: "";
-          display: block;
-        }
-      }
-      &__header {
-        font-size: 32px;
-        line-height:40px;
-        padding:0 8px;
-        margin:0;
-        @include media(tablet) {
-          line-height: 48px;
-          padding:0;
-          &--none {
-            padding:0;
-          }
-        }
-      }
-      &__details {
-        position: relative;
-        .callout {
-          display:block;
-        }
-      }
-      &__name {
-        margin-top:8px;
-      }
-      &-block {
-        &--none {
-          background-color: $blue;
-          color: $white;
-          margin-bottom: 32px;
-          padding: 16px;
-          @include media(desktop) {
-            margin-bottom: 48px;
-          }
-          .results__header {
-            padding: 8px 8px 12px 8px;
-            @include media(desktop) {
-              padding: 8px 16px 0 16px;
-            }
-          }
-          .results__none-content {
-            background: $white;
-            color: #000;
-            padding: 16px;
-            @include media(desktop) {
-              padding: 32px;
-            }
-            p {
-              padding:0;
-            }
-          }
-        }
-      }
-      .openingTimes {
-        margin: 32px 0 8px;
-        @include media(tablet) {
-          width: 50%;
-        }
-        tr {
-          padding: 15px 0;
-          &:first-child {
-            display:none;
-          }
-          &:nth-child(2){
-            th,td {
-              padding-top:0px;
-            }
-          }
-          td, th {
-            font-size:20px;
-            line-height: 20px;
-            padding: 15px 0;
-            font-weight: 400;
-            border: 0;
-          }
-          td {
-            text-align: right;
-            &:last-child {
-              text-align: left;
-            }
-          }
-        }
-        .hasSessions{
-          td {
-            padding-top:0px;
-          }
-        }
-        + p {
-          font-size: 16px;
-          color:$grey-1;
-        }
-        &__openResults {
-          font-size:16px;
-        }
-      }
-    }
-    + .callout--muted {
-      margin: 46px 0 10px;
-      @include media(desktop) {
-        margin-top:46px 32px 0;
-      }
-    }
-  }
-  .places {
-    > h1 {
-      @include bold-font(36);
-      margin: 32px 0 0;
-    }
-    > ol {
-      padding:0;
-      list-style: none;
-    }
-    > ol,
-      p {
-      margin:20px 0;
-    }
-  }
-  .callout {
-    &--muted {
-      margin:0 32px;
     }
   }
 }
@@ -665,41 +240,11 @@ form {
   }
 }
 
-.results-block {
-    background-color: $blue;
-    color: $white;
-    margin-bottom: 32px;
-    padding: 16px;
+// Results
+.highlight {
+  background-color: $yellow-50;
 }
 
-/* global header */
-
-@include media(desktop) {
-  .main-nav {
-    &__page-menu {
-      .nodrop {
-        &:hover, &:focus-within {
-          background-color: inherit;
-          color: inherit;
-          text-decoration: underline;
-        }
-      }
-      li:hover, li:focus-within {
-        background-color: $white;
-        color: $blue;
-        ul {
-          display: block;
-        }
-        a {
-          background-color: inherit;
-          position: relative;
-          z-index: 200;
-        }
-      }
-    }
-  }
-}
-
-.summary--toggle {
-  
+.results__name {
+  margin: 0;
 }

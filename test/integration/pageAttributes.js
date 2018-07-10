@@ -31,7 +31,7 @@ describe('Page attributes', () => {
 
       describe('titles', () => {
         it('should be \'Find IAPT services - NHS.UK\'', () => {
-          expect($('title').text()).to.equal('Find IAPT services - NHS.UK');
+          expect($('head title').text()).to.equal('Find IAPT services - NHS.UK');
         });
       });
 
@@ -39,7 +39,7 @@ describe('Page attributes', () => {
         it('should be correct', () => {
           const pageTitle = routes[route].title;
 
-          expect($('h1.local-header--title--question').text()).to.equal(pageTitle);
+          expect($('h1').text()).to.equal(pageTitle);
         });
       });
 

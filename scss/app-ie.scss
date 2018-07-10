@@ -42,23 +42,9 @@ body {
 
 .notification-banner--inner,
 .local-header--question,
-.global-header--inner{
+{
   width:960px;
   margin:0 auto;
-}
-
-.global-header--inner {
-  padding-bottom: 24px;
-  padding-top: 24px;
-}
-
-.global-header--link {
-  background: url(../images/logotype-nhs-colour__reverse.png) no-repeat;
-  background-size: contain;
-  display: block;
-  height: 32px;
-  text-indent: -999em;
-  width: 79px;
 }
 
 form {
@@ -100,26 +86,4 @@ a.link-back {
   &:active {
     color: #000000;
   }
-}
-
-.page-section .grid-row .results {
-  list-style: none;
-  margin: 0;
-  padding: 0 16px;
-}
-.page-section .results__item {
-  list-style: none;
-}
-.page-section .grid-row .results__details {
-  padding: 0 32px 32px 32px;
-  position: relative;
-  margin-top:32px;
-}
-.page-section .grid-row .results__details .callout {
-  margin-top:32px;
-}
-
-.geo-locate,
-.geo-locate--denied {
-  display:none;
 }

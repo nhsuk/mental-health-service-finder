@@ -1,43 +1,35 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question local-header--title__step">We need to know your GP to get you to the right service</h1>
+<h1>We need to know your GP to get you to the right service</h1>
 {% endblock %}
 
 {% block content %}
-<div>
 {% if errorMessage %}
 <div class="error-summary">
-  <h2 class="local-header--error error-summary-heading">
-    {% if errorMessage %}
-      {{ errorMessage }}
-    {% endif %}
-  </h2>
+  <h2>{% if errorMessage %} {{ errorMessage }} {% endif %}</h2>
 </div>
 {% endif %}
 
 <form method="get" class="form" action="{{ siteRoot }}/results">
   <input type="hidden" name="type" value="gp" />
-  <div class="reading-width">
-    <div class="form-item-wrapper">
-      <div class="form-group {% if errorMessage %} error {% endif %}">
-        <h3>
-          <label class="form-label-bold" for="query">Tell us your GP surgery:</label>
-        </h3>
+    <div>
+      <div class="form-group {% if errorMessage %}error{% endif %}">
+        <div>
+          <label class="nhsuk-heading-l" for="query">Tell us your GP surgery:</label>
+        </div>
         <p>For example, surgery or street name</p>
-          <div class="form-group">
             <input autocomplete="off" type="text" class="form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-          </div>
         </div>
       </div>
-    </div>
-    <div class="form-item-wrapper">
-      <div class="form-group">
-        <input type="submit" class="button" value="Find your GP surgery">
-      </div>
+    <div>
+      <input type="submit" class="button" value="Find your GP surgery">
     </div>
   </div>
 </form>
-<p><a class="link-back" href="{{ siteRoot }}/check">Back</a></p>
-</div>
+{% endblock %}
+
+{% block back %}
+{% set href = siteRoot + "/check" %}
+{{ linkBack(href) }}
 {% endblock %}

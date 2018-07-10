@@ -59,8 +59,12 @@ typings/
 
 # code compiled by brunch
 public/js/*
+
 # allow vendor JS to be controlled
 !public/js/vendor
+
+# manifest created by fingerprint-brunch
+assets.json
 
 # css files
 *.css

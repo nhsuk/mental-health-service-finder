@@ -1,33 +1,55 @@
+.nhsuk-c-breadcrumb {
+  background: $nhsuk-white;
+  padding: 12px 0;
 
-.breadcrumb {
-  @include site-width-container;
-  background-color: $blue-10;
-  margin-bottom: 1em;
+  &__list {
+    @include mq($until: tablet) {
+      display: none;
+    }
 
-  a {
-    font-size: inherit;
-    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
-  a:visited {
-    color:#005EB8;
-  }
+  &__item {
+    display: inline-block;
+    font-size: 16px;
+    margin: 0;
 
-  ul, ol {
-    padding: 6px 15px;
-    li {
-      margin: 0px;
-      font-size: 16px;
-      display: inline-block;
+    .nhsuk-icon__chevron-right {
+      fill: $nhsuk-grey-3;
+      height: 18px;
+      position: relative;
+      top: 5px;
+      width: 18px;
 
-      &:after {
-        content: '\00A0\00A0\203A'; //Two NBSP and one right chevron
-        color: $grey-3;
+      @include mq($from: large-desktop) {
+        margin: 0 5px;
       }
     }
   }
 
-  &__last:after {
-    content: none !important;
+  &__back {
+    font-size: 14px;
+    margin: 0;
+
+    .nhsuk-icon__chevron-left {
+      fill: $nhsuk-blue;
+      float: left;
+      height: 24px;
+      left: -8px;
+      position: relative;
+      width: 24px;
+    }
+
+    @include mq($from: tablet) {
+      display: none;
+    }
+  }
+
+  &__backlink {
+    left: -8px;
+    position: relative;
   }
 }

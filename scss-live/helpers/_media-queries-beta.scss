@@ -2,7 +2,7 @@
 
 // This is a horrible, horrible hack to prevent the 'dev mode' CSS to display
 // the current breakpoint from being included multiple times. 
-// 
+//
 // We can't use the `exports` mixin for this because import directives cannot be
 // used within control directives 😠
 $sass-mq-already-included: false !default;

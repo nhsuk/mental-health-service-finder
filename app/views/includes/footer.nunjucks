@@ -1,17 +1,22 @@
-<footer role="footer">
+<footer role="contentinfo">
   <div class="nhsuk-global-footer">
     <div class="nhsuk-o-width-container">
       <ul>
-        <li class="nhsuk-global-footer__logo"><a href="/" class="global-footer__link"><img src="{{ siteRoot }}/images/nhs-logo.png" srcset="{{ siteRoot }}/images/nhs-logo.svg" alt="Go to NHS website homepage"></a></li>
-        <li><a href="http://www.nhs.uk/Pages/nhs-sites.aspx">NHS sites</a></li>
-        <li><a href="http://www.nhs.uk/Pages/about-us.aspx">About us</a></li>
-        <li><a href="http://www.nhs.uk/Pages/contact-us.aspx">Contact us</a></li>
+        <li class="nhsuk-global-footer__logo">
+          <a href="/" class="global-footer__link">
+            {% include "./nhs-logo.svg" %}
+          </a>
+        </li>
+        <li><a href="https://www.nhs.uk/Pages/nhs-sites.aspx">NHS sites</a></li>
+        <li><a href="https://www.nhs.uk/Pages/about-us.aspx">About us</a></li>
+        <li><a href="https://www.nhs.uk/Pages/contact-us.aspx">Contact us</a></li>
       </ul>
       <ul>
-        <li><a href="http://www.nhs.uk/choices/pages/sitemap.aspx">Sitemap</a></li>
-        <li><a href="http://www.nhs.uk/aboutnhschoices/aboutnhschoices/accessibility/pages/accessibilitystatement.aspx">Accessibility</a></li>
-        <li><a href="http://www.nhs.uk/Pages/site-policies.aspx">Our policies</a></li>
+        <li><a href="https://www.nhs.uk/choices/pages/sitemap.aspx">Sitemap</a></li>
+        <li><a href="https://www.nhs.uk/aboutnhschoices/aboutnhschoices/accessibility/pages/accessibilitystatement.aspx">Accessibility</a></li>
+        <li><a href="https://www.nhs.uk/Pages/site-policies.aspx">Our policies</a></li>
         <li>&copy; Crown Copyright</li>
       </ul>
+    </div>
   </div>
 </footer>

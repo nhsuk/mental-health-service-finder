@@ -1,21 +1,22 @@
 {% extends 'layout.nunjucks' %}
 
 {% block header %}
-<h1 class="local-header--title--question">What happens after you refer yourself</h1>
+<h1>What happens after you refer yourself</h1>
 {% endblock %}
 
 {% block content %}
+<h3>You'll have an assessment</h3>
+<p>Someone from the psychological therapies service will get in touch, usually in 1-2 weeks. They'll ask about the problems you're having.</p>
+<h3>The service will recommend a therapy for you</h3>
+<p>The therapy will depend on what problems you're experiencing and how severe they are.</p>
+<p>They will also tell you how long you'll wait for your first therapy session.</p>
 
-<div class="reading-width">
-  <h3>You'll have an assessment</h3>
-  <p>Someone from the psychological therapies service will get in touch, usually in 1-2 weeks. They'll ask about the problems you're having.</p>
-  <h3>The service will recommend a therapy for you</h3>
-  <p>The therapy will depend on what problems you're experiencing and how severe they are.</p>
-  <p>They will also tell you how long you'll wait for your first therapy session.</p>
+<p><a href="{{ siteRoot }}/search" class="button start-button start_button_tracking" role="button">Next</a></p>
+{% endblock %}
 
-  <a href="{{ siteRoot }}/search" class="button start-button start_button_tracking" role="button">Next</a>
-  <p><a class="link-back" href="{{ siteRoot }}/">Back</a></p>
-  {% include "includes/urgent-help-callout.nunjucks" %}
-</div>
+{% include "includes/urgent-help-callout.nunjucks" %}
 
+{% block back %}
+{% set href = siteRoot + "/" %}
+{{ linkBack(href) }}
 {% endblock %}

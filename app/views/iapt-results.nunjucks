@@ -3,37 +3,39 @@
 {% set resultsLength = results.length %}
 
 {% block header %}
-<h1 class="local-header--title--question">Psychological therapies services</h1>
+<h1>Psychological therapies services</h1>
 {% endblock %}
 
 {% block content %}
-<div class="results">
-  <p class="local-header--title--question">
-  {% if resultsLength === 0 %}
-    There are no services available for '{{ gpname }}'.
-  {% elif resultsLength === 1 %}
-    1 service is available for '{{ gpname }}'.
-  {% else %}
-    {{ results.length }} services are available for '{{ gpname }}'.
-  {% endif %}
-  </p>
+<p class="nhsuk-body-l">
+{% if resultsLength === 0 %}
+  There are no services available for '{{ gpname }}'.
+{% elif resultsLength === 1 %}
+  1 service is available for '{{ gpname }}'.
+{% else %}
+<span class="results__count">{{ results.length }}</span> services are available for '{{ gpname }}'.
+{% endif %}
+</p>
 
-  {% if resultsLength > 0 %}
-  <div class="grid-row">
-    <ol class="results">
-      {% for result in results %}
-        <li class="results__item results__item--nearby" data-index="{{ loop.index }}">
-          <div class="results__details results__details--nearby">
-            {% include "includes/iapt-result-item.nunjucks" %}
-          </div>
-          <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
-        </li>
-      {% endfor %}
-    </ol>
-  </div>
-  {% else %}
-    <p class="no-results">No results</p>
-  {% endif %}
-  <p><a class="link-back" href="{{ siteRoot }}/results?type=gp&query={{ gpquery | urlencode }}">Back</a></p>
+{% if resultsLength > 0 %}
+<div>
+  <ol class="inline-list">
+    {% for result in results %}
+      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}">
+        <div>
+          {% include "includes/iapt-result-item.nunjucks" %}
+        </div>
+        <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
+      </li>
+    {% endfor %}
+  </ol>
 </div>
+{% else %}
+  <p class="no-results">No results</p>
+{% endif %}
+{% endblock %}
+
+{% block back %}
+{% set href = siteRoot + "/results?type=gp&query=" + gpquery | urlencode %}
+{{ linkBack(href) }}
 {% endblock %}

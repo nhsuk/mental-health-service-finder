@@ -3,12 +3,12 @@
 {% block pageTitle %}Page not found{% endblock %}
 
 {% block header %}
-<h1 class="local-header--title--question">Page not found</h1>
+<h1>Page not found</h1>
+<div class="nhsuk-reading-width">
+<p class="nhsuk-body-l nhsuk-page-intro">If you have entered a web address check it was correct. You can <a href="https://www.nhs.uk/">browse from the NHS.UK home page</a>.</p>
+</div>
 {% endblock %}
 
-{% block content %}
-  <div class="reading-width">
-    <p>If you have entered a web address check it was correct. You can <a href="https://www.nhs.uk/">browse from the NHS.UK home page</a>.</p>
-    <p><a href="javascript:history.go(-1)" class="link-back">Back</a></p>
-  </div>
+{% block back %}
+{{ linkBack() }}
 {% endblock %}
