@@ -1,3 +1,3 @@
-0.1.0 / TBC
+0.1.0 / 2018-07-10
 ==================
-- Initial application architecture
+- Initial release
