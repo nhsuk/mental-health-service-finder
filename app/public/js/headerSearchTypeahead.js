@@ -1,7 +1,10 @@
 var NHSUK = NHSUK || {};
 
 NHSUK.typeahead =
-(function ($) {
+(function (global) {
+  'use strict'
+  var $ = global.jQuery;
+
   var maxResultCount = 10,
           hideLinkId = 'hide-link',
          suggestHost = 'nhs.funnelback.co.uk'
@@ -140,7 +143,7 @@ NHSUK.typeahead =
   return {
     init: init
   };
-}(jQuery));
+}(window));
 
 $(function(){
   NHSUK.typeahead.init();

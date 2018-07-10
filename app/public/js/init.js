@@ -1,5 +1,7 @@
-// Require all modules needed for the application
+// Require all modules neeeded for the application
 require('./analytics');
 require('./cookieMessage');
+require('./headerMobileMenuToggle');
+require('./headerMobileSearchToggle');
+require('./headerSearchTypeahead');
 require('./skiplinkFocus');
-require('./typeahead');
