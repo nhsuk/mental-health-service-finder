@@ -1,12 +1,10 @@
 module.exports = {
   directives: {
-    childSrc: [
-      '*.hotjar.com',
-    ],
     connectSrc: [
       '\'self\'',
       'nhs.funnelback.co.uk',
       '*.hotjar.com:*',
+      '*.google-analytics.com',
     ],
     defaultSrc: [
       '\'self\'',
@@ -39,6 +37,9 @@ module.exports = {
       '\'self\'',
       '\'unsafe-inline\'',
       '*.nhs.uk',
+    ],
+    workerSrc: [
+      '*.hotjar.com',
     ],
   },
 };
