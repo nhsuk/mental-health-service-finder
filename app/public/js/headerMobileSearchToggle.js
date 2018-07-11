@@ -1,39 +1,41 @@
-(function(global) {
-  'use strict'
-  var document = global.document;
+((global) => {
+  const document = global.document;
 
-  var searchToggle = {
-    searchToggleButton: document.querySelector('.search-toggle__button'),
-    searchClose: document.querySelector('.search-close'),
-    search: document.querySelector('.search-container'),
-    menuSearchContainer: document.querySelector('.nhsuk-global-header__menusearch'),
-    doToggle: function(e) {
+  const searchToggle = {
+    doToggle: (e) => {
       e.preventDefault();
 
-      if (this.searchToggleButton.hasAttribute("aria-expanded")) {
-        this.searchToggleButton.removeAttribute("aria-expanded")
+      if (searchToggle.searchToggleButton.hasAttribute('aria-expanded')) {
+        searchToggle.searchToggleButton.removeAttribute('aria-expanded');
       } else {
-        this.searchToggleButton.setAttribute("aria-expanded", "true")
+        searchToggle.searchToggleButton.setAttribute('aria-expanded', 'true');
       }
 
       function toggleClass(ele, class1) {
-        var classes = ele.className;
-        var regex = new RegExp('\\b' + ' ' + class1 + '\\b');
-        var hasOne = classes.match(regex);
+        const classes = ele.className;
+        const regex = new RegExp(`\\b ${class1}\\b`);
+        const hasOne = classes.match(regex);
+        // eslint-disable-next-line no-param-reassign
         class1 = class1.replace(/\s+/g, '');
         if (hasOne) {
+          // eslint-disable-next-line no-param-reassign
           ele.className = classes.replace(regex, '');
         } else {
-          ele.className = classes + ' ' + class1;
+          // eslint-disable-next-line no-param-reassign
+          ele.className = `${classes} ${class1}`;
         }
       }
 
-      toggleClass(this.searchToggleButton, 'active');
-      toggleClass(this.search, 'js-show');
-      toggleClass(this.menuSearchContainer, 'js-show');
-    }
+      toggleClass(searchToggle.searchToggleButton, 'active');
+      toggleClass(searchToggle.search, 'js-show');
+      toggleClass(searchToggle.menuSearchContainer, 'js-show');
+    },
+    menuSearchContainer: document.querySelector('.nhsuk-global-header__menusearch'),
+    search: document.querySelector('.search-container'),
+    searchClose: document.querySelector('.search-close'),
+    searchToggleButton: document.querySelector('.search-toggle__button'),
   };
 
-  searchToggle.searchToggleButton.addEventListener('click', function(e) { searchToggle.doToggle(e); });
-  searchToggle.searchClose.addEventListener('click', function(e) { searchToggle.doToggle(e); });
+  searchToggle.searchToggleButton.addEventListener('click', (e) => { searchToggle.doToggle(e); });
+  searchToggle.searchClose.addEventListener('click', (e) => { searchToggle.doToggle(e); });
 })(window);

@@ -1,0 +1,10 @@
+{
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "$": true,
+    "Bloodhound": true,
+    "jQuery": true
+  }
+}

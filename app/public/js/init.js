@@ -4,4 +4,3 @@ require('./cookieMessage');
 require('./headerMobileMenuToggle');
 require('./headerMobileSearchToggle');
 require('./headerSearchTypeahead');
-require('./skiplinkFocus');
