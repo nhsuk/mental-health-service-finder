@@ -5,6 +5,7 @@
   "globals": {
     "$": true,
     "Bloodhound": true,
-    "jQuery": true
+    "jQuery": true,
+    "Webtrends": true
   }
 }
