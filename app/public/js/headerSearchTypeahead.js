@@ -1,14 +1,12 @@
 // eslint-disable-next-line no-use-before-define
 const NHSUK = NHSUK || {};
 
-NHSUK.typeahead = ((global) => {
+NHSUK.headerSearchTypeahead = ((global) => {
   const $ = global.jQuery;
   const maxResultCount = 10;
-  const suggestHost = 'nhs.funnelback.co.uk';
   const searchField = '#q';
-  const searchHost = 'www.nhs.uk';
-  const searchUrl = `https://${searchHost}/search?collection=nhs-meta`;
-  const suggestUrl = `https://${suggestHost}/s/suggest.json?collection=nhs-meta&partial_query=%QUERY&sort=0&fmt=json++&profile=&show=${maxResultCount}`;
+  const searchUrl = 'https://www.nhs.uk/search?collection=nhs-meta';
+  const suggestUrl = `https://nhs.funnelback.co.uk/s/suggest.json?collection=nhs-meta&partial_query=%QUERY&sort=0&fmt=json++&profile=&show=${maxResultCount}`;
   const suggestions = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('disp'),
     limit: maxResultCount,
@@ -131,7 +129,7 @@ NHSUK.typeahead = ((global) => {
 })(window);
 
 $(() => {
-  NHSUK.typeahead.init();
+  NHSUK.headerSearchTypeahead.init();
   // hide the extra input field created by typeahead to screen readers
   $('.c-search__input--shadow').attr('aria-hidden', 'true').addClass('visually-hidden');
   $('.c-search__input.tt-input').attr('role', 'textbox');
