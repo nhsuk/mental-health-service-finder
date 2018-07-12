@@ -69,11 +69,9 @@ NHSUK.queryTypeahead = ((global) => {
         notFound: '<li class="c-search-menu__nosuggestions">No suggestions</li>',
         suggestion: (data) => {
           const svg = '<svg class="nhsuk-icon nhsuk-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"/><image class="nhsuk-icon__search nhsuk-icon__search--fallback" src="/images/icons/icon-search-blue-20px.png" xlink:href=""></svg>';
-          const val = $(searchField).typeahead('val');
           const query = encodeURIComponent(data.CCG[0]);
-          const gpquery = encodeURIComponent(val);
           const gpname = encodeURIComponent(data.OrganisationName);
-          return `<li>${svg}<a href="${searchUrl}&query=${query}&gpquery=${gpquery}&gpname=${gpname}">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
+          return `<li>${svg}<a href="${searchUrl}&query=${query}&gpquery=${gpname}&gpname=${gpname}">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
         },
       },
     })
