@@ -4,26 +4,24 @@ const NHSUK = NHSUK || {};
 NHSUK.queryTypeahead = ((global) => {
   const $ = global.jQuery;
   const maxResultCount = 10;
-  const suggestHost = 'nhsukpoc.search.windows.net';
   const searchField = '#query';
-  const searchUrl = './results?type=iapt';
-  // TODO: These values need to come from environment variables
+  // TODO: Ideally these values will come from environment variables
   const apiVersion = '2016-09-01';
   const apiKey = '6CD985F76D7DA1E384CF0699A576ECFE';
   const indexName = 'organisationlookup3-index';
+  const suggestHost = 'nhsukpoc.search.windows.net';
   const suggesterName = 'orgname-suggester';
+  const searchUrl = './results?type=iapt';
   const suggestUrl = `https://${suggestHost}/indexes/${indexName}/docs/suggest?api-version=${apiVersion}`;
+
   const suggestions = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('disp'),
     limit: maxResultCount,
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: {
       prepare: (query, settings) => {
-        console.log(`Query: ${query}.`);
         const data = {
           filter: 'OrganisationTypeID eq \'GPB\'',
-          highlightPostTag: '</span>',
-          highlightPreTag: '<span class="highlight">',
           search: query,
           searchFields: 'OrganisationName,City,Postcode',
           select: 'OrganisationName,City,Postcode,CCG',
@@ -40,11 +38,7 @@ NHSUK.queryTypeahead = ((global) => {
         /* eslint-enable no-param-reassign */
         return settings;
       },
-      transform: (response) => {
-        console.log('TRANSFORM');
-        console.log(response);
-        return response.value;
-      },
+      transform: response => response.value,
       url: suggestUrl,
     },
   });
@@ -56,17 +50,18 @@ NHSUK.queryTypeahead = ((global) => {
       classNames: {
         cursor: 'c-search-menu__item--selected',
         dataset: 'c-search-menu__results',
-        highlight: '',
+        highlight: 'highlight',
         hint: 'c-search__input--shadow',
         menu: 'c-search-menu',
         selectable: 'c-search-menu__item--selectable',
         suggestion: 'c-search-menu__item',
       },
       highlight: true,
+      hint: false,
       minLength: 2,
     },
     {
-      display: 'disp',
+      display: data => data.OrganisationName,
       limit: maxResultCount,
       name: '-suggestions',
       source: suggestions,
@@ -74,49 +69,12 @@ NHSUK.queryTypeahead = ((global) => {
         header: '<li class="c-search-menu__prepend">Search suggestions</li>',
         notFound: '<li class="c-search-menu__nosuggestions">No suggestions</li>',
         suggestion: (data) => {
-          console.log('SUGGESTION');
-          console.log(data);
-          return data;
-          // let displayitem = '';
-          // switch (data.disp_t) {
-          //   case 'J':
-          //     $.each(data.disp, (key, value) => {
-          //       displayitem += (key, value);
-          //       displayitem += ' ';
-          //     });
-          //     break;
-
-          //   default:
-
-          //     if (data.disp.length > 36) {
-          //       displayitem = `${data.disp.substring(0, 36)}...`;
-          //     } else {
-          //       displayitem = data.disp;
-          //     }
-          //     break;
-          // }
-
-          // const svg = '<svg class="nhsuk-icon nhsuk-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"/><image class="nhsuk-icon__search nhsuk-icon__search--fallback" src="/images/icons/icon-search-blue-20px.png" xlink:href=""></svg>';
-
-          // switch (data.action_t) {
-          //   case 'Q':
-          //     displayitem = `<li>${svg}<a href="${searchUrl}&query=${data.action}">${displayitem}</a></li>`;
-          //     break;
-          //   case 'E':
-          //     displayitem = `<li>${svg}<a href="${searchUrl}&query=${data.key}&${data.action}">${displayitem}</a></li>`;
-          //     break;
-          //   case 'U':
-          //     displayitem = `<li>${svg}<a href="${data.action}">${displayitem}</a></li>`;
-          //     break;
-          //   case 'C':
-          //     displayitem = `<li>${svg}<a href="#" onClick="${data.action}">${displayitem}</a></li>`;
-          //     break;
-          //   default:
-          //     displayitem = `<li>${svg}<a href="${searchUrl}&query=${data.disp}">${displayitem}</a></li>`;
-          //     break;
-          // }
-
-          // return displayitem;
+          const svg = '<svg class="nhsuk-icon nhsuk-icon__search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"/><image class="nhsuk-icon__search nhsuk-icon__search--fallback" src="/images/icons/icon-search-blue-20px.png" xlink:href=""></svg>';
+          const val = $(searchField).typeahead('val');
+          const query = encodeURIComponent(data.CCG[0]);
+          const gpquery = encodeURIComponent(val);
+          const gpname = encodeURIComponent(data.OrganisationName);
+          return `<li>${svg}<a href="${searchUrl}&query=${query}&gpquery=${gpquery}&gpname=${gpname}">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
         },
       },
     })
@@ -132,21 +90,18 @@ NHSUK.queryTypeahead = ((global) => {
         }
       })
       .bind('typeahead:render', () => {
+        const $searchField = $(searchField);
         $('.c-search-menu__results').wrapInner('<ul class="c-search-menu__list"></ul>');
-        $('.c-search-menu__list').css('width', $('.c-search__container').width());
-        $('.c-search__input').addClass('c-search__input--dropdown');
-        $('.c-search__submit').addClass('c-search__submit--dropdown');
-        $('.c-search-menu').insertAfter($('.nhsuk-global-header__search'));
+        $('.c-search-menu__list').css('width', $searchField.outerWidth());
+        $('.c-search-menu').insertAfter($searchField);
 
-        // calculate where to position the dropdown from the top and left
-        const headerheight = $('.nhsuk-global-header__menusearch').height();
-        const headerheightmargin = parseInt($('.nhsuk-global-header__search').css('margin-bottom'), 10);
-        const topoffset = headerheight - headerheightmargin;
-        const position = $('.search-container').position();
-
+        // Position drop down under input
+        const fieldHeight = $searchField.outerHeight();
+        const bottom = parseInt($searchField.css('margin-bottom'), 10);
+        const position = $searchField.position();
         $('.c-search-menu').css({
           left: position.left,
-          top: topoffset,
+          top: position.top + bottom + fieldHeight,
         });
       })
       .bind('typeahead:close', () => {
