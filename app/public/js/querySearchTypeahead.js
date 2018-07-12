@@ -15,7 +15,7 @@ NHSUK.queryTypeahead = ((global) => {
   const suggestUrl = `https://${suggestHost}/indexes/${indexName}/docs/suggest?api-version=${apiVersion}`;
 
   const suggestions = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('disp'),
+    datumTokenizer: Bloodhound.tokenizers.whitespace,
     limit: maxResultCount,
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: {
@@ -57,7 +57,6 @@ NHSUK.queryTypeahead = ((global) => {
         suggestion: 'c-search-menu__item',
       },
       highlight: true,
-      hint: false,
       minLength: 2,
     },
     {
