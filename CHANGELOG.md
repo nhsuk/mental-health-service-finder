@@ -1,6 +1,7 @@
 0.2.0 / TBD
 ==================
 - Add typeahead for GP search
+- Encode queries for back links
 
 0.1.1 / 2018-07-10
 ==================
