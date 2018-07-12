@@ -1,3 +1,7 @@
+0.2.0 / TBD
+==================
+- Add typeahead for GP search
+
 0.1.1 / 2018-07-10
 ==================
 - Rename frontends for consistency
