@@ -22,7 +22,7 @@ describe('Search page', () => {
     });
 
     it('has a link to the next page', () => {
-      expect($('.button').val()).to.equal('Find your GP surgery');
+      expect($('.button').val()).to.equal('Find');
       expect($('.form').prop('action')).to.equal(`${constants.siteRoot}${routes.results.path}`);
       expect($('.form input[name=type]').val().toUpperCase()).to.equal(`${constants.types.GP}`);
     });
