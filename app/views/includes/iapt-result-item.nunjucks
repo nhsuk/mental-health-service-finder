@@ -13,7 +13,7 @@
 {% endif %}
 
 {% if result.selfReferral %}
-  <p class="results__self_referral"><a class="button" role="button" href="{{ result.selfReferral }}">Refer yourself online</a></p>
+<p class="results__self_referral"><a class="button" role="button" href="{{ result.selfReferral }}">Refer yourself online<span class="visually-hidden"> to {{ result.OrganisationName }}</span></a></p>
   {% else %}
   <p class="results__no_self_referral">Online referrals not available</p>
 {% endif %}
