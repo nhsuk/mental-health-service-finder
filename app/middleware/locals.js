@@ -12,5 +12,6 @@ module.exports = config => (req, res, next) => {
   res.locals.query = req.query.query;
   res.locals.gpquery = req.query.gpquery;
   res.locals.gpname = req.query.gpname;
+  res.locals.origin = req.query.origin;
   next();
 };

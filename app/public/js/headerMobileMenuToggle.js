@@ -1,38 +1,39 @@
-(function(global) {
-  'use strict'
-  var document = global.document;
+((global) => {
+  const document = global.document;
 
-  var menuToggle = {
-    menuToggleButton: document.querySelector('.menu-toggle__button'),
-    menuClose: document.querySelector('.c-nav-primary__close-link'),
-    nav: document.querySelector('.c-nav-primary'),
-
-    doToggle: function(e) {
+  const menuToggle = {
+    doToggle: (e) => {
       e.preventDefault();
 
-      if (this.menuToggleButton.hasAttribute("aria-expanded")) {
-        this.menuToggleButton.removeAttribute("aria-expanded")
+      if (menuToggle.menuToggleButton.hasAttribute('aria-expanded')) {
+        menuToggle.menuToggleButton.removeAttribute('aria-expanded');
       } else {
-        this.menuToggleButton.setAttribute("aria-expanded", "true")
+        menuToggle.menuToggleButton.setAttribute('aria-expanded', 'true');
       }
 
       function toggleClass(ele, class1) {
-        var classes = ele.className;
-        var regex = new RegExp('\\b' + ' ' + class1 + '\\b');
-        var hasOne = classes.match(regex);
+        const classes = ele.className;
+        const regex = new RegExp(`\\b ${class1}\\b`);
+        const hasOne = classes.match(regex);
+        // eslint-disable-next-line no-param-reassign
         class1 = class1.replace(/\s+/g, '');
         if (hasOne) {
+          // eslint-disable-next-line no-param-reassign
           ele.className = classes.replace(regex, '');
         } else {
-          ele.className = classes + ' ' + class1;
+          // eslint-disable-next-line no-param-reassign
+          ele.className = `${classes} ${class1}`;
         }
       }
 
-      toggleClass(this.menuToggleButton, 'active');
-      toggleClass(this.nav, 'js-show');
-    }
+      toggleClass(menuToggle.menuToggleButton, 'active');
+      toggleClass(menuToggle.nav, 'js-show');
+    },
+    menuClose: document.querySelector('.c-nav-primary__close-link'),
+    menuToggleButton: document.querySelector('.menu-toggle__button'),
+    nav: document.querySelector('.c-nav-primary'),
   };
 
-  menuToggle.menuToggleButton.addEventListener('click', function(e) { menuToggle.doToggle(e); });
-  menuToggle.menuClose.addEventListener('click', function(e) { menuToggle.doToggle(e); });
+  menuToggle.menuToggleButton.addEventListener('click', (e) => { menuToggle.doToggle(e); });
+  menuToggle.menuClose.addEventListener('click', (e) => { menuToggle.doToggle(e); });
 })(window);

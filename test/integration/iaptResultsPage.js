@@ -39,7 +39,7 @@ describe('IAPT results page', () => {
         iExpect.htmlWithStatus(response, 200);
       });
 
-      it('has a back link to the start page', () => {
+      it('has a back link to the GP results page', () => {
         iExpect.backLinkContent($, `${constants.siteRoot}${routes.results.path}?type=gp&query=${gpQuery}`);
       });
 
@@ -102,9 +102,24 @@ describe('IAPT results page', () => {
         expect(noSelfReferral.length).to.equal(1);
         expect(noSelfReferral.text()).to.equal('Online referrals not available');
       });
+    });
 
-      it('should display a metric referring to the waiting time for first session', () => {
-        // TODO: When the data is coming through test where the href is for...
+    describe('request directly from typeahead', () => {
+      const gpName = 'gpName';
+      const query = 'zero results';
+      before('make request', async () => {
+        const body = createBody(constants.types.IAPT, query);
+
+        nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
+
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}&gpquery=${gpName}&gpname=${gpName}&origin=search`);
+        $ = cheerio.load(response.text);
+        iExpect.htmlWithStatus(response, 200);
+        expect($('.results__item').length).to.equal(0);
+      });
+
+      it('has a back link to the search page', () => {
+        iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${gpName}`);
       });
     });
 
@@ -160,10 +175,6 @@ describe('IAPT results page', () => {
       const $ = cheerio.load(response.text);
 
       expect($('.no-results').text()).to.equal('No results');
-    });
-
-    it('should display \'please enter something to search by\' page when no input is given', async () => {
-      // This be dealt with by the search page
     });
   });
 

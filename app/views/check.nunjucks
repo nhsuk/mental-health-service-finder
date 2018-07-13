@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block content %}
-<h3>You'll have an assessment</h3>
+<h2 class="nhsuk-heading-m">You'll have an assessment</h2>
 <p>Someone from the psychological therapies service will get in touch, usually in 1-2 weeks. They'll ask about the problems you're having.</p>
-<h3>The service will recommend a therapy for you</h3>
+<h2 class="nhsuk-heading-m">The service will recommend a therapy for you</h2>
 <p>The therapy will depend on what problems you're experiencing and how severe they are.</p>
 <p>They will also tell you how long you'll wait for your first therapy session.</p>
 

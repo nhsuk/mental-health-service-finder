@@ -23,7 +23,8 @@ describe('GP results page', () => {
     describe('basic, happy path', () => {
       let $;
       let response;
-      const query = 'ls1';
+      const query = 'ls1 & extra';
+      const encodedQuery = encodeURIComponent(query);
       const resultCount = 10;
 
       before('make request', async () => {
@@ -31,13 +32,13 @@ describe('GP results page', () => {
 
         nockRequests.withResponseBody(path, body, 200, 'search/multiSearchTermResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${encodedQuery}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
       });
 
       it('has a back link to the start page with the previously entered query', () => {
-        expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}?query=${query}`);
+        expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`);
       });
 
       it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
@@ -99,7 +100,7 @@ describe('GP results page', () => {
         const highlights = $('.highlight');
         expect(highlights.length).is.equal(10);
         highlights.each((i, elem) => {
-          expect($(elem).text()).to.match(new RegExp(query, 'i'));
+          expect($(elem).text()).to.match(new RegExp(query.split(' ')[0], 'i'));
         });
       });
     });
@@ -131,14 +132,15 @@ describe('GP results page', () => {
   });
 
   describe('no results', () => {
-    const query = 'noresults';
+    const query = 'this & that';
+    const encodedQuery = encodeURIComponent(query);
     let $;
 
     before('make request', async () => {
       const body = createBody(constants.types.GP, query);
       nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${encodedQuery}`);
       iExpect.htmlWithStatus(response, 200);
       $ = cheerio.load(response.text);
     });
@@ -148,8 +150,8 @@ describe('GP results page', () => {
         .to.equal(`Sorry, we couldn't find any GP surgeries matching '${query}'`);
     });
 
-    it('has a back link to the start page with the previously entered query', () => {
-      iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${query}`);
+    it('has an encoded back link to the start page with the previously entered query', () => {
+      iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`);
     });
   });
 

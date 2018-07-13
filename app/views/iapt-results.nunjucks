@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<p class="nhsuk-body-l">
+<p class="nhsuk-body-l" role="text">
 {% if resultsLength === 0 %}
   There are no services available for '{{ gpname }}'.
 {% elif resultsLength === 1 %}
@@ -35,7 +35,11 @@
 {% endif %}
 {% endblock %}
 
-{% block back %}
+{% if origin === 'search' %}
+{% set href = siteRoot + "/search?query=" + gpquery | urlencode %}
+{% else %}
 {% set href = siteRoot + "/results?type=gp&query=" + gpquery | urlencode %}
+{% endif %}
+{% block back %}
 {{ linkBack(href) }}
 {% endblock %}

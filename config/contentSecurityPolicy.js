@@ -2,9 +2,10 @@ module.exports = {
   directives: {
     connectSrc: [
       '\'self\'',
-      'nhs.funnelback.co.uk',
       '*.hotjar.com:*',
       '*.google-analytics.com',
+      'nhs.funnelback.co.uk',
+      'nhsukpoc.search.windows.net',
     ],
     defaultSrc: [
       '\'self\'',
@@ -12,6 +13,9 @@ module.exports = {
     fontSrc: [
       '\'self\'',
       '*.nhs.uk',
+      '*.hotjar.com',
+    ],
+    frameSrc: [
       '*.hotjar.com',
     ],
     imgSrc: [

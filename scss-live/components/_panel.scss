@@ -3,12 +3,9 @@
 .nhsuk-c-panel {
   @include top-and-bottom();
   background: white;
-  margin: 56px 0;
+  margin: 20px 0;
   padding: 24px;
   position:relative;
-  @include mq($until: tablet) {
-    margin: 40px 0;
-  }
   &.nhsuk-c-panel--mute {
     background: rgba(white,0.75);
   }

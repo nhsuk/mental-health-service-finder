@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<p class="nhsuk-body-l">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ cleanQuery }}'</span>.</p>
+<p class="nhsuk-body-l" role="text">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ cleanQuery }}'</span>.</p>
 
 <p>If your surgery is not here, check your spelling and <a href="{{ siteRoot }}/search">search again</a>.</p>
 
@@ -24,6 +24,6 @@
 {% endblock %}
 
 {% block back %}
-{% set href = siteRoot + "/search?query=" + cleanQuery %}
+{% set href = siteRoot + "/search?query=" + cleanQuery | urlencode %}
 {{ linkBack(href) }}
 {% endblock %}
