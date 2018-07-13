@@ -1,4 +1,4 @@
-<h2 class="results__name nhsuk-heading-m" role="text">{{ result.organisationNameHighlight | safe }}</h2>
+<h2 class="results__name nhsuk-heading-m"><span role="text">{{ result.organisationNameHighlight | safe }}</span></h2>
 
 {% if result.fullAddress %}
   <p class="results__address" role="text">{{ result.fullAddress | safe }}</p>
@@ -6,5 +6,5 @@
 
 <p><a class="results__gp__selection" href="{{ siteRoot }}/results?type=iapt&query={{ result.CCG[0] }}&gpquery={{ cleanQuery | urlencode }}&gpname={{ result.OrganisationName | urlencode }}">
   <span class="visually-hidden">{{ result.OrganisationName }}</span>
-  <span class="aria-hidden">This</span> is my GP</a>
+  <span aria-hidden="true">This</span> is my GP</a>
 </p>
