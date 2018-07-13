@@ -1,4 +1,4 @@
-<h3 class="results__name">{{ result.OrganisationName }}</h3>
+<h2 class="results__name nhsuk-heading-m">{{ result.OrganisationName }}</h2>
 
 {% if result.website %}
   <p class="results__website"><a href="{{ result.website }}">{{ result.website }}</a></p>
