@@ -179,7 +179,7 @@ form {
    Error styling
 */
 .error {
-  margin-right: 15px;
+  margin: 0 15px 20px 0;
   border-left: 4px solid $red;
   padding-left: 10px;
   > .form-control {
