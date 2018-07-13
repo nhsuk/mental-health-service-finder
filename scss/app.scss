@@ -254,6 +254,10 @@ form {
   background-color: $yellow-50;
 }
 
+.results__item {
+  border-top: 2px solid $border-grey;
+}
+
 .results__name {
   margin: 0;
 }
