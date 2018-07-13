@@ -2,6 +2,8 @@
 ==================
 - Add typeahead for GP search
 - Encode queries for back links
+- Improve accessibility
+- Content and design tweaks
 
 0.1.1 / 2018-07-10
 ==================
