@@ -35,7 +35,11 @@
 {% endif %}
 {% endblock %}
 
-{% block back %}
+{% if origin === 'search' %}
+{% set href = siteRoot + "/search?query=" + gpquery | urlencode %}
+{% else %}
 {% set href = siteRoot + "/results?type=gp&query=" + gpquery | urlencode %}
+{% endif %}
+{% block back %}
 {{ linkBack(href) }}
 {% endblock %}

@@ -70,7 +70,7 @@ NHSUK.queryTypeahead = ((global) => {
         suggestion: (data) => {
           const query = encodeURIComponent(data.CCG[0]);
           const gpname = encodeURIComponent(data.OrganisationName);
-          return `<li><a href="${searchUrl}&query=${query}&gpquery=${gpname}&gpname=${gpname}">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
+          return `<li><a href="${searchUrl}&query=${query}&gpquery=${gpname}&gpname=${gpname}&origin=search">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
         },
       },
     })
