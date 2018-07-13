@@ -460,7 +460,7 @@ $alpha: .5;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 10px 15px 18px;
-  position: absolute;
+  position: relative !important; // sass-lint:disable-line no-important
   z-index: 1;
 }
 

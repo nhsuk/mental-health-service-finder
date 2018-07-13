@@ -119,10 +119,13 @@ form {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
+    .c-search-menu {
+      position: relative !important; // sass-lint:disable-line no-important
+      top: -20px !important; // sass-lint:disable-line no-important
     @include mq($until: tablet) {
-      .c-search-menu {
         left: 0 !important;
-        margin-top: -20px;
+        margin: -20px 0 20px 0;
+        top: 0 !important; // sass-lint:disable-line no-important
       }
     }
   }

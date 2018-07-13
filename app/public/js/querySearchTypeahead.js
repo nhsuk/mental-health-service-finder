@@ -90,15 +90,6 @@ NHSUK.queryTypeahead = ((global) => {
         $('.c-search-menu__results').wrapInner('<ul class="c-search-menu__list"></ul>');
         $('.c-search-menu__list').css('width', $searchField.outerWidth());
         $('.c-search-menu').insertAfter($searchField);
-
-        // Position drop down under input
-        const fieldHeight = $searchField.outerHeight();
-        const bottom = parseInt($searchField.css('margin-bottom'), 10);
-        const position = $searchField.position();
-        $('.c-search-menu').css({
-          left: position.left,
-          top: position.top + bottom + fieldHeight,
-        });
       })
       .bind('typeahead:close', () => {
         $('.c-search__input').removeClass('c-search__input--dropdown');
