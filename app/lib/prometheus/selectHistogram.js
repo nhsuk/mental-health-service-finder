@@ -10,7 +10,7 @@ function search(type) {
       return histograms.iaptSearch;
     }
     default: {
-      throw new Error(`Unable to create Prometheus histogram for unknown type: ${type}`);
+      throw new Error(`Unable to create Prometheus Histogram for unknown type: ${type}`);
     }
   }
 }

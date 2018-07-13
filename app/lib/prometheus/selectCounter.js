@@ -10,7 +10,7 @@ function searchErrors(type) {
       return counters.iaptSearchErrors;
     }
     default: {
-      throw new Error(`Unable to create Prometheus counter for unknown type: ${type}`);
+      throw new Error(`Unable to create Prometheus Counter for unknown type: ${type}`);
     }
   }
 }
