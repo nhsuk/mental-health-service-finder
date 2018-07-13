@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block content %}
-<p class="nhsuk-body-l">
+<p class="nhsuk-body-l" role="text">
 {% if resultsLength === 0 %}
   There are no services available for '{{ gpname }}'.
 {% elif resultsLength === 1 %}
