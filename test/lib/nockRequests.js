@@ -12,6 +12,11 @@ function createNock(path, body) {
     .query({ 'api-version': config.api.version });
 }
 
+function withError(path, body, error) {
+  createNock(path, body)
+    .replyWithError(error);
+}
+
 function withNoResponseBody(path, body, statusCode) {
   createNock(path, body)
     .reply(statusCode);
@@ -23,6 +28,7 @@ function withResponseBody(path, body, statusCode, responsePath) {
 }
 
 module.exports = {
+  withError,
   withNoResponseBody,
   withResponseBody,
 };

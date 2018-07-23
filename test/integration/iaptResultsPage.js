@@ -222,5 +222,16 @@ describe('IAPT results page', () => {
 
       iExpect.errorPageContent(response);
     });
+
+    it('should display an error page when an error is returned from the API', async () => {
+      const query = 'error';
+      const body = createBody(constants.types.IAPT, query);
+      const error = { message: 'something went wrong' };
+
+      nockRequests.withError(path, body, error);
+
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      iExpect.errorPageContent(response);
+    });
   });
 });
