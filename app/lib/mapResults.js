@@ -17,7 +17,7 @@ function processResults(input, type) {
         break;
       }
       default: {
-        break;
+        throw new VError(`Unable to process results for unknown type: ${type}`);
       }
     }
 

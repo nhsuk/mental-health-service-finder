@@ -1,6 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}Page not found{% endblock %}
+{% block pageTitle %}Page not found - {% endblock %}
 
 {% block header %}
 <h1>Page not found</h1>

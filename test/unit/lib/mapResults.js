@@ -26,6 +26,13 @@ describe('mapResults', () => {
       });
     });
 
+    describe('unknown type', () => {
+      it('should throw VError', () => {
+        const unknownType = 'unknown';
+        expect(() => mapResults('[]', unknownType)).to.throw(VError, `Unable to process results for unknown type: ${unknownType}`);
+      });
+    });
+
     describe('with invalid input', () => {
       it('should throw VError when the input is invalid JSON', () => {
         const invalidJson = 'invalid JSON';

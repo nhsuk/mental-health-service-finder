@@ -23,6 +23,6 @@
   <li>one-to-one</li>
 </ul>
 
-<p><a href="{{ siteRoot }}/check" class="button start-button start_button_tracking" role="button">Find help</a></p>
+<p><a href="{{ siteRoot }}/check" class="button start-button start_button_tracking">Find help</a></p>
 {% include "includes/urgent-help-callout.nunjucks" %}
 {% endblock %}

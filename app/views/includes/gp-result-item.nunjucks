@@ -1,4 +1,4 @@
-<h2 class="results__name nhsuk-heading-m"><span role="text">{{ result.organisationNameHighlight | safe }}</span></h2>
+<h3 class="results__name"><span role="text">{{ result.organisationNameHighlight | safe }}</span></h3>
 
 {% if result.fullAddress %}
   <p class="results__address" role="text">{{ result.fullAddress | safe }}</p>

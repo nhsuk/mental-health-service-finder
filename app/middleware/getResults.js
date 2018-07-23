@@ -1,7 +1,7 @@
 const request = require('request');
+const VError = require('verror');
 
 const buildOptions = require('../lib/requests/buildOptions');
-const errorCounter = require('../lib/prometheus/selectCounter').searchErrors;
 const log = require('../lib/logger');
 const mapResults = require('../lib/mapResults');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;
@@ -33,20 +33,17 @@ function getResults(req, res, next) {
               res.render(`${type.toLowerCase()}-results`);
             }
           } catch (err) {
-            next(err);
+            next(new VError(err, 'Problem processing results'));
           }
           break;
         }
         default: {
-          next('error');
+          next(new VError(error, `Unprocessable status code: '${statusCode}' returned from API`));
           break;
         }
       }
     } else {
-      errorCounter(type).inc(1);
-      // eslint-disable-next-line no-param-reassign
-      error.msg = `${type}-error`;
-      next(error);
+      next(new VError(error, `Error returned from API for query of: '${query}' and type of: '${type}'`));
     }
   });
 }
