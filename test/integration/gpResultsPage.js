@@ -227,7 +227,7 @@ describe('GP results page', () => {
 
       const $ = cheerio.load(response.text);
 
-      expect($('.error-summary').text().trim()).to.equal('Please enter a surgery or street name to find your GP surgery.');
+      expect($('.error-message').text().trim()).to.equal('Please enter a surgery or street name to find your GP surgery.');
     });
 
     it('should display an error message when the query only consists of white space', async () => {
@@ -238,7 +238,7 @@ describe('GP results page', () => {
 
       const $ = cheerio.load(response.text);
 
-      expect($('.error-summary').text().trim()).to.equal('Please enter a surgery or street name to find your GP surgery.');
+      expect($('.error-message').text().trim()).to.equal('Please enter a surgery or street name to find your GP surgery.');
     });
   });
 });

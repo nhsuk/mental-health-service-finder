@@ -6,7 +6,7 @@
 
 {% block content %}
 {% if errorMessage %}
-<div class="error-summary">
+<div class="error-message" role="alert">
   <h2>{% if errorMessage %} {{ errorMessage }} {% endif %}</h2>
 </div>
 {% endif %}
