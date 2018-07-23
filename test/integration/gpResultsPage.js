@@ -219,6 +219,8 @@ describe('GP results page', () => {
   });
 
   describe('undesirable queries', () => {
+    const errorMessage = 'Please enter a surgery or street name to find your GP surgery.';
+
     it('should display an error message when no query is entered', async () => {
       const query = '';
 
@@ -227,7 +229,8 @@ describe('GP results page', () => {
 
       const $ = cheerio.load(response.text);
 
-      expect($('.error-message').text().trim()).to.equal('Please enter a surgery or street name to find your GP surgery.');
+      expect($('.error-message').text().trim()).to.equal(errorMessage);
+      expect($('head title').text()).to.equal(`${errorMessage} - Find IAPT services - NHS.UK`);
     });
 
     it('should display an error message when the query only consists of white space', async () => {
@@ -238,7 +241,8 @@ describe('GP results page', () => {
 
       const $ = cheerio.load(response.text);
 
-      expect($('.error-message').text().trim()).to.equal('Please enter a surgery or street name to find your GP surgery.');
+      expect($('.error-message').text().trim()).to.equal(errorMessage);
+      expect($('head title').text()).to.equal(`${errorMessage} - Find IAPT services - NHS.UK`);
     });
   });
 });
