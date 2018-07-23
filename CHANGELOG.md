@@ -4,6 +4,8 @@
 - Encode queries for back links
 - Improve accessibility
 - Content and design tweaks
+- Increase test coverage
+- Extend CSP for Hotjar
 
 0.1.1 / 2018-07-10
 ==================
