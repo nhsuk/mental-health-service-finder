@@ -1,3 +1,5 @@
+const VError = require('verror');
+
 const histograms = require('./histograms');
 const types = require('../constants').types;
 
@@ -10,7 +12,7 @@ function search(type) {
       return histograms.iaptSearch;
     }
     default: {
-      throw new Error(`Unable to create Prometheus Histogram for unknown type: ${type}`);
+      throw new VError(`Unable to create Prometheus Histogram for unknown type: ${type}`);
     }
   }
 }

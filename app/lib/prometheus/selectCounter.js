@@ -1,3 +1,5 @@
+const VError = require('verror');
+
 const constants = require('../constants');
 const counters = require('./counters');
 
@@ -10,7 +12,7 @@ function searchErrors(type) {
       return counters.iaptSearchErrors;
     }
     default: {
-      throw new Error(`Unable to create Prometheus Counter for unknown type: ${type}`);
+      throw new VError(`Unable to create Prometheus Counter for unknown type: ${type}`);
     }
   }
 }

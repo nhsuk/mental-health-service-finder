@@ -1,4 +1,5 @@
 const chai = require('chai');
+const VError = require('verror');
 
 const Counter = require('../../../../app/lib/prometheus/bundle').promClient.Counter;
 const selectCounter = require('../../../../app/lib/prometheus/selectCounter');
@@ -25,7 +26,7 @@ describe('selectCounter', () => {
     it('should throw an Error when the type isn\'t recognised', () => {
       const unknownType = 'unknown';
       expect(() => selectCounter.searchErrors(unknownType))
-        .to.throw(Error, `Unable to create Prometheus Counter for unknown type: ${unknownType}`);
+        .to.throw(VError, `Unable to create Prometheus Counter for unknown type: ${unknownType}`);
     });
   });
 

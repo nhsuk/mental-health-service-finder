@@ -1,4 +1,5 @@
 const chai = require('chai');
+const VError = require('verror');
 
 const config = require('../../../../config/config');
 const constants = require('../../../../app/lib/constants');
@@ -113,6 +114,13 @@ describe('buildOptions', () => {
       it('should return the suggest URL', () => {
         expect(options.url).to.equal(`${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`);
       });
+    });
+  });
+
+  describe('unknown type', () => {
+    it('should throw VError', () => {
+      const unknownType = 'unknown';
+      expect(() => buildOptions(unknownType, null)).to.throw(VError, `Unable to build options for unknown type: ${unknownType}`);
     });
   });
 });

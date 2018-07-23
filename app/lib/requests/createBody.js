@@ -1,3 +1,5 @@
+const VError = require('verror');
+
 const constants = require('../constants');
 const log = require('../logger');
 
@@ -32,7 +34,7 @@ function createBody(type, query) {
     }
     default: {
       log.error(`Unable to create body for uknown type: ${type} with query: ${query}`);
-      throw new Error(`Unable to create body for unknown type: ${type}`);
+      throw new VError(`Unable to create body for unknown type: ${type}`);
     }
   }
 }

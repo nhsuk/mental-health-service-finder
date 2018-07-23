@@ -1,3 +1,5 @@
+const VError = require('verror');
+
 const config = require('../../../config/config');
 const constants = require('../constants');
 const createBody = require('./createBody');
@@ -34,7 +36,7 @@ function buildOptions(type, query) {
     }
     default: {
       log.error(`Unable to build options for uknown type: ${type} with query: ${query}`);
-      throw new Error(`Unable to build options for unknown type: ${type}`);
+      throw new VError(`Unable to build options for unknown type: ${type}`);
     }
   }
 }

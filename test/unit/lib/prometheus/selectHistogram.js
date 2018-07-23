@@ -1,4 +1,5 @@
 const chai = require('chai');
+const VError = require('verror');
 
 const Histogram = require('../../../../app/lib/prometheus/bundle').promClient.Histogram;
 const selectHistogram = require('../../../../app/lib/prometheus/selectHistogram');
@@ -25,7 +26,7 @@ describe('selectHistogram', () => {
     it('should throw an Error when the type isn\'t recognised', () => {
       const unknownType = 'unknown';
       expect(() => selectHistogram.search(unknownType))
-        .to.throw(Error, `Unable to create Prometheus Histogram for unknown type: ${unknownType}`);
+        .to.throw(VError, `Unable to create Prometheus Histogram for unknown type: ${unknownType}`);
     });
   });
 });
