@@ -7,6 +7,7 @@
 - Increase test coverage
 - Extend CSP for Hotjar
 - Do not use `role="button"` for links
+- Break long terms to prevent overflow
 
 0.1.1 / 2018-07-10
 ==================

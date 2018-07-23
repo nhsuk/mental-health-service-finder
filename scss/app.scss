@@ -4,7 +4,9 @@ $grey: #E8EDEE;
 $border-grey: #BAC4C8;
 
 body {
-  background-color:$grey;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  background-color: $grey;
   header {
     background-color: $white;
   }
