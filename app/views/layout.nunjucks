@@ -18,7 +18,7 @@
     <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size. -->
     <link rel="icon" href="{{ assetsUrl }}/images/favicon.png">
 
-    <title>{% block pageTitle %}Find IAPT services{% endblock %} - NHS.UK</title>
+    <title>{% block pageTitle %}{% endblock %}Find IAPT services - NHS.UK</title>
 
     <meta property="og:image" content="{{ siteRoot }}/images/opengraph-image.png">
     <meta property="og:image:width" content="1200">

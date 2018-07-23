@@ -1,12 +1,14 @@
 {% extends 'layout.nunjucks' %}
 
+{% block pageTitle %}{% if errorMessage %}{{ errorMessage }} - {% endif %}{% endblock %}
+
 {% block header %}
 <h1>We need to know your GP surgery to get you to the right service</h1>
 {% endblock %}
 
 {% block content %}
 {% if errorMessage %}
-<div class="error-message" role="alert">
+<div class="error-message" id="error-message" role="alert">
   <h2>{% if errorMessage %} {{ errorMessage }} {% endif %}</h2>
 </div>
 {% endif %}
@@ -21,7 +23,7 @@
             <label class="nhsuk-heading-l" for="query">Tell us your GP surgery:</label>
           </div>
           <p>For example, surgery or street name</p>
-          <input autocomplete="off" type="text" class="form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+          <input aria-labelledby="query" autocomplete="off" type="text" class="form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
         </div>
         <div>
           <input type="submit" class="button" value="Find">
