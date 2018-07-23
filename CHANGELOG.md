@@ -6,6 +6,7 @@
 - Content and design tweaks
 - Increase test coverage
 - Extend CSP for Hotjar
+- Do not use `role="button"` for links
 
 0.1.1 / 2018-07-10
 ==================

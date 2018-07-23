@@ -11,7 +11,7 @@
 <p>The therapy will depend on what problems you're experiencing and how severe they are.</p>
 <p>They will also tell you how long you'll wait for your first therapy session.</p>
 
-<p><a href="{{ siteRoot }}/search" class="button start-button start_button_tracking" role="button">Next</a></p>
+<p><a href="{{ siteRoot }}/search" class="button start-button start_button_tracking">Next</a></p>
 {% endblock %}
 
 {% include "includes/urgent-help-callout.nunjucks" %}
