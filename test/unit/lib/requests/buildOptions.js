@@ -106,7 +106,7 @@ describe('buildOptions', () => {
       });
 
       it('should filter by \'CCG\'', () => {
-        expect(body.filter).to.equal(`ServiceCodesProvided/any(c:search.in(c,'SRV0339')) and OrganisationTypeID ne 'TRU' and RelatedCCGs/any(g: g eq '${query}')`);
+        expect(body.filter).to.equal(`ServiceCodesProvided/any(c:search.in(c,'SRV0339')) and OrganisationTypeID ne 'TRU' and RelatedIAPTCCGs/any(c: c eq '${query}')`);
       });
     });
 

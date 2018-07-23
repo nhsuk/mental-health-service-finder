@@ -3,6 +3,7 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 const URL = require('url').URL;
 
+const config = require('../../config/config');
 const constants = require('../../app/lib/constants');
 const createBody = require('../../app/lib/requests/createBody');
 const iExpect = require('../lib/expectations');
@@ -15,7 +16,7 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('GP results page', () => {
-  const organisationLookupIndex = 'organisationlookup3-index';
+  const organisationLookupIndex = config.api.indexes.orgLookup;
   const path = `/indexes/${organisationLookupIndex}/docs/search`;
   const type = constants.types.GP;
 
