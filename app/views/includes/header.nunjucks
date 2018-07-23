@@ -3,7 +3,7 @@
     <div class="nhsuk-o-width-container nhsuk-o-width-container--global-header">
       <div class="nhsuk-global-header__logo">
         <a href="/" class="global-header__link">
-          {% include "./nhs-logo.svg" %}
+          {{ nhsLogo('nhsuk-header__logo-title') }}
         </a>
       </div>
       <div class="nhsuk-global-header__menusearch ui-front">
