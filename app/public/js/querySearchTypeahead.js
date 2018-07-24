@@ -12,7 +12,7 @@ NHSUK.queryTypeahead = ((global) => {
   const indexName = 'organisationlookup3-index';
   const suggestHost = 'nhsukpoc.search.windows.net';
   const suggesterName = 'orgname-suggester';
-  const searchUrl = './results?type=iapt';
+  const resultsUrl = './results?type=iapt';
   const suggestUrl = `https://${suggestHost}/indexes/${indexName}/docs/suggest?api-version=${apiVersion}`;
 
   const suggestions = new Bloodhound({
@@ -44,6 +44,12 @@ NHSUK.queryTypeahead = ((global) => {
     },
   });
 
+  function generateIAPTResultsUrl(data) {
+    const ccgid = encodeURIComponent(data.CCG[0]);
+    const gpname = encodeURIComponent(data.OrganisationName);
+    return `${resultsUrl}&ccgid=${ccgid}&gpquery=${gpname}&gpname=${gpname}&origin=search`;
+  }
+
   function init() {
     suggestions.initialize();
 
@@ -69,9 +75,8 @@ NHSUK.queryTypeahead = ((global) => {
         header: '<li class="c-search-menu__prepend">Search suggestions</li>',
         notFound: '<li class="c-search-menu__nosuggestions">No suggestions</li>',
         suggestion: (data) => {
-          const query = encodeURIComponent(data.CCG[0]);
-          const gpname = encodeURIComponent(data.OrganisationName);
-          return `<li><a href="${searchUrl}&query=${query}&gpquery=${gpname}&gpname=${gpname}&origin=search">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
+          const link = generateIAPTResultsUrl(data);
+          return `<li><a href="${link}">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
         },
       },
     })
@@ -89,6 +94,12 @@ NHSUK.queryTypeahead = ((global) => {
         $(`${mainId} .c-search-menu__results`).wrapInner('<ul class="c-search-menu__list"></ul>');
         $(`${mainId} .c-search-menu__list`).css('width', $searchField.outerWidth());
         $(`${mainId} .c-search-menu`).insertAfter($searchField);
+      })
+      .bind('typeahead:select', (e, o) => {
+        $('#type').val('iapt');
+        $('#ccgid').val(o.CCG[0]);
+        $('#gpname').val(o.OrganisationName);
+        $('#gpquery').val(o.OrganisationName);
       });
   }
 
