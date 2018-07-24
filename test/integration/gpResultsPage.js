@@ -38,7 +38,11 @@ describe('GP results page', () => {
       });
 
       it('has a back link to the start page with the previously entered query', () => {
-        expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`);
+        iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`);
+      });
+
+      it('has a \'search again\' link to the start page with the previously entered query', () => {
+        iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`, 'search again', '.results__search__again');
       });
 
       it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
