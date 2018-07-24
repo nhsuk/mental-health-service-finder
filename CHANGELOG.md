@@ -1,3 +1,7 @@
+0.2.1 / TBD
+==================
+- Restrict scope of typeaheads
+
 0.2.0 / 2018-07-23
 ==================
 - Add typeahead for GP search

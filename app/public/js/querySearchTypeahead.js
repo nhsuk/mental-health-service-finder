@@ -3,6 +3,7 @@ const NHSUK = NHSUK || {};
 
 NHSUK.queryTypeahead = ((global) => {
   const $ = global.jQuery;
+  const mainId = '#main-content';
   const maxResultCount = 10;
   const searchField = '#query';
   // TODO: Ideally these values will come from environment variables
@@ -75,28 +76,19 @@ NHSUK.queryTypeahead = ((global) => {
       },
     })
       .bind('typeahead:open', () => {
-        const val = $(searchField).typeahead('val');
-        const value = $(searchField).attr('value');
+        const $searchField = $(searchField);
+        const val = $searchField.typeahead('val');
+        const value = $searchField.attr('value');
 
         if (val === value) {
-          $(searchField).typeahead('val', value);
-        }
-        if (val.toLowerCase() === 'enter a search term') {
-          $(searchField).typeahead('val', '');
+          $searchField.typeahead('val', value);
         }
       })
       .bind('typeahead:render', () => {
         const $searchField = $(searchField);
-        $('.c-search-menu__results').wrapInner('<ul class="c-search-menu__list"></ul>');
-        $('.c-search-menu__list').css('width', $searchField.outerWidth());
-        $('.c-search-menu').insertAfter($searchField);
-      })
-      .bind('typeahead:close', () => {
-        $('.c-search__input').removeClass('c-search__input--dropdown');
-        $('.c-search__submit').removeClass('c-search__submit--dropdown');
-      })
-      .bind('typeahead:idle', () => {
-        $('.c-search-menu__list').hide();
+        $(`${mainId} .c-search-menu__results`).wrapInner('<ul class="c-search-menu__list"></ul>');
+        $(`${mainId} .c-search-menu__list`).css('width', $searchField.outerWidth());
+        $(`${mainId} .c-search-menu`).insertAfter($searchField);
       });
   }
 
@@ -107,7 +99,8 @@ NHSUK.queryTypeahead = ((global) => {
 
 $(() => {
   NHSUK.queryTypeahead.init();
+  const mainId = '#main-content';
   // hide the extra input field created by typeahead to screen readers
-  $('.c-search__input--shadow').attr('aria-hidden', 'true').addClass('visually-hidden');
-  $('.c-search__input.tt-input').attr('role', 'textbox');
+  $(`${mainId} .c-search__input--shadow`).attr('aria-hidden', 'true').addClass('visually-hidden');
+  $(`${mainId} .c-search__input.tt-input`).attr('role', 'textbox');
 });
