@@ -4,6 +4,7 @@
 - Maintain search query for `search again` link back
 - Go to IAPT result page when GP has been selected from typeahead
 - Remove `no suggestions` display for zero typeahead results
+- Show 5 results in typeahead
 
 0.2.0 / 2018-07-23
 ==================

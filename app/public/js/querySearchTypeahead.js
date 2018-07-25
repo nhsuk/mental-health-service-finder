@@ -4,7 +4,7 @@ const NHSUK = NHSUK || {};
 NHSUK.queryTypeahead = ((global) => {
   const $ = global.jQuery;
   const mainId = '#main-content';
-  const maxResultCount = 10;
+  const maxResultCount = 5;
   const searchField = '#query';
   // TODO: Ideally these values will come from environment variables
   const apiVersion = '2016-09-01';
