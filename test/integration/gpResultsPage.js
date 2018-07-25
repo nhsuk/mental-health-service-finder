@@ -94,6 +94,10 @@ describe('GP results page', () => {
           const href = $(elem).find('.results__gp__selection').prop('href');
           const searchParams = new URL(`http://domain.dummy${href}`).searchParams;
           const gpName = $(elem).find('.results__name').text();
+          const ccgid = searchParams.get('ccgid');
+
+          expect(ccgid).is.not.null;
+          expect(parseInt(ccgid, 10)).is.a('number');
           expect(searchParams.get('type')).to.equal('iapt');
           expect(searchParams.get('gpquery')).to.equal(query);
           expect(searchParams.get('gpname')).to.equal(gpName);
