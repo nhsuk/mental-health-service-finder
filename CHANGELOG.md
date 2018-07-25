@@ -6,6 +6,7 @@
 - Remove `no suggestions` display for zero typeahead results
 - Show 5 results in typeahead
 - Do not search postcode in typeahead
+- Scroll input to top for smaller screen sizes
 
 0.2.0 / 2018-07-23
 ==================

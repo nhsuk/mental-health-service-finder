@@ -50,6 +50,13 @@ NHSUK.queryTypeahead = ((global) => {
     return `${resultsUrl}&ccgid=${ccgid}&gpquery=${gpname}&gpname=${gpname}&origin=search`;
   }
 
+  function scrollInputForNarrowView() {
+    if (global.innerWidth < 641) {
+      const top = $(`${mainId} .form-group`).offset().top;
+      global.scrollTo(0, top);
+    }
+  }
+
   function init() {
     suggestions.initialize();
 
@@ -79,6 +86,9 @@ NHSUK.queryTypeahead = ((global) => {
         },
       },
     })
+      .bind('typeahead:active', () => {
+        scrollInputForNarrowView();
+      })
       .bind('typeahead:open', () => {
         const $searchField = $(searchField);
         const val = $searchField.typeahead('val');
@@ -102,7 +112,7 @@ NHSUK.queryTypeahead = ((global) => {
         $('#gpname').val(data.OrganisationName);
         $('#gpquery').val(data.OrganisationName);
         $('#origin').val('search');
-        $('main form').submit();
+        $(`${mainId} form`).submit();
       });
   }
 
