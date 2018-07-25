@@ -96,11 +96,11 @@ NHSUK.queryTypeahead = ((global) => {
           $(`${mainId} .c-search-menu`).insertAfter($searchField);
         }
       })
-      .bind('typeahead:select', (e, o) => {
+      .bind('typeahead:select', (e, data) => {
         $('#type').val('iapt');
-        $('#ccgid').val(o.CCG[0]);
-        $('#gpname').val(o.OrganisationName);
-        $('#gpquery').val(o.OrganisationName);
+        $('#ccgid').val(data.CCG[0]);
+        $('#gpname').val(data.OrganisationName);
+        $('#gpquery').val(data.OrganisationName);
         $('#origin').val('search');
         $('main form').submit();
       });
