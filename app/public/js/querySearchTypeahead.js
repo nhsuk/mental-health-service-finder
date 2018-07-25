@@ -24,7 +24,7 @@ NHSUK.queryTypeahead = ((global) => {
         const data = {
           filter: 'OrganisationTypeID eq \'GPB\'',
           search: query,
-          searchFields: 'OrganisationName,City,Postcode',
+          searchFields: 'OrganisationName,City',
           select: 'OrganisationName,City,Postcode,CCG',
           suggesterName,
           top: maxResultCount,
