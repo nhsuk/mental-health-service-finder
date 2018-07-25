@@ -101,6 +101,7 @@ NHSUK.queryTypeahead = ((global) => {
         $('#gpname').val(o.OrganisationName);
         $('#gpquery').val(o.OrganisationName);
         $('#origin').val('search');
+        $('main form').submit();
       });
   }
 
