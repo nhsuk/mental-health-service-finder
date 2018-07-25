@@ -3,6 +3,7 @@
 - Restrict scope of typeaheads
 - Maintain search query for `search again` link back
 - Go to IAPT result page when GP has been selected from typeahead
+- Remove `no suggestions` display for zero typeahead results
 
 0.2.0 / 2018-07-23
 ==================

@@ -73,7 +73,6 @@ NHSUK.queryTypeahead = ((global) => {
       source: suggestions,
       templates: {
         header: '<li class="c-search-menu__prepend">Search suggestions</li>',
-        notFound: '<li class="c-search-menu__nosuggestions">No suggestions</li>',
         suggestion: (data) => {
           const link = generateIAPTResultsUrl(data);
           return `<li><a href="${link}">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
@@ -89,11 +88,13 @@ NHSUK.queryTypeahead = ((global) => {
           $searchField.typeahead('val', value);
         }
       })
-      .bind('typeahead:render', () => {
-        const $searchField = $(searchField);
-        $(`${mainId} .c-search-menu__results`).wrapInner('<ul class="c-search-menu__list"></ul>');
-        $(`${mainId} .c-search-menu__list`).css('width', $searchField.outerWidth());
-        $(`${mainId} .c-search-menu`).insertAfter($searchField);
+      .bind('typeahead:render', (e, data) => {
+        if (data.length) {
+          const $searchField = $(searchField);
+          $(`${mainId} .c-search-menu__results`).wrapInner('<ul class="c-search-menu__list"></ul>');
+          $(`${mainId} .c-search-menu__list`).css('width', $searchField.outerWidth());
+          $(`${mainId} .c-search-menu`).insertAfter($searchField);
+        }
       })
       .bind('typeahead:select', (e, o) => {
         $('#type').val('iapt');
