@@ -1,4 +1,4 @@
-const cleanQuery = require('../lib/cleanQuery');
+const cleanQuery = require('../lib/utils/cleanQuery');
 const emptyGPSearchCounter = require('../../app/lib/prometheus/selectCounter').emptyGPSearches;
 
 function validateRequest(req, res, next) {
