@@ -38,7 +38,11 @@ describe('GP results page', () => {
       });
 
       it('has a back link to the start page with the previously entered query', () => {
-        expect($('.link-back').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`);
+        iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`);
+      });
+
+      it('has a \'search again\' link to the start page with the previously entered query', () => {
+        iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`, 'search again', '.results__search__again');
       });
 
       it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
@@ -90,6 +94,10 @@ describe('GP results page', () => {
           const href = $(elem).find('.results__gp__selection').prop('href');
           const searchParams = new URL(`http://domain.dummy${href}`).searchParams;
           const gpName = $(elem).find('.results__name').text();
+          const ccgid = searchParams.get('ccgid');
+
+          expect(ccgid).is.not.null;
+          expect(parseInt(ccgid, 10)).is.a('number');
           expect(searchParams.get('type')).to.equal('iapt');
           expect(searchParams.get('gpquery')).to.equal(query);
           expect(searchParams.get('gpname')).to.equal(gpName);

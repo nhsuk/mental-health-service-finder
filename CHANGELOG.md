@@ -1,3 +1,9 @@
+0.2.1 / TBD
+==================
+- Restrict scope of typeaheads
+- Maintain search query for `search again` link back
+- Go to IAPT result page when GP has been selected from typeahead
+
 0.2.0 / 2018-07-23
 ==================
 - Add typeahead for GP search

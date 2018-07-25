@@ -16,9 +16,9 @@ function breadcrumbContent($) {
 }
 
 // eslint-disable-next-line no-script-url
-function backLinkContent($, href = 'javascript:history.go(-1)', text = 'Back') {
-  expect($('.link-back').prop('href')).to.equal(href);
-  expect($('.link-back').text()).to.equal(text);
+function backLinkContent($, href = 'javascript:history.go(-1)', text = 'Back', selector = '.link-back') {
+  expect($(selector).prop('href')).to.equal(href);
+  expect($(selector).text()).to.equal(text);
 }
 
 function checkPageContent($, h1, intro) {
