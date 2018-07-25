@@ -20,6 +20,7 @@
       <input type="hidden" id="gpquery" name="gpquery" value="" />
       <input type="hidden" id="gpname" name="gpname" value="" />
       <input type="hidden" id="ccgid" name="ccgid" value="" />
+      <input type="hidden" id="origin" name="origin" value="" />
       <div>
         <div class="form-group {% if errorMessage %}error{% endif %}">
           <div>

@@ -100,6 +100,7 @@ NHSUK.queryTypeahead = ((global) => {
         $('#ccgid').val(o.CCG[0]);
         $('#gpname').val(o.OrganisationName);
         $('#gpquery').val(o.OrganisationName);
+        $('#origin').val('search');
       });
   }
 
