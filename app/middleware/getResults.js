@@ -5,7 +5,6 @@ const buildOptions = require('../lib/requests/buildOptions');
 const log = require('../lib/logger');
 const mapResults = require('../lib/mapResults');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;
-const types = require('../lib/constants').types;
 
 function getResults(req, res, next) {
   const query = res.locals.cleanQuery;
@@ -26,12 +25,8 @@ function getResults(req, res, next) {
           try {
             const results = mapResults(body, type);
 
-            if (results.length === 0 && type === types.GP) {
-              res.render(`zero-${type.toLowerCase()}-results`);
-            } else {
-              res.locals.results = results;
-              res.render(`${type.toLowerCase()}-results`);
-            }
+            res.locals.results = results;
+            res.render(`${type.toLowerCase()}-results`);
           } catch (err) {
             next(new VError(err, 'Problem processing results'));
           }

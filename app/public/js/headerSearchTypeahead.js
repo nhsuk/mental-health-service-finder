@@ -2,6 +2,7 @@
 const NHSUK = NHSUK || {};
 
 NHSUK.headerSearchTypeahead = ((global) => {
+  const headerId = '#header';
   const $ = global.jQuery;
   const maxResultCount = 10;
   const searchField = '#q';
@@ -97,29 +98,26 @@ NHSUK.headerSearchTypeahead = ((global) => {
         }
       })
       .bind('typeahead:render', () => {
-        $('.c-search-menu__results').wrapInner('<ul class="c-search-menu__list"></ul>');
-        $('.c-search-menu__list').css('width', $('.c-search__container').width());
-        $('.c-search__input').addClass('c-search__input--dropdown');
-        $('.c-search__submit').addClass('c-search__submit--dropdown');
-        $('.c-search-menu').insertAfter($('.nhsuk-global-header__search'));
+        $(`${headerId} .c-search-menu__results`).wrapInner('<ul class="c-search-menu__list"></ul>');
+        $(`${headerId} .c-search-menu__list`).css('width', $('.c-search__container').width());
+        $(`${headerId} .c-search__input`).addClass('c-search__input--dropdown');
+        $(`${headerId} .c-search__submit`).addClass('c-search__submit--dropdown');
+        $(`${headerId} .c-search-menu`).insertAfter($('.nhsuk-global-header__search'));
 
         // calculate where to position the dropdown from the top and left
         const headerheight = $('.nhsuk-global-header__menusearch').height();
         const headerheightmargin = parseInt($('.nhsuk-global-header__search').css('margin-bottom'), 10);
         const topoffset = headerheight - headerheightmargin;
-        const position = $('.search-container').position();
+        const position = $(`${headerId} .search-container`).position();
 
-        $('.c-search-menu').css({
+        $(`${headerId} .c-search-menu`).css({
           left: position.left,
           top: topoffset,
         });
       })
       .bind('typeahead:close', () => {
-        $('.c-search__input').removeClass('c-search__input--dropdown');
-        $('.c-search__submit').removeClass('c-search__submit--dropdown');
-      })
-      .bind('typeahead:idle', () => {
-        $('.c-search-menu__list').hide();
+        $(`${headerId} .c-search__input`).removeClass('c-search__input--dropdown');
+        $(`${headerId} .c-search__submit`).removeClass('c-search__submit--dropdown');
       });
   }
 
@@ -130,7 +128,8 @@ NHSUK.headerSearchTypeahead = ((global) => {
 
 $(() => {
   NHSUK.headerSearchTypeahead.init();
+  const headerId = '#header';
   // hide the extra input field created by typeahead to screen readers
-  $('.c-search__input--shadow').attr('aria-hidden', 'true').addClass('visually-hidden');
-  $('.c-search__input.tt-input').attr('role', 'textbox');
+  $(`${headerId} .c-search__input--shadow`).attr('aria-hidden', 'true').addClass('visually-hidden');
+  $(`${headerId} .c-search__input.tt-input`).attr('role', 'textbox');
 });

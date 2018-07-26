@@ -34,7 +34,7 @@ describe('IAPT results page', () => {
 
         nockRequests.withResponseBody(path, body, 200, 'search/threeResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}&gpquery=${gpQuery}&gpname=${gpname}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpquery=${gpQuery}&gpname=${gpname}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
       });
@@ -112,7 +112,7 @@ describe('IAPT results page', () => {
 
         nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}&gpquery=${gpName}&gpname=${gpName}&origin=search`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpquery=${gpName}&gpname=${gpName}&origin=search`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(0);
@@ -131,7 +131,7 @@ describe('IAPT results page', () => {
 
         nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}&gpname=${gpName}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpname=${gpName}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(0);
@@ -150,7 +150,7 @@ describe('IAPT results page', () => {
 
         nockRequests.withResponseBody(path, body, 200, 'search/oneResult.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}&gpname=${gpName}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpname=${gpName}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(1);
@@ -158,6 +158,10 @@ describe('IAPT results page', () => {
 
       it('should report number of services singularly', () => {
         expect($('.nhsuk-body-l').text().trim()).to.equal(`1 service is available for '${gpName}'.`);
+      });
+
+      it('has a meta tag for WebTrends', () => {
+        expect($('meta[name="WT.si_p"]').prop('content')).to.equal('IAPT Results');
       });
     });
   });
@@ -169,7 +173,7 @@ describe('IAPT results page', () => {
 
       nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}`);
       iExpect.htmlWithStatus(response, 200);
 
       const $ = cheerio.load(response.text);
@@ -185,7 +189,7 @@ describe('IAPT results page', () => {
 
       nockRequests.withResponseBody(path, body, 400, 'search/400.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}`);
 
       iExpect.errorPageContent(response);
     });
@@ -196,7 +200,7 @@ describe('IAPT results page', () => {
 
       nockRequests.withNoResponseBody(path, body, 403);
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}`);
 
       iExpect.errorPageContent(response);
     });
@@ -207,7 +211,7 @@ describe('IAPT results page', () => {
 
       nockRequests.withResponseBody(path, body, 404, 'search/404.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}`);
 
       iExpect.errorPageContent(response);
     });
@@ -218,7 +222,7 @@ describe('IAPT results page', () => {
 
       nockRequests.withResponseBody(path, body, 415, 'search/415.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}`);
 
       iExpect.errorPageContent(response);
     });
@@ -230,7 +234,7 @@ describe('IAPT results page', () => {
 
       nockRequests.withError(path, body, error);
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}`);
       iExpect.errorPageContent(response);
     });
   });

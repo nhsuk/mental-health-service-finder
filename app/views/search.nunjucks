@@ -2,6 +2,10 @@
 
 {% block pageTitle %}{% if errorMessage %}{{ errorMessage }} - {% endif %}{% endblock %}
 
+{% block wtMeta %}
+<meta name="WT.si_p" content="GP Search">
+{% endblock %}
+
 {% block header %}
 <h1>We need to know your GP surgery to get you to the right service</h1>
 {% endblock %}
@@ -16,7 +20,11 @@
 <div class="nhsuk-app__search">
   <div class="search-container">
     <form method="get" class="form" action="{{ siteRoot }}/results">
-      <input type="hidden" name="type" value="gp" />
+      <input type="hidden" id="type" name="type" value="gp" />
+      <input type="hidden" id="gpquery" name="gpquery" value="" />
+      <input type="hidden" id="gpname" name="gpname" value="" />
+      <input type="hidden" id="ccgid" name="ccgid" value="" />
+      <input type="hidden" id="origin" name="origin" value="" />
       <div>
         <div class="form-group {% if errorMessage %}error{% endif %}">
           <div>

@@ -1,4 +1,4 @@
-{% from "includes/macro-nhs-logo.svg" import nhsLogo %}
+{% from "includes/macros/nhs-logo.svg" import nhsLogo %}
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
@@ -24,7 +24,8 @@
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
 
-    <meta name="WT.si_n" content="IAPTServiceFinder">
+    <meta name="WT.si_n" content="Mental Health Pilot">
+    {% block wtMeta %}{% endblock %}
 
     <!--[if gt IE 8]><!--><link href="{{ siteRoot }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css"><!--<![endif]-->
     <!--[if IE 6]><link href="{{ siteRoot }}/nhsukie6.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
@@ -84,7 +85,7 @@
           <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
             <div class="nhsuk-reading-width">
               <div class="nhsuk-page-content">
-                {% from "includes/macro-link-back.nunjucks" import linkBack %}
+                {% from "includes/macros/link-back.nunjucks" import linkBack %}
                 {% block content %}{% endblock %}
                 {% block back %}{% endblock %}
               </div>

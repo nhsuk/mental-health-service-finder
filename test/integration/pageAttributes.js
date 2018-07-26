@@ -13,8 +13,6 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Page attributes', () => {
-  delete routes.results;
-
   Object.keys(routes).forEach(async (route) => {
     const path = routes[route].path;
 
@@ -30,17 +28,21 @@ describe('Page attributes', () => {
       });
 
       describe('titles', () => {
-        it('should be \'Find IAPT services - NHS.UK\'', () => {
-          expect($('head title').text()).to.equal('Find IAPT services - NHS.UK');
-        });
+        if (path !== routes.results.path) {
+          it('should be \'Find IAPT services - NHS.UK\'', () => {
+            expect($('head title').text()).to.equal('Find IAPT services - NHS.UK');
+          });
+        }
       });
 
       describe('h1s', () => {
-        it('should be correct', () => {
-          const pageTitle = routes[route].title;
+        if (path !== routes.results.path) {
+          it('should be correct', () => {
+            const pageTitle = routes[route].title;
 
-          expect($('h1').text()).to.equal(pageTitle);
-        });
+            expect($('h1').text()).to.equal(pageTitle);
+          });
+        }
       });
 
       describe('meta tags', () => {
@@ -51,6 +53,16 @@ describe('Page attributes', () => {
         } else {
           it('should include a robots nofollow directive for the \'start\' page', () => {
             expect($('meta[name=robots]').prop('content')).to.equal('nofollow');
+          });
+        }
+
+        it('should have a meta tag for WebTrends', () => {
+          expect($('meta[name="WT.si_n"]').prop('content')).to.equal('Mental Health Pilot');
+        });
+
+        if (path === routes.start.path || path === routes.check.path) {
+          it('should have a meta tag for WebTrends', () => {
+            expect($('meta[name="WT.si_p"]').prop('content')).to.equal('Content Page');
           });
         }
       });

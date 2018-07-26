@@ -1,7 +1,11 @@
 {% extends 'layout.nunjucks' %}
 
 {% block robots %}
-  <meta name='robots' content='nofollow'>
+<meta name='robots' content='nofollow'>
+{% endblock %}
+
+{% block wtMeta %}
+<meta name="WT.si_p" content="Content Page">
 {% endblock %}
 
 {% block header %}

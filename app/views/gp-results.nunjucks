@@ -1,13 +1,23 @@
 {% extends 'layout.nunjucks' %}
+{% set href = siteRoot + "/search?query=" + cleanQuery | urlencode %}
+
+{% block wtMeta %}
+<meta name="WT.si_p" content="GP Search Results">
+{% endblock %}
 
 {% block header %}
+{% if results.length > 1 %}
 <h1>Select your GP to see available services</h1>
+{% else %}
+<h1>Sorry, we couldn't find any GP surgeries matching '{{ cleanQuery }}'</h1>
+{% endif %}
 {% endblock %}
 
 {% block content %}
+{% if results.length > 1 %}
 <h2 class="nhsuk-body-l" role="text">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ cleanQuery }}'</span>.</h2>
 
-<p>If your surgery is not here, check your spelling and <a href="{{ siteRoot }}/search">search again</a>.</p>
+<p>If your surgery is not here, check your spelling and <a class="results__search__again" href="{{ href }}">search again</a>.</p>
 
 <div>
   <ol class="inline-list">
@@ -21,9 +31,15 @@
     {% endfor %}
   </ol>
 </div>
+{% else %}
+<p>Please try:</p>
+  <ul>
+    <li>searching again using different search terms</li>
+    <li>checking your spelling</li>
+  </ul>
+{% endif %}
 {% endblock %}
 
 {% block back %}
-{% set href = siteRoot + "/search?query=" + cleanQuery | urlencode %}
 {{ linkBack(href) }}
 {% endblock %}

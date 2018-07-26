@@ -1,6 +1,6 @@
 const chai = require('chai');
 
-const cleanQuery = require('../../../app/lib/cleanQuery');
+const cleanQuery = require('../../../app/lib/utils/cleanQuery');
 
 const expect = chai.expect;
 

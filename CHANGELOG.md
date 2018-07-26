@@ -1,3 +1,14 @@
+0.2.1 / TBD
+==================
+- Restrict scope of typeaheads
+- Maintain search query for `search again` link back
+- Go to IAPT result page when GP has been selected from typeahead
+- Remove `no suggestions` display for zero typeahead results
+- Show 5 results in typeahead
+- Do not search postcode in typeahead
+- Scroll input to top for smaller screen sizes
+- Add Meta tags for WebTrends
+
 0.2.0 / 2018-07-23
 ==================
 - Add typeahead for GP search

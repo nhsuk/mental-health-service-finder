@@ -3,7 +3,8 @@ const NHSUK = NHSUK || {};
 
 NHSUK.queryTypeahead = ((global) => {
   const $ = global.jQuery;
-  const maxResultCount = 10;
+  const mainId = '#main-content';
+  const maxResultCount = 5;
   const searchField = '#query';
   // TODO: Ideally these values will come from environment variables
   const apiVersion = '2016-09-01';
@@ -11,7 +12,7 @@ NHSUK.queryTypeahead = ((global) => {
   const indexName = 'organisationlookup3-index';
   const suggestHost = 'nhsukpoc.search.windows.net';
   const suggesterName = 'orgname-suggester';
-  const searchUrl = './results?type=iapt';
+  const resultsUrl = './results?type=iapt';
   const suggestUrl = `https://${suggestHost}/indexes/${indexName}/docs/suggest?api-version=${apiVersion}`;
 
   const suggestions = new Bloodhound({
@@ -23,7 +24,7 @@ NHSUK.queryTypeahead = ((global) => {
         const data = {
           filter: 'OrganisationTypeID eq \'GPB\'',
           search: query,
-          searchFields: 'OrganisationName,City,Postcode',
+          searchFields: 'OrganisationName,City',
           select: 'OrganisationName,City,Postcode,CCG',
           suggesterName,
           top: maxResultCount,
@@ -43,7 +44,34 @@ NHSUK.queryTypeahead = ((global) => {
     },
   });
 
+  function generateIAPTResultsUrl(data) {
+    const ccgid = encodeURIComponent(data.CCG[0]);
+    const gpname = encodeURIComponent(data.OrganisationName);
+    return `${resultsUrl}&ccgid=${ccgid}&gpquery=${gpname}&gpname=${gpname}&origin=search`;
+  }
+
+  function scrollInputForNarrowView() {
+    if (global.innerWidth < 641) {
+      const top = $(`${mainId} .form-group`).offset().top;
+      global.scrollTo(0, top);
+    }
+  }
+
+  function resetQueryFields() {
+    $('#type').val('gp');
+    $('#ccgid').val();
+    $('#gpname').val();
+    $('#gpquery').val();
+    $('#origin').val();
+  }
+
+  function hideSecondInputForScreenReaders() {
+    $(`${mainId} .c-search__input--shadow`).attr('aria-hidden', 'true').addClass('visually-hidden');
+    $(`${mainId} .c-search__input.tt-input`).attr('role', 'textbox');
+  }
+
   function init() {
+    resetQueryFields();
     suggestions.initialize();
 
     $(searchField).typeahead({
@@ -66,38 +94,42 @@ NHSUK.queryTypeahead = ((global) => {
       source: suggestions,
       templates: {
         header: '<li class="c-search-menu__prepend">Search suggestions</li>',
-        notFound: '<li class="c-search-menu__nosuggestions">No suggestions</li>',
         suggestion: (data) => {
-          const query = encodeURIComponent(data.CCG[0]);
-          const gpname = encodeURIComponent(data.OrganisationName);
-          return `<li><a href="${searchUrl}&query=${query}&gpquery=${gpname}&gpname=${gpname}&origin=search">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
+          const link = generateIAPTResultsUrl(data);
+          return `<li><a href="${link}">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
         },
       },
     })
+      .bind('typeahead:active', () => {
+        scrollInputForNarrowView();
+      })
       .bind('typeahead:open', () => {
-        const val = $(searchField).typeahead('val');
-        const value = $(searchField).attr('value');
+        const $searchField = $(searchField);
+        const val = $searchField.typeahead('val');
+        const value = $searchField.attr('value');
 
         if (val === value) {
-          $(searchField).typeahead('val', value);
-        }
-        if (val.toLowerCase() === 'enter a search term') {
-          $(searchField).typeahead('val', '');
+          $searchField.typeahead('val', value);
         }
       })
-      .bind('typeahead:render', () => {
-        const $searchField = $(searchField);
-        $('.c-search-menu__results').wrapInner('<ul class="c-search-menu__list"></ul>');
-        $('.c-search-menu__list').css('width', $searchField.outerWidth());
-        $('.c-search-menu').insertAfter($searchField);
+      .bind('typeahead:render', (e, data) => {
+        if (data.length) {
+          const $searchField = $(searchField);
+          $(`${mainId} .c-search-menu__results`).wrapInner('<ul class="c-search-menu__list"></ul>');
+          $(`${mainId} .c-search-menu__list`).css('width', $searchField.outerWidth());
+          $(`${mainId} .c-search-menu`).insertAfter($searchField);
+        }
       })
-      .bind('typeahead:close', () => {
-        $('.c-search__input').removeClass('c-search__input--dropdown');
-        $('.c-search__submit').removeClass('c-search__submit--dropdown');
-      })
-      .bind('typeahead:idle', () => {
-        $('.c-search-menu__list').hide();
+      .bind('typeahead:select', (e, data) => {
+        $('#type').val('iapt');
+        $('#ccgid').val(data.CCG[0]);
+        $('#gpname').val(data.OrganisationName);
+        $('#gpquery').val(data.OrganisationName);
+        $('#origin').val('search');
+        $(`${mainId} form`).submit();
       });
+
+    hideSecondInputForScreenReaders();
   }
 
   return {
@@ -107,7 +139,4 @@ NHSUK.queryTypeahead = ((global) => {
 
 $(() => {
   NHSUK.queryTypeahead.init();
-  // hide the extra input field created by typeahead to screen readers
-  $('.c-search__input--shadow').attr('aria-hidden', 'true').addClass('visually-hidden');
-  $('.c-search__input.tt-input').attr('role', 'textbox');
 });
