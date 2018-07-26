@@ -32,6 +32,11 @@
           </div>
           <p>For example, surgery or street name</p>
           <input aria-labelledby="query" autocomplete="off" autocorrect="off" auotcapitalize="off" spellcheck="off" type="text" class="form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+          <details style="margin-top:0; margin-bottom:40px;">
+            <summary style="text-decoration: underline; color: #005eb8;">Does my GP need to know?</summary>
+            <p>The service will only tell your GP with your permission.</p>
+            <p>The only time they will contact your GP without your permission is if they believe you are at risk harming yourself or other people.</p>
+          </details>
         </div>
         <div>
           <input type="submit" class="button button__search" value="Find">
