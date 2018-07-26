@@ -20,7 +20,7 @@ function forGPSearch(query) {
 
 function forIAPTSearch(query) {
   return {
-    filter: `ServiceCodesProvided/any(c:search.in(c,'SRV0339')) and OrganisationTypeID ne 'TRU' and RelatedIAPTCCGs/any(c: c eq '${query}')`,
+    filter: `ServiceCodesProvided/any(c:search.in(c, '${constants.IAPTServiceCode}')) and OrganisationTypeID ne 'TRU' and RelatedIAPTCCGs/any(c: c eq '${query}')`,
   };
 }
 

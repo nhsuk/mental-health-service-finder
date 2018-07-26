@@ -1,4 +1,5 @@
 module.exports = {
+  IAPTServiceCode: 'SRV0339',
   assetsUrl: 'https://assets.nhs.uk',
   contactMethodTypes: ['Email', 'Telephone', 'Website'],
   metrics: {
