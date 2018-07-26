@@ -32,10 +32,12 @@
           </div>
           <p class="u-mt-1">For example, surgery or street name</p>
           <input aria-labelledby="query" autocomplete="off" autocorrect="off" auotcapitalize="off" spellcheck="off" type="text" class="form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-          <details style="margin-top:0; margin-bottom:40px;">
-            <summary style="text-decoration: underline; color: #005eb8;">Does my GP need to know?</summary>
-            <p>The service will only tell your GP with your permission.</p>
-            <p>The only time they will contact your GP without your permission is if they believe you are at risk harming yourself or other people.</p>
+          <details class="c-reveal__details u-mt-0 u-mb-5" role="group" >
+            <summary class="c-reveal__summary" aria-expanded="false" tabindex="0" aria-controls="reveal-1" role="button"><p class="c-reveal__header">Does my GP need to know?</p></summary>
+            <div class="c-reveal__content" id="reveal-1" aria-hidden="true">
+              <p>The service will only tell your GP with your permission.</p>
+              <p>The only time they will contact your GP without your permission is if they believe you are at risk harming yourself or other people.</p>
+            </div>
           </details>
         </div>
         <div>
