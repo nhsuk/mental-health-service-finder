@@ -9,18 +9,20 @@
 {% endblock %}
 
 {% block content %}
-<h2 class="nhsuk-heading-m">You'll have an assessment</h2>
+<h2 class="nhsuk-heading-m">You will be offered an assessment</h2>
 <p>Someone from the psychological therapies service will get in touch, usually in 1-2 weeks. They'll ask about the problems you're having.</p>
 <h2 class="nhsuk-heading-m">The service will recommend a therapy for you</h2>
 <p>The therapy will depend on what problems you're experiencing and how severe they are.</p>
 <p>They will also tell you how long you'll wait for your first therapy session.</p>
 
-<p><a href="{{ siteRoot }}/search" class="button button__check">Next</a></p>
+<h2 class="nhsuk-heading-m">Psychological therapies are offered in different ways</h2>
+<p>For example, using a self-help workbook, as an online course, one to one or in a group.</p>
+<p><a href="{{ siteRoot }}/search" class="button start-button start_button_tracking">Next</a></p>
 {% endblock %}
 
-{% include "includes/urgent-help-callout.nunjucks" %}
 
 {% block back %}
 {% set href = siteRoot + "/" %}
 {{ linkBack(href) }}
+{% include "includes/urgent-help-callout.nunjucks" %}
 {% endblock %}
