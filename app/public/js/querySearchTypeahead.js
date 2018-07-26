@@ -57,7 +57,21 @@ NHSUK.queryTypeahead = ((global) => {
     }
   }
 
+  function resetQueryFields() {
+    $('#type').val('gp');
+    $('#ccgid').val();
+    $('#gpname').val();
+    $('#gpquery').val();
+    $('#origin').val();
+  }
+
+  function hideSecondInputForScreenReaders() {
+    $(`${mainId} .c-search__input--shadow`).attr('aria-hidden', 'true').addClass('visually-hidden');
+    $(`${mainId} .c-search__input.tt-input`).attr('role', 'textbox');
+  }
+
   function init() {
+    resetQueryFields();
     suggestions.initialize();
 
     $(searchField).typeahead({
@@ -114,6 +128,8 @@ NHSUK.queryTypeahead = ((global) => {
         $('#origin').val('search');
         $(`${mainId} form`).submit();
       });
+
+    hideSecondInputForScreenReaders();
   }
 
   return {
@@ -123,8 +139,4 @@ NHSUK.queryTypeahead = ((global) => {
 
 $(() => {
   NHSUK.queryTypeahead.init();
-  const mainId = '#main-content';
-  // hide the extra input field created by typeahead to screen readers
-  $(`${mainId} .c-search__input--shadow`).attr('aria-hidden', 'true').addClass('visually-hidden');
-  $(`${mainId} .c-search__input.tt-input`).attr('role', 'textbox');
 });
