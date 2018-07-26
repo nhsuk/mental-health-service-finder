@@ -21,8 +21,8 @@ describe('Check page', () => {
   });
 
   it('has a link to the next page', () => {
-    expect($('.start-button').text()).to.equal('Next');
-    expect($('.start-button').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}`);
+    expect($('.button__check').text()).to.equal('Next');
+    expect($('.button__check').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}`);
   });
 
   it('has a back link to the start page', () => {

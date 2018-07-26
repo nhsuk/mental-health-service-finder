@@ -10,6 +10,7 @@
 - Add Meta tags for WebTrends
 - Turn off auto 'things' on input
 - Use new API
+- Add Tracking for WebTrends
 
 0.2.0 / 2018-07-23
 ==================
