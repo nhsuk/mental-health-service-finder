@@ -8,6 +8,8 @@
 - Do not search postcode in typeahead
 - Scroll input to top for smaller screen sizes
 - Add Meta tags for WebTrends
+- Turn off auto 'things' on input
+- Use new API
 
 0.2.0 / 2018-07-23
 ==================

@@ -31,7 +31,7 @@
             <label class="nhsuk-heading-l" for="query">Tell us your GP surgery:</label>
           </div>
           <p>For example, surgery or street name</p>
-          <input aria-labelledby="query" autocomplete="off" type="text" class="form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+          <input aria-labelledby="query" autocomplete="off" autocorrect="off" auotcapitalize="off" spellcheck="off" type="text" class="form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
         </div>
         <div>
           <input type="submit" class="button" value="Find">

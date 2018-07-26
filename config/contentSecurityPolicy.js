@@ -5,7 +5,7 @@ module.exports = {
       '*.hotjar.com:*',
       '*.google-analytics.com',
       'nhs.funnelback.co.uk',
-      'nhsukpoc.search.windows.net',
+      'nhsuk-searchapi-srch-int-ne.search.windows.net',
     ],
     defaultSrc: [
       '\'self\'',

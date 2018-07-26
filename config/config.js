@@ -11,10 +11,10 @@ module.exports = {
   api: {
     host: process.env.API_HOSTNAME,
     indexes: {
-      orgLookup: 'organisationlookup3-index',
+      orgLookup: 'organisationlookup',
     },
     key: process.env.API_KEY,
-    version: process.env.API_VERSION || '2016-09-01',
+    version: process.env.API_VERSION || '2017-11-11',
   },
   app: {
     env: process.env.NODE_ENV || 'development',

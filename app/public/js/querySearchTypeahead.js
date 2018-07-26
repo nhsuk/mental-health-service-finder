@@ -7,10 +7,10 @@ NHSUK.queryTypeahead = ((global) => {
   const maxResultCount = 5;
   const searchField = '#query';
   // TODO: Ideally these values will come from environment variables
-  const apiVersion = '2016-09-01';
-  const apiKey = '6CD985F76D7DA1E384CF0699A576ECFE';
-  const indexName = 'organisationlookup3-index';
-  const suggestHost = 'nhsukpoc.search.windows.net';
+  const apiVersion = '2017-11-11';
+  const apiKey = '908425F6B05A7045D5FB82659008E9DD';
+  const indexName = 'organisationlookup';
+  const suggestHost = 'nhsuk-searchapi-srch-int-ne.search.windows.net';
   const suggesterName = 'orgname-suggester';
   const resultsUrl = './results?type=iapt';
   const suggestUrl = `https://${suggestHost}/indexes/${indexName}/docs/suggest?api-version=${apiVersion}`;
