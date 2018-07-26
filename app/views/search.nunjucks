@@ -28,11 +28,22 @@
       <div>
         <div class="form-group {% if errorMessage %}error{% endif %}">
           <div>
-            <label class="nhsuk-heading-l" for="query">Tell us your GP surgery:</label>
+            <label class="nhsuk-heading-m" for="query">Tell us your GP surgery:</label>
           </div>
           <p>For example, surgery or street name</p>
           <input aria-labelledby="query" autocomplete="off" autocorrect="off" auotcapitalize="off" spellcheck="off" type="text" class="form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
         </div>
+
+
+        <details class="c-reveal__details" role="group" >
+          <summary class="details__summary" aria-expanded="false" tabindex="0" aria-controls="question-1" role="button">
+            <p class="c-reveal__header" style="font-weight: 400; text-decoration: underline;">Does my GP need to know?</p>
+          </summary>
+          <div class="c-reveal__content" id="question-1" aria-hidden="true">
+            <p>The service will only tell your GP with your permission.</p>
+            <p>The only time they will contact your GP without your permission is if they believe you are at risk harming yourself or other people.</p>
+          </div>
+        </details>
         <div>
           <input type="submit" class="button button__search" value="Find">
         </div>
@@ -40,6 +51,7 @@
     </form>
   </div>
 </div>
+
 {% endblock %}
 
 {% block back %}
