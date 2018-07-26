@@ -4,6 +4,10 @@
 <h1>What happens after you refer yourself</h1>
 {% endblock %}
 
+{% block wtMeta %}
+<meta name="WT.si_p" content="Content Page">
+{% endblock %}
+
 {% block content %}
 <h2 class="nhsuk-heading-m">You'll have an assessment</h2>
 <p>Someone from the psychological therapies service will get in touch, usually in 1-2 weeks. They'll ask about the problems you're having.</p>

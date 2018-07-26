@@ -2,6 +2,10 @@
 
 {% block pageTitle %}{% if errorMessage %}{{ errorMessage }} - {% endif %}{% endblock %}
 
+{% block wtMeta %}
+<meta name="WT.si_p" content="GP Search">
+{% endblock %}
+
 {% block header %}
 <h1>We need to know your GP surgery to get you to the right service</h1>
 {% endblock %}

@@ -159,6 +159,10 @@ describe('IAPT results page', () => {
       it('should report number of services singularly', () => {
         expect($('.nhsuk-body-l').text().trim()).to.equal(`1 service is available for '${gpName}'.`);
       });
+
+      it('has a meta tag for WebTrends', () => {
+        expect($('meta[name="WT.si_p"]').prop('content')).to.equal('IAPT Results');
+      });
     });
   });
 

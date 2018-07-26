@@ -12,7 +12,7 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Search page', () => {
-  describe('first time visit', () => {
+  describe('basic functionality', () => {
     let $;
 
     before('request page', async () => {
@@ -29,6 +29,10 @@ describe('Search page', () => {
 
     it('has a back link to the check page', () => {
       iExpect.backLinkContent($, `${constants.siteRoot}${routes.check.path}`);
+    });
+
+    it('has a meta tag for WebTrends', () => {
+      expect($('meta[name="WT.si_p"]').prop('content')).to.equal('GP Search');
     });
   });
 

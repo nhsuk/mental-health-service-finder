@@ -111,6 +111,10 @@ describe('GP results page', () => {
           expect($(elem).text()).to.match(new RegExp(query.split(' ')[0], 'i'));
         });
       });
+
+      it('has a meta tag for WebTrends', () => {
+        expect($('meta[name="WT.si_p"]').prop('content')).to.equal('GP Search Results');
+      });
     });
 
     describe('multi term searches with additional whitespace', () => {
@@ -160,6 +164,10 @@ describe('GP results page', () => {
 
     it('has an encoded back link to the start page with the previously entered query', () => {
       iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`);
+    });
+
+    it('has a meta tag for WebTrends', () => {
+      expect($('meta[name="WT.si_p"]').prop('content')).to.equal('GP Search Results');
     });
   });
 
