@@ -265,6 +265,40 @@ form {
 }
 
 // utils
-.is-bold {
+.u-is-bold {
   font-weight: 600;
+}
+
+// MARGINS (multiple of base-line)
+.u-mx-auto {
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+//
+//      a = all
+//      t = top
+//      r = right
+//      b = bottom
+//      l = left
+//      x = left & right
+//      y = top & bottom
+
+@for $i from -3 through 3 {
+    $value: 8 * $i;
+
+    .u-ma-#{$i} { margin: #{$value}px;}
+    .u-mt-#{$i} { margin-top: #{$value}px;}
+    .u-mr-#{$i} { margin-right: #{$value}px;}
+    .u-mb-#{$i} { margin-bottom: #{$value}px;}
+    .u-ml-#{$i} { margin-left: #{$value}px;}
+
+    .u-mx-#{$i} {
+        margin-right: #{$value}px;
+        margin-left: #{$value}px;
+    }
+
+    .u-my-#{$i} {
+        margin-top: #{$value}px;
+        margin-bottom: #{$value}px;
+    }
 }
