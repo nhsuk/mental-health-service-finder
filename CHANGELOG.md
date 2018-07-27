@@ -1,9 +1,7 @@
-0.5.0 / 2018-07-31
-==================
-- Typeahead enhancements
-
 0.4.0 / 2018-07-30
 ==================
+- Typeahead enhancements
+- Performance tests
 - Use new API
 
 0.3.0 / 2018-07-27
