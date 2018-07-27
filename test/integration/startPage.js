@@ -11,12 +11,21 @@ const expect = chai.expect;
 chai.use(chaiHttp);
 
 describe('Start page', () => {
-  it('has a link to the next page', async () => {
+  let $;
+
+  before('request page', async () => {
     const res = await chai.request(server).get(`${constants.siteRoot}`);
 
-    const $ = cheerio.load(res.text);
+    $ = cheerio.load(res.text);
+  });
 
+  it('has a link to the next page', () => {
     expect($('.button__start').text()).to.equal('Find help');
     expect($('.button__start').prop('href')).to.equal(`${constants.siteRoot}${routes.check.path}`);
+  });
+
+  it('has an urgent help call out', () => {
+    expect($('.samaritans__call').text()).to.equal('116 123');
+    expect($('.samaritans__email').text()).to.equal('jo@samaritans.org');
   });
 });

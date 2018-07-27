@@ -3,6 +3,7 @@
 
 {% block wtMeta %}
 <meta name="WT.si_p" content="GP Search Results">
+<meta name="DCSext.NumberOfResults" content="{{ results.length }}">
 {% endblock %}
 
 {% block header %}

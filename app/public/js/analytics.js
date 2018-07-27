@@ -1,36 +1,40 @@
 ((global) => {
   const $ = global.jQuery;
-
-  function trackClick(element, arg1, arg2) {
-    Webtrends.multiTrack({ argsa: [`DCSext.${arg1}`, arg2, 'WT.dl', '121'], element });
-  }
-
-  const preResultPageTrackingRef = 'MHClick';
-  const gpResultsTrackingRef = 'MHGPClick';
-  const iaptResultsTrackingRef = 'IAPTClick';
-
-  $('.button__start').on('click', () => trackClick($(this), preResultPageTrackingRef, 'Start'));
-  $('.button__check').on('click', () => trackClick($(this), preResultPageTrackingRef, 'Check'));
-  $('.button__search').on('click', () => trackClick($(this), preResultPageTrackingRef, 'Search'));
-  $('.samaritans__call').on('click', () => trackClick($(this), preResultPageTrackingRef, 'CallSamaritans'));
-  $('.samaritans__email').on('click', () => trackClick($(this), preResultPageTrackingRef, 'EmailSamaritans'));
-  $('.results__gp__selection').on('click', () => trackClick($(this), gpResultsTrackingRef, 'MyGP'));
-  $('.results__search__again').on('click', () => trackClick($(this), gpResultsTrackingRef, 'SearchAgain'));
-  $('.results__website').on('click', () => trackClick($(this), iaptResultsTrackingRef, 'IAPTSite'));
-  $('.results__telephone').on('click', () => trackClick($(this), iaptResultsTrackingRef, 'PhoneNumber'));
-  $('.results__email').on('click', () => trackClick($(this), iaptResultsTrackingRef, 'Email'));
-  $('.results__self_referral').on('click', () => trackClick($(this), iaptResultsTrackingRef, 'ReferralForm'));
-
+  const preResultRef = 'MHClick';
+  const gpResultsRef = 'MHGPClick';
+  const iaptResultsRef = 'IAPTClick';
   const page = global.location.pathname.split('/').pop();
-  let trackingRef = preResultPageTrackingRef;
+
+  let backLinkRef = preResultRef;
   if (page.toLowerCase() === 'results') {
     const resultsType = $('meta[name="WT.si_p"]').attr('content');
-    if (resultsType.indexOf('IAPT') !== -1) {
-      trackingRef = iaptResultsTrackingRef;
+    if (resultsType.toLowerCase().indexOf('iapt') !== -1) {
+      backLinkRef = iaptResultsRef;
     } else {
-      trackingRef = gpResultsTrackingRef;
+      backLinkRef = gpResultsRef;
     }
   }
 
-  $('.link-back').on('click', () => trackClick($(this), trackingRef, 'Back'));
+  const selectors = [
+    { queryParam: preResultRef, selector: '.button__start', text: 'Start' },
+    { queryParam: preResultRef, selector: '.button__check', text: 'Check' },
+    { queryParam: preResultRef, selector: '.button__search', text: 'Search' },
+    { queryParam: preResultRef, selector: '.samaritans__call', text: 'SamaritansCall' },
+    { queryParam: preResultRef, selector: '.samaritans__email', text: 'SamaritansEmail' },
+    { queryParam: gpResultsRef, selector: '.results__gp__selection', text: 'MyGP' },
+    { queryParam: gpResultsRef, selector: '.results__search__again', text: 'SearchAgain' },
+    { queryParam: iaptResultsRef, selector: '.results__website', text: 'IAPTSite' },
+    { queryParam: iaptResultsRef, selector: '.results__telephone', text: 'PhoneNumber' },
+    { queryParam: iaptResultsRef, selector: '.results__email', text: 'Email' },
+    { queryParam: iaptResultsRef, selector: '.results__self__referral', text: 'ReferralForm' },
+    { queryParam: backLinkRef, selector: '.link-back', text: 'Back' },
+  ];
+
+  $.each(selectors, (index, val) => {
+    $(val.selector).on('touchstart click', () => {
+      if (global.Webtrends) {
+        global.Webtrends.multiTrack({ argsa: [`DCSext.${val.queryParam}`, val.text, 'WT.dl', '121'] });
+      }
+    });
+  });
 })(window);

@@ -73,6 +73,7 @@ describe('GP results page', () => {
 
       it('should display the number of results returned', () => {
         expect($('.results__count').text()).to.equal(resultCount.toString());
+        expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal(resultCount.toString());
       });
 
       it('should display the search term', () => {
@@ -169,6 +170,7 @@ describe('GP results page', () => {
 
     it('has a meta tag for WebTrends', () => {
       expect($('meta[name="WT.si_p"]').prop('content')).to.equal('GP Search Results');
+      expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal('0');
     });
   });
 
