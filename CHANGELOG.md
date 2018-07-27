@@ -1,4 +1,4 @@
-0.2.1 / TBD
+0.3.0 / 2018-07-27
 ==================
 - Restrict scope of typeaheads
 - Maintain search query for `search again` link back
