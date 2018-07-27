@@ -1,4 +1,4 @@
-0.2.1 / TBD
+0.3.0 / 2018-07-27
 ==================
 - Restrict scope of typeaheads
 - Maintain search query for `search again` link back
@@ -10,6 +10,7 @@
 - Add Meta tags for WebTrends
 - Turn off auto 'things' on input
 - Use new API
+- Add Tracking for WebTrends
 
 0.2.0 / 2018-07-23
 ==================

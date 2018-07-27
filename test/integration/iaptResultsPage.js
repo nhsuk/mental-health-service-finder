@@ -27,7 +27,7 @@ describe('IAPT results page', () => {
     describe('multiple results', () => {
       const gpQuery = 'pim';
       const gpname = 'gpname';
-      const expectedResultsCount = 3;
+      const resultCount = 3;
 
       before('make request', async () => {
         const query = 123456;
@@ -62,12 +62,13 @@ describe('IAPT results page', () => {
       });
 
       it('should display all of the results that were returned', () => {
-        expect($('.results__count').text()).to.equal(expectedResultsCount.toString());
-        expect($('.results__item').length).to.equal(expectedResultsCount);
+        expect($('.results__count').text()).to.equal(resultCount.toString());
+        expect($('.results__item').length).to.equal(resultCount);
+        expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal(resultCount.toString());
       });
 
       it('should report number of services plurally', () => {
-        expect($('.nhsuk-body-l').text().trim()).to.equal(`3 services are available for '${gpname}'.`);
+        expect($('.nhsuk-body-l').text().trim()).to.equal(`${resultCount} services are available for '${gpname}'.`);
       });
 
       it('should display contact information for each result', () => {
@@ -90,7 +91,7 @@ describe('IAPT results page', () => {
       });
 
       it('should display a button to \'Refer yourself online\' for results with that option', () => {
-        const selfReferralElements = $('.results__self_referral');
+        const selfReferralElements = $('.results__self__referral');
         expect(selfReferralElements.length).to.equal(2);
         const selfReferralElement0Href = getHrefFromA(selfReferralElements.eq(0));
         const selfReferralElement2Href = getHrefFromA(selfReferralElements.eq(1));
@@ -99,7 +100,7 @@ describe('IAPT results page', () => {
       });
 
       it('should display a display a message about online referrals not being available when there is no available option', () => {
-        const noSelfReferral = $('.results__no_self_referral');
+        const noSelfReferral = $('.results__no__self__referral');
         expect(noSelfReferral.length).to.equal(1);
         expect(noSelfReferral.text()).to.equal('Online referrals not available');
       });
@@ -145,6 +146,7 @@ describe('IAPT results page', () => {
 
     describe('one result', () => {
       const gpName = 'gpName';
+      const resultCount = 1;
       before('make request', async () => {
         const query = 'one result';
         const body = createBody(constants.types.IAPT, query);
@@ -154,15 +156,16 @@ describe('IAPT results page', () => {
         response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpname=${gpName}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
-        expect($('.results__item').length).to.equal(1);
+        expect($('.results__item').length).to.equal(resultCount);
       });
 
       it('should report number of services singularly', () => {
-        expect($('.nhsuk-body-l').text().trim()).to.equal(`1 service is available for '${gpName}'.`);
+        expect($('.nhsuk-body-l').text().trim()).to.equal(`${resultCount} service is available for '${gpName}'.`);
       });
 
       it('has a meta tag for WebTrends', () => {
         expect($('meta[name="WT.si_p"]').prop('content')).to.equal('IAPT Results');
+        expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal(resultCount.toString());
       });
     });
   });
