@@ -263,35 +263,7 @@ form {
 .results__name {
   margin: 0;
 }
-// TODO: Details element (not production ready)
-details summary {
-  font-size: 16px;
-  line-height: 24px;
-}
 
-@media (min-width: 40.0625em) {
-  details summary {
-    font-size: 19px;
-    line-height: 28px; }
-}
-
-.c-reveal__summary {
-  display: list-item;
-  color: #0058ad;
-}
-.c-reveal__summary:hover {
-  color: #0058ad;
-}
-.c-reveal__header {
-  cursor: pointer;
-  margin-top: 0;
-  text-decoration: underline;
-  display: inline-block;
-}
-.c-reveal__header:hover,
-.c-reveal__header:focus {
-  text-decoration: underline;
-}
 // utils
 .u-is-bold {
   font-weight: 600;
