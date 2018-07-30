@@ -8,10 +8,12 @@
   let backLinkRef = preResultRef;
   if (page.toLowerCase() === 'results') {
     const resultsType = $('meta[name="WT.si_p"]').attr('content');
-    if (resultsType.toLowerCase().indexOf('iapt') !== -1) {
-      backLinkRef = iaptResultsRef;
-    } else {
-      backLinkRef = gpResultsRef;
+    if (resultsType) {
+      if (resultsType.toLowerCase().indexOf('iapt') >= 0) {
+        backLinkRef = iaptResultsRef;
+      } else if (resultsType.toLowerCase().indexOf('gp') >= 0) {
+        backLinkRef = gpResultsRef;
+      }
     }
   }
 
