@@ -8,7 +8,7 @@ NHSUK.queryTypeahead = ((global) => {
   const searchField = '#query';
   // TODO: Ideally these values will come from environment variables
   const apiVersion = '2017-11-11';
-  const apiKey = '908425F6B05A7045D5FB82659008E9DD';
+  const apiKey = '0B8BC0D92A13C1B0A9B10286DAC9A2F2';
   const indexName = 'organisationlookup';
   const suggestHost = 'nhsuk-searchapi-srch-int-ne.search.windows.net';
   const suggesterName = 'orgname-suggester';
