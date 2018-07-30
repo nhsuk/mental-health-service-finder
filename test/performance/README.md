@@ -4,8 +4,10 @@
 
 ## Tests
 
-* `iapt-finder.jmx` includes several journeys through the application
-  covering all pages and result page variants.
+* `iapt-finder.jmx` - journey through every page of the application.
+
+* `iapt-finder-typeahead.jmx` - test focussing on the typeahead used within the
+  application.
 
 ## Configurable parameters
 
