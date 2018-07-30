@@ -23,6 +23,7 @@ NHSUK.queryTypeahead = ((global) => {
       prepare: (query, settings) => {
         const data = {
           filter: 'OrganisationTypeID eq \'GPB\'',
+          fuzzy: true,
           search: query,
           searchFields: 'OrganisationName,City',
           select: 'OrganisationName,City,Postcode,CCG',
@@ -84,7 +85,7 @@ NHSUK.queryTypeahead = ((global) => {
         selectable: 'c-search-menu__item--selectable',
         suggestion: 'c-search-menu__item',
       },
-      highlight: true,
+      highlight: false,
       minLength: 2,
     },
     {
@@ -93,7 +94,7 @@ NHSUK.queryTypeahead = ((global) => {
       name: '-suggestions',
       source: suggestions,
       templates: {
-        header: '<li class="c-search-menu__prepend">Search suggestions</li>',
+        header: '<li class="c-search-menu__prepend">Suggested surgeries</li>',
         suggestion: (data) => {
           const link = generateIAPTResultsUrl(data);
           return `<li><a href="${link}">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
