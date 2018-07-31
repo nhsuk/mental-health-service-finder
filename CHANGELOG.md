@@ -1,3 +1,8 @@
+0.5.0 / 2018-07-31
+==================
+- Remove hardcoded api-key
+- Fix 1 GP result bug
+
 0.4.0 / 2018-07-30
 ==================
 - Typeahead enhancements

@@ -6,14 +6,10 @@ NHSUK.queryTypeahead = ((global) => {
   const mainId = '#main-content';
   const maxResultCount = 5;
   const searchField = '#query';
-  // TODO: Ideally these values will come from environment variables
-  const apiVersion = '2017-11-11';
-  const apiKey = '0B8BC0D92A13C1B0A9B10286DAC9A2F2';
-  const indexName = 'organisationlookup';
-  const suggestHost = 'nhsuk-searchapi-srch-int-ne.search.windows.net';
-  const suggesterName = 'orgname-suggester';
+  const apiKey = $('meta[name="api.key"]').prop('content');
+  const suggesterName = $('meta[name="api.orgSuggester"]').prop('content');
+  const suggestUrl = $('meta[name="api.url"]').prop('content');
   const resultsUrl = './results?type=iapt';
-  const suggestUrl = `https://${suggestHost}/indexes/${indexName}/docs/suggest?api-version=${apiVersion}`;
 
   const suggestions = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.whitespace,

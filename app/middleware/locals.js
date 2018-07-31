@@ -1,10 +1,12 @@
+const api = require('../../config/config').api;
 const constants = require('../lib/constants');
 const trim = require('../lib/utils/utils').trim;
-const types = require('../lib/constants').types;
 
 function getQuery(type, query) {
-  return type === types.IAPT ? query.ccgid : query.query;
+  return type === constants.types.IAPT ? query.ccgid : query.query;
 }
+
+const apiUrl = `${api.host}/indexes/${api.indexes.orgLookup}/docs/suggest?api-version=${api.version}`;
 
 module.exports = config => (req, res, next) => {
   res.locals.GOOGLE_ANALYTICS_TRACKING_ID = config.analytics.googleAnalyticsId;
@@ -19,5 +21,8 @@ module.exports = config => (req, res, next) => {
   res.locals.gpquery = req.query.gpquery;
   res.locals.gpname = req.query.gpname;
   res.locals.origin = req.query.origin;
+  res.locals.apiKey = api.key;
+  res.locals.apiOrgSuggester = api.suggesters.organisation;
+  res.locals.apiUrl = apiUrl;
   next();
 };

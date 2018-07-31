@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block header %}
-{% if results.length > 1 %}
+{% if results.length > 0 %}
 <h1>Select your GP to see available services</h1>
 {% else %}
 <h1>Sorry, we couldn't find any GP surgeries matching '{{ cleanQuery }}'</h1>
@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block content %}
-{% if results.length > 1 %}
+{% if results.length > 0 %}
 <h2 class="nhsuk-body-l" role="text">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ cleanQuery }}'</span>.</h2>
 
 <p>If your surgery is not here, check your spelling and <a class="results__search__again" href="{{ href }}">search again</a>.</p>

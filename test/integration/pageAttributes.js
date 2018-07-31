@@ -2,6 +2,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
+const api = require('../../config/config').api;
 const constants = require('../../app/lib/constants');
 const deepClone = require('../../app/lib/utils/utils').deepClone;
 const iExpect = require('../lib/expectations');
@@ -46,6 +47,14 @@ describe('Page attributes', () => {
       });
 
       describe('meta tags', () => {
+        it('has meta tags for the api information', () => {
+          const apiUrl = `${api.host}/indexes/${api.indexes.orgLookup}/docs/suggest?api-version=${api.version}`;
+
+          expect($('meta[name="api.key"]').prop('content')).to.equal(api.key);
+          expect($('meta[name="api.orgSuggester"]').prop('content')).to.equal(api.suggesters.organisation);
+          expect($('meta[name="api.url"]').prop('content')).to.equal(apiUrl);
+        });
+
         if (path !== routes.start.path) {
           it('should include a robots noindex directive for all non \'start\' pages', () => {
             expect($('meta[name=robots]').prop('content')).to.equal('noindex');
