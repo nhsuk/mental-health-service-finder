@@ -143,6 +143,36 @@ describe('GP results page', () => {
         expect($('.results__item').length).to.equal(10);
       });
     });
+
+    describe('a single result', () => {
+      let $;
+      let response;
+      const resultCount = 1;
+
+      before('make request', async () => {
+        const query = 'one result';
+        const body = createBody(constants.types.GP, query);
+
+        nockRequests.withResponseBody(path, body, 200, 'search/oneResult.json');
+
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+        $ = cheerio.load(response.text);
+        iExpect.htmlWithStatus(response, 200);
+      });
+
+      it('should have an H1 of \'Select your GP to get you to the right service\'', () => {
+        expect($('.nhsuk-page-heading h1').text()).to.equal('Select your GP to see available services');
+      });
+
+      it('should display all of the results that were returned', () => {
+        expect($('.results__item').length).to.equal(resultCount);
+      });
+
+      it('should display the number of results returned', () => {
+        expect($('.results__count').text()).to.equal(resultCount.toString());
+        expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal(resultCount.toString());
+      });
+    });
   });
 
   describe('no results', () => {
