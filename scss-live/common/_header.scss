@@ -527,11 +527,10 @@ $alpha: .5;
   }
 
   &--selected {
-    a {
+    p, a {
       background-color: $nhsuk-warm-yellow;
       box-shadow: 0 0 0 4px $nhsuk-warm-yellow;
       color: $nhsuk-black;
-      display: inline;
       text-decoration: none;
     }
   }
