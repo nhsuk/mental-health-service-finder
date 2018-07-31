@@ -28,9 +28,9 @@
       <div>
         <div class="form-group {% if errorMessage %}error{% endif %}">
           <div>
-            <label class="nhsuk-heading-l" for="query">Tell us your GP surgery:</label>
+            <label class="nhsuk-heading-m u-is-bold u-mt-0" for="query">Tell us your GP surgery:</label>
           </div>
-          <p>For example, surgery or street name</p>
+          <p class="u-mt-1">For example, surgery or street name</p>
           <input aria-labelledby="query" autocomplete="off" autocorrect="off" auotcapitalize="off" spellcheck="off" type="text" class="form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
         </div>
         <div>
