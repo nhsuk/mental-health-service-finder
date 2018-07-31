@@ -10,6 +10,7 @@ NHSUK.queryTypeahead = ((global) => {
   const suggesterName = $('meta[name="api.orgSuggester"]').prop('content');
   const suggestUrl = $('meta[name="api.url"]').prop('content');
   const resultsUrl = './results?type=iapt';
+  const searchFields = 'OrganisationName,Address1,Address2,Address3,City';
 
   const suggestions = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.whitespace,
@@ -21,8 +22,8 @@ NHSUK.queryTypeahead = ((global) => {
           filter: 'OrganisationTypeID eq \'GPB\'',
           fuzzy: true,
           search: query,
-          searchFields: 'OrganisationName,City',
-          select: 'OrganisationName,City,Postcode,CCG',
+          searchFields,
+          select: `${searchFields},Postcode,CCG`,
           suggesterName,
           top: maxResultCount,
         };
@@ -67,6 +68,13 @@ NHSUK.queryTypeahead = ((global) => {
     $(`${mainId} .c-search__input.tt-input`).attr('role', 'textbox');
   }
 
+  function generateAddressText(data) {
+    return [data.Address1, data.Address2, data.City, data.Postcode]
+      .filter(Boolean)
+      .join(', ')
+      .replace(',,', ',');
+  }
+
   function init() {
     resetQueryFields();
     suggestions.initialize();
@@ -92,8 +100,9 @@ NHSUK.queryTypeahead = ((global) => {
       templates: {
         header: '<li class="c-search-menu__prepend">Suggested surgeries</li>',
         suggestion: (data) => {
+          const address = generateAddressText(data);
           const link = generateIAPTResultsUrl(data);
-          return `<li><a href="${link}">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
+          return `<li><p href="${link}" class="bold">${data.OrganisationName}</p><p>${address}</p></li>`;
         },
       },
     })
