@@ -1,3 +1,7 @@
+0.5.0 / 2018-07-31
+==================
+- Remove hardcoded api-key
+
 0.4.0 / 2018-07-30
 ==================
 - Typeahead enhancements

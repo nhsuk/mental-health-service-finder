@@ -25,6 +25,10 @@
     <meta property="og:image:height" content="1200">
 
     <meta name="WT.si_n" content="Mental Health Pilot">
+
+    <meta name="api.key" content="{{ apiKey }}">
+    <meta name="api.orgSuggester" content="{{ apiOrgSuggester }}">
+    <meta name="api.url" content="{{ apiUrl }}">
     {% block wtMeta %}{% endblock %}
 
     <!--[if gt IE 8]><!--><link href="{{ siteRoot }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css"><!--<![endif]-->

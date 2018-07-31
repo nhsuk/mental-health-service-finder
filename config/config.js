@@ -14,6 +14,9 @@ module.exports = {
       orgLookup: 'organisationlookup',
     },
     key: process.env.API_KEY,
+    suggesters: {
+      organisation: 'orgname-suggester',
+    },
     version: process.env.API_VERSION || '2017-11-11',
   },
   app: {
