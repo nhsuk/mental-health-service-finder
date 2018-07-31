@@ -10,32 +10,32 @@ const apiVersion = config.api.version;
 const apiHost = config.api.host;
 const apiOrgIndex = config.api.indexes.orgLookup;
 
-function forGPSearch(query) {
+function forGPSearch(locals) {
   return {
-    body: JSON.stringify(createBody(constants.types.GP, query)),
+    body: JSON.stringify(createBody(constants.types.GP, locals)),
     headers,
     url: `${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`,
   };
 }
 
-function forIAPTSearch(query) {
+function forIAPTSearch(locals) {
   return {
-    body: JSON.stringify(createBody(constants.types.IAPT, query)),
+    body: JSON.stringify(createBody(constants.types.IAPT, locals)),
     headers,
     url: `${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`,
   };
 }
 
-function buildOptions(type, query) {
+function buildOptions(type, locals) {
   switch (type) {
     case constants.types.GP: {
-      return forGPSearch(query);
+      return forGPSearch(locals);
     }
     case constants.types.IAPT: {
-      return forIAPTSearch(query);
+      return forIAPTSearch(locals);
     }
     default: {
-      log.error(`Unable to build options for uknown type: ${type} with query: ${query}`);
+      log.error(`Unable to build options for uknown type: ${type} with query: ${locals.query}`);
       throw new VError(`Unable to build options for unknown type: ${type}`);
     }
   }

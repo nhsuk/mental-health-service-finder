@@ -1,5 +1,5 @@
 function cleanQuery(query) {
-  return query.trim().replace(/ +/g, ' ');
+  return query && query.trim().replace(/ +/g, ' ');
 }
 
 module.exports = cleanQuery;

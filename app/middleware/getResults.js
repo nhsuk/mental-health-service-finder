@@ -7,9 +7,8 @@ const mapResults = require('../lib/mapResults');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;
 
 function getResults(req, res, next) {
-  const query = res.locals.cleanQuery;
   const type = res.locals.type;
-  const options = buildOptions(type, query);
+  const options = buildOptions(type, res.locals);
 
   log.info({ request: options }, `${type}-request`);
   const endTimer = searchHistogram(type).startTimer();
@@ -38,7 +37,7 @@ function getResults(req, res, next) {
         }
       }
     } else {
-      next(new VError(error, `Error returned from API for query of: '${query}' and type of: '${type}'`));
+      next(new VError(error, `Error returned from API for query of: '${res.locals.query}' and type of: '${type}'`));
     }
   });
 }

@@ -25,11 +25,12 @@ describe('GP results page', () => {
       let $;
       let response;
       const query = 'ls1 & extra';
+      const locals = { query };
       const encodedQuery = encodeURIComponent(query);
       const resultCount = 10;
 
       before('make request', async () => {
-        const body = createBody(constants.types.GP, query);
+        const body = createBody(constants.types.GP, locals);
 
         nockRequests.withResponseBody(path, body, 200, 'search/multiSearchTermResults.json');
 
@@ -126,7 +127,8 @@ describe('GP results page', () => {
 
       before('make request', async () => {
         const query = '   a   b   c   ';
-        const body = createBody(constants.types.GP, cleanedQuery);
+        const locals = { query: cleanedQuery };
+        const body = createBody(constants.types.GP, locals);
 
         nockRequests.withResponseBody(path, body, 200, 'search/tenResults.json');
 
@@ -151,7 +153,8 @@ describe('GP results page', () => {
 
       before('make request', async () => {
         const query = 'one result';
-        const body = createBody(constants.types.GP, query);
+        const locals = { query };
+        const body = createBody(constants.types.GP, locals);
 
         nockRequests.withResponseBody(path, body, 200, 'search/oneResult.json');
 
@@ -181,7 +184,8 @@ describe('GP results page', () => {
     let $;
 
     before('make request', async () => {
-      const body = createBody(constants.types.GP, query);
+      const locals = { query };
+      const body = createBody(constants.types.GP, locals);
       nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${encodedQuery}`);
@@ -207,7 +211,8 @@ describe('GP results page', () => {
   describe('bad api responses', () => {
     it('should display an error page for a 400 response', async () => {
       const query = '400response';
-      const body = createBody(constants.types.GP, query);
+      const locals = { query };
+      const body = createBody(constants.types.GP, locals);
 
       nockRequests.withResponseBody(path, body, 400, 'search/400.json');
 
@@ -217,7 +222,8 @@ describe('GP results page', () => {
 
     it('should display an error page for a 403 response', async () => {
       const query = '403response';
-      const body = createBody(constants.types.GP, query);
+      const locals = { query };
+      const body = createBody(constants.types.GP, locals);
 
       nockRequests.withNoResponseBody(path, body, 403);
 
@@ -227,7 +233,8 @@ describe('GP results page', () => {
 
     it('should display an error page for a 404 response', async () => {
       const query = '404response';
-      const body = createBody(constants.types.GP, query);
+      const locals = { query };
+      const body = createBody(constants.types.GP, locals);
 
       nockRequests.withResponseBody(path, body, 404, 'search/404.json');
 
@@ -237,7 +244,8 @@ describe('GP results page', () => {
 
     it('should display an error page for a 415 response', async () => {
       const query = '415response';
-      const body = createBody(constants.types.GP, query);
+      const locals = { query };
+      const body = createBody(constants.types.GP, locals);
 
       nockRequests.withResponseBody(path, body, 415, 'search/415.json');
 
@@ -247,7 +255,8 @@ describe('GP results page', () => {
 
     it('should display an error page for a response that can not be parsed', async () => {
       const query = 'notJSON';
-      const body = createBody(constants.types.GP, query);
+      const locals = { query };
+      const body = createBody(constants.types.GP, locals);
 
       nockRequests.withNoResponseBody(path, body, 500);
 
@@ -257,7 +266,8 @@ describe('GP results page', () => {
 
     it('should display an error page when an error is returned from the API', async () => {
       const query = 'error';
-      const body = createBody(constants.types.GP, query);
+      const locals = { query };
+      const body = createBody(constants.types.GP, locals);
       const error = { message: 'something went wrong' };
 
       nockRequests.withError(path, body, error);

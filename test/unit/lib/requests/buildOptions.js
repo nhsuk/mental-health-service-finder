@@ -16,8 +16,8 @@ describe('buildOptions', () => {
     const types = constants.types;
 
     Object.keys(types).forEach((type) => {
-      const query = 'search term';
-      const options = buildOptions(type, query);
+      const locals = { query: 'search term' };
+      const options = buildOptions(type, locals);
 
       describe(`response for type: ${type}`, () => {
         it('should include expected keys', () => {
@@ -42,8 +42,8 @@ describe('buildOptions', () => {
 
   describe('for GP type', () => {
     describe('multi term query', () => {
-      const query = 'search by this';
-      const options = buildOptions(constants.types.GP, query);
+      const locals = { query: 'search by this' };
+      const options = buildOptions(constants.types.GP, locals);
       const body = JSON.parse(options.body);
 
       describe('body', () => {
@@ -66,7 +66,7 @@ describe('buildOptions', () => {
         });
 
         it('should select appropriate properties', () => {
-          expect(body.select).to.equal('OrganisationName,Address1,Address2,Address3,City,County,Postcode,CCG');
+          expect(body.select).to.equal('OrganisationName,Address1,Address2,Address3,City,County,Postcode,CCG,Longitude,Latitude');
         });
 
         it('should highlight searched fields', () => {
@@ -96,17 +96,21 @@ describe('buildOptions', () => {
   });
 
   describe('for IAPT type', () => {
-    const query = '123456';
-    const options = buildOptions(constants.types.IAPT, query);
+    const locals = { lat: 50, lon: -1, query: '123456' };
+    const options = buildOptions(constants.types.IAPT, locals);
     const body = JSON.parse(options.body);
 
     describe('body', () => {
       it('should only include expected keys', () => {
-        expect(Object.keys(body)).to.deep.equal(['filter']);
+        expect(Object.keys(body)).to.deep.equal(['filter', 'orderby']);
       });
 
       it('should filter by \'CCG\'', () => {
-        expect(body.filter).to.equal(`ServiceCodesProvided/any(c:search.in(c, '${constants.IAPTServiceCode}')) and OrganisationTypeID ne 'TRU' and RelatedIAPTCCGs/any(c: c eq '${query}')`);
+        expect(body.filter).to.equal(`ServiceCodesProvided/any(c:search.in(c, '${constants.IAPTServiceCode}')) and OrganisationTypeID ne 'TRU' and RelatedIAPTCCGs/any(c: c eq '${locals.query}')`);
+      });
+
+      it('should order by distance from GP', () => {
+        expect(body.orderby).to.equal(`geo.distance(Geocode, geography'Point(${locals.lon} ${locals.lat})')`);
       });
     });
 
@@ -120,7 +124,7 @@ describe('buildOptions', () => {
   describe('unknown type', () => {
     it('should throw VError', () => {
       const unknownType = 'unknown';
-      expect(() => buildOptions(unknownType, null)).to.throw(VError, `Unable to build options for unknown type: ${unknownType}`);
+      expect(() => buildOptions(unknownType, {})).to.throw(VError, `Unable to build options for unknown type: ${unknownType}`);
     });
   });
 });

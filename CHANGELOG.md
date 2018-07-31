@@ -4,6 +4,7 @@
 - Fix 1 GP result bug
 - Search `Address1` and `Address2` fields in typeahead
 - Improve display of typeahead results
+- Order IAPT results by distance from GP
 
 0.4.0 / 2018-07-30
 ==================
