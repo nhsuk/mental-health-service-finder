@@ -16,16 +16,10 @@
 {% endblock %}
 
 {% block content %}
-<p>These offer therapies like CBT and counselling for common mental health problems like stress, anxiety, depression, OCD and PTSD.</p>
-<p>You may be offered psychological therapies:</p>
-
-<ul class="nhsuk-list nhsuk-list-bullet">
-  <li>using a self-help book</li>
-  <li>as an online course</li>
-  <li>over the phone</li>
-  <li>in a group</li>
-  <li>one-to-one</li>
-</ul>
+<p>These offer therapies like cognitive behavioural therapy (CBT) for common problems like stress, anxiety, depression, OCD and phobias.</p>
+<h2 class="nhsuk-heading-m">Who can get psychological therapies on the NHS?</h2>
+<p>Anyone who is registered with a GP.</p>
+<p>Not registered with a GP? <a href="https://www.nhs.uk/Service-Search/GP/LocationSearch/4">Find one near you</a>
 
 <p><a href="{{ siteRoot }}/check" class="button button__start">Find help</a></p>
 {% include "includes/urgent-help-callout.nunjucks" %}
