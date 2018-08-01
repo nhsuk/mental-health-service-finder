@@ -9,7 +9,6 @@ NHSUK.queryTypeahead = ((global) => {
   const apiKey = $('meta[name="api.key"]').prop('content');
   const suggesterName = $('meta[name="api.orgSuggester"]').prop('content');
   const suggestUrl = $('meta[name="api.url"]').prop('content');
-  const resultsUrl = './results?type=iapt';
   const searchFields = 'OrganisationName,Address1,Address2,Address3,City';
 
   const suggestions = new Bloodhound({
@@ -23,7 +22,7 @@ NHSUK.queryTypeahead = ((global) => {
           fuzzy: true,
           search: query,
           searchFields,
-          select: `${searchFields},Postcode,CCG`,
+          select: `${searchFields},Postcode,CCG,Latitude,Longitude`,
           suggesterName,
           top: maxResultCount,
         };
@@ -42,12 +41,6 @@ NHSUK.queryTypeahead = ((global) => {
     },
   });
 
-  function generateIAPTResultsUrl(data) {
-    const ccgid = encodeURIComponent(data.CCG[0]);
-    const gpname = encodeURIComponent(data.OrganisationName);
-    return `${resultsUrl}&ccgid=${ccgid}&gpquery=${gpname}&gpname=${gpname}&origin=search`;
-  }
-
   function scrollInputForNarrowView() {
     if (global.innerWidth < 641) {
       const top = $(`${mainId} .form-group`).offset().top;
@@ -61,6 +54,8 @@ NHSUK.queryTypeahead = ((global) => {
     $('#gpname').val();
     $('#gpquery').val();
     $('#origin').val();
+    $('#lat').val();
+    $('#lon').val();
   }
 
   function hideSecondInputForScreenReaders() {
@@ -101,8 +96,7 @@ NHSUK.queryTypeahead = ((global) => {
         header: '<li class="c-search-menu__prepend">Suggested surgeries</li>',
         suggestion: (data) => {
           const address = generateAddressText(data);
-          const link = generateIAPTResultsUrl(data);
-          return `<li><p href="${link}" class="bold">${data.OrganisationName}</p><p>${address}</p></li>`;
+          return `<li><p class="bold">${data.OrganisationName}</p><p>${address}</p></li>`;
         },
       },
     })
@@ -131,6 +125,8 @@ NHSUK.queryTypeahead = ((global) => {
         $('#ccgid').val(data.CCG[0]);
         $('#gpname').val(data.OrganisationName);
         $('#gpquery').val(data.OrganisationName);
+        $('#lat').val(data.Latitude);
+        $('#lon').val(data.Longitude);
         $('#origin').val('search');
         $(`${mainId} form`).submit();
       });
