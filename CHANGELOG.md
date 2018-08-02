@@ -1,10 +1,11 @@
-0.5.0 / 2018-07-31
+0.5.0 / 2018-08-02
 ==================
 - Remove hardcoded api-key
 - Fix 1 GP result bug
 - Search `Address1` and `Address2` fields in typeahead
 - Improve display of typeahead results
 - Order IAPT results by distance from GP
+- Use specific page name for content page WebTrends tracking
 
 0.4.0 / 2018-07-30
 ==================
