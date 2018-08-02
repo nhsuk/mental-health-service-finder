@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block wtMeta %}
-<meta name="WT.si_p" content="Content Page">
+<meta name="WT.si_p" content="Check">
 {% endblock %}
 
 {% block content %}

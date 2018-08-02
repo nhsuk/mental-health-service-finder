@@ -30,10 +30,6 @@ describe('Search page', () => {
     it('has a back link to the check page', () => {
       iExpect.backLinkContent($, `${constants.siteRoot}${routes.check.path}`);
     });
-
-    it('has a meta tag for WebTrends', () => {
-      expect($('meta[name="WT.si_p"]').prop('content')).to.equal('GP Search');
-    });
   });
 
   describe('visit from results page via back button', () => {
