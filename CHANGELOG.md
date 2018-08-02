@@ -26,6 +26,7 @@
 - Improve display of typeahead results
 - Order IAPT results by distance from GP
 - Use specific page name for content page WebTrends tracking
+- Add login link to footer
 
 0.4.0 / 2018-07-30
 ==================
