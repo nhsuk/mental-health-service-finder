@@ -9,7 +9,7 @@ NHSUK.queryTypeahead = ((global) => {
   const apiKey = $('meta[name="api.key"]').prop('content');
   const suggesterName = $('meta[name="api.orgSuggester"]').prop('content');
   const suggestUrl = $('meta[name="api.url"]').prop('content');
-  const resultsUrl = './results?type=iapt';
+  const searchFields = 'OrganisationName,Address1,Address2,Address3,City';
 
   const suggestions = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.whitespace,
@@ -21,8 +21,8 @@ NHSUK.queryTypeahead = ((global) => {
           filter: 'OrganisationTypeID eq \'GPB\'',
           fuzzy: true,
           search: query,
-          searchFields: 'OrganisationName,City',
-          select: 'OrganisationName,City,Postcode,CCG',
+          searchFields,
+          select: `${searchFields},Postcode,CCG,Latitude,Longitude`,
           suggesterName,
           top: maxResultCount,
         };
@@ -41,12 +41,6 @@ NHSUK.queryTypeahead = ((global) => {
     },
   });
 
-  function generateIAPTResultsUrl(data) {
-    const ccgid = encodeURIComponent(data.CCG[0]);
-    const gpname = encodeURIComponent(data.OrganisationName);
-    return `${resultsUrl}&ccgid=${ccgid}&gpquery=${gpname}&gpname=${gpname}&origin=search`;
-  }
-
   function scrollInputForNarrowView() {
     if (global.innerWidth < 641) {
       const top = $(`${mainId} .form-group`).offset().top;
@@ -60,11 +54,20 @@ NHSUK.queryTypeahead = ((global) => {
     $('#gpname').val();
     $('#gpquery').val();
     $('#origin').val();
+    $('#lat').val();
+    $('#lon').val();
   }
 
   function hideSecondInputForScreenReaders() {
     $(`${mainId} .c-search__input--shadow`).attr('aria-hidden', 'true').addClass('visually-hidden');
     $(`${mainId} .c-search__input.tt-input`).attr('role', 'textbox');
+  }
+
+  function generateAddressText(data) {
+    return [data.Address1, data.Address2, data.City, data.Postcode]
+      .filter(Boolean)
+      .join(', ')
+      .replace(',,', ',');
   }
 
   function init() {
@@ -92,8 +95,8 @@ NHSUK.queryTypeahead = ((global) => {
       templates: {
         header: '<li class="c-search-menu__prepend">Suggested surgeries</li>',
         suggestion: (data) => {
-          const link = generateIAPTResultsUrl(data);
-          return `<li><a href="${link}">${data.OrganisationName}, ${data.City}, ${data.Postcode}</a></li>`;
+          const address = generateAddressText(data);
+          return `<li><p class="bold">${data.OrganisationName}</p><p>${address}</p></li>`;
         },
       },
     })
@@ -122,6 +125,8 @@ NHSUK.queryTypeahead = ((global) => {
         $('#ccgid').val(data.CCG[0]);
         $('#gpname').val(data.OrganisationName);
         $('#gpquery').val(data.OrganisationName);
+        $('#lat').val(data.Latitude);
+        $('#lon').val(data.Longitude);
         $('#origin').val('search');
         $(`${mainId} form`).submit();
       });

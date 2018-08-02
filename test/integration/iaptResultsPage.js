@@ -23,6 +23,8 @@ describe('IAPT results page', () => {
   describe('happy path', () => {
     let $;
     let response;
+    const lat = 50;
+    const lon = -1;
 
     describe('multiple results', () => {
       const gpQuery = 'pim';
@@ -30,12 +32,13 @@ describe('IAPT results page', () => {
       const resultCount = 3;
 
       before('make request', async () => {
-        const query = 123456;
-        const body = createBody(constants.types.IAPT, query);
+        const query = '123456';
+        const locals = { lat, lon, query };
+        const body = createBody(constants.types.IAPT, locals);
 
         nockRequests.withResponseBody(path, body, 200, 'search/threeResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpquery=${gpQuery}&gpname=${gpname}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpquery=${gpQuery}&gpname=${gpname}&lat=${lat}&lon=${lon}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
       });
@@ -109,12 +112,14 @@ describe('IAPT results page', () => {
     describe('request directly from typeahead', () => {
       const gpName = 'gpName';
       const query = 'zero results';
+      const locals = { lat, lon, query };
+
       before('make request', async () => {
-        const body = createBody(constants.types.IAPT, query);
+        const body = createBody(constants.types.IAPT, locals);
 
         nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpquery=${gpName}&gpname=${gpName}&origin=search`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpquery=${gpName}&gpname=${gpName}&origin=search&lat=${lat}&lon=${lon}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(0);
@@ -127,13 +132,15 @@ describe('IAPT results page', () => {
 
     describe('zero results', () => {
       const gpName = 'gpName';
+
       before('make request', async () => {
         const query = 'zero results';
-        const body = createBody(constants.types.IAPT, query);
+        const locals = { lat, lon, query };
+        const body = createBody(constants.types.IAPT, locals);
 
         nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpname=${gpName}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(0);
@@ -147,13 +154,15 @@ describe('IAPT results page', () => {
     describe('one result', () => {
       const gpName = 'gpName';
       const resultCount = 1;
+
       before('make request', async () => {
         const query = 'one result';
-        const body = createBody(constants.types.IAPT, query);
+        const locals = { lat, lon, query };
+        const body = createBody(constants.types.IAPT, locals);
 
         nockRequests.withResponseBody(path, body, 200, 'search/oneResult.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpname=${gpName}`);
+        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(resultCount);
@@ -171,13 +180,17 @@ describe('IAPT results page', () => {
   });
 
   describe('no results', () => {
+    const lat = 50;
+    const lon = -1;
+
     it('should display message when no results returned', async () => {
       const query = 'noresults';
-      const body = createBody(constants.types.IAPT, query);
+      const locals = { lat, lon, query };
+      const body = createBody(constants.types.IAPT, locals);
 
       nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&lat=${lat}&lon=${lon}`);
       iExpect.htmlWithStatus(response, 200);
 
       const $ = cheerio.load(response.text);
@@ -187,58 +200,66 @@ describe('IAPT results page', () => {
   });
 
   describe('bad api responses', () => {
+    const lat = 50;
+    const lon = -1;
+
     it('should display an error page for a 400 response', async () => {
       const query = '400response';
-      const body = createBody(constants.types.IAPT, query);
+      const locals = { lat, lon, query };
+      const body = createBody(constants.types.IAPT, locals);
 
       nockRequests.withResponseBody(path, body, 400, 'search/400.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&lat=${lat}&lon=${lon}`);
 
       iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a 403 response', async () => {
       const query = '403response';
-      const body = createBody(constants.types.IAPT, query);
+      const locals = { lat, lon, query };
+      const body = createBody(constants.types.IAPT, locals);
 
       nockRequests.withNoResponseBody(path, body, 403);
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&lat=${lat}&lon=${lon}`);
 
       iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a 404 response', async () => {
       const query = '404response';
-      const body = createBody(constants.types.IAPT, query);
+      const locals = { lat, lon, query };
+      const body = createBody(constants.types.IAPT, locals);
 
       nockRequests.withResponseBody(path, body, 404, 'search/404.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&lat=${lat}&lon=${lon}`);
 
       iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a 415 response', async () => {
       const query = '415response';
-      const body = createBody(constants.types.IAPT, query);
+      const locals = { lat, lon, query };
+      const body = createBody(constants.types.IAPT, locals);
 
       nockRequests.withResponseBody(path, body, 415, 'search/415.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&lat=${lat}&lon=${lon}`);
 
       iExpect.errorPageContent(response);
     });
 
     it('should display an error page when an error is returned from the API', async () => {
       const query = 'error';
-      const body = createBody(constants.types.IAPT, query);
+      const locals = { lat, lon, query };
+      const body = createBody(constants.types.IAPT, locals);
       const error = { message: 'something went wrong' };
 
       nockRequests.withError(path, body, error);
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}`);
+      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&lat=${lat}&lon=${lon}`);
       iExpect.errorPageContent(response);
     });
   });

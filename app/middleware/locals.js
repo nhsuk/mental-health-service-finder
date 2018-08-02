@@ -18,6 +18,8 @@ module.exports = config => (req, res, next) => {
   const type = req.query.type && req.query.type.toUpperCase();
   res.locals.type = type;
   res.locals.query = getQuery(type, req.query);
+  res.locals.lat = req.query.lat;
+  res.locals.lon = req.query.lon;
   res.locals.gpquery = req.query.gpquery;
   res.locals.gpname = req.query.gpname;
   res.locals.origin = req.query.origin;

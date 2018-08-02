@@ -1,5 +1,5 @@
 {% extends 'layout.nunjucks' %}
-{% set href = siteRoot + "/search?query=" + cleanQuery | urlencode %}
+{% set href = siteRoot + "/search?query=" + query | urlencode %}
 
 {% block wtMeta %}
 <meta name="WT.si_p" content="GP Search Results">
@@ -10,13 +10,13 @@
 {% if results.length > 0 %}
 <h1>Select your GP to see available services</h1>
 {% else %}
-<h1>Sorry, we couldn't find any GP surgeries matching '{{ cleanQuery }}'</h1>
+<h1>Sorry, we couldn't find any GP surgeries matching '{{ query }}'</h1>
 {% endif %}
 {% endblock %}
 
 {% block content %}
 {% if results.length > 0 %}
-<h2 class="nhsuk-body-l" role="text">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ cleanQuery }}'</span>.</h2>
+<h2 class="nhsuk-body-l" role="text">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ query }}'</span>.</h2>
 
 <p>If your surgery is not here, check your spelling and <a class="results__search__again" href="{{ href }}">search again</a>.</p>
 

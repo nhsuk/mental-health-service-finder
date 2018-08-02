@@ -251,7 +251,9 @@ form {
   }
 }
 
-// Results
+/*
+    Results
+*/
 .highlight {
   background-color: $yellow-50;
 }
@@ -262,4 +264,14 @@ form {
 
 .results__name {
   margin: 0;
+}
+
+/*
+    typeahead
+*/
+.bold {
+  font-weight: $nhsuk-font-bold;
+}
+.c-search-menu__item p {
+  margin-top: 0px;
 }

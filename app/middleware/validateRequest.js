@@ -8,7 +8,7 @@ function validateRequest(req, res, next) {
     res.locals.errorMessage = 'Please enter a surgery or street name to find your GP surgery.';
     res.render('search');
   } else {
-    res.locals.cleanQuery = cleanQuery(query);
+    res.locals.query = cleanQuery(query);
     next();
   }
 }
