@@ -27,6 +27,7 @@
 - Order IAPT results by distance from GP
 - Use specific page name for content page WebTrends tracking
 - Add login link to footer
+- Add clickable menu item icon
 
 0.4.0 / 2018-07-30
 ==================
