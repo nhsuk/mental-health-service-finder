@@ -6,6 +6,7 @@
 - Update npm dependencies
 - Add urgent help call-out to 'check' page
 - Do not display online referral message when no option available
+- Hyperlink search again link on no results page
 
 0.5.0 / 2018-08-02
 ==================

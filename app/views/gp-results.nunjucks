@@ -35,7 +35,7 @@
 {% else %}
 <p>Please try:</p>
   <ul>
-    <li>searching again using different search terms</li>
+    <li><a class="results__search__again" href="{{ href }}">searching again using different search terms</a></li>
     <li>checking your spelling</li>
   </ul>
 {% endif %}

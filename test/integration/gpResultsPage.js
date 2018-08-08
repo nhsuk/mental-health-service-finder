@@ -198,6 +198,10 @@ describe('GP results page', () => {
         .to.equal(`Sorry, we couldn't find any GP surgeries matching '${query}'`);
     });
 
+    it('has a \'search again\' link to the start page with the previously entered query', () => {
+      iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`, 'searching again using different search terms', '.results__search__again');
+    });
+
     it('has an encoded back link to the start page with the previously entered query', () => {
       iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`);
     });
