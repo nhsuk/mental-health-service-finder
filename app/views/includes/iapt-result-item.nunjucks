@@ -14,6 +14,4 @@
 
 {% if result.selfReferral %}
 <p class="results__self__referral"><a class="button" href="{{ result.selfReferral }}">Refer yourself online<span class="visually-hidden"> to {{ result.OrganisationName }}</span></a></p>
-  {% else %}
-  <p class="results__no__self__referral">Online referrals not available</p>
 {% endif %}

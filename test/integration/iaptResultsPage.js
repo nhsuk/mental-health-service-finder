@@ -102,10 +102,9 @@ describe('IAPT results page', () => {
         expect(selfReferralElement2Href).to.equal('https://self.referral.2');
       });
 
-      it('should display a display a message about online referrals not being available when there is no available option', () => {
-        const noSelfReferral = $('.results__no__self__referral');
-        expect(noSelfReferral.length).to.equal(1);
-        expect(noSelfReferral.text()).to.equal('Online referrals not available');
+      it('should display no message about online referrals not being available when there is no available option', () => {
+        const resultItems = $('.results__item');
+        expect(resultItems.eq(1).find('p').length).to.equal(3);
       });
     });
 

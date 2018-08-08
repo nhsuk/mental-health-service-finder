@@ -5,6 +5,7 @@
 - Update IE css for new design
 - Update npm dependencies
 - Add urgent help call-out to 'check' page
+- Do not display online referral message when no option available
 
 0.5.0 / 2018-08-02
 ==================
