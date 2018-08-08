@@ -1,3 +1,9 @@
+0.6.0 / TBD
+==================
+- Use latest footer font size
+- Update print css for new design
+- Update IE css for new design
+
 0.5.0 / 2018-08-02
 ==================
 - Remove hardcoded api-key
