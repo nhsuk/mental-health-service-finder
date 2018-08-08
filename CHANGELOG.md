@@ -3,6 +3,8 @@
 - Use latest footer font size
 - Update print css for new design
 - Update IE css for new design
+- Update npm dependencies
+- Add urgent help call-out to 'check' page
 
 0.5.0 / 2018-08-02
 ==================

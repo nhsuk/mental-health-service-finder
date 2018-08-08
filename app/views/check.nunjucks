@@ -16,9 +16,9 @@
 <p>They will also tell you how long you'll wait for your first therapy session.</p>
 
 <p><a href="{{ siteRoot }}/search" class="button button__check">Next</a></p>
-{% endblock %}
 
 {% include "includes/urgent-help-callout.nunjucks" %}
+{% endblock %}
 
 {% block back %}
 {% set href = siteRoot + "/" %}
