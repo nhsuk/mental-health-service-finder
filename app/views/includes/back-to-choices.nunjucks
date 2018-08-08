@@ -1,5 +1,3 @@
 <div class="notification-banner notification-banner--hiviz js-feedback-banner">
-  <p class="notification-banner--inner">
-    This is new. <a class="back-to-choices" href="https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008">Find an IAPT service using our old service.</a>
-  </p>
+  <p class="notification-banner--inner">This is new. <a class="back-to-choices" href="https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008">Find a psychological therapies service using our old finder.</a></p>
 </div>
