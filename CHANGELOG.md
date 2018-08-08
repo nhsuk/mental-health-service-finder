@@ -7,6 +7,7 @@
 - Add urgent help call-out to 'check' page
 - Do not display online referral message when no option available
 - Hyperlink search again link on no results page
+- Add extra info to search page about use of GP
 
 0.5.0 / 2018-08-02
 ==================

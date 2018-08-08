@@ -126,10 +126,13 @@ form {
         top: 0 !important; // sass-lint:disable-line no-important
       }
     }
+    p {
+      margin-top: 0;
+    }
   }
 
-  p {
-    margin-top: 0;
+  .details {
+    margin: 0 0 32px 0;
   }
 
   label {
