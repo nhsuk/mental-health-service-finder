@@ -17,10 +17,10 @@
 
 <p><a href="{{ siteRoot }}/search" class="button button__check">Next</a></p>
 
+{% set href = siteRoot + "/" %}
+{{ linkBack(href) }}
+
 {% include "includes/urgent-help-callout.nunjucks" %}
 {% endblock %}
 
-{% block back %}
-{% set href = siteRoot + "/" %}
-{{ linkBack(href) }}
-{% endblock %}
+{% block back %}{% endblock %}
