@@ -33,6 +33,7 @@ function errorPageContent(response) {
 
   checkPageContent($, 'Sorry, we are experiencing technical problems.', 'Please try again later.');
   backLinkContent($);
+  expect($('head title').text()).to.equal('Find psychological therapies services - Sorry, we are experiencing technical problems - NHS.UK');
 }
 
 function notFoundPageContent(response) {
