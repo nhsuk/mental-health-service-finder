@@ -33,7 +33,7 @@ function errorPageContent(response) {
 
   checkPageContent($, 'Sorry, we are experiencing technical problems.', 'Please try again later.');
   backLinkContent($);
-  expect($('head title').text()).to.equal('Find psychological therapies services - Sorry, we are experiencing technical problems - NHS.UK');
+  expect($('head title').text()).to.equal('Find psychological therapies services - Sorry, we are experiencing technical problems - NHS');
 }
 
 function notFoundPageContent(response) {
@@ -41,9 +41,9 @@ function notFoundPageContent(response) {
 
   const $ = cheerio.load(response.text);
 
-  checkPageContent($, 'Page not found', 'If you have entered a web address check it was correct. You can browse from the NHS.UK home page');
+  checkPageContent($, 'Page not found', 'If you have entered a web address check it was correct. You can browse from the NHS home page');
   backLinkContent($);
-  expect($('head title').text()).to.equal('Find psychological therapies services - Page not found - NHS.UK');
+  expect($('head title').text()).to.equal('Find psychological therapies services - Page not found - NHS');
 }
 
 module.exports = {

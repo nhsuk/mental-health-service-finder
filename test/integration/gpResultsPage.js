@@ -47,8 +47,8 @@ describe('GP results page', () => {
         iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`, 'search again', '.results__search__again');
       });
 
-      it('should have a title of \'Find psychological therapies services - NHS.UK\'', () => {
-        expect($('head title').text()).to.equal('Find psychological therapies services - Select your GP - NHS.UK');
+      it('should have a title of \'Find psychological therapies services - NHS\'', () => {
+        expect($('head title').text()).to.equal('Find psychological therapies services - Select your GP - NHS');
       });
 
       it('should have an H1 of \'Select your GP to get you to the right service\'', () => {
@@ -212,8 +212,8 @@ describe('GP results page', () => {
       expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal('0');
     });
 
-    it(`should have the page title - 'Find psychological therapies services - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS.UK'`, () => {
-      expect($('head title').text()).to.equal(`Find psychological therapies services - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS.UK`);
+    it(`should have the page title - 'Find psychological therapies services - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS'`, () => {
+      expect($('head title').text()).to.equal(`Find psychological therapies services - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS`);
     });
   });
 
@@ -298,7 +298,7 @@ describe('GP results page', () => {
       const $ = cheerio.load(response.text);
 
       expect($('.error-message').text()).to.equal(errorMessage);
-      expect($('head title').text()).to.equal(`Find psychological therapies services - ${errorMessage} - NHS.UK`);
+      expect($('head title').text()).to.equal(`Find psychological therapies services - ${errorMessage} - NHS`);
     });
 
     it('should display an error message when the query only consists of white space', async () => {
@@ -310,7 +310,7 @@ describe('GP results page', () => {
       const $ = cheerio.load(response.text);
 
       expect($('.error-message').text()).to.equal(errorMessage);
-      expect($('head title').text()).to.equal(`Find psychological therapies services - ${errorMessage} - NHS.UK`);
+      expect($('head title').text()).to.equal(`Find psychological therapies services - ${errorMessage} - NHS`);
     });
   });
 });

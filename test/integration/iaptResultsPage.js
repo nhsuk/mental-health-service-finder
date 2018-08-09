@@ -47,8 +47,8 @@ describe('IAPT results page', () => {
         iExpect.backLinkContent($, `${constants.siteRoot}${routes.results.path}?type=gp&query=${gpQuery}`);
       });
 
-      it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
-        expect($('head title').text()).to.equal('Find psychological therapies services - Services you can refer yourself to - NHS.UK');
+      it('should have a title of \'Find IAPT services - NHS\'', () => {
+        expect($('head title').text()).to.equal('Find psychological therapies services - Services you can refer yourself to - NHS');
       });
 
       it('should have an H1 of \'Psychological therapies services\'', () => {
@@ -129,8 +129,8 @@ describe('IAPT results page', () => {
         iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${gpName}`);
       });
 
-      it(`should have the page title - 'Find psychological therapies services - There are no services available for '${gpName}'- NHS.UK`, () => {
-        expect($('head title').text()).to.equal(`Find psychological therapies services - There are no services available for '${gpName}' - NHS.UK`);
+      it(`should have the page title - 'Find psychological therapies services - There are no services available for '${gpName}'- NHS`, () => {
+        expect($('head title').text()).to.equal(`Find psychological therapies services - There are no services available for '${gpName}' - NHS`);
       });
     });
 

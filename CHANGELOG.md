@@ -11,6 +11,7 @@
 - Update content to latest tested
 - Give each page a unique title
 - Set background to blue
+- Replace references to `NHS.UK` in favour of `NHS`
 
 0.5.0 / 2018-08-02
 ==================
