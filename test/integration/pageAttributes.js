@@ -30,8 +30,9 @@ describe('Page attributes', () => {
 
       describe('titles', () => {
         if (path !== routes.results.path) {
-          it('should be \'Find IAPT services - NHS.UK\'', () => {
-            expect($('head title').text()).to.equal('Find IAPT services - NHS.UK');
+          const title = routes[route].title;
+          it(`should be 'Find psychological therapies services - ${title} - NHS.UK'`, () => {
+            expect($('head title').text()).to.equal(`Find psychological therapies services - ${title} - NHS.UK`);
           });
         }
       });
@@ -39,9 +40,8 @@ describe('Page attributes', () => {
       describe('h1s', () => {
         if (path !== routes.results.path) {
           it('should be correct', () => {
-            const pageTitle = routes[route].title;
-
-            expect($('h1').text()).to.equal(pageTitle);
+            const h1 = routes[route].h1;
+            expect($('h1').text()).to.equal(h1);
           });
         }
       });

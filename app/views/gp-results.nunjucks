@@ -1,6 +1,8 @@
 {% extends 'layout.nunjucks' %}
 {% set href = siteRoot + "/search?query=" + query | urlencode %}
 
+{% block pageTitle %}Select your GP - {% endblock %}
+
 {% block wtMeta %}
 <meta name="WT.si_p" content="GP Search Results">
 <meta name="DCSext.NumberOfResults" content="{{ results.length }}">

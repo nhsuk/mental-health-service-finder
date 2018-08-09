@@ -1,6 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}{% if errorMessage %}{{ errorMessage }} - {% endif %}{% endblock %}
+{% block pageTitle %}{% if errorMessage %}{{ errorMessage }}{% else %}Search for your GP{% endif %} - {% endblock %}
 
 {% block wtMeta %}
 <meta name="WT.si_p" content="GP Search">

@@ -47,8 +47,8 @@ describe('GP results page', () => {
         iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`, 'search again', '.results__search__again');
       });
 
-      it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
-        expect($('head title').text()).to.equal('Find IAPT services - NHS.UK');
+      it('should have a title of \'Find psychological therapies services - NHS.UK\'', () => {
+        expect($('head title').text()).to.equal('Find psychological therapies services - Select your GP - NHS.UK');
       });
 
       it('should have an H1 of \'Select your GP to get you to the right service\'', () => {
@@ -60,6 +60,7 @@ describe('GP results page', () => {
       });
 
       it('the banner should link back to Choices IAPT service search', () => {
+        expect($('.back-to-choices').text()).to.equal('Find psychological therapies using our old finder.');
         expect($('.back-to-choices').attr('href'))
           .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
       });
@@ -293,7 +294,7 @@ describe('GP results page', () => {
       const $ = cheerio.load(response.text);
 
       expect($('.error-message').text()).to.equal(errorMessage);
-      expect($('head title').text()).to.equal(`${errorMessage} - Find IAPT services - NHS.UK`);
+      expect($('head title').text()).to.equal(`Find psychological therapies services - ${errorMessage} - NHS.UK`);
     });
 
     it('should display an error message when the query only consists of white space', async () => {
@@ -305,7 +306,7 @@ describe('GP results page', () => {
       const $ = cheerio.load(response.text);
 
       expect($('.error-message').text()).to.equal(errorMessage);
-      expect($('head title').text()).to.equal(`${errorMessage} - Find IAPT services - NHS.UK`);
+      expect($('head title').text()).to.equal(`Find psychological therapies services - ${errorMessage} - NHS.UK`);
     });
   });
 });

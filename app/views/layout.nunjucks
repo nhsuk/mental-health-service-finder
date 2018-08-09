@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="format-detection" content="telephone=no">
-    <meta name="description" content="Find IAPT services."/>
+    <meta name="description" content="Find psychological therapies services."/>
 
     <!--[if IE]><link rel="shortcut icon" href="{{ siteRoot }}/assets/images/favicon.ico"><![endif]-->
     <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
@@ -18,7 +18,7 @@
     <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size. -->
     <link rel="icon" href="{{ assetsUrl }}/images/favicon.png">
 
-    <title>{% block pageTitle %}{% endblock %}Find IAPT services - NHS.UK</title>
+    <title>Find psychological therapies services - {% block pageTitle %}{% endblock %}NHS.UK</title>
 
     <meta property="og:image" content="{{ siteRoot }}/images/opengraph-image.png">
     <meta property="og:image:width" content="1200">

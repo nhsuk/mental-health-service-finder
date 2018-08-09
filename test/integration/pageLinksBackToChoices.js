@@ -28,6 +28,7 @@ describe('Page links back to Choices', () => {
       it('the banner should link back to Choices IAPT service search', () => {
         const $ = cheerio.load(res.text);
 
+        expect($('.back-to-choices').text()).to.equal('Find psychological therapies using our old finder.');
         expect($('.back-to-choices').attr('href'))
           .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
       });
