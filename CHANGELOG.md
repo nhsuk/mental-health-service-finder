@@ -3,6 +3,12 @@
 - Use latest footer font size
 - Update print css for new design
 - Update IE css for new design
+- Update npm dependencies
+- Add urgent help call-out to 'check' page
+- Do not display online referral message when no option available
+- Hyperlink search again link on no results page
+- Add extra info to search page about use of GP
+- Update content to latest tested
 
 0.5.0 / 2018-08-02
 ==================
