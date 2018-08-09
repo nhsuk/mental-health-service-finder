@@ -100,8 +100,6 @@ form {
     background-color: $white !important;
     border: 2px solid #000;
     margin: 20px 0;
-    @include media(tablet) {
-    }
     @include mq($until: tablet) {
       width: 100%;
     }

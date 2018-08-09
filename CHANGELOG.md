@@ -10,6 +10,7 @@
 - Add extra info to search page about use of GP
 - Update content to latest tested
 - Give each page a unique title
+- Set background to blue
 
 0.5.0 / 2018-08-02
 ==================
