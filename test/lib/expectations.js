@@ -42,6 +42,7 @@ function notFoundPageContent(response) {
 
   checkPageContent($, 'Page not found', 'If you have entered a web address check it was correct. You can browse from the NHS.UK home page');
   backLinkContent($);
+  expect($('head title').text()).to.equal('Find psychological therapies services - Page not found - NHS.UK');
 }
 
 module.exports = {

@@ -1,7 +1,8 @@
 {% extends 'layout.nunjucks' %}
 {% set href = siteRoot + "/search?query=" + query | urlencode %}
+{% set msg = 'Sorry, we couldn\'t find any GP surgeries matching \'' + query + '\'' %}
 
-{% block pageTitle %}Select your GP - {% endblock %}
+{% block pageTitle %}{% if results.length > 0 %}Select your GP{% else %}{{ msg }}{% endif %} - {% endblock %}
 
 {% block wtMeta %}
 <meta name="WT.si_p" content="GP Search Results">
@@ -12,7 +13,7 @@
 {% if results.length > 0 %}
 <h1>Select your GP to see available services</h1>
 {% else %}
-<h1>Sorry, we couldn't find any GP surgeries matching '{{ query }}'</h1>
+<h1>{{ msg }}</h1>
 {% endif %}
 {% endblock %}
 

@@ -211,6 +211,10 @@ describe('GP results page', () => {
       expect($('meta[name="WT.si_p"]').prop('content')).to.equal('GP Search Results');
       expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal('0');
     });
+
+    it(`should have the page title - \'Find psychological therapies services - Sorry, we couldn\'t find any GP surgeries matching \'${query}\' - NHS.UK\'`, () => {
+      expect($('head title').text()).to.equal(`Find psychological therapies services - Sorry, we couldn\'t find any GP surgeries matching \'${query}\' - NHS.UK`);
+    });
   });
 
   describe('bad api responses', () => {

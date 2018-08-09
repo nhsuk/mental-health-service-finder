@@ -1,8 +1,9 @@
 {% extends 'layout.nunjucks' %}
-
-{% block pageTitle %}Services you can refer yourself to - {% endblock %}
-
 {% set resultsLength = results.length %}
+{% set msg = 'There are no services available for \'' + gpname + '\'' %}
+
+{% block pageTitle %}{% if results.length > 0 %}Services you can refer yourself to{% else %}{{ msg }}{% endif %} - {% endblock %}
+
 
 {% block wtMeta %}
 <meta name="WT.si_p" content="IAPT Results">
@@ -16,7 +17,7 @@
 {% block content %}
 <h2 class="nhsuk-body-l" role="text">
 {% if resultsLength === 0 %}
-  There are no services available for '{{ gpname }}'.
+  {{ msg }}.
 {% elif resultsLength === 1 %}
   1 service is available for '{{ gpname }}'.
 {% else %}
