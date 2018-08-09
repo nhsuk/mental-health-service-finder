@@ -18,7 +18,7 @@
 {% if results.length > 0 %}
 <h2 class="nhsuk-body-l" role="text">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ query }}'</span>.</h2>
 
-<p>If your surgery is not here, check your spelling and <a class="results__search__again" href="{{ href }}">search again</a>.</p>
+<p role="text">If your surgery is not here, check your spelling and <a class="results__search__again" href="{{ href }}">search again</a>.</p>
 
 <div>
   <ol class="inline-list">
