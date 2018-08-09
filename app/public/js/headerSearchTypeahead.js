@@ -18,6 +18,11 @@ NHSUK.headerSearchTypeahead = ((global) => {
     },
   });
 
+  function hideSecondInputForScreenReaders() {
+    $(`${headerId} .c-search__input--shadow`).attr('aria-hidden', 'true').addClass('visually-hidden');
+    $(`${headerId} .c-search__input.tt-input`).attr('role', 'textbox');
+  }
+
   function init() {
     suggestions.initialize();
 
@@ -119,6 +124,8 @@ NHSUK.headerSearchTypeahead = ((global) => {
         $(`${headerId} .c-search__input`).removeClass('c-search__input--dropdown');
         $(`${headerId} .c-search__submit`).removeClass('c-search__submit--dropdown');
       });
+
+    hideSecondInputForScreenReaders();
   }
 
   return {
@@ -128,8 +135,4 @@ NHSUK.headerSearchTypeahead = ((global) => {
 
 $(() => {
   NHSUK.headerSearchTypeahead.init();
-  const headerId = '#header';
-  // hide the extra input field created by typeahead to screen readers
-  $(`${headerId} .c-search__input--shadow`).attr('aria-hidden', 'true').addClass('visually-hidden');
-  $(`${headerId} .c-search__input.tt-input`).attr('role', 'textbox');
 });

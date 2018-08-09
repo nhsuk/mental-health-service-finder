@@ -33,7 +33,7 @@
             <label class="nhsuk-heading-m form-label-bold" for="query">Tell us your GP surgery:</label>
           </div>
           <p>For example, surgery or street name</p>
-          <input aria-labelledby="query" autocomplete="off" autocorrect="off" auotcapitalize="off" spellcheck="off" type="text" class="form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
+          <input aria-labelledby="query" autocomplete="off" autocorrect="off" auotcapitalize="off" spellcheck="off" type="text" class="c-search__input form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
         </div>
         <div>
           <details role="group" class="details">
