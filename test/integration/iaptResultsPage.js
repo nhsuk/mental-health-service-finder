@@ -129,8 +129,8 @@ describe('IAPT results page', () => {
         iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${gpName}`);
       });
 
-      it(`should have the page title - 'Find psychological therapies services - There are no services available for \'${gpName}\'- NHS.UK`, () => {
-        expect($('head title').text()).to.equal(`Find psychological therapies services - There are no services available for \'${gpName}\' - NHS.UK`);
+      it(`should have the page title - 'Find psychological therapies services - There are no services available for '${gpName}'- NHS.UK`, () => {
+        expect($('head title').text()).to.equal(`Find psychological therapies services - There are no services available for '${gpName}' - NHS.UK`);
       });
     });
 

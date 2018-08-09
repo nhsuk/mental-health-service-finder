@@ -6,7 +6,7 @@ module.exports = {
     title: 'What happens next',
   },
   results: {
-    path: '/results'
+    path: '/results',
   },
   search: {
     'WT.si_p': 'GP Search',
