@@ -292,7 +292,7 @@ describe('GP results page', () => {
 
       const $ = cheerio.load(response.text);
 
-      expect($('.error-message').text().trim()).to.equal(errorMessage);
+      expect($('.error-message').text()).to.equal(errorMessage);
       expect($('head title').text()).to.equal(`${errorMessage} - Find IAPT services - NHS.UK`);
     });
 
@@ -304,7 +304,7 @@ describe('GP results page', () => {
 
       const $ = cheerio.load(response.text);
 
-      expect($('.error-message').text().trim()).to.equal(errorMessage);
+      expect($('.error-message').text()).to.equal(errorMessage);
       expect($('head title').text()).to.equal(`${errorMessage} - Find IAPT services - NHS.UK`);
     });
   });

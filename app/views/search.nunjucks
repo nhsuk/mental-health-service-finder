@@ -12,9 +12,7 @@
 
 {% block content %}
 {% if errorMessage %}
-<div class="error-message" id="error-message" role="alert">
-  <h2>{% if errorMessage %} {{ errorMessage }} {% endif %}</h2>
-</div>
+<div class="error-message" id="error-message" role="alert"><h2>{% if errorMessage %}{{ errorMessage }}{% endif %}</h2></div>
 {% endif %}
 
 <div class="nhsuk-app__search">
