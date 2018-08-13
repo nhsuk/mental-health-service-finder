@@ -12,6 +12,7 @@
 - Give each page a unique title
 - Set background to blue
 - Replace references to `NHS.UK` in favour of `NHS`
+- Update header search placeholder text
 
 0.5.0 / 2018-08-02
 ==================
