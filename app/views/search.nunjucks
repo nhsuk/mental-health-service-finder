@@ -7,7 +7,8 @@
 {% endblock %}
 
 {% block header %}
-<h1>Tell us your GP</h1>
+<h1>We need to know where your GP is</h1>
+<p>This helps us get you to the right psychological therapies service</p>
 {% endblock %}
 
 {% block content %}

@@ -14,4 +14,15 @@
 
 {% if result.selfReferral %}
 <p class="results__self__referral"><a class="button" href="{{ result.selfReferral }}">Refer yourself online<span class="visually-hidden"> to {{ result.OrganisationName }}</span></a></p>
-{% endif %}
+<p class="results__waiting_times">
+<script>
+var waitingTimeArray = [
+    'Most people have their first session within 4 weeks',
+    'Most people have their first session within 8 weeks',
+    'Most people wait more than 8 weeks for their first session'
+];
+var randomNumber = Math.floor(Math.random()*waitingTimeArray.length);
+
+document.write(waitingTimeArray[randomNumber]);
+</script>
+</p>{% endif %}
