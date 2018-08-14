@@ -8,9 +8,6 @@ function forGPSearch(locals) {
   return {
     count: true,
     filter: 'OrganisationTypeID eq \'GPB\'',
-    highlight: 'OrganisationName,Address1,Address2,Address3,Postcode',
-    highlightPostTag: '</span>',
-    highlightPreTag: '<span class="highlight">',
     search,
     searchFields: 'OrganisationName,Address1,Address2,Address3,Postcode',
     select: 'OrganisationName,Address1,Address2,Address3,City,County,Postcode,CCG,Longitude,Latitude',
