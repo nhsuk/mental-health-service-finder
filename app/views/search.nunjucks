@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block header %}
-<h1>We need to know your GP surgery to get you to the right service</h1>
+<h1>Tell us your GP</h1>
 {% endblock %}
 
 {% block content %}
