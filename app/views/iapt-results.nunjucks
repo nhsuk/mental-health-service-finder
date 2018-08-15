@@ -27,9 +27,9 @@
 
 {% if resultsLength > 0 %}
 <div>
-  <ol class="inline-list">
+  <ol class="inline-list" role="list">
     {% for result in results %}
-      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}">
+      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}" role="listitem">
         <div>
           {% include "includes/iapt-result-item.nunjucks" %}
         </div>

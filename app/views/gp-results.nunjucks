@@ -24,9 +24,9 @@
 <p role="text">If your surgery is not here, check your spelling and <a class="results__search__again" href="{{ href }}">search again</a>.</p>
 
 <div>
-  <ol class="inline-list">
+  <ol class="inline-list" role="list">
     {% for result in results %}
-      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}">
+      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}" role="listitem">
         <div>
           {% include "includes/gp-result-item.nunjucks" %}
         </div>
