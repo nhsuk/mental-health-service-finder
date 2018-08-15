@@ -1,5 +1,8 @@
 {% extends 'layout.nunjucks' %}
 {% set href = siteRoot + "/search?query=" + query | urlencode %}
+{% set msg = 'Sorry, we couldn\'t find any GP surgeries matching \'' + query + '\'' %}
+
+{% block pageTitle %}{% if results.length > 0 %}Select your GP{% else %}{{ msg }}{% endif %} - {% endblock %}
 
 {% block wtMeta %}
 <meta name="WT.si_p" content="GP Search Results">
@@ -10,7 +13,7 @@
 {% if results.length > 0 %}
 <h1>Select your GP to see available services</h1>
 {% else %}
-<h1>Sorry, we couldn't find any GP surgeries matching '{{ query }}'</h1>
+<h1>{{ msg }}</h1>
 {% endif %}
 {% endblock %}
 
@@ -18,12 +21,12 @@
 {% if results.length > 0 %}
 <h2 class="nhsuk-body-l" role="text">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ query }}'</span>.</h2>
 
-<p>If your surgery is not here, check your spelling and <a class="results__search__again" href="{{ href }}">search again</a>.</p>
+<p role="text">If your surgery is not here, check your spelling and <a class="results__search__again" href="{{ href }}">search again</a>.</p>
 
 <div>
-  <ol class="inline-list">
+  <ol class="inline-list" role="list">
     {% for result in results %}
-      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}">
+      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}" role="listitem">
         <div>
           {% include "includes/gp-result-item.nunjucks" %}
         </div>

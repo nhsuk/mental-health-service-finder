@@ -47,8 +47,8 @@ describe('IAPT results page', () => {
         iExpect.backLinkContent($, `${constants.siteRoot}${routes.results.path}?type=gp&query=${gpQuery}`);
       });
 
-      it('should have a title of \'Find IAPT services - NHS.UK\'', () => {
-        expect($('head title').text()).to.equal('Find IAPT services - NHS.UK');
+      it('should have a title of \'Find IAPT services - NHS\'', () => {
+        expect($('head title').text()).to.equal('Find psychological therapies services - Services you can refer yourself to - NHS');
       });
 
       it('should have an H1 of \'Psychological therapies services\'', () => {
@@ -60,6 +60,7 @@ describe('IAPT results page', () => {
       });
 
       it('the banner should link back to Choices IAPT service search', () => {
+        expect($('.back-to-choices').text()).to.equal('Find psychological therapies using our old finder.');
         expect($('.back-to-choices').attr('href'))
           .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
       });
@@ -126,6 +127,10 @@ describe('IAPT results page', () => {
 
       it('has a back link to the search page', () => {
         iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${gpName}`);
+      });
+
+      it(`should have the page title - 'Find psychological therapies services - There are no services available for '${gpName}'- NHS`, () => {
+        expect($('head title').text()).to.equal(`Find psychological therapies services - There are no services available for '${gpName}' - NHS`);
       });
     });
 
