@@ -69,11 +69,6 @@ describe('buildOptions', () => {
           expect(body.select).to.equal('OrganisationName,Address1,Address2,Address3,City,County,Postcode,CCG,Longitude,Latitude');
         });
 
-        it('should set the highlight tags', () => {
-          expect(body.highlightPreTag).to.equal('<span class="highlight">');
-          expect(body.highlightPostTag).to.equal('</span>');
-        });
-
         it('should request a count of results', () => {
           expect(body.count).to.equal(true);
         });

@@ -1,19 +1,29 @@
-const searchHighlightsKey = require('./constants').searchHighlightsKey;
+const highlights = require('./constants').highlights;
+const highlighter = require('./utils/highlighter');
 
-function mapGPResults(input) {
-  const searchHighlights = input[searchHighlightsKey] || {};
-  // eslint-disable-next-line no-param-reassign
-  input.organisationNameHighlight = searchHighlights.OrganisationName
-                                 || input.OrganisationName;
-  // eslint-disable-next-line no-param-reassign
-  input.fullAddress = [
-    searchHighlights.Address1 || input.Address1,
-    searchHighlights.Address2 || input.Address2,
-    searchHighlights.Address3 || input.Address3,
-    input.City,
-    input.County,
-    searchHighlights.Postcode || input.Postcode,
-  ].filter(Boolean).join(', ') || undefined;
+function mapGPResults(results, query) {
+  const terms = query.split(' ');
+
+  results.forEach((result) => {
+    // eslint-disable-next-line no-param-reassign
+    result.organisationNameHighlight = highlighter({
+      highlights, string: result.OrganisationName, terms,
+    });
+    const fullAddress = [
+      result.Address1,
+      result.Address2,
+      result.Address3,
+      result.City,
+      result.County,
+      result.Postcode,
+    ].filter(Boolean).join(', ') || undefined;
+
+    // eslint-disable-next-line no-param-reassign
+    result.fullAddress = highlighter({
+      highlights, string: fullAddress, terms,
+    });
+  });
+  return results;
 }
 
 module.exports = mapGPResults;

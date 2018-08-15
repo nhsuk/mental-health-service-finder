@@ -12,14 +12,14 @@ describe('mapResults', () => {
       describe('with valid input', () => {
         it('should return an empty array when there is no \'value\' property', () => {
           const noValue = '{}';
-          const results = mapResults(noValue, type);
+          const results = mapResults(noValue, type, 'unkown');
 
           expect(results).to.be.an('array').that.is.empty;
         });
 
         it('should return the contents of the \'value\' property when there is one', () => {
           const noValue = '{ "value": [] }';
-          const results = mapResults(noValue, type);
+          const results = mapResults(noValue, type, 'unkown');
 
           expect(results).to.be.an('array').that.is.empty;
         });
@@ -47,7 +47,7 @@ describe('mapResults', () => {
 
     it('should not add a property for \'fullAddress\' when there is no address information', () => {
       const noValue = '{ "value": [{},{}] }';
-      const results = mapResults(noValue, type);
+      const results = mapResults(noValue, type, 'unkown');
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(2);
@@ -56,7 +56,7 @@ describe('mapResults', () => {
 
     it('should add a property for \'fullAddress\' when there is address information available', () => {
       const noValue = '{ "value": [{ "Address1": "Address1" },{ "Address1": "Address1" }] }';
-      const results = mapResults(noValue, type);
+      const results = mapResults(noValue, type, 'unknown');
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(2);
