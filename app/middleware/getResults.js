@@ -7,6 +7,7 @@ const mapResults = require('../lib/mapResults');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;
 
 function getResults(req, res, next) {
+  const query = res.locals.query;
   const type = res.locals.type;
   const options = buildOptions(type, res.locals);
 
@@ -22,7 +23,7 @@ function getResults(req, res, next) {
         case 200: {
           log.info(`${statusCode} response`, `${type}-success`);
           try {
-            const results = mapResults(body, type);
+            const results = mapResults(body, type, query);
 
             res.locals.results = results;
             res.render(`${type.toLowerCase()}-results`);

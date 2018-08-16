@@ -50,7 +50,7 @@ describe('buildOptions', () => {
         const searchFields = 'OrganisationName,Address1,Address2,Address3,Postcode';
 
         it('should only include expected keys', () => {
-          expect(Object.keys(body)).to.deep.equal(['count', 'filter', 'highlight', 'highlightPostTag', 'highlightPreTag', 'search', 'searchFields', 'select', 'top']);
+          expect(Object.keys(body)).to.deep.equal(['count', 'filter', 'search', 'searchFields', 'select', 'top']);
         });
 
         it('should filter by \'GPB\'', () => {
@@ -67,15 +67,6 @@ describe('buildOptions', () => {
 
         it('should select appropriate properties', () => {
           expect(body.select).to.equal('OrganisationName,Address1,Address2,Address3,City,County,Postcode,CCG,Longitude,Latitude');
-        });
-
-        it('should highlight searched fields', () => {
-          expect(body.highlight).to.equal(searchFields);
-        });
-
-        it('should set the highlight tags', () => {
-          expect(body.highlightPreTag).to.equal('<span class="highlight">');
-          expect(body.highlightPostTag).to.equal('</span>');
         });
 
         it('should request a count of results', () => {

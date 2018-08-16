@@ -14,6 +14,9 @@
 - Replace references to `NHS.UK` in favour of `NHS`
 - Update header search placeholder text
 - Remove aria-labelledby on the aria-hidden NHS logo
+- Do not highlight via Azure Search Service (because the full word is
+  highlighted rather than just the entered term)
+- Highlight with hand-rolled solution
 
 0.5.0 / 2018-08-02
 ==================

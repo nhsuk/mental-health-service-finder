@@ -4,12 +4,12 @@ const mapGPResults = require('./mapGPResults');
 const mapIAPTResults = require('./mapIAPTResults');
 const types = require('../lib/constants').types;
 
-function processResults(input, type) {
+function processResults(input, type, query) {
   try {
-    const results = JSON.parse(input).value || [];
+    let results = JSON.parse(input).value || [];
     switch (type) {
       case types.GP: {
-        results.map(mapGPResults);
+        results = mapGPResults(results, query);
         break;
       }
       case types.IAPT: {
