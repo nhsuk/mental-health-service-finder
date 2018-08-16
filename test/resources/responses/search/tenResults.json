@@ -3,9 +3,6 @@
   "value": [
     {
       "@search.text": "LS1 8TL",
-      "@search.highlights": {
-        "Postcode": [ "<span class='highlight'>LS1 8TL</span>" ]
-      },
       "OrganisationName": "One Medicare Llp-The Light",
       "OrganisationAliases": [
         "The Light NHS GP Surgery"

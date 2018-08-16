@@ -1,6 +1,5 @@
 const chai = require('chai');
 
-const searchHighlightsKey = 's';
 const { post, pre } = require('../../../app/lib/constants').highlights;
 const mapGPResults = require('../../../app/lib/mapGPResults');
 
@@ -113,7 +112,6 @@ describe('mapGPResults', () => {
           County: 'County',
           Postcode: 'Postcode',
         }];
-        input[searchHighlightsKey] = {};
 
         mapGPResults(input, 'nomatch');
 
