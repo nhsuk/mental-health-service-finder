@@ -25,7 +25,7 @@ describe('Page links back to Choices', () => {
         iExpect.breadcrumbContent($);
       });
 
-      it('the banner should link back to Choices IAPT service search', () => {
+      it('the banner should link back to the root of the site', () => {
         const $ = cheerio.load(res.text);
 
         expect($('.back-to-choices').text()).to.equal('Find psychological therapies using our old finder.');
