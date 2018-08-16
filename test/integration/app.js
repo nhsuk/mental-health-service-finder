@@ -20,7 +20,7 @@ describe('Application behaviour', () => {
   it('should have or have not headers for security', async () => {
     const res = await chai.request(server)
       .get(`${constants.siteRoot}`);
-    expect(res).to.have.header('Content-Security-Policy', 'connect-src \'self\' *.hotjar.com:* *.google-analytics.com nhs.funnelback.co.uk nhsuk-searchapi-srch-int-ne.search.windows.net; default-src \'self\'; font-src \'self\' *.nhs.uk *.hotjar.com; frame-src *.hotjar.com; img-src \'self\' data: *.google-analytics.com *.hotjar.com *.webtrends.com *.webtrendslive.com *.nhs.uk; script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' data: *.google-analytics.com *.hotjar.com *.webtrends.com *.webtrendslive.com; style-src \'self\' \'unsafe-inline\' *.nhs.uk; worker-src *.hotjar.com');
+    expect(res).to.have.header('Content-Security-Policy', 'connect-src \'self\' *.hotjar.com:* *.google-analytics.com nhs.funnelback.co.uk *.search.windows.net; default-src \'self\'; font-src \'self\' *.nhs.uk *.hotjar.com; frame-src *.hotjar.com; img-src \'self\' data: *.google-analytics.com *.hotjar.com *.webtrends.com *.webtrendslive.com *.nhs.uk; script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' data: *.google-analytics.com *.hotjar.com *.webtrends.com *.webtrendslive.com; style-src \'self\' \'unsafe-inline\' *.nhs.uk; worker-src *.hotjar.com');
     expect(res).to.have.header('X-Xss-Protection', '1; mode=block');
     expect(res).to.have.header('X-Frame-Options', 'DENY');
     expect(res).to.have.header('X-Content-Type-Options', 'nosniff');
