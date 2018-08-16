@@ -1,14 +1,14 @@
 function highlighter(opts) {
   const { highlights, string, terms } = opts;
   const { post, pre } = highlights;
-  let s = string;
+  let replacementString = string;
 
-  terms.forEach((term) => {
-    if (s) {
-      s = s.replace(new RegExp(term, 'gi'), `${pre}$&${post}`);
-    }
-  });
-  return s;
+  if (replacementString) {
+    terms.forEach((term) => {
+      replacementString = replacementString.replace(new RegExp(term, 'gi'), `${pre}$&${post}`);
+    });
+  }
+  return replacementString;
 }
 
 module.exports = highlighter;

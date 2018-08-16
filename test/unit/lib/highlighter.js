@@ -63,6 +63,18 @@ describe('highlighter', () => {
 
       expect(result).to.equal(`${pre}${term}${post}bc${pre}${term.toUpperCase()}${post}bc`);
     });
+
+    const falseyValues = [null, undefined, ''];
+    falseyValues.forEach((val) => {
+      it(`should return ${val} when string is ${val}`, () => {
+        const string = val;
+        const term = 'a';
+        const terms = [term];
+        const result = highlighter({ highlights, string, terms });
+
+        expect(result).to.be.equal(val);
+      });
+    });
   });
 
   describe('when there multiple terms', () => {
