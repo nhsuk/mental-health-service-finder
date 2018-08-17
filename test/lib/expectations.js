@@ -1,5 +1,6 @@
 const chai = require('chai');
 const cheerio = require('cheerio');
+const siteRoot = require('../../app/lib/constants').siteRoot;
 
 const expect = chai.expect;
 
@@ -11,8 +12,8 @@ function htmlWithStatus(res, status) {
 function breadcrumbContent($) {
   expect($('.nhsuk-c-breadcrumb__item').eq(0).text().trim()).to.equal('Home');
   expect($('.nhsuk-c-breadcrumb__item').eq(0).find('a').prop('href')).to.equal('https://www.nhs.uk');
-  expect($('.nhsuk-c-breadcrumb__item').eq(1).text().trim()).to.equal('Services near you');
-  expect($('.nhsuk-c-breadcrumb__item').eq(1).find('a').prop('href')).to.equal('https://www.nhs.uk/service-search');
+  expect($('.nhsuk-c-breadcrumb__item').eq(1).text().trim()).to.equal('Find phsychological therapies services');
+  expect($('.nhsuk-c-breadcrumb__item').eq(1).find('a').prop('href')).to.equal(siteRoot);
 }
 
 // eslint-disable-next-line no-script-url
