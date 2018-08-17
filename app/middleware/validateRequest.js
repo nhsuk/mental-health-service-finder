@@ -5,7 +5,7 @@ function validateRequest(req, res, next) {
   const query = res.locals.query;
   if (!query || !query.trim()) {
     emptyGPSearchCounter.inc(1);
-    res.locals.errorMessage = 'Please enter a surgery or street name to find your GP surgery.';
+    res.locals.errorMessage = 'Enter the name of your GP surgery or which street it\'s on.';
     res.render('search');
   } else {
     res.locals.query = cleanQuery(query);
