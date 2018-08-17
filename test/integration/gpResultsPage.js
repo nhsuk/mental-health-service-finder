@@ -287,7 +287,7 @@ describe('GP results page', () => {
   });
 
   describe('undesirable queries', () => {
-    const errorMessage = 'Please enter a surgery or street name to find your GP surgery.';
+    const errorMessage = 'Enter the name of your GP surgery or which street it\'s on.';
 
     it('should display an error message when no query is entered', async () => {
       const query = '';

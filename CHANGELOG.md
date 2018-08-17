@@ -17,6 +17,7 @@
 - Do not highlight via Azure Search Service (because the full word is
   highlighted rather than just the entered term)
 - Highlight with hand-rolled solution
+- Upgrade to `node:8.11.4-alpine`
 
 0.5.0 / 2018-08-02
 ==================
@@ -26,6 +27,8 @@
 - Improve display of typeahead results
 - Order IAPT results by distance from GP
 - Use specific page name for content page WebTrends tracking
+- Add login link to footer
+- Add clickable menu item icon
 
 0.4.0 / 2018-07-30
 ==================
