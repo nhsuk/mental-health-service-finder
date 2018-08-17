@@ -1,4 +1,4 @@
-0.6.0 / TBD
+0.5.0 / TBD
 ==================
 - Use latest footer font size
 - Update print css for new design
@@ -18,9 +18,6 @@
   highlighted rather than just the entered term)
 - Highlight with hand-rolled solution
 - Upgrade to `node:8.11.4-alpine`
-
-0.5.0 / 2018-08-02
-==================
 - Remove hardcoded api-key
 - Fix 1 GP result bug
 - Search `Address1` and `Address2` fields in typeahead
