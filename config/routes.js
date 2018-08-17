@@ -10,7 +10,7 @@ module.exports = {
   },
   search: {
     'WT.si_p': 'GP Search',
-    h1: 'We need to know your GP surgery to get you to the right service',
+    h1: 'We need to know where your GP is',
     path: '/search',
     title: 'Search for your GP',
   },
