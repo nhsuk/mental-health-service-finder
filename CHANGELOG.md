@@ -17,6 +17,7 @@
 - Do not highlight via Azure Search Service (because the full word is
   highlighted rather than just the entered term)
 - Highlight with hand-rolled solution
+- Upgrade to `node:8.11.4-alpine`
 
 0.5.0 / 2018-08-02
 ==================
