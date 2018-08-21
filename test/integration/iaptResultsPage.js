@@ -52,7 +52,7 @@ describe('IAPT results page', () => {
       });
 
       it('should have an H1 of \'Psychological therapies services\'', () => {
-        expect($('h1').text()).to.equal('Your psychological therapies services');
+        expect($('h1').text()).to.equal('You can refer yourself using the contact details below');
       });
 
       it('the breadcrumbs should have 2 levels of links', () => {

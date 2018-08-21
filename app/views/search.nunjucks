@@ -29,7 +29,7 @@
       <div>
         <div class="form-group {% if errorMessage %}error{% endif %}">
           <p>
-            <label for="query">Enter the name of your GP surgery (surgery or street name):</label>
+            <label for="query">Enter the name of your GP surgery (or the street name):</label>
           </p>
           <input aria-labelledby="query" autocomplete="off" autocorrect="off" auotcapitalize="off" spellcheck="off" type="text" class="c-search__input form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
         </div>
