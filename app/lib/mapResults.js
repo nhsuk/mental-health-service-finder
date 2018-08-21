@@ -4,24 +4,26 @@ const mapGPResults = require('./mapGPResults');
 const mapIAPTResults = require('./mapIAPTResults');
 const types = require('../lib/constants').types;
 
+function removeSignHealth(item) {
+  return item.NACSCode !== 'AM701';
+}
+
 function processResults(input, type, query) {
   try {
-    let results = JSON.parse(input).value || [];
+    const results = JSON.parse(input).value || [];
     switch (type) {
       case types.GP: {
-        results = mapGPResults(results, query);
-        break;
+        return mapGPResults(results, query);
       }
       case types.IAPT: {
-        results.map(mapIAPTResults);
-        break;
+        const filteredResults = results.filter(removeSignHealth);
+        filteredResults.map(mapIAPTResults);
+        return filteredResults;
       }
       default: {
         throw new VError(`Unable to process results for unknown type: ${type}`);
       }
     }
-
-    return results;
   } catch (err) {
     throw new VError(err, 'Problem parsing results');
   }

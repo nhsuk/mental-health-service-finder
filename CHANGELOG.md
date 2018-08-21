@@ -3,6 +3,7 @@
 - Fix typo
 - Cleanup typeahead results display
 - Update content for improved usability
+- Remove Sign Health from results (a fallback should the data not be correct)
 
 0.5.0 / 2018-08-20
 ==================
