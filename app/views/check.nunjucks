@@ -3,7 +3,7 @@
 {% block pageTitle %}What happens next - {% endblock %}
 
 {% block header %}
-<h1>What happens after you refer yourself</h1>
+<h1>What happens when you refer yourself</h1>
 {% endblock %}
 
 {% block wtMeta %}

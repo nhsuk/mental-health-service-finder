@@ -2,6 +2,7 @@
 ==================
 - Fix typo
 - Cleanup typeahead results display
+- Update content for improved usability
 
 0.5.0 / 2018-08-20
 ==================

@@ -99,7 +99,7 @@ form {
     padding: 4px;
     background-color: $white !important;
     border: 2px solid #000;
-    margin: 20px 0;
+    margin: 10px 0 20px 0;
     @include mq($until: tablet) {
       width: 100%;
     }
