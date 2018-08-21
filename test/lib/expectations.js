@@ -12,7 +12,7 @@ function htmlWithStatus(res, status) {
 function breadcrumbContent($) {
   expect($('.nhsuk-c-breadcrumb__item').eq(0).text().trim()).to.equal('Home');
   expect($('.nhsuk-c-breadcrumb__item').eq(0).find('a').prop('href')).to.equal('https://www.nhs.uk');
-  expect($('.nhsuk-c-breadcrumb__item').eq(1).text().trim()).to.equal('Find phsychological therapies services');
+  expect($('.nhsuk-c-breadcrumb__item').eq(1).text().trim()).to.equal('Find psychological therapies services');
   expect($('.nhsuk-c-breadcrumb__item').eq(1).find('a').prop('href')).to.equal(siteRoot);
 }
 

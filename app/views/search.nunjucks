@@ -7,7 +7,8 @@
 {% endblock %}
 
 {% block header %}
-<h1>We need to know your GP surgery to get you to the right service</h1>
+<h1>We need to know where your GP is</h1>
+<p>This helps us get you to the right psychological therapies service.</p>
 {% endblock %}
 
 {% block content %}
@@ -27,10 +28,9 @@
       <input type="hidden" id="lon" name="lon" value="" />
       <div>
         <div class="form-group {% if errorMessage %}error{% endif %}">
-          <div>
-            <label class="nhsuk-heading-m form-label-bold" for="query">Tell us your GP surgery:</label>
-          </div>
-          <p>For example, surgery or street name</p>
+          <p>
+            <label for="query">Enter the name of your GP surgery (or the street name):</label>
+          </p>
           <input aria-labelledby="query" autocomplete="off" autocorrect="off" auotcapitalize="off" spellcheck="off" type="text" class="c-search__input form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
         </div>
         <div>

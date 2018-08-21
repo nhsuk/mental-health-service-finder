@@ -97,5 +97,14 @@ describe('mapResults', () => {
       results.forEach(item => expect(item.telephone).to.equal(telephone));
       results.forEach(item => expect(item.website).to.equal(website));
     });
+
+    it('should remove Sign Health from results', () => {
+      const noValue = '{ "value": [{ "NACSCode": "AM701" },{ "NACSCode": "NOT-AM701" }] }';
+
+      const results = mapResults(noValue, type);
+
+      expect(results).to.be.an('array');
+      expect(results.length).to.equal(1);
+    });
   });
 });

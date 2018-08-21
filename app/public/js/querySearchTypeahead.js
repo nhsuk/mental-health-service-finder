@@ -93,10 +93,9 @@ NHSUK.queryTypeahead = ((global) => {
       name: '-suggestions',
       source: suggestions,
       templates: {
-        header: '<li class="c-search-menu__prepend">Suggested surgeries</li>',
         suggestion: (data) => {
           const address = generateAddressText(data);
-          return `<li><p class="bold">${data.OrganisationName}</p><p>${address}</p></li>`;
+          return `<li><p class="bold menu__item--name">${data.OrganisationName}</p><p class="menu__item--address">${address}</p></li>`;
         },
       },
     })

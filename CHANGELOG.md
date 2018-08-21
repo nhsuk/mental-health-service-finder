@@ -1,4 +1,12 @@
-0.5.0 / TBD
+0.6.0 / 2018-08-22
+==================
+- Fix typo
+- Cleanup typeahead results display
+- Update content for improved usability
+- Remove Sign Health from results (a fallback should the data not be correct)
+- Use local data for North Cumbria and Redbridge CCGs
+
+0.5.0 / 2018-08-20
 ==================
 - Use latest footer font size
 - Update print css for new design
