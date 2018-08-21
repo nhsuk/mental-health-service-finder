@@ -1,6 +1,7 @@
 0.6.0 / 2018-08-22
 ==================
 - Fix typo
+- Cleanup typeahead results display
 
 0.5.0 / 2018-08-20
 ==================

@@ -279,6 +279,24 @@ form {
 .bold {
   font-weight: $nhsuk-font-bold;
 }
-.c-search-menu__item p {
-  margin-top: 0px;
+#main-content {
+  .c-search-menu__item {
+    margin: 0;
+    text-decoration: none;
+    padding: 0;
+    color: $black;
+    p {
+      padding: 0 5px;
+    }
+    .menu__item--name {
+      padding-top: 5px;
+    }
+    .menu__item--address {
+      padding-bottom: 5px;
+      font-size: 14px;
+    }
+  }
+  .c-search-menu__list {
+    padding: 0;
+  }
 }
