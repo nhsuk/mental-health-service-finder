@@ -1,4 +1,8 @@
-0.5.0 / TBD
+0.6.0 / 2018-08-22
+==================
+- Fix typo
+
+0.5.0 / 2018-08-20
 ==================
 - Use latest footer font size
 - Update print css for new design
