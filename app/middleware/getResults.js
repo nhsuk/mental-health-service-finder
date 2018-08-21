@@ -2,8 +2,11 @@ const request = require('request');
 const VError = require('verror');
 
 const buildOptions = require('../lib/requests/buildOptions');
+const constants = require('../lib/constants');
 const log = require('../lib/logger');
 const mapResults = require('../lib/mapResults');
+const northCumbria = require('../../data/northCumbriaCCG');
+const redBridge = require('../../data/redBridgeCCG');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;
 
 function getResults(req, res, next) {
@@ -14,33 +17,46 @@ function getResults(req, res, next) {
   log.info({ request: options }, `${type}-request`);
   const endTimer = searchHistogram(type).startTimer();
 
-  request.post(options, (error, response, body) => {
-    endTimer();
-    if (!error) {
-      log.info({ response: { body, response } }, `${type}-response`);
-      const statusCode = response.statusCode;
-      switch (statusCode) {
-        case 200: {
-          log.info(`${statusCode} response`, `${type}-success`);
-          try {
-            const results = mapResults(body, type, query);
-
-            res.locals.results = results;
-            res.render(`${type.toLowerCase()}-results`);
-          } catch (err) {
-            next(new VError(err, 'Problem processing results'));
-          }
-          break;
-        }
-        default: {
-          next(new VError(error, `Unprocessable status code: '${statusCode}' returned from API`));
-          break;
-        }
-      }
-    } else {
-      next(new VError(error, `Error returned from API for query of: '${res.locals.query}' and type of: '${type}'`));
+  if (type === constants.types.IAPT
+    && (query === constants.ccgs.northCumbria || query === constants.ccgs.redBridge)) {
+    let ccg;
+    if (query === constants.ccgs.northCumbria) {
+      ccg = northCumbria;
+    } else if (query === constants.ccgs.redBridge) {
+      ccg = redBridge;
     }
-  });
+    const iaptResults = [ccg];
+    res.locals.results = iaptResults;
+    res.render(`${type.toLowerCase()}-results`);
+  } else {
+    request.post(options, (error, response, body) => {
+      endTimer();
+      if (!error) {
+        log.info({ response: { body, response } }, `${type}-response`);
+        const statusCode = response.statusCode;
+        switch (statusCode) {
+          case 200: {
+            log.info(`${statusCode} response`, `${type}-success`);
+            try {
+              const results = mapResults(body, type, query);
+
+              res.locals.results = results;
+              res.render(`${type.toLowerCase()}-results`);
+            } catch (err) {
+              next(new VError(err, 'Problem processing results'));
+            }
+            break;
+          }
+          default: {
+            next(new VError(error, `Unprocessable status code: '${statusCode}' returned from API`));
+            break;
+          }
+        }
+      } else {
+        next(new VError(error, `Error returned from API for query of: '${res.locals.query}' and type of: '${type}'`));
+      }
+    });
+  }
 }
 
 module.exports = getResults;

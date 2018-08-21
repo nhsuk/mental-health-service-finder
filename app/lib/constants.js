@@ -1,6 +1,10 @@
 module.exports = {
   IAPTServiceCode: 'SRV0339',
   assetsUrl: 'https://assets.nhs.uk',
+  ccgs: {
+    northCumbria: '462881',
+    redBridge: '463329',
+  },
   contactMethodTypes: ['Email', 'Telephone', 'Website'],
   highlights: { post: '</span>', pre: '<span class="highlight">' },
   metrics: {
