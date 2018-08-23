@@ -1,6 +1,7 @@
 0.7.0 / TBD
 ==================
-- Remove Heatmaps from Webtrends (it has been discontinued)
+- Remove Heatmaps from Webtrends (as the feature has been discontinued)
+- Update python used in container
 
 0.6.0 / 2018-08-22
 ==================
