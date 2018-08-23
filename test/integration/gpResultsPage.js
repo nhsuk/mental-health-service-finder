@@ -176,6 +176,10 @@ describe('GP results page', () => {
         expect($('.results__count').text()).to.equal(resultCount.toString());
         expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal(resultCount.toString());
       });
+
+      it('should instruct Webtrends to anonymise IP Addresses', () => {
+        expect($('meta[name="DCS.dcsipa"]').prop('content')).to.equal('1');
+      });
     });
   });
 

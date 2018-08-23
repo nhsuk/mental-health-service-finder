@@ -25,6 +25,7 @@
     <meta property="og:image:height" content="1200">
 
     <meta name="WT.si_n" content="Mental Health Pilot">
+    <meta name="DCS.dcsipa" content="1">
 
     <meta name="api.key" content="{{ apiKey }}">
     <meta name="api.orgSuggester" content="{{ apiOrgSuggester }}">
