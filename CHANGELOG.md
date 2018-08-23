@@ -1,3 +1,7 @@
+0.7.0 / TBD
+==================
+- Remove Heatmaps from Webtrends (it has been discontinued)
+
 0.6.0 / 2018-08-22
 ==================
 - Fix typo
