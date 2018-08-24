@@ -3,6 +3,7 @@
 - Remove Heatmaps from Webtrends (as the feature has been discontinued)
 - Update python used in container
 - Anonymise IP used by Webtrends
+- Update favicon for latest design
 
 0.6.0 / 2018-08-22
 ==================
