@@ -1,5 +1,6 @@
 0.7.0 / TBD
 ==================
+- Update cookie policy link
 - Remove Heatmaps from Webtrends (as the feature has been discontinued)
 - Update python used in container
 - Anonymise IP used by Webtrends
