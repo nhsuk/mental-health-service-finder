@@ -6,11 +6,11 @@
         {% include "./icon-chevron-right.svg" %}
       </li>
       <li class="nhsuk-c-breadcrumb__item">
-        <a href="{{ siteRoot }}" class="nhsuk-c-breadcrumb__link">Find psychological therapies services</a>
+        <a href="{{ siteRoot }}" class="nhsuk-c-breadcrumb__link">Find a psychological therapies service</a>
       </li>
     </ol>
     <p class="nhsuk-c-breadcrumb__back">
-    <a href="{{ siteRoot }}" class="nhsuk-c-breadcrumb__backlink">Find psychological therapies services</a>
+    <a href="{{ siteRoot }}" class="nhsuk-c-breadcrumb__backlink">Find a psychological therapies service</a>
     {% include "./icon-chevron-left.svg" %}
     </p>
   </div>

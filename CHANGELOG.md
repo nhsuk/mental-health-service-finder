@@ -5,6 +5,7 @@
 - Update python used in container
 - Anonymise IP used by Webtrends
 - Update favicon for latest design
+- Match breadcrumb text with URL slug
 
 0.6.0 / 2018-08-22
 ==================
