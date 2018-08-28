@@ -1,4 +1,4 @@
-0.7.0 / TBD
+0.7.0 / 2018-08-30
 ==================
 - Update cookie policy link
 - Remove Heatmaps from Webtrends (as the feature has been discontinued)
@@ -8,6 +8,7 @@
 - Match breadcrumb text with URL slug
 - Don't display full website URL
 - Don't use abbreviation for telephone
+- Update footer links to new pages
 
 0.6.0 / 2018-08-22
 ==================
