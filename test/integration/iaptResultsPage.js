@@ -52,7 +52,7 @@ describe('IAPT results page', () => {
       });
 
       it('should have an H1 of \'Psychological therapies services\'', () => {
-        expect($('h1').text()).to.equal('You can refer yourself using the contact details below');
+        expect($('h1').text()).to.equal('Refer yourself using these contact details');
       });
 
       it('the breadcrumbs should have 2 levels of links', () => {
@@ -83,12 +83,13 @@ describe('IAPT results page', () => {
           expect(emailHref).to.equal(`mailto:email@result.${i}`);
 
           const tel = $(item).find('.results__telephone');
-          expect(tel.text()).to.equal(`Tel: result ${i} telephone`);
+          expect(tel.text()).to.equal(`Telephone: result ${i} telephone`);
           const telHref = getHrefFromA(tel);
           expect(telHref).to.equal(`tel:result ${i} telephone`);
 
+          const orgName = $(item).find('.results__name').text();
           const website = $(item).find('.results__website');
-          expect(website.text()).to.equal(`https://website.result.${i}`);
+          expect(website.text()).to.equal(`Visit ${orgName}'s website`);
           const websiteHref = getHrefFromA(website);
           expect(websiteHref).to.equal(`https://website.result.${i}`);
         });

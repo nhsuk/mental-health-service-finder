@@ -1,3 +1,15 @@
+0.7.0 / 2018-08-30
+==================
+- Update cookie policy link
+- Remove Heatmaps from Webtrends (as the feature has been discontinued)
+- Update python used in container
+- Anonymise IP used by Webtrends
+- Update favicon for latest design
+- Match breadcrumb text with URL slug
+- Don't display full website URL
+- Don't use abbreviation for telephone
+- Update footer links to new pages
+
 0.6.0 / 2018-08-22
 ==================
 - Fix typo

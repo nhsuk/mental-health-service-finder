@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block header %}
-<h1>You can refer yourself using the contact details below</h1>
+<h1>Refer yourself using these contact details</h1>
 {% endblock %}
 
 {% block content %}
