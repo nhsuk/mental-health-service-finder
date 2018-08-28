@@ -7,6 +7,7 @@
 - Update favicon for latest design
 - Match breadcrumb text with URL slug
 - Don't display full website URL
+- Don't use abbreviation for telephone
 
 0.6.0 / 2018-08-22
 ==================

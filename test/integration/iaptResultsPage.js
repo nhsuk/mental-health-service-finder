@@ -83,7 +83,7 @@ describe('IAPT results page', () => {
           expect(emailHref).to.equal(`mailto:email@result.${i}`);
 
           const tel = $(item).find('.results__telephone');
-          expect(tel.text()).to.equal(`Tel: result ${i} telephone`);
+          expect(tel.text()).to.equal(`Telephone: result ${i} telephone`);
           const telHref = getHrefFromA(tel);
           expect(telHref).to.equal(`tel:result ${i} telephone`);
 

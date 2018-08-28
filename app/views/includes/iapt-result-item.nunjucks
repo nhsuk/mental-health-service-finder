@@ -5,7 +5,7 @@
 {% endif %}
 
 {% if result.telephone %}
-  <p class="results__telephone">Tel: <a href="tel:{{ result.telephone }}" class="telephone_tracking">{{ result.telephone }}</a></p>
+  <p class="results__telephone">Telephone: <a href="tel:{{ result.telephone }}" class="telephone_tracking">{{ result.telephone }}</a></p>
 {% endif %}
 
 {% if result.email %}
