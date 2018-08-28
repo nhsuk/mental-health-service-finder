@@ -87,8 +87,9 @@ describe('IAPT results page', () => {
           const telHref = getHrefFromA(tel);
           expect(telHref).to.equal(`tel:result ${i} telephone`);
 
+          const orgName = $(item).find('.results__name').text();
           const website = $(item).find('.results__website');
-          expect(website.text()).to.equal(`https://website.result.${i}`);
+          expect(website.text()).to.equal(`Visit ${orgName}'s website`);
           const websiteHref = getHrefFromA(website);
           expect(websiteHref).to.equal(`https://website.result.${i}`);
         });

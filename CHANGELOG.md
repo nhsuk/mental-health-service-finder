@@ -6,6 +6,7 @@
 - Anonymise IP used by Webtrends
 - Update favicon for latest design
 - Match breadcrumb text with URL slug
+- Don't display full website URL
 
 0.6.0 / 2018-08-22
 ==================
