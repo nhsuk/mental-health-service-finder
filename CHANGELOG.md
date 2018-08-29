@@ -1,3 +1,7 @@
+0.8.0 / 2018-09-06
+==================
+- Track GP search link
+
 0.7.0 / 2018-08-30
 ==================
 - Update cookie policy link
