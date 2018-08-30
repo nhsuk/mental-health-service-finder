@@ -1,5 +1,6 @@
-0.8.0 / 2018-09-06
+0.8.0 / 2018-09-07
 ==================
+- Do not link to beta home page
 - Track GP search link
 
 0.7.0 / 2018-08-30
