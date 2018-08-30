@@ -19,6 +19,7 @@
 
   const selectors = [
     { queryParam: preResultRef, selector: '.button__start', text: 'Start' },
+    { queryParam: preResultRef, selector: '.button__gp__search', text: 'SearchForGP' },
     { queryParam: preResultRef, selector: '.button__check', text: 'Check' },
     { queryParam: preResultRef, selector: '.button__search', text: 'Search' },
     { queryParam: preResultRef, selector: '.samaritans__call', text: 'SamaritansCall' },
