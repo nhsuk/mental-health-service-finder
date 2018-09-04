@@ -2,6 +2,7 @@
 ==================
 - Do not link to beta home page
 - Track GP search link
+- Update npm dependencies
 
 0.7.0 / 2018-08-30
 ==================
