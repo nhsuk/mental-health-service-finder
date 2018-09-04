@@ -4,6 +4,7 @@
 - Track GP search link
 - Update npm dependencies
 - Update 'contact-us' footer link
+- Update 'care and support' header link
 
 0.7.0 / 2018-08-30
 ==================
