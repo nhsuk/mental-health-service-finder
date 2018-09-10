@@ -4,5 +4,6 @@ require('./cookieMessage');
 require('./headerMobileMenuToggle');
 require('./headerMobileSearchToggle');
 require('./headerSearchTypeahead');
+require('./notEngland');
 require('./querySearchTypeahead');
 require('./skiplinkFix');
