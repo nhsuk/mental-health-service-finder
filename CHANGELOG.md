@@ -1,3 +1,7 @@
+0.9.0 / TBD
+==================
+- Add banner for visitors not from England
+
 0.8.0 / 2018-09-07
 ==================
 - Do not link to beta home page

@@ -2,8 +2,9 @@ module.exports = {
   directives: {
     connectSrc: [
       '\'self\'',
-      '*.hotjar.com:*',
       '*.google-analytics.com',
+      '*.hotjar.com:*',
+      'ipapi.co',
       'nhs.funnelback.co.uk',
       '*.search.windows.net',
     ],
