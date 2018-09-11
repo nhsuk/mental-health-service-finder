@@ -1,11 +1,11 @@
 0.10.0 / 2018-09-14
 ==================
 - Add Adobe Analytics
+- Update npm dependencies
 
 0.9.0 / 2018-09-12
 ==================
 - Be specific about service being England only
-- Add Adobe Analytics
 
 0.8.0 / 2018-09-07
 ==================
