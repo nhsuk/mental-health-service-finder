@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block header %}
-<h1>Find help with stress, anxiety or depression</h1>
+<h1>Find help with stress, anxiety or depression (England only)</h1>
 <div class="nhsuk-reading-width">
 <p class="nhsuk-body-l nhsuk-page-intro">You can refer yourself directly to a psychological therapies service without seeing your GP.</p>
 </div>

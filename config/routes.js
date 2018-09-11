@@ -16,7 +16,7 @@ module.exports = {
   },
   start: {
     'WT.si_p': 'Start',
-    h1: 'Find help with stress, anxiety or depression',
+    h1: 'Find help with stress, anxiety or depression (England only)',
     path: '/',
     title: 'Introduction',
   },
