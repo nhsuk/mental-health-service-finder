@@ -51,6 +51,10 @@
       })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
     {% endif %}
+
+    {% if ADOBE_TRACKING_URL %}
+      <script src="{{ ADOBE_TRACKING_URL }}" async></script>
+    {% endif %}
   </head>
 
   <body class="{% block bodyClass %}{% endblock %}">
