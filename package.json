@@ -1,6 +1,6 @@
 {
   "name": "mental-health-service-finder",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Helping to connect people to mental health services.",
   "main": "app.js",
   "scripts": {
@@ -67,7 +67,7 @@
     "querystring": "^0.2.0",
     "request": "2.88.0",
     "require-environment-variables": "^1.1.2",
-    "sass-brunch": "2.10.4",
+    "sass-brunch": "^2.10.7",
     "uglify-es": "^3.1.8",
     "verror": "^1.10.0"
   },
