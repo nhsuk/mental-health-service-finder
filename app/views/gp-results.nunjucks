@@ -19,7 +19,7 @@
 
 {% block content %}
 {% if results.length > 0 %}
-<h2 class="nhsuk-body-l" role="text">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ query }}'</span>.</h2>
+<h2 class="nhsuk-body-l"><span role="text">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ query }}'</span>.</span></h2>
 
 <p role="text">If your surgery is not here, check your spelling and <a class="results__search__again" href="{{ href }}">search again</a>.</p>
 
