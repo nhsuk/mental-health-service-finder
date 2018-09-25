@@ -1,3 +1,7 @@
+0.11.0 / TBD
+==================
+- Update npm dependencies
+
 0.10.0 / 2018-09-14
 ==================
 - Add Adobe Analytics
