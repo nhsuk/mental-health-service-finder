@@ -1121,13 +1121,13 @@
       highlight: "tt-highlight"
     };
     return build;
-    function build(o, id) {
+    function build(o) {
       var www, classes;
       classes = _.mixin({}, defaultClassNames, o);
       www = {
         css: buildCss(),
         classes: classes,
-        html: buildHtml(classes, id),
+        html: buildHtml(classes),
         selectors: buildSelectors(classes)
       };
       return {
@@ -1140,10 +1140,10 @@
         }
       };
     }
-    function buildHtml(c, id) {
+    function buildHtml(c) {
       return {
         wrapper: '<span class="' + c.wrapper + '"></span>',
-        menu: '<div id="' + id + '_listbox" role="listbox" class="' + c.menu + '"></div>'
+        menu: '<div role="listbox" class="' + c.menu + '"></div>'
       };
     }
     function buildSelectors(classes) {
@@ -1443,7 +1443,7 @@
         "aria-readonly": "true",
         "aria-autocomplete": "list"
       });
-      $(www.html.menu).attr("id", this.$input.attr("id") + "_listbox");
+      $(www.menu).attr("id", this.$input.attr("id") + "_listbox");
       this.query = this.$input.val();
       this.queryWhenFocused = this.hasFocus() ? this.query : null;
       this.$overflowHelper = buildOverflowHelper(this.$input);
@@ -2041,7 +2041,7 @@
             is: "are"
           };
         }
-        this.$el.text(length + " " + words.result + " " + words.is + " available. Keyboard users can use up and down arrow keys to navigate.");
+        this.$el.text(length + " " + words.result + " " + words.is + " available, use up and down arrow keys to navigate.");
       },
       cleared: function() {
         this.$el.text("");
@@ -2396,8 +2396,7 @@
         var www;
         datasets = _.isArray(datasets) ? datasets : [].slice.call(arguments, 1);
         o = o || {};
-        var id = $(this).attr('id');
-        www = WWW(o.classNames, id);
+        www = WWW(o.classNames);
         return this.each(attach);
         function attach() {
           var $input, $wrapper, $hint, $menu, defaultHint, defaultMenu, eventBus, input, menu, status, typeahead, MenuConstructor;
