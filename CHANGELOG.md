@@ -1,7 +1,7 @@
-0.11.0 / TBD
+0.11.0 / 2018-10-04
 ==================
 - Update npm dependencies
-- Improve accessibility
+- Multiple accessibility improvements
 
 0.10.0 / 2018-09-14
 ==================
