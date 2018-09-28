@@ -94,9 +94,8 @@ NHSUK.queryTypeahead = ((global) => {
       source: suggestions,
       templates: {
         suggestion: (data) => {
-          const randomId = Math.random().toString().split('.')[1];
           const address = generateAddressText(data);
-          return `<li id="${randomId}"><p class="bold menu__item--name">${data.OrganisationName}<span class="visually-hidden"> has been selected</span></p><p class="menu__item--address">${address}</p></li>`;
+          return `<li><p class="bold menu__item--name">${data.OrganisationName}<span class="visually-hidden"> has been selected</span></p><p class="menu__item--address">${address}</p></li>`;
         },
       },
     })
