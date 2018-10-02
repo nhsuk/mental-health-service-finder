@@ -36,28 +36,26 @@ describe('IAPT results page for services with no ODS codes', () => {
       expect($('.results__item').length).to.equal(resultCount);
     });
 
-    it('should display contact information for each result', () => {
-      $('.results__item').each((i, item) => {
-        const email = $(item).find('.results__email');
-        expect(email.text()).to.equal(`Email: ${northCumbriaData.email}`);
-        const emailHref = getHrefFromA(email);
-        expect(emailHref).to.equal(`mailto:${northCumbriaData.email}`);
+    it('should display correct contact information', () => {
+      const email = $('.results__email');
+      expect(email.text()).to.equal(`Email: ${northCumbriaData.email}`);
+      const emailHref = getHrefFromA(email);
+      expect(emailHref).to.equal(`mailto:${northCumbriaData.email}`);
 
-        const tel = $(item).find('.results__telephone');
-        expect(tel.text()).to.equal(`Telephone: ${northCumbriaData.telephone}`);
-        const telHref = getHrefFromA(tel);
-        expect(telHref).to.equal(`tel:${northCumbriaData.telephone}`);
+      const tel = $('.results__telephone');
+      expect(tel.text()).to.equal(`Telephone: ${northCumbriaData.telephone}`);
+      const telHref = getHrefFromA(tel);
+      expect(telHref).to.equal(`tel:${northCumbriaData.telephone}`);
 
-        const orgName = $(item).find('.results__name').text();
-        const website = $(item).find('.results__website');
-        expect(website.text()).to.equal(`Visit ${orgName}'s website`);
-        const websiteHref = getHrefFromA(website);
-        expect(websiteHref).to.equal(northCumbriaData.website);
+      const orgName = $('.results__name').text();
+      const website = $('.results__website');
+      expect(website.text()).to.equal(`Visit ${orgName}'s website`);
+      const websiteHref = getHrefFromA(website);
+      expect(websiteHref).to.equal(northCumbriaData.website);
 
-        const selfReferral = $(item).find('.results__self__referral');
-        const selfReferralHref = getHrefFromA(selfReferral);
-        expect(selfReferralHref).to.equal(northCumbriaData.selfReferral);
-      });
+      const selfReferral = $('.results__self__referral');
+      const selfReferralHref = getHrefFromA(selfReferral);
+      expect(selfReferralHref).to.equal(northCumbriaData.selfReferral);
     });
   });
 
@@ -72,28 +70,26 @@ describe('IAPT results page for services with no ODS codes', () => {
       expect($('.results__item').length).to.equal(resultCount);
     });
 
-    it('should display contact information for each result', () => {
-      $('.results__item').each((i, item) => {
-        const email = $(item).find('.results__email');
-        expect(email.text()).to.equal(`Email: ${redBridgeData.email}`);
-        const emailHref = getHrefFromA(email);
-        expect(emailHref).to.equal(`mailto:${redBridgeData.email}`);
+    it('should display correct contact information', () => {
+      const email = $('.results__email');
+      expect(email.text()).to.equal(`Email: ${redBridgeData.email}`);
+      const emailHref = getHrefFromA(email);
+      expect(emailHref).to.equal(`mailto:${redBridgeData.email}`);
 
-        const tel = $(item).find('.results__telephone');
-        expect(tel.text()).to.equal(`Telephone: ${redBridgeData.telephone}`);
-        const telHref = getHrefFromA(tel);
-        expect(telHref).to.equal(`tel:${redBridgeData.telephone}`);
+      const tel = $('.results__telephone');
+      expect(tel.text()).to.equal(`Telephone: ${redBridgeData.telephone}`);
+      const telHref = getHrefFromA(tel);
+      expect(telHref).to.equal(`tel:${redBridgeData.telephone}`);
 
-        const orgName = $(item).find('.results__name').text();
-        const website = $(item).find('.results__website');
-        expect(website.text()).to.equal(`Visit ${orgName}'s website`);
-        const websiteHref = getHrefFromA(website);
-        expect(websiteHref).to.equal(redBridgeData.website);
+      const orgName = $('.results__name').text();
+      const website = $('.results__website');
+      expect(website.text()).to.equal(`Visit ${orgName}'s website`);
+      const websiteHref = getHrefFromA(website);
+      expect(websiteHref).to.equal(redBridgeData.website);
 
-        const selfReferral = $(item).find('.results__self__referral');
-        const selfReferralHref = getHrefFromA(selfReferral);
-        expect(selfReferralHref).to.equal(redBridgeData.selfReferral);
-      });
+      const selfReferral = $('.results__self__referral');
+      const selfReferralHref = getHrefFromA(selfReferral);
+      expect(selfReferralHref).to.equal(redBridgeData.selfReferral);
     });
   });
 
@@ -108,28 +104,24 @@ describe('IAPT results page for services with no ODS codes', () => {
       expect($('.results__item').length).to.equal(resultCount);
     });
 
-    it('should display contact information for each result', () => {
-      $('.results__item').each((i, item) => {
-        const email = $(item).find('.results__email');
-        expect(email.text()).to.equal(`Email: ${towerHamletsData.email}`);
-        const emailHref = getHrefFromA(email);
-        expect(emailHref).to.equal(`mailto:${towerHamletsData.email}`);
+    it('should display correct contact information', () => {
+      const email = $('.results__email');
+      expect(email.text()).to.equal('');
 
-        const tel = $(item).find('.results__telephone');
-        expect(tel.text()).to.equal(`Telephone: ${towerHamletsData.telephone}`);
-        const telHref = getHrefFromA(tel);
-        expect(telHref).to.equal(`tel:${towerHamletsData.telephone}`);
+      const tel = $('.results__telephone');
+      expect(tel.text()).to.equal(`Telephone: ${towerHamletsData.telephone}`);
+      const telHref = getHrefFromA(tel);
+      expect(telHref).to.equal(`tel:${towerHamletsData.telephone}`);
 
-        const orgName = $(item).find('.results__name').text();
-        const website = $(item).find('.results__website');
-        expect(website.text()).to.equal(`Visit ${orgName}'s website`);
-        const websiteHref = getHrefFromA(website);
-        expect(websiteHref).to.equal(towerHamletsData.website);
+      const orgName = $('.results__name').text();
+      const website = $('.results__website');
+      expect(website.text()).to.equal(`Visit ${orgName}'s website`);
+      const websiteHref = getHrefFromA(website);
+      expect(websiteHref).to.equal(towerHamletsData.website);
 
-        const selfReferral = $(item).find('.results__self__referral');
-        const selfReferralHref = getHrefFromA(selfReferral);
-        expect(selfReferralHref).to.equal(towerHamletsData.selfReferral);
-      });
+      const selfReferral = $('.results__self__referral');
+      const selfReferralHref = getHrefFromA(selfReferral);
+      expect(selfReferralHref).to.equal(towerHamletsData.selfReferral);
     });
   });
 });
