@@ -7,28 +7,39 @@ const log = require('../lib/logger');
 const mapResults = require('../lib/mapResults');
 const northCumbria = require('../../data/northCumbriaCCG');
 const redBridge = require('../../data/redBridgeCCG');
+const towerHamlets = require('../../data/towerHamletsCCG');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;
+
+function isQueryForIAPTsAndForACCGWithAServiceWithNoODSCode(type, query) {
+  return type === constants.types.IAPT && (query === constants.ccgs.northCumbria
+    || query === constants.ccgs.redBridge
+    || query === constants.ccgs.towerHamlets);
+}
+
+function getIAPTServiceWithNoODSCodeData(query) {
+  let iaptResults;
+  if (query === constants.ccgs.northCumbria) {
+    iaptResults = northCumbria;
+  } else if (query === constants.ccgs.redBridge) {
+    iaptResults = redBridge;
+  } else if (query === constants.ccgs.towerHamlets) {
+    iaptResults = towerHamlets;
+  }
+  return iaptResults;
+}
 
 function getResults(req, res, next) {
   const query = res.locals.query;
   const type = res.locals.type;
-  const options = buildOptions(type, res.locals);
 
-  log.info({ request: options }, `${type}-request`);
-  const endTimer = searchHistogram(type).startTimer();
-
-  if (type === constants.types.IAPT
-    && (query === constants.ccgs.northCumbria || query === constants.ccgs.redBridge)) {
-    let ccg;
-    if (query === constants.ccgs.northCumbria) {
-      ccg = northCumbria;
-    } else if (query === constants.ccgs.redBridge) {
-      ccg = redBridge;
-    }
-    const iaptResults = [ccg];
-    res.locals.results = iaptResults;
+  if (isQueryForIAPTsAndForACCGWithAServiceWithNoODSCode(type, query)) {
+    res.locals.results = getIAPTServiceWithNoODSCodeData(query);
     res.render(`${type.toLowerCase()}-results`);
   } else {
+    const options = buildOptions(type, res.locals);
+
+    log.info({ request: options }, `${type}-request`);
+    const endTimer = searchHistogram(type).startTimer();
     request.post(options, (error, response, body) => {
       endTimer();
       if (!error) {

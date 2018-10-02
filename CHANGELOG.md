@@ -1,9 +1,10 @@
-0.11.0 / 2018-10-04
+0.11.0 / 2018-10-03
 ==================
 - Update npm dependencies
 - Multiple accessibility improvements
 - Upgrade to `node:8.12.0-alpine`
 - Fix skip to content for voice over
+- Add Tower Hamlets CCG IAPT service
 
 0.10.0 / 2018-09-14
 ==================
