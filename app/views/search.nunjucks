@@ -35,12 +35,10 @@
         </div>
         <div>
           <details class="nhsuk-c-details">
-            <summary role="button" class="nhsuk-c-summary" aria-controls="details-content-0" aria-expanded="false"><span class="nhsuk-c-summary__title">Does my GP need to know?</span></summary>
-            <div class="nhsuk-c-summary__content" id="details-content-0" aria-hidden="true">
-              <div>
-                <p>The service will only tell your GP with your permission.</p>
-                <p>The only time they will contact your GP without your permission is if they believe you are at risk harming yourself or other people.</p>
-              </div>
+            <summary role="button" class="nhsuk-c-summary" class="nhsuk-c-summary__title">Does my GP need to know?</span></summary>
+            <div class="nhsuk-c-summary__content">
+              <p>The service will only tell your GP with your permission.</p>
+              <p>The only time they will contact your GP without your permission is if they believe you are at risk harming yourself or other people.</p>
             </div>
           </details>
           <input type="submit" class="button button__search" value="Find">
