@@ -1,6 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}{% if errorMessage %}{{ errorMessage }}{% else %}Search for your GP{% endif %} - {% endblock %}
+{% block pageTitle %}{% if errorMessage %}Please correct the error. {{ errorMessage }}{% else %}Search for your GP{% endif %} - {% endblock %}
 
 {% block wtMeta %}
 <meta name="WT.si_p" content="GP Search">
@@ -34,13 +34,11 @@
           <input aria-labelledby="query" autocomplete="off" autocorrect="off" auotcapitalize="off" spellcheck="off" type="text" class="c-search__input form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
         </div>
         <div>
-          <details role="group" class="details">
-            <summary role="button" aria-controls="details-content-0" aria-expanded="false"><span class="details__summary">Does my GP need to know?</span></summary>
-            <div class="details__content" id="details-content-0" aria-hidden="true">
-              <div>
-                <p>The service will only tell your GP with your permission.</p>
-                <p>The only time they will contact your GP without your permission is if they believe you are at risk harming yourself or other people.</p>
-              </div>
+          <details class="nhsuk-c-details">
+            <summary role="button" class="nhsuk-c-summary" class="nhsuk-c-summary__title">Does my GP need to know?</span></summary>
+            <div class="nhsuk-c-summary__content">
+              <p>The service will only tell your GP with your permission.</p>
+              <p>The only time they will contact your GP without your permission is if they believe you are at risk harming yourself or other people.</p>
             </div>
           </details>
           <input type="submit" class="button button__search" value="Find">

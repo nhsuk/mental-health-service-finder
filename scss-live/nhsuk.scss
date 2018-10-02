@@ -27,7 +27,6 @@ $images-path: "../img";
 @import "objects/grid";
 @import "objects/page-section";
 
-@import "units/details";
 @import "units/figure";
 @import "units/form";
 @import "units/hr";
@@ -59,6 +58,7 @@ $images-path: "../img";
 // NHS.UK components
 @import "components/article-pagination";
 @import "components/callout";
+@import "components/details";
 @import "components/media";
 @import "components/gallery";
 @import "components/form-label";

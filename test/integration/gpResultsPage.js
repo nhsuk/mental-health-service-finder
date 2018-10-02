@@ -302,7 +302,7 @@ describe('GP results page', () => {
       const $ = cheerio.load(response.text);
 
       expect($('.error-message').text()).to.equal(errorMessage);
-      expect($('head title').text()).to.equal(`Find psychological therapies services - ${errorMessage} - NHS`);
+      expect($('head title').text()).to.equal(`Find psychological therapies services - Please correct the error. ${errorMessage} - NHS`);
     });
 
     it('should display an error message when the query only consists of white space', async () => {
@@ -314,7 +314,7 @@ describe('GP results page', () => {
       const $ = cheerio.load(response.text);
 
       expect($('.error-message').text()).to.equal(errorMessage);
-      expect($('head title').text()).to.equal(`Find psychological therapies services - ${errorMessage} - NHS`);
+      expect($('head title').text()).to.equal(`Find psychological therapies services - Please correct the error. ${errorMessage} - NHS`);
     });
   });
 });

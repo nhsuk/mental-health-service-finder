@@ -15,7 +15,8 @@
 {% endblock %}
 
 {% block content %}
-<h2 class="nhsuk-body-l" role="text">
+<h2 class="nhsuk-body-l">
+  <span role="text">
 {% if resultsLength === 0 %}
   {{ msg }}.
 {% elif resultsLength === 1 %}
@@ -23,6 +24,7 @@
 {% else %}
 <span class="results__count">{{ results.length }}</span> services are available for '{{ gpname }}'.
 {% endif %}
+  </span>
 </h2>
 
 {% if resultsLength > 0 %}

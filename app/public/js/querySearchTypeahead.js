@@ -95,7 +95,7 @@ NHSUK.queryTypeahead = ((global) => {
       templates: {
         suggestion: (data) => {
           const address = generateAddressText(data);
-          return `<li><p class="bold menu__item--name">${data.OrganisationName}</p><p class="menu__item--address">${address}</p></li>`;
+          return `<li><p class="bold menu__item--name">${data.OrganisationName}<span class="visually-hidden"> has been selected</span></p><p class="menu__item--address">${address}</p></li>`;
         },
       },
     })
