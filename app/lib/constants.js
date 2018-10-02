@@ -4,6 +4,7 @@ module.exports = {
   ccgs: {
     northCumbria: '462881',
     redBridge: '463329',
+    towerHamlets: '462934',
   },
   contactMethodTypes: ['Email', 'Telephone', 'Website'],
   highlights: { post: '</span>', pre: '<span class="highlight">' },

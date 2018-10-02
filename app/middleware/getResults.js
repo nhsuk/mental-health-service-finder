@@ -7,6 +7,7 @@ const log = require('../lib/logger');
 const mapResults = require('../lib/mapResults');
 const northCumbria = require('../../data/northCumbriaCCG');
 const redBridge = require('../../data/redBridgeCCG');
+const towerHamlets = require('../../data/towerHamletsCCG');
 const searchHistogram = require('../lib/prometheus/selectHistogram').search;
 
 function getResults(req, res, next) {
@@ -18,12 +19,14 @@ function getResults(req, res, next) {
   const endTimer = searchHistogram(type).startTimer();
 
   if (type === constants.types.IAPT
-    && (query === constants.ccgs.northCumbria || query === constants.ccgs.redBridge)) {
+    && (query === constants.ccgs.northCumbria || query === constants.ccgs.redBridge || query === constants.ccgs.towerHamlets)) {
     let ccg;
     if (query === constants.ccgs.northCumbria) {
       ccg = northCumbria;
     } else if (query === constants.ccgs.redBridge) {
       ccg = redBridge;
+    } else if (query === constants.ccgs.towerHamlets) {
+      ccg = towerHamlets;
     }
     const iaptResults = [ccg];
     res.locals.results = iaptResults;
