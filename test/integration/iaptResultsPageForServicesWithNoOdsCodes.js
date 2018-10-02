@@ -8,9 +8,9 @@ const iExpect = require('../lib/expectations');
 const routes = require('../../config/routes');
 const server = require('../../server');
 
-const northCumbriaData = require('../../data/northCumbriaCCG');
-const redBridgeData = require('../../data/redBridgeCCG');
-const towerHamletsData = require('../../data/towerHamletsCCG');
+const northCumbriaData = require('../../data/northCumbriaCCG')[0];
+const redBridgeData = require('../../data/redBridgeCCG')[0];
+const towerHamletsData = require('../../data/towerHamletsCCG')[0];
 
 const expect = chai.expect;
 
