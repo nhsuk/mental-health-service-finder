@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg class="nhsuk-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="nhsuk-logo-title" role="img" aria-hidden="true">
+<svg focusable="false" class="nhsuk-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="nhsuk-logo-title" role="img" aria-hidden="true">
   <title id="nhsuk-logo-title">NHS logo</title>
   <g fill-rule="nonzero" fill="none">
     <path fill="#FFF" d="M0 39.842h98.203V0H0z"/>
