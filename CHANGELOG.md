@@ -1,6 +1,7 @@
 0.12.0 / 2018-10-09
 ===================
 - Prevent IE 11 from focusing on SVGs
+- Update npm dependencies
 
 0.11.0 / 2018-10-03
 ===================
