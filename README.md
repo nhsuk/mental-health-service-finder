@@ -50,6 +50,7 @@ environment.
 
 | Variable                           | Description                                                                                                                                                | Default                   | Required   |
 | :--------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------ | :--------- |
+| `ADOBE_DATALAYER_URL`              | [Adobe Analytics](https://marketing.adobe.com/resources/help/en_US/sc/implement/ref-data-layer.html) Data Layer                                            |                           | No         |
 | `ADOBE_TRACKING_URL`               | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL                                                         |                           | No         |
 | `API_HOSTNAME`                     | The fully qualified hostname (with protocol) of the [Azure Search API](https://docs.microsoft.com/en-gb/rest/api/searchservice/)                           | Depends on environment    | Yes        |
 | `API_KEY`                          | `api-key` for calling the [Azure Search API](https://docs.microsoft.com/en-us/rest/api/searchservice/#calling-the-apis)                                    | Depends on environment    | Yes        |
