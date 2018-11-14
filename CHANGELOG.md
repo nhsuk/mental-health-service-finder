@@ -1,7 +1,7 @@
 0.13.0 / 2018-11-TBD
 ===================
 - Update npm dependencies
-- Add `datalayer.js` for use by Adobe Analytics
+- Create `digitalData` object for use by Adobe Analytics
 
 0.12.0 / 2018-10-09
 ===================

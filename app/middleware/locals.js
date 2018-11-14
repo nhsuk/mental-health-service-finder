@@ -9,7 +9,6 @@ function getQuery(type, query) {
 const apiUrl = `${api.host}/indexes/${api.indexes.orgLookup}/docs/suggest?api-version=${api.version}`;
 
 module.exports = config => (req, res, next) => {
-  res.locals.ADOBE_DATALAYER_URL = config.analytics.adobeDatalayerUrl;
   res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
   res.locals.GOOGLE_ANALYTICS_TRACKING_ID = config.analytics.googleAnalyticsId;
   res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
