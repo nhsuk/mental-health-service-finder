@@ -1,5 +1,6 @@
 const api = require('../../config/config').api;
 const constants = require('../lib/constants');
+const digitalData = require('../lib/digitalData');
 const trim = require('../lib/utils/utils').trim;
 
 function getQuery(type, query) {
@@ -16,6 +17,7 @@ module.exports = config => (req, res, next) => {
 
   res.locals.siteRoot = constants.siteRoot;
   res.locals.assetsUrl = constants.assetsUrl;
+  res.locals.digitalData = digitalData(req);
 
   res.locals.location = trim(req.query.location);
   const type = req.query.type && req.query.type.toUpperCase();
