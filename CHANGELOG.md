@@ -1,3 +1,9 @@
+0.13.0 / 2018-11-20
+===================
+- Update npm dependencies
+- Create `digitalData` object for use by Adobe Analytics
+- Update CSP for compatibility with Adobe Analytics
+
 0.12.0 / 2018-10-09
 ===================
 - Prevent IE 11 from focusing on SVGs
