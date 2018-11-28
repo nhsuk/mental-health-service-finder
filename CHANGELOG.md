@@ -1,3 +1,9 @@
+0.14.0 / 2018-11-29
+===================
+- Upgrade Docker container to `node:10.14.0-alpine`
+- Update npm dependencies
+- Update Redbridge CCG details
+
 0.13.0 / 2018-11-20
 ===================
 - Update npm dependencies
