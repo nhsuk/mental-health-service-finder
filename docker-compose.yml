@@ -20,6 +20,7 @@ services:
       service: base-app
     ports:
       - 3000:3000
+      - 9229:9229
     volumes:
       - node_modules:/code/node_modules
       - .:/code

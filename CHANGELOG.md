@@ -1,6 +1,8 @@
 0.15.0 / 2019-01-TBD
 ===================
 - Update npm dependencies
+- Enable debugging
+- Upgrade Docker container to `node:10.15.0-alpine`
 
 0.14.0 / 2018-11-29
 ===================
