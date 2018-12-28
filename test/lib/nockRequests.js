@@ -1,8 +1,8 @@
 const nock = require('nock');
 
-const search = require('../../config/config').search;
 const getSampleResponse = require('../resources/getSampleResponse');
 const headers = require('../../app/lib/requests/headers');
+const search = require('../../config/config').search;
 
 function createNock(path, body) {
   return nock(`https://${search.host}`, { encodedQueryParams: true, reqheaders: headers })

@@ -1,9 +1,9 @@
 const chai = require('chai');
 const VError = require('verror');
 
-const search = require('../../../../config/config').search;
 const constants = require('../../../../app/lib/constants');
 const buildOptions = require('../../../../app/lib/requests/buildOptions');
+const search = require('../../../../config/config').search;
 
 const apiVersion = search.version;
 const apiHost = search.host;
@@ -20,7 +20,7 @@ describe('buildOptions', () => {
 
       describe(`response for type: ${type}`, () => {
         it('should include expected keys', () => {
-          expect(Object.keys(options)).to.deep.equal(['body', 'headers', 'url']);
+          expect(Object.keys(options).sort()).to.deep.equal(['body', 'headers', 'url']);
         });
 
         it('should include required headers', () => {
