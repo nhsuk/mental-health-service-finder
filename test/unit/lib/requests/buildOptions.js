@@ -1,13 +1,12 @@
 const chai = require('chai');
 const VError = require('verror');
 
-const config = require('../../../../config/config');
+const search = require('../../../../config/config').search;
 const constants = require('../../../../app/lib/constants');
 const buildOptions = require('../../../../app/lib/requests/buildOptions');
 
-const apiVersion = config.api.version;
-const apiHost = config.api.host;
-const apiOrgIndex = config.api.indexes.orgLookup;
+const apiVersion = search.version;
+const apiHost = search.host;
 
 const expect = chai.expect;
 
@@ -25,16 +24,16 @@ describe('buildOptions', () => {
         });
 
         it('should include required headers', () => {
-          expect(Object.keys(options.headers)).to.deep.equal(['Content-Type', 'api-key']);
+          expect(Object.keys(options.headers)).to.deep.equal(['Content-Type', 'subscription-key']);
         });
 
         it('should return \'Content-Type\' header as \'application/json\'', () => {
           expect(options.headers['Content-Type']).to.be.equal('application/json');
         });
 
-        it('should return \'api-key\' header as value from env var', () => {
+        it('should return \'subscription-key\' header as value from env var', () => {
           // notARealKey is default value in docker-compose.yml
-          expect(options.headers['api-key']).to.be.equal('notARealKey');
+          expect(options.headers['subscription-key']).to.be.equal('notARealKey');
         });
       });
     });
@@ -80,7 +79,7 @@ describe('buildOptions', () => {
 
       describe('url', () => {
         it('should return the search URL', () => {
-          expect(options.url).to.equal(`${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`);
+          expect(options.url).to.equal(`https://${apiHost}/service-search/search?api-version=${apiVersion}`);
         });
       });
     });
@@ -107,7 +106,7 @@ describe('buildOptions', () => {
 
     describe('url', () => {
       it('should return the suggest URL', () => {
-        expect(options.url).to.equal(`${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`);
+        expect(options.url).to.equal(`https://${apiHost}/service-search/search?api-version=${apiVersion}`);
       });
     });
   });

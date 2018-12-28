@@ -1,15 +1,13 @@
 const nock = require('nock');
 
-const config = require('../../config/config');
+const search = require('../../config/config').search;
 const getSampleResponse = require('../resources/getSampleResponse');
 const headers = require('../../app/lib/requests/headers');
 
-const host = process.env.API_HOSTNAME;
-
 function createNock(path, body) {
-  return nock(host, { encodedQueryParams: true, reqheaders: headers })
+  return nock(`https://${search.host}`, { encodedQueryParams: true, reqheaders: headers })
     .post(path, body)
-    .query({ 'api-version': config.api.version });
+    .query({ 'api-version': search.version });
 }
 
 function withError(path, body, error) {

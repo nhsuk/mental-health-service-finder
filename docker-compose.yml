@@ -12,6 +12,8 @@ services:
       API_HOSTNAME: ${API_HOSTNAME}
       API_KEY: ${API_KEY-notARealKey}
       NODE_ENV: ${NODE_ENV-development}
+      SEARCH_API_HOST: ${SEARCH_API_HOST}
+      SEARCH_API_KEY: ${SEARCH_API_KEY-notARealKey}
 
   frontend:
     extends:

@@ -1,20 +1,16 @@
 const VError = require('verror');
 
-const config = require('../../../config/config');
+const search = require('../../../config/config').search;
 const constants = require('../constants');
 const createBody = require('./createBody');
 const headers = require('./headers');
 const log = require('../logger');
 
-const apiVersion = config.api.version;
-const apiHost = config.api.host;
-const apiOrgIndex = config.api.indexes.orgLookup;
-
 function forGPSearch(locals) {
   return {
     body: JSON.stringify(createBody(constants.types.GP, locals)),
     headers,
-    url: `${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`,
+    url: `https://${search.host}/service-search/search?api-version=${search.version}`,
   };
 }
 
@@ -22,7 +18,7 @@ function forIAPTSearch(locals) {
   return {
     body: JSON.stringify(createBody(constants.types.IAPT, locals)),
     headers,
-    url: `${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`,
+    url: `https://${search.host}/service-search/search?api-version=${search.version}`,
   };
 }
 

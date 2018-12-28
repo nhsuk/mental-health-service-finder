@@ -26,4 +26,9 @@ module.exports = {
     port: process.env.PORT || 3000,
     root: rootPath,
   },
+  search: {
+    apiKey: process.env.SEARCH_API_KEY,
+    host: process.env.SEARCH_API_HOST || 'nhsapiint.azure-api.net',
+    version: process.env.SEARCH_API_VERSION || '1',
+  },
 };

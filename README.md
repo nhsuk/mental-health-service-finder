@@ -60,6 +60,9 @@ environment.
 | `LOG_LEVEL`                        | Numeric [log level](https://github.com/trentm/node-bunyan#levels)                                                                                          | Depends on `NODE_ENV`     |            |
 | `NODE_ENV`                         | Node environment                                                                                                                                           | development               |            |
 | `PORT`                             | Server port                                                                                                                                                | 3000                      |            |
+| `SEARCH_API_HOST`                  | Host name for the [NHS Developer API](https://developer.api.nhs.uk/)                                                                                       | nhsapiint.azure-api.net   | Yes        |
+| `SEARCH_API_KEY`                   | `subscription-key` for the [NHS Developer API](https://developer.api.nhs.uk/)                                                                              |                           | Yes        |
+| `SEARCH_API_VERSION`               | Version of the [NHS Developer API](https://developer.api.nhs.uk/)                                                                                          | 1                         | Yes        |
 | `WEBTRENDS_ANALYTICS_TRACKING_ID`  | [Webtrends](https://www.webtrends.com/) tracking id                                                                                                        |                           | No         |
 
 ## FAQ
