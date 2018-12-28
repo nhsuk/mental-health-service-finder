@@ -2504,13 +2504,12 @@ expect-ct@0.1.1:
   resolved "https://registry.yarnpkg.com/expect-ct/-/expect-ct-0.1.1.tgz#de84476a2dbcb85000d5903737e9bc8a5ba7b897"
   integrity sha512-ngXzTfoRGG7fYens3/RMb6yYoVLvLMfmsSllP/mZPxNHgFq41TmPSLF/nLY7fwoclI2vElvAmILFWGUYqdjfCg==
 
-express-prom-bundle@^4.1.0:
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/express-prom-bundle/-/express-prom-bundle-4.3.0.tgz#c58d23ea04cb83a2f1dc6700274b4bde5c9a2232"
-  integrity sha512-EhhwWvVN6ssSUFIMNetbcnNGhvX5lEdctNtX1WA/Otf9URbHYAfkeXwAZcOeojbiFoHJWVuMhyogEV9Yk3DGSQ==
+express-prom-bundle@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/express-prom-bundle/-/express-prom-bundle-5.0.2.tgz#b9d329fc28e42cdf12f57150fb83e922befbc734"
+  integrity sha512-8xa1c0FGGTzFvQissWmCdhnl5+TaC9nVoYNPJ65lRJdQLVk4SGlI52qFlfoGYJeKThK1qjeta7rm8i1J+1KhZg==
   dependencies:
     on-finished "^2.3.0"
-    prom-client "~11.2.1"
     url-value-parser "^2.0.0"
 
 express@^4.0.0, express@^4.16.2:
@@ -5293,7 +5292,7 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
-prom-client@~11.2.1:
+prom-client@^11.2.1:
   version "11.2.1"
   resolved "https://registry.yarnpkg.com/prom-client/-/prom-client-11.2.1.tgz#486e7817de9b1d43c0a12aee26fc68830f4d1b16"
   integrity sha512-7VwtjrkQS50NvDoeYNn2z6wzXB5BMGzUlmMOeLPaITtJsTVXnPywRta7QFiV4pKr0fbRx9oDfUcx1xibabjSAg==
