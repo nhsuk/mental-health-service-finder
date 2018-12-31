@@ -6,8 +6,6 @@ services:
     image: "nhsuk/mental-health-service-finder:${DOCKER_IMAGE_TAG}"
     environment:
       ADOBE_TRACKING_URL: ${ADOBE_TRACKING_URL}
-      API_HOSTNAME: ${API_HOSTNAME}
-      API_KEY: ${API_KEY}
       GOOGLE_ANALYTICS_TRACKING_ID: ${GOOGLE_ANALYTICS_TRACKING_ID}
       HOTJAR_ANALYTICS_TRACKING_ID: ${HOTJAR_ANALYTICS_TRACKING_ID}
       NODE_ENV: production

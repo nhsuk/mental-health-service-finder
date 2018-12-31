@@ -11,7 +11,7 @@ services:
       - node_modules:/code/node_modules
       - .:/code
     environment:
-      API_HOSTNAME: ${API_HOSTNAME-https://dummy.url}
+      SEARCH_API_HOST: ${SEARCH_API_HOST-https://dummy.url}
 
   tests-unit:
     extends:
@@ -31,7 +31,6 @@ services:
       - node_modules:/code/node_modules
       - .:/code
     environment:
-      API_HOSTNAME: ${API_HOSTNAME-https://dummy.url}
       SEARCH_API_HOST: ${SEARCH_API_HOST-https://dummy.url}
 
   test-ci:
@@ -43,7 +42,6 @@ services:
     volumes:
       - node_modules:/code/node_modules
     environment:
-      API_HOSTNAME: ${API_HOSTNAME-https://dummy.url}
       COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
       SEARCH_API_HOST: ${SEARCH_API_HOST-https://dummy.url}
       TRAVIS: ${TRAVIS}

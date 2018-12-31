@@ -2,12 +2,13 @@ module.exports = {
   directives: {
     connectSrc: [
       '\'self\'',
+      'api.nhs.uk',
       'assets.adobedtm.com',
+      '*.azure-api.net',
       '*.demdex.net',
       '*.hotjar.com:*',
       '*.google-analytics.com',
       'nhs.funnelback.co.uk',
-      '*.search.windows.net',
     ],
     defaultSrc: [
       '\'self\'',

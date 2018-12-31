@@ -9,17 +9,6 @@ module.exports = {
     hotjarId: process.env.HOTJAR_ANALYTICS_TRACKING_ID,
     webtrendsId: process.env.WEBTRENDS_ANALYTICS_TRACKING_ID,
   },
-  api: {
-    host: process.env.API_HOSTNAME,
-    indexes: {
-      orgLookup: 'organisationlookup',
-    },
-    key: process.env.API_KEY,
-    suggesters: {
-      organisation: 'orgname-suggester',
-    },
-    version: process.env.API_VERSION || '2017-11-11',
-  },
   app: {
     env: process.env.NODE_ENV || 'development',
     name: 'mental-health-service-finder',
@@ -28,7 +17,10 @@ module.exports = {
   },
   search: {
     apiKey: process.env.SEARCH_API_KEY,
-    host: process.env.SEARCH_API_HOST || 'nhsapiint.azure-api.net',
+    host: process.env.SEARCH_API_HOST || 'api.nhs.uk',
+    suggesters: {
+      organisation: 'orgname-suggester',
+    },
     version: process.env.SEARCH_API_VERSION || '1',
   },
 };

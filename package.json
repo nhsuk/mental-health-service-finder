@@ -25,7 +25,7 @@
     "start-watch": "yarn brunch watch & nodemon --inspect=0.0.0.0 app.js | ./node_modules/bunyan/bin/bunyan",
     "test": "NODE_ENV=test mocha --exit --recursive test",
     "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls",
-    "test-unit": "API_KEY=notARealKey NODE_ENV=test mocha --recursive test/unit",
+    "test-unit": "SEARCH_API_KEY=notARealKey NODE_ENV=test mocha --recursive test/unit",
     "test-unit-watch": "NODE_ENV=test mocha --recursive test/unit --reporter min --watch",
     "test-integration-watch": "NODE_ENV=test mocha --recursive test/integration --reporter min --watch",
     "test-watch": "yarn test -- --reporter min --watch"
