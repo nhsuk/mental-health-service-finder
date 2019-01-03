@@ -4,7 +4,7 @@ const app = require('./server');
 const applicationStarts = require('./app/lib/prometheus/counters').applicationStarts;
 const log = require('./app/lib/logger');
 
-requireEnv(['SEARCH_API_HOST', 'SEARCH_API_KEY']);
+requireEnv(['SEARCH_API_KEY']);
 
 app.listen(app.port, () => {
   applicationStarts.inc(1);
