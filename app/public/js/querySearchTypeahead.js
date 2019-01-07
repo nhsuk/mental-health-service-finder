@@ -30,7 +30,7 @@ NHSUK.queryTypeahead = ((global) => {
         settings.data = JSON.stringify(data);
         settings.headers = {
           'Content-Type': 'application/json',
-          'api-key': apiKey,
+          'subscription-key': apiKey,
         };
         settings.type = 'POST';
         /* eslint-enable no-param-reassign */

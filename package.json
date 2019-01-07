@@ -1,6 +1,6 @@
 {
   "name": "mental-health-service-finder",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Helping to connect people to mental health services.",
   "main": "app.js",
   "scripts": {
@@ -22,10 +22,10 @@
     "postrewrite": "yarn git-hook",
     "precommit": "yarn git-hook",
     "prepush": "yarn git-hook",
-    "start-watch": "yarn brunch watch & nodemon app.js | ./node_modules/bunyan/bin/bunyan",
+    "start-watch": "yarn brunch watch & nodemon --inspect=0.0.0.0 app.js | ./node_modules/bunyan/bin/bunyan",
     "test": "NODE_ENV=test mocha --exit --recursive test",
     "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls",
-    "test-unit": "API_KEY=notARealKey NODE_ENV=test mocha --recursive test/unit",
+    "test-unit": "SEARCH_API_KEY=notARealKey NODE_ENV=test mocha --recursive test/unit",
     "test-unit-watch": "NODE_ENV=test mocha --recursive test/unit --reporter min --watch",
     "test-integration-watch": "NODE_ENV=test mocha --recursive test/integration --reporter min --watch",
     "test-watch": "yarn test -- --reporter min --watch"
@@ -56,7 +56,7 @@
     "cookie-parser": "^1.4.3",
     "eslint-config-airbnb": "^17.0.0",
     "express": "^4.16.2",
-    "express-prom-bundle": "^4.1.0",
+    "express-prom-bundle": "^5.0.2",
     "fingerprint-brunch": "^2.0.5",
     "helmet": "^3.11.0",
     "map-replace": "^1.0.2",
@@ -64,6 +64,7 @@
     "nhsuk-bunyan-logger": "^1.7.0",
     "node-sass": "^4.9.2",
     "nunjucks": "^3.1.4",
+    "prom-client": "^11.2.1",
     "querystring": "^0.2.0",
     "request": "2.88.0",
     "require-environment-variables": "^1.1.2",

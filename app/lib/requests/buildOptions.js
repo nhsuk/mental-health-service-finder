@@ -1,38 +1,29 @@
 const VError = require('verror');
 
-const config = require('../../../config/config');
 const constants = require('../constants');
 const createBody = require('./createBody');
 const headers = require('./headers');
 const log = require('../logger');
+const search = require('../../../config/config').search;
 
-const apiVersion = config.api.version;
-const apiHost = config.api.host;
-const apiOrgIndex = config.api.indexes.orgLookup;
-
-function forGPSearch(locals) {
+function createBaseRequest() {
   return {
-    body: JSON.stringify(createBody(constants.types.GP, locals)),
     headers,
-    url: `${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`,
-  };
-}
-
-function forIAPTSearch(locals) {
-  return {
-    body: JSON.stringify(createBody(constants.types.IAPT, locals)),
-    headers,
-    url: `${apiHost}/indexes/${apiOrgIndex}/docs/search?api-version=${apiVersion}`,
+    url: `https://${search.host}/service-search/search?api-version=${search.version}`,
   };
 }
 
 function buildOptions(type, locals) {
+  const request = createBaseRequest();
+
   switch (type) {
     case constants.types.GP: {
-      return forGPSearch(locals);
+      request.body = JSON.stringify(createBody(constants.types.GP, locals));
+      return request;
     }
     case constants.types.IAPT: {
-      return forIAPTSearch(locals);
+      request.body = JSON.stringify(createBody(constants.types.IAPT, locals));
+      return request;
     }
     default: {
       log.error(`Unable to build options for uknown type: ${type} with query: ${locals.query}`);

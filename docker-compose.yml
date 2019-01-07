@@ -9,15 +9,16 @@ services:
         NODE_ENV: ${NODE_ENV-development}
     command: yarn run start-watch
     environment:
-      API_HOSTNAME: ${API_HOSTNAME}
-      API_KEY: ${API_KEY-notARealKey}
       NODE_ENV: ${NODE_ENV-development}
+      SEARCH_API_HOST: ${SEARCH_API_HOST}
+      SEARCH_API_KEY: ${SEARCH_API_KEY-notARealKey}
 
   frontend:
     extends:
       service: base-app
     ports:
       - 3000:3000
+      - 9229:9229
     volumes:
       - node_modules:/code/node_modules
       - .:/code

@@ -1,4 +1,4 @@
-const api = require('../../config/config').api;
+const search = require('../../config/config').search;
 const constants = require('../lib/constants');
 const digitalData = require('../lib/digitalData');
 const trim = require('../lib/utils/utils').trim;
@@ -7,7 +7,7 @@ function getQuery(type, query) {
   return type === constants.types.IAPT ? query.ccgid : query.query;
 }
 
-const apiUrl = `${api.host}/indexes/${api.indexes.orgLookup}/docs/suggest?api-version=${api.version}`;
+const apiUrl = `https://${search.host}/service-search/suggest?api-version=${search.version}`;
 
 module.exports = config => (req, res, next) => {
   res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
@@ -29,8 +29,8 @@ module.exports = config => (req, res, next) => {
   res.locals.gpname = req.query.gpname;
   res.locals.origin = req.query.origin;
 
-  res.locals.apiKey = api.key;
-  res.locals.apiOrgSuggester = api.suggesters.organisation;
+  res.locals.apiKey = search.apiKey;
+  res.locals.apiOrgSuggester = search.suggesters.organisation;
   res.locals.apiUrl = apiUrl;
   next();
 };

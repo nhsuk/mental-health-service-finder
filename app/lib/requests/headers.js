@@ -1,6 +1,6 @@
-const config = require('../../../config/config');
+const key = require('../../../config/config').search.apiKey;
 
 module.exports = {
   'Content-Type': 'application/json',
-  'api-key': config.api.key,
+  'subscription-key': key,
 };
