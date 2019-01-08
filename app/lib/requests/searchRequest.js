@@ -1,11 +1,11 @@
 const rp = require('request-promise-native');
 
 const headers = require('./headers');
-const queryBuilder = require('./queryBuilder');
+const createBody = require('./createBody');
 const search = require('../../../config/config').search;
 
 async function request(type, locals) {
-  const query = queryBuilder(type, locals);
+  const query = createBody(type, locals);
   return rp({
     body: JSON.stringify(query),
     headers,
