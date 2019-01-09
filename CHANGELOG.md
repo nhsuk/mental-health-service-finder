@@ -3,6 +3,8 @@
 - Update npm dependencies
 - Enable debugging
 - Upgrade Docker container to `node:10.15.0-alpine`
+- Access APIs via APIM instead of going direct
+- Use async/await pattern for API requests
 
 0.14.0 / 2018-11-29
 ===================
