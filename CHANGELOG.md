@@ -1,4 +1,4 @@
-0.15.0 / 2019-01-TBD
+0.15.0 / 2019-01-11
 ===================
 - Update npm dependencies
 - Enable debugging
