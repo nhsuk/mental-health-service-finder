@@ -1,3 +1,8 @@
+0.16.0 / TBD
+===================
+- Upgrade Docker container to `node:10.15.2-alpine`
+- Update npm dependencies
+
 0.15.0 / 2019-01-11
 ===================
 - Update npm dependencies
