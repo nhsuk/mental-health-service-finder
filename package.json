@@ -1,6 +1,6 @@
 {
   "name": "mental-health-service-finder",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Helping to connect people to mental health services.",
   "main": "app.js",
   "scripts": {
@@ -19,9 +19,6 @@
     "lint-backend": "eslint --ext .js,.json .",
     "lint-frontend": "eslint ./app/public/js",
     "lint-watch": "esw --watch .",
-    "postrewrite": "yarn git-hook",
-    "precommit": "yarn git-hook",
-    "prepush": "yarn git-hook",
     "start-watch": "yarn brunch watch & nodemon --inspect=0.0.0.0 app.js | ./node_modules/bunyan/bin/bunyan",
     "test": "NODE_ENV=test mocha --exit --recursive test",
     "test-ci": "yarn ci-hook && yarn coverage-upload-coveralls",
@@ -29,6 +26,13 @@
     "test-unit-watch": "NODE_ENV=test mocha --recursive test/unit --reporter min --watch",
     "test-integration-watch": "NODE_ENV=test mocha --recursive test/integration --reporter min --watch",
     "test-watch": "yarn test -- --reporter min --watch"
+  },
+  "husky": {
+    "hooks": {
+      "post-rewrite": "yarn git-hook",
+      "pre-commit": "yarn git-hook",
+      "pre-push": "yarn git-hook"
+    }
   },
   "repository": {
     "type": "git",
@@ -84,10 +88,10 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-json": "^1.2.0",
     "eslint-plugin-mocha": "^5.0.0",
-    "eslint-watch": "4.0.2",
+    "eslint-watch": "^5.0.1",
     "husky": "^1.0.1",
     "istanbul": "^1.1.0-alpha.1",
-    "mocha": "^5.0.0",
+    "mocha": "^6.0.2",
     "nock": "^10.0.0",
     "nodemon": "^1.12.0",
     "proxyquire": "^2.0.0"
