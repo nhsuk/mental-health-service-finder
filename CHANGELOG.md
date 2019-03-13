@@ -2,6 +2,7 @@
 ===================
 - Upgrade Docker container to `node:10.15.3-alpine`
 - Update npm dependencies
+- Remove simple cookie banner
 
 0.15.0 / 2019-01-11
 ===================
