@@ -73,7 +73,6 @@ describe('GP results page', () => {
 
       it('should display the number of results returned', () => {
         expect($('.results__count').text()).to.equal(resultCount.toString());
-        expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal(resultCount.toString());
       });
 
       it('should display the search term', () => {
@@ -112,10 +111,6 @@ describe('GP results page', () => {
         highlights.each((i, elem) => {
           expect($(elem).text()).to.match(new RegExp(query.split(' ')[0], 'i'));
         });
-      });
-
-      it('has a meta tag for WebTrends', () => {
-        expect($('meta[name="WT.si_p"]').prop('content')).to.equal('GP Search Results');
       });
     });
 
@@ -172,11 +167,6 @@ describe('GP results page', () => {
 
       it('should display the number of results returned', () => {
         expect($('.results__count').text()).to.equal(resultCount.toString());
-        expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal(resultCount.toString());
-      });
-
-      it('should instruct Webtrends to anonymise IP Addresses', () => {
-        expect($('meta[name="DCS.dcsipa"]').prop('content')).to.equal('1');
       });
     });
   });
@@ -207,11 +197,6 @@ describe('GP results page', () => {
 
     it('has an encoded back link to the start page with the previously entered query', () => {
       iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`);
-    });
-
-    it('has a meta tag for WebTrends', () => {
-      expect($('meta[name="WT.si_p"]').prop('content')).to.equal('GP Search Results');
-      expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal('0');
     });
 
     it(`should have the page title - 'Find psychological therapies services - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS'`, () => {

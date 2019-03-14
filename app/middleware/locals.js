@@ -13,7 +13,6 @@ module.exports = config => (req, res, next) => {
   res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
   res.locals.GOOGLE_ANALYTICS_TRACKING_ID = config.analytics.googleAnalyticsId;
   res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
-  res.locals.WEBTRENDS_ANALYTICS_TRACKING_ID = config.analytics.webtrendsId;
 
   res.locals.siteRoot = constants.siteRoot;
   res.locals.assetsUrl = constants.assetsUrl;
