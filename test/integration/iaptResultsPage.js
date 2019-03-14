@@ -66,7 +66,6 @@ describe('IAPT results page', () => {
       it('should display all of the results that were returned', () => {
         expect($('.results__count').text()).to.equal(resultCount.toString());
         expect($('.results__item').length).to.equal(resultCount);
-        expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal(resultCount.toString());
       });
 
       it('should report number of services plurally', () => {
@@ -173,11 +172,6 @@ describe('IAPT results page', () => {
 
       it('should report number of services singularly', () => {
         expect($('.nhsuk-body-l').text().trim()).to.equal(`${resultCount} service is available for '${gpName}'.`);
-      });
-
-      it('has a meta tag for WebTrends', () => {
-        expect($('meta[name="WT.si_p"]').prop('content')).to.equal('IAPT Results');
-        expect($('meta[name="DCSext.NumberOfResults"]').prop('content')).to.equal(resultCount.toString());
       });
     });
   });

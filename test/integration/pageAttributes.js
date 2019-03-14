@@ -64,20 +64,6 @@ describe('Page attributes', () => {
             expect($('meta[name=robots]').prop('content')).to.equal('nofollow');
           });
         }
-
-        it('should have a meta tag for WebTrends', () => {
-          expect($('meta[name="WT.si_n"]').prop('content')).to.equal('Mental Health Pilot');
-        });
-
-        if (path !== routes.results.path) {
-          it('should have a meta tag for WebTrends', () => {
-            expect($('meta[name="WT.si_p"]').prop('content')).to.equal(routes[route]['WT.si_p']);
-          });
-
-          it('should instruct Webtrends to anonymise IP Addresses', () => {
-            expect($('meta[name="DCS.dcsipa"]').prop('content')).to.equal('1');
-          });
-        }
       });
     });
   });

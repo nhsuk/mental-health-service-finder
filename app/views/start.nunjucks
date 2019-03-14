@@ -6,10 +6,6 @@
 <meta name='robots' content='nofollow'>
 {% endblock %}
 
-{% block wtMeta %}
-<meta name="WT.si_p" content="Start">
-{% endblock %}
-
 {% block header %}
 <h1>Find help with stress, anxiety or depression (England only)</h1>
 <div class="nhsuk-reading-width">

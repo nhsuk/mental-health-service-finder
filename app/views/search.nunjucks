@@ -2,10 +2,6 @@
 
 {% block pageTitle %}{% if errorMessage %}Please correct the error. {{ errorMessage }}{% else %}Search for your GP{% endif %} - {% endblock %}
 
-{% block wtMeta %}
-<meta name="WT.si_p" content="GP Search">
-{% endblock %}
-
 {% block header %}
 <h1>We need to know where your GP is</h1>
 <p>This helps us get you to the right psychological therapies service.</p>

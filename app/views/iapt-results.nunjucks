@@ -4,12 +4,6 @@
 
 {% block pageTitle %}{% if results.length > 0 %}Services you can refer yourself to{% else %}{{ msg }}{% endif %} - {% endblock %}
 
-
-{% block wtMeta %}
-<meta name="WT.si_p" content="IAPT Results">
-<meta name="DCSext.NumberOfResults" content="{{ results.length }}">
-{% endblock %}
-
 {% block header %}
 <h1>Refer yourself using these contact details</h1>
 {% endblock %}

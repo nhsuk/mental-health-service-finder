@@ -30,8 +30,6 @@ module.exports = {
       '*.hotjar.com',
       '*.nhs.uk',
       '*.omtrdc.net',
-      '*.webtrends.com',
-      '*.webtrendslive.com',
     ],
     scriptSrc: [
       '\'self\'',
@@ -43,8 +41,6 @@ module.exports = {
       '*.google-analytics.com',
       '*.hotjar.com',
       '*.nhs.uk',
-      '*.webtrends.com',
-      '*.webtrendslive.com',
     ],
     styleSrc: [
       '\'self\'',

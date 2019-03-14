@@ -6,10 +6,6 @@
 <h1>What happens when you refer yourself</h1>
 {% endblock %}
 
-{% block wtMeta %}
-<meta name="WT.si_p" content="Check">
-{% endblock %}
-
 {% block content %}
 <h2 class="nhsuk-heading-m">You will be offered an assessment</h2>
 <p>Someone from the psychological therapies service will get in touch. They'll ask about the problems you're having.</p>
