@@ -19,6 +19,7 @@ module.exports = {
       '*.hotjar.com',
     ],
     frameSrc: [
+      '*.demdex.net',
       '*.hotjar.com',
     ],
     imgSrc: [
