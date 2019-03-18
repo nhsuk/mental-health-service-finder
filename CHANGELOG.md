@@ -4,6 +4,7 @@
 - Update npm dependencies
 - Remove simple cookie banner
 - Remove Webtrends (no longer used)
+- Remove GA (no longer used)
 
 0.15.0 / 2019-01-11
 ===================
