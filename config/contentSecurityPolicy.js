@@ -7,7 +7,6 @@ module.exports = {
       '*.azure-api.net',
       '*.demdex.net',
       '*.hotjar.com:*',
-      '*.google-analytics.com',
       'nhs.funnelback.co.uk',
     ],
     defaultSrc: [
@@ -27,7 +26,6 @@ module.exports = {
       'data:',
       '*.2o7.net',
       '*.everesttech.net',
-      '*.google-analytics.com',
       '*.hotjar.com',
       '*.nhs.uk',
       '*.omtrdc.net',
@@ -39,7 +37,6 @@ module.exports = {
       'data:',
       'assets.adobedtm.com',
       '*.demdex.net',
-      '*.google-analytics.com',
       '*.hotjar.com',
       '*.nhs.uk',
     ],

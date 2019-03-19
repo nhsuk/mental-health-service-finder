@@ -11,8 +11,9 @@ const apiUrl = `https://${search.host}/service-search/suggest?api-version=${sear
 
 module.exports = config => (req, res, next) => {
   res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
-  res.locals.GOOGLE_ANALYTICS_TRACKING_ID = config.analytics.googleAnalyticsId;
   res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
+
+  res.locals.COOKIEBOT_SCRIPT_URL = config.cookiebot.scriptUrl;
 
   res.locals.siteRoot = constants.siteRoot;
   res.locals.assetsUrl = constants.assetsUrl;
