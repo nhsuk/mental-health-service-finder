@@ -1,3 +1,8 @@
+0.17.0 / TBC
+===================
+- Update npm dependencies
+- Upgrade Docker container to use latest node LTS
+
 0.16.0 / 2019-03-20
 ===================
 - Upgrade Docker container to `node:10.15.3-alpine`
