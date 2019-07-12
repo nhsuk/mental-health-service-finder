@@ -45,8 +45,8 @@ describe('GP results page', () => {
         iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`, 'search again', '.results__search__again');
       });
 
-      it('should have a title of \'Find psychological therapies services - NHS\'', () => {
-        expect($('head title').text()).to.equal('Find psychological therapies services - Select your GP - NHS');
+      it(`should have a title of '${constants.app.title} - NHS'`, () => {
+        expect($('head title').text()).to.equal(`${constants.app.title} - Select your GP - NHS`);
       });
 
       it('should have an H1 of \'Select your GP to get you to the right service\'', () => {
@@ -199,8 +199,8 @@ describe('GP results page', () => {
       iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`);
     });
 
-    it(`should have the page title - 'Find psychological therapies services - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS'`, () => {
-      expect($('head title').text()).to.equal(`Find psychological therapies services - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS`);
+    it(`should have the page title - '${constants.app.title} - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS'`, () => {
+      expect($('head title').text()).to.equal(`${constants.app.title} - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS`);
     });
   });
 

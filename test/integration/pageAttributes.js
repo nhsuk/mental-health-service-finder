@@ -31,8 +31,8 @@ describe('Page attributes', () => {
       describe('titles', () => {
         if (path !== routes.results.path) {
           const title = routes[route].title;
-          it(`should be 'Find psychological therapies services - ${title} - NHS'`, () => {
-            expect($('head title').text()).to.equal(`Find psychological therapies services - ${title} - NHS`);
+          it(`should be '${constants.app.title} - ${title} - NHS'`, () => {
+            expect($('head title').text()).to.equal(`${constants.app.title} - ${title} - NHS`);
           });
         }
       });
