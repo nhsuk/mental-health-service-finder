@@ -2,6 +2,8 @@
 ===================
 - Update npm dependencies
 - Upgrade Docker container to use latest node LTS
+- Add additional (and update existing) metadata properties to meet minimum set
+- Allow Adobe and Hotjar to connect to additional domains
 
 0.16.0 / 2019-03-20
 ===================

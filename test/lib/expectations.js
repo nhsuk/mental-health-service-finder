@@ -1,6 +1,6 @@
 const chai = require('chai');
 const cheerio = require('cheerio');
-const siteRoot = require('../../app/lib/constants').siteRoot;
+const constants = require('../../app/lib/constants');
 
 const expect = chai.expect;
 
@@ -13,7 +13,7 @@ function breadcrumbContent($) {
   expect($('.nhsuk-c-breadcrumb__item').eq(0).text().trim()).to.equal('Home');
   expect($('.nhsuk-c-breadcrumb__item').eq(0).find('a').prop('href')).to.equal('https://www.nhs.uk');
   expect($('.nhsuk-c-breadcrumb__item').eq(1).text().trim()).to.equal('Find a psychological therapies service');
-  expect($('.nhsuk-c-breadcrumb__item').eq(1).find('a').prop('href')).to.equal(siteRoot);
+  expect($('.nhsuk-c-breadcrumb__item').eq(1).find('a').prop('href')).to.equal(constants.siteRoot);
 }
 
 // eslint-disable-next-line no-script-url
@@ -34,7 +34,7 @@ function errorPageContent(response) {
 
   checkPageContent($, 'Sorry, we are experiencing technical problems.', 'Please try again later.');
   backLinkContent($);
-  expect($('head title').text()).to.equal('Find psychological therapies services - Sorry, we are experiencing technical problems - NHS');
+  expect($('head title').text()).to.equal(`${constants.app.title} - Sorry, we are experiencing technical problems - NHS`);
 }
 
 function notFoundPageContent(response) {
@@ -44,7 +44,7 @@ function notFoundPageContent(response) {
 
   checkPageContent($, 'Page not found', 'If you have entered a web address check it was correct. You can browse from the NHS home page');
   backLinkContent($);
-  expect($('head title').text()).to.equal('Find psychological therapies services - Page not found - NHS');
+  expect($('head title').text()).to.equal(`${constants.app.title} - Page not found - NHS`);
 }
 
 module.exports = {
