@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="format-detection" content="telephone=no">
-    <meta name="description" content="Find psychological therapies services."/>
+    <meta name="description" content="{{ app.description }}"/>
 
     <!--[if IE]><link rel="shortcut icon" href="{{ siteRoot }}/assets/images/favicon.ico"><![endif]-->
     <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
@@ -18,11 +18,23 @@
     <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size. -->
     <link rel="icon" href="{{ siteRoot }}/images/favicon.png">
 
-    <title>Find psychological therapies services - {% block pageTitle %}{% endblock %}NHS</title>
+    <title>{{ app.title }} - {% block pageTitle %}{% endblock %}NHS</title>
 
+    <link rel="canonical" href="{{ canonicalUrl }}">
+    <meta property="og:description" content="{{ app.description }}"/>
     <meta property="og:image" content="{{ siteRoot }}/images/opengraph-image.png">
+    <meta property="og:image:alt" content="nhs.uk">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="1200">
+    <meta property="og:locale" content="{{ app.locale }}">
+    <meta property="og:site_name" content="{{ app.siteName }}">
+    <meta property="og:title" content="{{ app.title }} - NHS">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ canonicalUrl }}">
+
+    <meta property="twitter:card" content="{{ app.twitter.card }}">
+    <meta property="twitter:creator" content="{{ app.twitter.creator }}">
+    <meta property="twitter:site" content="{{ app.twitter.site }}">
 
     <meta name="api.key" content="{{ apiKey }}">
     <meta name="api.orgSuggester" content="{{ apiOrgSuggester }}">

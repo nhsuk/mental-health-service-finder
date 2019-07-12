@@ -1,6 +1,7 @@
-const search = require('../../config/config').search;
+const canonicalUrl = require('../lib/canonicalUrl');
 const constants = require('../lib/constants');
 const digitalData = require('../lib/digitalData');
+const search = require('../../config/config').search;
 const trim = require('../lib/utils/utils').trim;
 
 function getQuery(type, query) {
@@ -15,9 +16,11 @@ module.exports = config => (req, res, next) => {
 
   res.locals.COOKIEBOT_SCRIPT_URL = config.cookiebot.scriptUrl;
 
-  res.locals.siteRoot = constants.siteRoot;
+  res.locals.app = constants.app;
   res.locals.assetsUrl = constants.assetsUrl;
+  res.locals.canonicalUrl = canonicalUrl(req);
   res.locals.digitalData = digitalData(req);
+  res.locals.siteRoot = constants.siteRoot;
 
   res.locals.location = trim(req.query.location);
   const type = req.query.type && req.query.type.toUpperCase();
