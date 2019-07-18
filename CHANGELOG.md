@@ -1,4 +1,4 @@
-0.17.0 / TBC
+0.17.0 / 2019-07-18
 ===================
 - Update npm dependencies
 - Upgrade Docker container to use latest node LTS
