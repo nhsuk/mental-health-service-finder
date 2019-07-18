@@ -1,6 +1,7 @@
 0.18.0 / 2019-07-18
 ===================
 - Update npm dependencies
+- Use full path for Open Graph image
 
 0.17.0 / 2019-07-18
 ===================
