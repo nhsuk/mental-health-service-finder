@@ -18,7 +18,7 @@ function expectStandardMetadata($) {
   const canonicalUrl = `https://127.0.0.1${constants.siteRoot}/`;
   expect($('link[rel="canonical"]').attr('href')).to.equal(canonicalUrl);
   expect($('meta[property="og:description"]').attr('content')).to.equal(constants.app.description);
-  expect($('meta[property="og:image"]').attr('content')).to.equal(`${constants.siteRoot}/images/opengraph-image.png`);
+  expect($('meta[property="og:image"]').attr('content')).to.equal(`${canonicalUrl}images/opengraph-image.png`);
   expect($('meta[property="og:image:alt"]').attr('content')).to.equal('nhs.uk');
   expect($('meta[property="og:image:height"]').attr('content')).to.equal('630');
   expect($('meta[property="og:image:width"]').attr('content')).to.equal('1200');
