@@ -58,7 +58,7 @@
     "brunch": "^2.10.16",
     "compression": "^1.7.1",
     "cookie-parser": "^1.4.3",
-    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-airbnb": "^18.0.0",
     "express": "^4.16.2",
     "express-prom-bundle": "^5.0.2",
     "fingerprint-brunch": "^2.0.5",
