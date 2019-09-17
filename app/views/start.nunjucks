@@ -1,24 +1,26 @@
+{% from 'action-link/macro.njk' import actionLink %}
+{% from 'care-card/macro.njk' import careCard %}
+
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}Introduction - {% endblock %}
+{% block pageTitle %}Introduction{% endblock %}
 
-{% block robots %}
-<meta name='robots' content='nofollow'>
-{% endblock %}
-
-{% block header %}
-<h1>Find help with stress, anxiety or depression (England only)</h1>
-<div class="nhsuk-reading-width">
-<p class="nhsuk-body-l nhsuk-page-intro">You can refer yourself directly to a psychological therapies service without seeing your GP.</p>
-</div>
-{% endblock %}
+{% block robots %}<meta name='robots' content='nofollow'>{% endblock %}
 
 {% block content %}
-<p>These offer therapies like cognitive behavioural therapy (CBT) for common problems like stress, anxiety, depression, OCD and phobias.</p>
-
-<h2 class="nhsuk-heading-m">Who can get psychological therapies on the NHS?</h2>
-<p>Anyone who is registered with a GP. If you are not registered, <a href="https://www.nhs.uk/Service-Search/GP/LocationSearch/4" class="button__gp__search">search for a GP</a>.</p>
-
-<p><a href="{{ siteRoot }}/check" class="button button__start">Find help</a></p>
-{% include "includes/urgent-help-callout.nunjucks" %}
+  <h1>Find help with stress, anxiety or depression (England only)</h1>
+  {{ careCard({
+    "type": "urgent",
+    "heading": "If you need urgent help",
+    "HTML": "
+	  <p>Call Samaritans free on <a class='samaritans__call' href='tel:116123'>116 123</a> or email <a class='samaritans__email' href='mailto:jo@samaritans.org'>jo@samaritans.org</a></p>
+    "
+  })}}
+  <p>You can refer yourself directly to a psychological therapies service without seeing your GP.</p>
+  <p>These offer therapies like cognitive behavioural therapy (CBT) for common problems like stress, anxiety, depression, OCD and phobias.</p>
+  <p>Anyone who is registered with a GP can get access to psychological therapies on the NHS. If you are not registered, <a href="https://www.nhs.uk/Service-Search/GP/LocationSearch/4" class="button__gp__search">search for a GP</a>.</p>
+  {{ actionLink({
+    "text": "Find help",
+    "href": siteRoot + "/check"
+  })}}
 {% endblock %}

@@ -1,44 +1,33 @@
 {% extends 'layout.nunjucks' %}
-{% set href = siteRoot + "/search?query=" + query | urlencode %}
-{% set msg = 'Sorry, we couldn\'t find any GP surgeries matching \'' + query + '\'' %}
+{% from 'panel/macro.njk' import panel %}
 
-{% block pageTitle %}{% if results.length > 0 %}Select your GP{% else %}{{ msg }}{% endif %} - {% endblock %}
+{% set hasResults = results.length > 0 %}
+{% set backHref = siteRoot + "/search?query=" + query | urlencode %}
+{% set noResultsMsg = "Sorry, we couldn't find any GP surgeries matching '" + query + "'" %}
 
-{% block header %}
-{% if results.length > 0 %}
-<h1>Select your GP to see available services</h1>
-{% else %}
-<h1>{{ msg }}</h1>
-{% endif %}
-{% endblock %}
+{% block pageTitle -%}
+  {{ "Select your GP" if hasResults else noResultsMsg }}
+{%- endblock %}
 
 {% block content %}
-{% if results.length > 0 %}
-<h2 class="nhsuk-body-l"><span role="text">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ query }}'</span>.</span></h2>
-
-<p role="text">If your surgery is not here, check your spelling and <a class="results__search__again" href="{{ href }}">search again</a>.</p>
-
-<div>
-  <ol class="inline-list" role="list">
-    {% for result in results %}
-      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}" role="listitem">
-        <div>
-          {% include "includes/gp-result-item.nunjucks" %}
-        </div>
-        <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
-      </li>
-    {% endfor %}
-  </ol>
-</div>
-{% else %}
-<p>Please try:</p>
-  <ul>
-    <li><a class="results__search__again" href="{{ href }}">searching again using different search terms</a></li>
-    <li>checking your spelling</li>
-  </ul>
-{% endif %}
-{% endblock %}
-
-{% block back %}
-{{ linkBack(href) }}
+  {{ backLink({
+    "href": backHref,
+    "text": "Go back"
+  })}}
+  <h1>{{ "Select your GP to see available services" if hasResults else noResultsMsg }}</h1>
+  {% if hasResults %}
+    <h2>We found <span class="results__count">{{ results.length }}</span> GP surgeries matching <span class="results__search__term">'{{ query }}'</span>.</h2>
+	  <p>If your surgery is not here, check your spelling and <a href="{{ backHref }}" class="results__search__again">search again</a>.</p>
+    <ul class="nhsuk-list">
+      {% for result in results %}
+        {% include "includes/gp-result-item.nunjucks" %}
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Please try:</p>
+    <ul>
+      <li><a href="{{ backHref }}" class="results__search__again">searching again using different search terms</a></li>
+      <li>checking your spelling</li>
+    </ul>
+  {% endif %}
 {% endblock %}

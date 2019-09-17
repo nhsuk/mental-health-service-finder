@@ -1,6 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const cheerio = require('cheerio');
+const cheeriload = require('../lib/helpers').cheeriload;
 
 const constants = require('../../app/lib/constants');
 const createBody = require('../../app/lib/requests/createBody');
@@ -37,7 +37,7 @@ describe('IAPT results page', () => {
         nockRequests.withResponseBody(path, body, 200, 'search/threeResults.json');
 
         response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpquery=${gpQuery}&gpname=${gpname}&lat=${lat}&lon=${lon}`);
-        $ = cheerio.load(response.text);
+        $ = cheeriload(response);
         iExpect.htmlWithStatus(response, 200);
       });
 
@@ -53,23 +53,13 @@ describe('IAPT results page', () => {
         expect($('h1').text()).to.equal('Refer yourself using these contact details');
       });
 
-      it('the breadcrumbs should have 2 levels of links', () => {
-        iExpect.breadcrumbContent($);
-      });
-
-      it('the banner should link back to Choices IAPT service search', () => {
-        expect($('.back-to-choices').text()).to.equal('Find psychological therapies using our old finder.');
-        expect($('.back-to-choices').attr('href'))
-          .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
-      });
-
       it('should display all of the results that were returned', () => {
         expect($('.results__count').text()).to.equal(resultCount.toString());
         expect($('.results__item').length).to.equal(resultCount);
       });
 
       it('should report number of services plurally', () => {
-        expect($('.nhsuk-body-l').text().trim()).to.equal(`${resultCount} services are available for '${gpname}'.`);
+        expect($('main h2').text().trim()).to.equal(`${resultCount} services are available for '${gpname}'.`);
       });
 
       it('should display contact information for each result', () => {
@@ -84,7 +74,7 @@ describe('IAPT results page', () => {
           const telHref = getHrefFromA(tel);
           expect(telHref).to.equal(`tel:result ${i} telephone`);
 
-          const orgName = $(item).find('.results__name').text();
+          const orgName = $(item).find('h3').text();
           const website = $(item).find('.results__website');
           expect(website.text()).to.equal(`Visit ${orgName}'s website`);
           const websiteHref = getHrefFromA(website);
@@ -93,12 +83,10 @@ describe('IAPT results page', () => {
       });
 
       it('should display a button to \'Refer yourself online\' for results with that option', () => {
-        const selfReferralElements = $('.results__self__referral');
+        const selfReferralElements = $('.nhsuk-button');
         expect(selfReferralElements.length).to.equal(2);
-        const selfReferralElement0Href = getHrefFromA(selfReferralElements.eq(0));
-        const selfReferralElement2Href = getHrefFromA(selfReferralElements.eq(1));
-        expect(selfReferralElement0Href).to.equal('https://self.referral.0');
-        expect(selfReferralElement2Href).to.equal('https://self.referral.2');
+        expect(selfReferralElements.eq(0).attr('href')).to.equal('https://self.referral.0');
+        expect(selfReferralElements.eq(1).attr('href')).to.equal('https://self.referral.2');
       });
 
       it('should display no message about online referrals not being available when there is no available option', () => {
@@ -118,7 +106,7 @@ describe('IAPT results page', () => {
         nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
         response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpquery=${gpName}&gpname=${gpName}&origin=search&lat=${lat}&lon=${lon}`);
-        $ = cheerio.load(response.text);
+        $ = cheeriload(response);
         iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(0);
       });
@@ -143,13 +131,13 @@ describe('IAPT results page', () => {
         nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
         response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
-        $ = cheerio.load(response.text);
+        $ = cheeriload(response);
         iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(0);
       });
 
       it('should display a message for zero results', () => {
-        expect($('.nhsuk-body-l').text().trim()).to.equal(`There are no services available for '${gpName}'.`);
+        expect($('h1').text().trim()).to.equal(`There are no services available for '${gpName}'`);
       });
     });
 
@@ -165,13 +153,13 @@ describe('IAPT results page', () => {
         nockRequests.withResponseBody(path, body, 200, 'search/oneResult.json');
 
         response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
-        $ = cheerio.load(response.text);
+        $ = cheeriload(response);
         iExpect.htmlWithStatus(response, 200);
         expect($('.results__item').length).to.equal(resultCount);
       });
 
       it('should report number of services singularly', () => {
-        expect($('.nhsuk-body-l').text().trim()).to.equal(`${resultCount} service is available for '${gpName}'.`);
+        expect($('main h2').text().trim()).to.equal(`${resultCount} service is available for '${gpName}'.`);
       });
     });
   });
@@ -190,9 +178,9 @@ describe('IAPT results page', () => {
       const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&lat=${lat}&lon=${lon}`);
       iExpect.htmlWithStatus(response, 200);
 
-      const $ = cheerio.load(response.text);
+      const $ = cheeriload(response);
 
-      expect($('.no-results').text()).to.equal('No results');
+      expect($('main p').text()).to.equal('No results');
     });
   });
 

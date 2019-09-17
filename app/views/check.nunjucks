@@ -1,28 +1,20 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}What happens next - {% endblock %}
-
-{% block header %}
-<h1>What happens when you refer yourself</h1>
-{% endblock %}
+{% block pageTitle %}What happens next{% endblock %}
 
 {% block content %}
-<h2 class="nhsuk-heading-m">You will be offered an assessment</h2>
-<p>Someone from the psychological therapies service will get in touch. They'll ask about the problems you're having.</p>
-
-<h2 class="nhsuk-heading-m">The service will recommend a therapy for you</h2>
-<p>The therapy will depend on what problems you're experiencing and how severe they are.</p>
-<p>They will also tell you how long you'll wait for your first therapy session.</p>
-
-<h2 class="nhsuk-heading-m">Psychological therapies are offered in different ways</h2>
-<p>For example, using a self-help workbook, as an online course, one to one or in a group.</p>
-
-<p><a href="{{ siteRoot }}/search" class="button button__check">Next</a></p>
-
-{% set href = siteRoot + "/" %}
-{{ linkBack(href) }}
-
-{% include "includes/urgent-help-callout.nunjucks" %}
+  {{ backLink({
+    "href": siteRoot,
+    "text": "Go back"
+  })}}
+  <h1>What happens when you refer yourself</h1>
+  <ol>
+    <li>Someone from the psychological therapies service will get in touch. They will ask about the problems you're having.</p>
+    <li>The service will recommend a therapy for you. The therapy will depend on what problems you're experiencing and how severe they are. They will also tell you how long you'll wait for your first therapy session.</li>
+  </ol>
+  <p>Psychological therapies are offered in different ways which include: using a self-help workbook, as an online course, one to one or in a group.</p>
+  {{ button({
+    "href": siteRoot + "/search",
+    "text": "Continue"
+  })}}
 {% endblock %}
-
-{% block back %}{% endblock %}

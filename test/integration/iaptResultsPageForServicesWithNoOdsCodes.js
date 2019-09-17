@@ -1,9 +1,9 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const cheerio = require('cheerio');
 
 const constants = require('../../app/lib/constants');
 const getHrefFromA = require('../lib/helpers').getHrefFromA;
+const cheeriload = require('../lib/helpers').cheeriload;
 const iExpect = require('../lib/expectations');
 const routes = require('../../config/routes');
 const server = require('../../server');
@@ -31,7 +31,7 @@ describe('IAPT results page for services with no ODS codes', () => {
 
       response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${northCumbriaId}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
 
-      $ = cheerio.load(response.text);
+      $ = cheeriload(response);
       iExpect.htmlWithStatus(response, 200);
       expect($('.results__item').length).to.equal(resultCount);
     });
@@ -47,15 +47,13 @@ describe('IAPT results page for services with no ODS codes', () => {
       const telHref = getHrefFromA(tel);
       expect(telHref).to.equal(`tel:${northCumbriaData.telephone}`);
 
-      const orgName = $('.results__name').text();
+      const orgName = $('main h3').text();
       const website = $('.results__website');
       expect(website.text()).to.equal(`Visit ${orgName}'s website`);
       const websiteHref = getHrefFromA(website);
       expect(websiteHref).to.equal(northCumbriaData.website);
 
-      const selfReferral = $('.results__self__referral');
-      const selfReferralHref = getHrefFromA(selfReferral);
-      expect(selfReferralHref).to.equal(northCumbriaData.selfReferral);
+      expect($('.nhsuk-button').attr('href')).to.equal(northCumbriaData.selfReferral);
     });
   });
 
@@ -65,7 +63,7 @@ describe('IAPT results page for services with no ODS codes', () => {
 
       response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${redBridgeId}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
 
-      $ = cheerio.load(response.text);
+      $ = cheeriload(response);
       iExpect.htmlWithStatus(response, 200);
       expect($('.results__item').length).to.equal(resultCount);
     });
@@ -81,15 +79,13 @@ describe('IAPT results page for services with no ODS codes', () => {
       const telHref = getHrefFromA(tel);
       expect(telHref).to.equal(`tel:${redBridgeData.telephone}`);
 
-      const orgName = $('.results__name').text();
+      const orgName = $('main h3').text();
       const website = $('.results__website');
       expect(website.text()).to.equal(`Visit ${orgName}'s website`);
       const websiteHref = getHrefFromA(website);
       expect(websiteHref).to.equal(redBridgeData.website);
 
-      const selfReferral = $('.results__self__referral');
-      const selfReferralHref = getHrefFromA(selfReferral);
-      expect(selfReferralHref).to.equal(redBridgeData.selfReferral);
+      expect($('.nhsuk-button').attr('href')).to.equal(redBridgeData.selfReferral);
     });
   });
 
@@ -99,7 +95,7 @@ describe('IAPT results page for services with no ODS codes', () => {
 
       response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${towerHamletsIds}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
 
-      $ = cheerio.load(response.text);
+      $ = cheeriload(response);
       iExpect.htmlWithStatus(response, 200);
       expect($('.results__item').length).to.equal(resultCount);
     });
@@ -113,15 +109,13 @@ describe('IAPT results page for services with no ODS codes', () => {
       const telHref = getHrefFromA(tel);
       expect(telHref).to.equal(`tel:${towerHamletsData.telephone}`);
 
-      const orgName = $('.results__name').text();
+      const orgName = $('main h3').text();
       const website = $('.results__website');
       expect(website.text()).to.equal(`Visit ${orgName}'s website`);
       const websiteHref = getHrefFromA(website);
       expect(websiteHref).to.equal(towerHamletsData.website);
 
-      const selfReferral = $('.results__self__referral');
-      const selfReferralHref = getHrefFromA(selfReferral);
-      expect(selfReferralHref).to.equal(towerHamletsData.selfReferral);
+      expect($('.nhsuk-button').attr('href')).to.equal(towerHamletsData.selfReferral);
     });
   });
 });

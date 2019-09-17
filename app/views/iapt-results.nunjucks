@@ -1,49 +1,30 @@
 {% extends 'layout.nunjucks' %}
+
 {% set resultsLength = results.length %}
-{% set msg = 'There are no services available for \'' + gpname + '\'' %}
+{% set hasResults = resultsLength > 0 %}
+{% set noResultsMessage = "There are no services available for '" + gpname + "'" %}
+{% set originRoute = "/search?" if origin === "search" else "/results?type=gp&" %}}
+{% set backHref = siteRoot + originRoute + "query=" + gpquery | urlencode %}
 
-{% block pageTitle %}{% if results.length > 0 %}Services you can refer yourself to{% else %}{{ msg }}{% endif %} - {% endblock %}
-
-{% block header %}
-<h1>Refer yourself using these contact details</h1>
-{% endblock %}
+{% block pageTitle -%}
+  {{ "Services you can refer yourself to" if hasResults else noResultsMessage }}
+{%- endblock %}
 
 {% block content %}
-<h2 class="nhsuk-body-l">
-  <span role="text">
-{% if resultsLength === 0 %}
-  {{ msg }}.
-{% elif resultsLength === 1 %}
-  1 service is available for '{{ gpname }}'.
-{% else %}
-<span class="results__count">{{ results.length }}</span> services are available for '{{ gpname }}'.
-{% endif %}
-  </span>
-</h2>
-
-{% if resultsLength > 0 %}
-<div>
-  <ol class="inline-list" role="list">
-    {% for result in results %}
-      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}" role="listitem">
-        <div>
-          {% include "includes/iapt-result-item.nunjucks" %}
-        </div>
-        <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
-      </li>
-    {% endfor %}
-  </ol>
-</div>
-{% else %}
-  <p class="no-results">No results</p>
-{% endif %}
-{% endblock %}
-
-{% if origin === 'search' %}
-{% set href = siteRoot + "/search?query=" + gpquery | urlencode %}
-{% else %}
-{% set href = siteRoot + "/results?type=gp&query=" + gpquery | urlencode %}
-{% endif %}
-{% block back %}
-{{ linkBack(href) }}
+  {{ backLink({
+    "href": backHref,
+    "text": "Go back"
+  })}}
+  {% if hasResults %}
+    <h1>Refer yourself using these contact details</h1>
+    <h2><span class="results__count">{{ results.length }}</span> service{{ " is" if resultsLength === 1 else "s are" }} available for '{{ gpname }}'.</h2>
+    <ul class="nhsuk-list">
+      {% for result in results %}
+        {% include "includes/iapt-result-item.nunjucks" %}
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h1>{{ noResultsMessage }}</h1>
+    <p>No results</p>
+  {% endif %}
 {% endblock %}

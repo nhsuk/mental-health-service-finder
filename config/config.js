@@ -14,7 +14,7 @@ module.exports = {
     root: rootPath,
   },
   cookiebot: {
-    scriptUrl: process.env.COOKIEBOT_SCRIPT_URL || '//assets.nhs.uk/scripts/cookie-consent.js',
+    scriptUrl: process.env.COOKIEBOT_SCRIPT_URL || 'https://assets.nhs.uk/scripts/cookie-consent.js',
   },
   search: {
     apiKey: process.env.SEARCH_API_KEY,

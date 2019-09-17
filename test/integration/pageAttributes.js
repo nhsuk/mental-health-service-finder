@@ -1,7 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const cheerio = require('cheerio');
 
+const cheeriload = require('../lib/helpers').cheeriload;
 const search = require('../../config/config').search;
 const constants = require('../../app/lib/constants');
 const deepClone = require('../../app/lib/utils/utils').deepClone;
@@ -18,8 +18,7 @@ describe('Page attributes', () => {
     const path = routes[route].path;
 
     const res = await chai.request(server).get(`${constants.siteRoot}${path}`);
-
-    const $ = cheerio.load(res.text);
+    const $ = cheeriload(res);
 
     describe(`for page ${path}`, () => {
       describe('status', () => {

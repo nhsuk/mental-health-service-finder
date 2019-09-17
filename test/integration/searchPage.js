@@ -1,6 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const cheerio = require('cheerio');
+const cheeriload = require('../lib/helpers').cheeriload;
 
 const constants = require('../../app/lib/constants');
 const iExpect = require('../lib/expectations');
@@ -17,12 +17,11 @@ describe('Search page', () => {
 
     before('request page', async () => {
       const res = await chai.request(server).get(`${constants.siteRoot}${routes.search.path}`);
-
-      $ = cheerio.load(res.text);
+      $ = cheeriload(res);
     });
 
     it('has a link to the next page', () => {
-      expect($('.button__search').val()).to.equal('Find');
+      expect($('.nhsuk-button').text().trim()).to.equal('Continue');
       expect($('.form').prop('action')).to.equal(`${constants.siteRoot}${routes.results.path}`);
       expect($('.form input[name=type]').val().toUpperCase()).to.equal(`${constants.types.GP}`);
     });
@@ -38,8 +37,7 @@ describe('Search page', () => {
 
     before('request page', async () => {
       const res = await chai.request(server).get(`${constants.siteRoot}${routes.search.path}?query=${query}`);
-
-      $ = cheerio.load(res.text);
+      $ = cheeriload(res);
     });
 
     it('pre-populates the search box with the query', () => {

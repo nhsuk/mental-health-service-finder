@@ -1,4 +1,10 @@
-{% from "includes/macros/nhs-logo.svg" import nhsLogo %}
+
+{% from 'skip-link/macro.njk' import skipLink %}
+{% from 'header/macro.njk' import header %}
+{% from 'footer/macro.njk' import footer %}
+{% from 'back-link/macro.njk' import backLink %}
+{% from 'button/macro.njk' import button %}
+
 <!DOCTYPE html>
 <!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]--><!--[if IE 9]><html class="ie9" lang="en"><![endif]--><!--[if gt IE 9]><!--><html lang="en" class="no-js"><!--<![endif]-->
 
@@ -18,7 +24,7 @@
     <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 192x192 pixels in size. -->
     <link rel="icon" href="{{ siteRoot }}/images/favicon.png">
 
-    <title>{{ app.title }} - {% block pageTitle %}{% endblock %}NHS</title>
+    <title>{{ app.title }} - {% block pageTitle %}{% endblock %} - NHS</title>
 
     <link rel="canonical" href="{{ canonicalUrl }}">
     <meta property="og:description" content="{{ app.description }}"/>
@@ -41,8 +47,6 @@
     <meta name="api.url" content="{{ apiUrl }}">
 
     <link href="{{ siteRoot }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]><link href="{{ siteRoot }}/nhsukie78.css" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
-    <link rel="stylesheet" href="{{ siteRoot }}/print.css" media="print" type="text/css">
 
     <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
 
@@ -66,50 +70,84 @@
       <script src="{{ ADOBE_TRACKING_URL }}" type="text/plain" data-cookieconsent="statistics" async></script>
     {% endif %}
 
-    {% include "includes/digitalData.nunjucks" %}
+	<script>
+		window.digitalData = {{ digitalData | dump | safe }};
+	</script>
+
+	<script src="{{ siteRoot }}/nhsuk.min.js" defer></script>
+
   </head>
 
   <body class="{% block bodyClass %}{% endblock %}">
     <script>document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');</script>
-    <div class="nhsuk-c-skiplink">
-      <a href="#main-content" class="nhsuk-c-skiplink__link">Skip to main content</a>
-    </div>
 
-    {% include "includes/back-to-choices.nunjucks" %}
+	{{ skipLink({
+		"href": "#maincontent",
+		"text": "Skip to main content"
+	}) }}
+    
+	{% block banner %}{% endblock %}
 
-    {% block banner %}{% endblock %}
-
-    {% include "includes/header.nunjucks" %}
-
-    {% include "includes/breadcrumbs.nunjucks" %}
-
-    <div class="nhsuk-o-width-container">
-      <main id="main-content" class="nhsuk-o-width-wrapper util-nofocus">
-        {% block article %}
-        <div class="nhsuk-o-grid">
-          {% block pageSection %}
-          <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
-            <div class="nhsuk-page-heading">
-              {% block header %}{% endblock %}
-            </div>
-          </div>
-          <div class="nhsuk-o-grid__item nhsuk-o-grid__item--full">
-            <div class="nhsuk-reading-width">
-              <div class="nhsuk-page-content">
-                {% from "includes/macros/link-back.nunjucks" import linkBack %}
-                {% block content %}{% endblock %}
-                {% block back %}{% endblock %}
-              </div>
-            </div>
-          </div>
-          {% endblock %}
-        </div>
-        {% endblock %}
+    {{ header({
+		"showNav": "true",
+		"showSearch": "true",
+		"primaryLinks": [
+		{
+			"url"  : "https://www.nhs.uk/conditions",
+			"label" : "Health A-Z"
+		},
+		{
+			'url' : 'https://www.nhs.uk/live-well/',
+			'label' : 'Live Well'
+		},
+		{
+			'url'  : 'https://www.nhs.uk/conditions/social-care-and-support/',
+			'label' : 'Care and support'
+		},
+		{
+			'url'  : 'https://www.nhs.uk/news/',
+			'label' : 'Health news'
+		},
+		{
+			'url' : 'https://www.nhs.uk/service-search',
+			'label' : 'Services near you'
+		}
+		]
+	})
+	}}
+		
+    <div class="nhsuk-width-container">
+      <main id="main-content" class="nhsuk-main-wrapper">
+		<div class="nhsuk-u-reading-width">
+			{% block content %}{% endblock %}
+		</div>
       </main>
     </div>
 
-    {% include "includes/footer.nunjucks" %}
+	{{ footer({
+	"links": [
+		{
+		"URL": "https://www.nhs.uk/Pages/nhs-sites.aspx",
+		"label": "NHS sites"
+		},
+		{
+		"URL": "https://www.nhs.uk/about-us",
+		"label": "About us"
+		},
+		{
+		"URL": "https://www.nhs.uk/contact-us/",
+		"label": "Contact us"
+		},
+		{
+		"URL": "https://www.nhs.uk/about-us/sitemap/",
+		"label": "Sitemap"
+		},
+		{
+		"URL": "https://www.nhs.uk/our-policies/",
+		"label": "Our policies"
+		}
+	]
+	})}}
 
-    {% include "includes/foot.nunjucks" %}
   </body>
 </html>

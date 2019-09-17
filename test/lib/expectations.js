@@ -1,5 +1,5 @@
 const chai = require('chai');
-const cheerio = require('cheerio');
+const cheeriload = require('../lib/helpers').cheeriload;
 const constants = require('../../app/lib/constants');
 
 const expect = chai.expect;
@@ -17,30 +17,29 @@ function breadcrumbContent($) {
 }
 
 // eslint-disable-next-line no-script-url
-function backLinkContent($, href = 'javascript:history.go(-1)', text = 'Back', selector = '.link-back') {
-  expect($(selector).prop('href')).to.equal(href);
-  expect($(selector).text()).to.equal(text);
+function backLinkContent($, href = 'javascript:history.go(-1)', text = 'Go back', selector = '.nhsuk-back-link__link') {
+  expect($(selector).prop('href')).to.contain(href);
+  expect($(selector).text()).to.contain(text);
 }
 
-function checkPageContent($, h1, intro) {
-  expect($('.nhsuk-page-heading h1').text().trim()).to.equal(h1);
-  expect($('.nhsuk-page-intro').text().trim()).to.equal(intro);
+function checkPageContent($, h1) {
+  expect($('h1').text().trim()).to.equal(h1);
 }
 
 function errorPageContent(response) {
   htmlWithStatus(response, 500);
 
-  const $ = cheerio.load(response.text);
+  const $ = cheeriload(response);
 
   checkPageContent($, 'Sorry, we are experiencing technical problems.', 'Please try again later.');
-  backLinkContent($);
+  //backLinkContent($);
   expect($('head title').text()).to.equal(`${constants.app.title} - Sorry, we are experiencing technical problems - NHS`);
 }
 
 function notFoundPageContent(response) {
   htmlWithStatus(response, 404);
 
-  const $ = cheerio.load(response.text);
+  const $ = cheeriload(response);
 
   checkPageContent($, 'Page not found', 'If you have entered a web address check it was correct. You can browse from the NHS home page');
   backLinkContent($);

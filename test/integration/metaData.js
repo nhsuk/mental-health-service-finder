@@ -1,8 +1,8 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const cheerio = require('cheerio');
 const nock = require('nock');
 
+const cheeriload = require('../lib/helpers').cheeriload;
 const constants = require('../../app/lib/constants');
 const createBody = require('../../app/lib/requests/createBody');
 const iExpect = require('../lib/expectations');
@@ -47,7 +47,7 @@ describe('Metadata', () => {
     it('should include the standard properties', async () => {
       const res = await chai.request(server).get(`${constants.siteRoot}${routes.start.path}`);
       iExpect.htmlWithStatus(res, 200);
-      const $ = cheerio.load(res.text);
+      const $ = cheeriload(res);
 
       expectStandardMetadata($);
     });
@@ -57,7 +57,7 @@ describe('Metadata', () => {
     it('should include the standard properties', async () => {
       const res = await chai.request(server).get(`${constants.siteRoot}${routes.check.path}`);
       iExpect.htmlWithStatus(res, 200);
-      const $ = cheerio.load(res.text);
+      const $ = cheeriload(res);
 
       expectStandardMetadata($);
     });
@@ -67,7 +67,7 @@ describe('Metadata', () => {
     it('should include the standard properties', async () => {
       const res = await chai.request(server).get(`${constants.siteRoot}${routes.search.path}`);
       iExpect.htmlWithStatus(res, 200);
-      const $ = cheerio.load(res.text);
+      const $ = cheeriload(res);
 
       expectStandardMetadata($);
     });
@@ -82,7 +82,7 @@ describe('Metadata', () => {
       const res = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${encodedQuery}`);
 
       iExpect.htmlWithStatus(res, 200);
-      const $ = cheerio.load(res.text);
+      const $ = cheeriload(res);
 
       expectStandardMetadata($);
     });
@@ -101,7 +101,7 @@ describe('Metadata', () => {
       const res = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${query}&gpquery=${gpQuery}&gpname=${gpname}&lat=${lat}&lon=${lon}`);
 
       iExpect.htmlWithStatus(res, 200);
-      const $ = cheerio.load(res.text);
+      const $ = cheeriload(res);
 
       expectStandardMetadata($);
     });
