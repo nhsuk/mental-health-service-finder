@@ -32,7 +32,6 @@ function errorPageContent(response) {
   const $ = cheeriload(response);
 
   checkPageContent($, 'Sorry, we are experiencing technical problems.', 'Please try again later.');
-  //backLinkContent($);
   expect($('head title').text()).to.equal(`${constants.app.title} - Sorry, we are experiencing technical problems - NHS`);
 }
 

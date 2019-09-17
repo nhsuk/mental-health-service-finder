@@ -6,7 +6,7 @@ function getHrefFromA(elem) {
 
 // Returns jQuery like DOM
 function cheeriload(res) {
-  return $.load(res.text.replace(/[\n\r\t]/g,''));
+  return $.load(res.text.replace(/[\n\r\t]/g, ''));
 }
 
 module.exports = {
