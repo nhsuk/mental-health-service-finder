@@ -11,6 +11,7 @@ const server = require('../../server');
 const northCumbriaData = require('../../data/northCumbriaCCG')[0];
 const redBridgeData = require('../../data/redBridgeCCG')[0];
 const towerHamletsData = require('../../data/towerHamletsCCG')[0];
+const westHampshireData = require('../../data/westHampshireCCG')[0];
 
 const expect = chai.expect;
 
@@ -122,6 +123,40 @@ describe('IAPT results page for services with no ODS codes', () => {
       const selfReferral = $('.results__self__referral');
       const selfReferralHref = getHrefFromA(selfReferral);
       expect(selfReferralHref).to.equal(towerHamletsData.selfReferral);
+    });
+  });
+
+  describe('West Hampshire', () => {
+    before('make request', async () => {
+      const westHampshireId = constants.ccgs.westHampshire;
+
+      response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${westHampshireId}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
+
+      $ = cheerio.load(response.text);
+      iExpect.htmlWithStatus(response, 200);
+      expect($('.results__item').length).to.equal(resultCount);
+    });
+
+    it('should display correct contact information', () => {
+      const email = $('.results__email');
+      expect(email.text()).to.equal(`Email: ${westHampshireData.email}`);
+      const emailHref = getHrefFromA(email);
+      expect(emailHref).to.equal(`mailto:${westHampshireData.email}`);
+
+      const tel = $('.results__telephone');
+      expect(tel.text()).to.equal(`Telephone: ${westHampshireData.telephone}`);
+      const telHref = getHrefFromA(tel);
+      expect(telHref).to.equal(`tel:${westHampshireData.telephone}`);
+
+      const orgName = $('.results__name').text();
+      const website = $('.results__website');
+      expect(website.text()).to.equal(`Visit ${orgName}'s website`);
+      const websiteHref = getHrefFromA(website);
+      expect(websiteHref).to.equal(westHampshireData.website);
+
+      const selfReferral = $('.results__self__referral');
+      const selfReferralHref = getHrefFromA(selfReferral);
+      expect(selfReferralHref).to.equal(westHampshireData.selfReferral);
     });
   });
 });
