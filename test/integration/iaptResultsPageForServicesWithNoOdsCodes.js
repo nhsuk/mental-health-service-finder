@@ -11,7 +11,7 @@ const server = require('../../server');
 const northCumbriaData = require('../../data/northCumbriaCCG')[0];
 const redBridgeData = require('../../data/redBridgeCCG')[0];
 const towerHamletsData = require('../../data/towerHamletsCCG')[0];
-const westHampshireData = require('../../data/westHampshireCCG')[0];
+const bexleyData = require('../../data/bexleyCCG')[0];
 
 const expect = chai.expect;
 
@@ -126,11 +126,11 @@ describe('IAPT results page for services with no ODS codes', () => {
     });
   });
 
-  describe('West Hampshire', () => {
+  describe('Bexley', () => {
     before('make request', async () => {
-      const westHampshireId = constants.ccgs.westHampshire;
+      const bexleyId = constants.ccgs.bexley;
 
-      response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${westHampshireId}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
+      response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${bexleyId}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
 
       $ = cheerio.load(response.text);
       iExpect.htmlWithStatus(response, 200);
@@ -139,24 +139,24 @@ describe('IAPT results page for services with no ODS codes', () => {
 
     it('should display correct contact information', () => {
       const email = $('.results__email');
-      expect(email.text()).to.equal(`Email: ${westHampshireData.email}`);
+      expect(email.text()).to.equal(`Email: ${bexleyData.email}`);
       const emailHref = getHrefFromA(email);
-      expect(emailHref).to.equal(`mailto:${westHampshireData.email}`);
+      expect(emailHref).to.equal(`mailto:${bexleyData.email}`);
 
       const tel = $('.results__telephone');
-      expect(tel.text()).to.equal(`Telephone: ${westHampshireData.telephone}`);
+      expect(tel.text()).to.equal(`Telephone: ${bexleyData.telephone}`);
       const telHref = getHrefFromA(tel);
-      expect(telHref).to.equal(`tel:${westHampshireData.telephone}`);
+      expect(telHref).to.equal(`tel:${bexleyData.telephone}`);
 
       const orgName = $('.results__name').text();
       const website = $('.results__website');
       expect(website.text()).to.equal(`Visit ${orgName}'s website`);
       const websiteHref = getHrefFromA(website);
-      expect(websiteHref).to.equal(westHampshireData.website);
+      expect(websiteHref).to.equal(bexleyData.website);
 
       const selfReferral = $('.results__self__referral');
       const selfReferralHref = getHrefFromA(selfReferral);
-      expect(selfReferralHref).to.equal(westHampshireData.selfReferral);
+      expect(selfReferralHref).to.equal(bexleyData.selfReferral);
     });
   });
 });

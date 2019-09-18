@@ -1,3 +1,7 @@
+0.20.0 / TBC
+===================
+- Rename West Hampshire to Bexley
+
 0.19.0 / 2019-09-20
 ===================
 - Update npm dependencies

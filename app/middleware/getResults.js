@@ -9,13 +9,13 @@ const searchRequest = require('../lib/requests/searchRequest');
 const northCumbria = require('../../data/northCumbriaCCG');
 const redBridge = require('../../data/redBridgeCCG');
 const towerHamlets = require('../../data/towerHamletsCCG');
-const westHampshire = require('../../data/westHampshireCCG');
+const bexley = require('../../data/bexleyCCG');
 
 function isQueryForIAPTsAndForACCGWithAServiceWithNoODSCode(type, query) {
-  return type === constants.types.IAPT && (query === constants.ccgs.northCumbria
+  return type === constants.types.IAPT && (query === constants.ccgs.bexley
+    || query === constants.ccgs.northCumbria
     || query === constants.ccgs.redBridge
-    || query === constants.ccgs.towerHamlets
-    || query === constants.ccgs.westHampshire);
+    || query === constants.ccgs.towerHamlets);
 }
 
 function getIAPTServiceWithNoODSCodeData(query) {
@@ -26,8 +26,8 @@ function getIAPTServiceWithNoODSCodeData(query) {
     iaptResults = redBridge;
   } else if (query === constants.ccgs.towerHamlets) {
     iaptResults = towerHamlets;
-  } else if (query === constants.ccgs.westHampshire) {
-    iaptResults = westHampshire;
+  } else if (query === constants.ccgs.bexley) {
+    iaptResults = bexley;
   }
   return iaptResults;
 }

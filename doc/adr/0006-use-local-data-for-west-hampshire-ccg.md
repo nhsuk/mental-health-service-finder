@@ -1,4 +1,4 @@
-# 6. Use local data for West Hampshire CCG
+# 6. Use local data for Bexley CCG
 
 Date: 2019-09-18
 
@@ -14,7 +14,7 @@ application.
 
 ## Decision
 
-The data for West Hampshire will be stored locally within the application until
+The data for Bexley will be stored locally within the application until
 such a time as the data synchronisation has been fixed. Once fixed, the local
 data store will be removed so the centrally held data can be requested and used
 within the application.

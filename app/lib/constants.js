@@ -13,10 +13,10 @@ module.exports = {
   },
   assetsUrl: 'https://assets.nhs.uk',
   ccgs: {
+    bexley: '463042',
     northCumbria: '462881',
     redBridge: '463329',
     towerHamlets: '462934',
-    westHampshire: '463042',
   },
   contactMethodTypes: ['Email', 'Telephone', 'Website'],
   highlights: { post: '</span>', pre: '<span class="highlight">' },
