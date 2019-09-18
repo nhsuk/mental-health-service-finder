@@ -16,7 +16,7 @@
     "git-hook": "yarn lint && yarn coverage-generate-unit && yarn coverage-check-unit",
     "istanbul": "NODE_ENV=test istanbul",
     "lint": "yarn lint-backend",
-    "lint-backend": "eslint --ext .json .",
+    "lint-backend": "eslint --ext .js,.json .",
     "lint-watch": "esw --watch .",
     "start-watch": "yarn brunch watch & nodemon --inspect=0.0.0.0 app.js | ./node_modules/bunyan/bin/bunyan",
     "test": "NODE_ENV=test mocha --exit --recursive test",
