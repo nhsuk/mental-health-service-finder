@@ -2,6 +2,7 @@
 ===================
 - Update npm dependencies
 - Upgrade Docker container to `node:10.16.3-alpine`
+- Add West Hampshire CCG IAPT service
 
 0.18.0 / 2019-07-18
 ===================
