@@ -19,8 +19,9 @@
     <meta name="description" content="{{ app.description }}"/>
 
 	<title>{{ app.title }} - {% block pageTitle %}{% endblock %} - NHS</title>
-
-	<link href="https://assets.nhs.uk/" rel="preconnect" crossorigin>
+{# 
+	<link href="https://assets-staging.nhs.uk/" rel="preconnect" crossorigin>
+	<link href="https://assets.nhs.uk/" rel="preconnect" crossorigin> #}
 
 	{% if HOTJAR_ANALYTICS_TRACKING_ID %}
     <!-- rational for this code being in head: https://docs.hotjar.com/v1.0/docs/manual -->
@@ -41,13 +42,14 @@
 	</script>
 
     <link href="{{ siteRoot }}/nhsuk.css" media="screen" rel="stylesheet" type="text/css">
-
-    <link type="font/woff2" href="https://assets.nhs.uk/fonts/FrutigerLTW01-55Roman.woff2" rel="preload" as="font" crossorigin>
-    <link type="font/woff2" href="https://assets.nhs.uk/fonts/FrutigerLTW01-65Bold.woff2" rel="preload" as="font" crossorigin>
+	
+	{# <link type="font/woff2" href="{{ siteRoot }}/fonts/FrutigerLTW01-55Roman.woff2" rel="preload" as="font">
+    <link type="font/woff2" href="{{ siteRoot }}/fonts/FrutigerLTW01-65Bold.woff2" rel="preload" as="font"> #}
 
 	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
 
-    <script src="{{ COOKIEBOT_SCRIPT_URL }}" type="text/javascript" data-cookieconsent="necessary" defer></script>
+    {# <script src="{{ COOKIEBOT_SCRIPT_URL }}" type="text/javascript" data-cookieconsent="necessary" defer></script> #}
+	<script src="{{ siteRoot }}/javascript/cookie-consent.js" type="text/javascript" data-cookieconsent="necessary" defer></script>
 
     {% if ADOBE_TRACKING_URL %}
       <script src="{{ ADOBE_TRACKING_URL }}" type="text/plain" data-cookieconsent="statistics" defer></script>
