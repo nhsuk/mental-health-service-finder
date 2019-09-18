@@ -1,3 +1,7 @@
+0.19.0 / 2019-09-20
+===================
+- Update npm dependencies
+
 0.18.0 / 2019-07-18
 ===================
 - Update npm dependencies
