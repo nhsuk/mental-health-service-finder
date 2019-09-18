@@ -70,6 +70,9 @@ assets.json
 *.css
 *.css.map
 
+# allow custom css file
+!public/customcss.css
+
 .DS_Store
 
 # the header-items file is generated from an online resource when building the container
