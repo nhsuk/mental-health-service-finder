@@ -1,6 +1,7 @@
 0.19.0 / 2019-09-20
 ===================
 - Update npm dependencies
+- Upgrade Docker container to `node:10.16.3-alpine`
 
 0.18.0 / 2019-07-18
 ===================
