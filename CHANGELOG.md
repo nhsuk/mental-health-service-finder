@@ -1,5 +1,9 @@
 0.19.0 / 2019-09-20
 ===================
+- Add footer link to beta cookie policy page 
+
+0.19.0 / 2019-09-20
+===================
 - Update npm dependencies
 - Upgrade Docker container to `node:10.16.3-alpine`
 - Add West Hampshire CCG IAPT service
