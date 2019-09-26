@@ -1,4 +1,4 @@
-0.19.0 / 2019-09-20
+0.20.0 / 2019-09-26
 ===================
 - Add footer link to beta cookie policy page 
 
