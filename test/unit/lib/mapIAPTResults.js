@@ -1,5 +1,5 @@
 const chai = require('chai');
-
+const constants = require('../../../app/lib/constants');
 const mapIAPTResults = require('../../../app/lib/mapIAPTResults');
 
 const expect = chai.expect;
@@ -37,17 +37,18 @@ describe('mapIAPTResults', () => {
 
     const email = 'name@domain.com';
     const telephone = '0800 123 456';
+    const telephoneExt = '987';
     const website = 'https://a.web.site';
     const linkUrl = 'https://self.referral.com';
     const contacts = [
-      { OrganisationContactMethodType: 'Telephone', OrganisationContactValue: telephone },
-      { OrganisationContactMethodType: 'Email', OrganisationContactValue: email },
       { OrganisationContactMethodType: 'Website', OrganisationContactValue: website },
     ];
-    const metrics = [{
-      LinkUrl: linkUrl,
-      MetricID: 6265,
-    }];
+    const metrics = [
+      { MetricID: constants.metrics.IAPTPhone, Value: telephone },
+      { MetricID: constants.metrics.IAPTPhoneExt, Value: telephoneExt },
+      { MetricID: constants.metrics.IAPTEmail, Value: email },
+      { MetricID: constants.metrics.IAPTUrl, Value: linkUrl },
+    ];
 
     before('execute function', () => {
       input = { Contacts: JSON.stringify(contacts), Metrics: JSON.stringify(metrics) };
