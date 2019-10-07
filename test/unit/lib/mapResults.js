@@ -2,8 +2,9 @@ const chai = require('chai');
 const VError = require('verror');
 
 const mapResults = require('../../../app/lib/mapResults');
-const types = require('../../../app/lib/constants').types;
+const constants = require('../../../app/lib/constants');
 
+const types = constants.types;
 const expect = chai.expect;
 
 describe('mapResults', () => {
@@ -67,7 +68,7 @@ describe('mapResults', () => {
   describe('for IAPT type', () => {
     const type = types.IAPT;
 
-    it('should not add a property for \'email\', \'telephone\' or \'website\' when there information', () => {
+    it('should not add a property for \'email\', \'telephone\' or \'website\' when no information', () => {
       const noValue = '{ "value": [{},{}] }';
       const results = mapResults(noValue, type);
 
@@ -78,18 +79,25 @@ describe('mapResults', () => {
       results.forEach(item => expect(item.website).to.be.undefined);
     });
 
-    it('should add a property for \'email\', \'telephone\' or \'website\' when there information', () => {
+    it('should add a property for \'email\', \'telephone\' or \'website\' when there is information', () => {
       const email = 'name@domain.com';
       const telephone = '0800 123 456';
       const website = 'https://a.web.site';
       const contacts = JSON.stringify([
-        { OrganisationContactMethodType: 'Telephone', OrganisationContactValue: telephone },
-        { OrganisationContactMethodType: 'Email', OrganisationContactValue: email },
         { OrganisationContactMethodType: 'Website', OrganisationContactValue: website },
       ]);
-      const noValue = { value: [{ Contacts: contacts }, { Contacts: contacts }] };
+      const metrics = JSON.stringify([
+        { MetricID: constants.metrics.IAPTPhone, Value: telephone },
+        { MetricID: constants.metrics.IAPTEmail, Value: email },
+      ]);
+      const someValue = {
+        value: [
+          { Contacts: contacts, Metrics: metrics },
+          { Contacts: contacts, Metrics: metrics },
+        ],
+      };
 
-      const results = mapResults(JSON.stringify(noValue), type);
+      const results = mapResults(JSON.stringify(someValue), type);
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(2);

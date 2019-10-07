@@ -18,7 +18,7 @@
         "NHS Leeds North CCG"
       ],
       "Contacts": "[{\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"result 0 telephone\"},{\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"email@result.0\"},{\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"https:\\/\\/website.result.0\"}]",
-      "Metrics": "[{\"MetricID\":6265,\"MetricName\":\"IAPT self-referral\",\"DisplayName\":\"Offers self-referral\",\"Description\":\"Whether the service offers self-referral for IAPT\",\"Value\":\"\",\"LinkUrl\":\"https:\\/\\/self.referral.0\",\"LinkText\":\"Click here to access self-referral form\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"HospitalSectorType\":\"Independent Sector\",\"MetricText\":\"[BandingName]\"}]"
+      "Metrics": "[{\"MetricID\":9461,\"MetricName\":\"IAPT Phone\",\"DisplayName\":\"IAPT Phone\",\"Description\":\"IAPT Phone\",\"Value\":\"result 0 IAPT telephone\",\"MetricDisplayTypeID\":2,\"MetricDisplayTypeName\":\"Value\",\"IsMetaMetric\":false},{\"MetricID\":9462,\"MetricName\":\"IAPT Phone Ext\",\"DisplayName\":\"IAPT Phone Ext\",\"Description\":\"IAPT Phone Ext\",\"Value\":\"result 0 IAPT telephone ext\",\"MetricDisplayTypeID\":2,\"MetricDisplayTypeName\":\"Value\",\"IsMetaMetric\":false},{\"MetricID\":9463,\"MetricName\":\"IAPT Email\",\"DisplayName\":\"IAPT Email\",\"Description\":\"IAPT Email\",\"Value\":\"iapt.email@result.0\",\"MetricDisplayTypeID\":2,\"MetricDisplayTypeName\":\"Value\",\"IsMetaMetric\":false},{\"MetricID\":9464,\"MetricName\":\"IAPT URL\",\"DisplayName\":\"IAPT URL\",\"Description\":\"IAPT URL\",\"Value\":\"https://iapt.self.referral.0\",\"MetricDisplayTypeID\":7,\"MetricDisplayTypeName\":\"HtmlText\",\"IsMetaMetric\":false}]"
     },
     {
       "@search.text": "LS12 3HD",
@@ -36,7 +36,8 @@
         "463248",
         "NHS Leeds West CCG"
       ],
-      "Contacts": "[{\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"result 1 telephone\"},{\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"email@result.1\"},{\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"https:\\/\\/website.result.1\"}]"
+      "Contacts": "[{\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"result 1 telephone\"},{\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"email@result.1\"},{\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"https:\\/\\/website.result.1\"}]",
+      "Metrics": "[{\"MetricID\":9461,\"MetricName\":\"IAPT Phone\",\"DisplayName\":\"IAPT Phone\",\"Description\":\"IAPT Phone\",\"Value\":\"result 1 IAPT telephone\",\"MetricDisplayTypeID\":2,\"MetricDisplayTypeName\":\"Value\",\"IsMetaMetric\":false},{\"MetricID\":9462,\"MetricName\":\"IAPT Phone Ext\",\"DisplayName\":\"IAPT Phone Ext\",\"Description\":\"IAPT Phone Ext\",\"Value\":\"result 1 IAPT telephone ext\",\"MetricDisplayTypeID\":2,\"MetricDisplayTypeName\":\"Value\",\"IsMetaMetric\":false},{\"MetricID\":9463,\"MetricName\":\"IAPT Email\",\"DisplayName\":\"IAPT Email\",\"Description\":\"IAPT Email\",\"Value\":\"iapt.email@result.1\",\"MetricDisplayTypeID\":2,\"MetricDisplayTypeName\":\"Value\",\"IsMetaMetric\":false}]"
     },
     {
       "@search.text": "LS17 8AE",
@@ -53,7 +54,7 @@
         "NHS Leeds North CCG"
       ],
       "Contacts": "[{\"OrganisationContactMethodType\":\"Telephone\",\"OrganisationContactValue\":\"result 2 telephone\"},{\"OrganisationContactMethodType\":\"Email\",\"OrganisationContactValue\":\"email@result.2\"},{\"OrganisationContactMethodType\":\"Website\",\"OrganisationContactValue\":\"https:\\/\\/website.result.2\"}]",
-      "Metrics": "[{\"MetricID\":6265,\"MetricName\":\"IAPT self-referral\",\"DisplayName\":\"Offers self-referral\",\"Description\":\"Whether the service offers self-referral for IAPT\",\"Value\":\"\",\"LinkUrl\":\"https:\\/\\/self.referral.2\",\"LinkText\":\"Click here to access self-referral form\",\"MetricDisplayTypeID\":5,\"MetricDisplayTypeName\":\"BandingImage\",\"HospitalSectorType\":\"Independent Sector\",\"MetricText\":\"[BandingName]\"}]"
+      "Metrics": "[{\"MetricID\":9461,\"MetricName\":\"IAPT Phone\",\"DisplayName\":\"IAPT Phone\",\"Description\":\"IAPT Phone\",\"Value\":\"result 2 IAPT telephone\",\"MetricDisplayTypeID\":2,\"MetricDisplayTypeName\":\"Value\",\"IsMetaMetric\":false},{\"MetricID\":9462,\"MetricName\":\"IAPT Phone Ext\",\"DisplayName\":\"IAPT Phone Ext\",\"Description\":\"IAPT Phone Ext\",\"Value\":\"result 2 IAPT telephone ext\",\"MetricDisplayTypeID\":2,\"MetricDisplayTypeName\":\"Value\",\"IsMetaMetric\":false},{\"MetricID\":9463,\"MetricName\":\"IAPT Email\",\"DisplayName\":\"IAPT Email\",\"Description\":\"IAPT Email\",\"Value\":\"iapt.email@result.2\",\"MetricDisplayTypeID\":2,\"MetricDisplayTypeName\":\"Value\",\"IsMetaMetric\":false},{\"MetricID\":9464,\"MetricName\":\"IAPT URL\",\"DisplayName\":\"IAPT URL\",\"Description\":\"IAPT URL\",\"Value\":\"https://iapt.self.referral.2\",\"MetricDisplayTypeID\":7,\"MetricDisplayTypeName\":\"HtmlText\",\"IsMetaMetric\":false}]"
     }
   ]
 }
