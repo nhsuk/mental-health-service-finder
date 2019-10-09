@@ -2,7 +2,7 @@
 const NHSUK = NHSUK || {};
 
 NHSUK.queryTypeahead = ((global) => {
-  const $ = global.jQuery;
+  const { jQuery: $ } = global;
   const mainId = '#main-content';
   const maxResultCount = 5;
   const searchField = '#query';

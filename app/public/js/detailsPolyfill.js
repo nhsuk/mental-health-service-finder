@@ -14,9 +14,7 @@
 
 /* eslint-disable no-underscore-dangle */
 ((global) => {
-  const window = global;
-  const { document } = global;
-  const $ = global.jQuery;
+  const { document, jQuery: $, window } = global;
 
   const details = {
     KEY_ENTER: 13,
@@ -77,9 +75,10 @@
         return;
       }
       // else iterate through them to apply their initial state
-      const n = list.length;
+      const { length: n } = list;
       let i = 0;
       for (i; i < n; i++) {
+        // eslint-disable-next-line prefer-destructuring
         const detailsItem = list[i];
 
         // Save shortcuts to the inner summary and content elements
@@ -163,7 +162,7 @@
           break;
         }
         // eslint-disable-next-line no-param-reassign
-        node = node.parentNode;
+        ({ parentNode: node } = node);
       } while (node);
 
       return node;
