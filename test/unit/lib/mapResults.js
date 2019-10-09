@@ -2,9 +2,8 @@ const chai = require('chai');
 const VError = require('verror');
 
 const mapResults = require('../../../app/lib/mapResults');
-const constants = require('../../../app/lib/constants');
+const { metrics, types } = require('../../../app/lib/constants');
 
-const types = constants.types;
 const expect = chai.expect;
 
 describe('mapResults', () => {
@@ -86,14 +85,14 @@ describe('mapResults', () => {
       const contacts = JSON.stringify([
         { OrganisationContactMethodType: 'Website', OrganisationContactValue: website },
       ]);
-      const metrics = JSON.stringify([
-        { MetricID: constants.metrics.IAPTPhone, Value: telephone },
-        { MetricID: constants.metrics.IAPTEmail, Value: email },
+      const inputMetrics = JSON.stringify([
+        { MetricID: metrics.IAPTPhone, Value: telephone },
+        { MetricID: metrics.IAPTEmail, Value: email },
       ]);
       const someValue = {
         value: [
-          { Contacts: contacts, Metrics: metrics },
-          { Contacts: contacts, Metrics: metrics },
+          { Contacts: contacts, Metrics: inputMetrics },
+          { Contacts: contacts, Metrics: inputMetrics },
         ],
       };
 
