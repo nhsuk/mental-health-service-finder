@@ -1,7 +1,7 @@
 const chai = require('chai');
 const formatAddress = require('../../../../app/lib/utils/formatAddress');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('formatAddress', () => {
   it('should return undefined when empty address', () => {
@@ -49,4 +49,3 @@ describe('formatAddress', () => {
     expect(output).to.equal(`${line1}, ${postcode}`);
   });
 });
-

@@ -1,22 +1,29 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
-const URL = require('url').URL;
+const { URL } = require('url');
 
-const constants = require('../../app/lib/constants');
+const {
+  app: {
+    title,
+  },
+  siteRoot,
+  types: {
+    GP,
+  },
+} = require('../../app/lib/constants');
 const createBody = require('../../app/lib/requests/createBody');
 const iExpect = require('../lib/expectations');
 const nockRequests = require('../lib/nockRequests');
 const routes = require('../../config/routes');
 const server = require('../../server');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
 describe('GP results page', () => {
   const path = '/service-search/search';
-  const type = constants.types.GP;
 
   describe('searches returning results', () => {
     describe('basic, happy path', () => {
@@ -28,25 +35,25 @@ describe('GP results page', () => {
       const resultCount = 10;
 
       before('make request', async () => {
-        const body = createBody(constants.types.GP, locals);
+        const body = createBody(GP, locals);
 
         nockRequests.withResponseBody(path, body, 200, 'search/multiSearchTermResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${encodedQuery}`);
+        response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${GP}&query=${encodedQuery}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
       });
 
       it('has a back link to the start page with the previously entered query', () => {
-        iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`);
+        iExpect.backLinkContent($, `${siteRoot}${routes.search.path}?query=${encodedQuery}`);
       });
 
       it('has a \'search again\' link to the start page with the previously entered query', () => {
-        iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`, 'search again', '.results__search__again');
+        iExpect.backLinkContent($, `${siteRoot}${routes.search.path}?query=${encodedQuery}`, 'search again', '.results__search__again');
       });
 
-      it(`should have a title of '${constants.app.title} - NHS'`, () => {
-        expect($('head title').text()).to.equal(`${constants.app.title} - Select your GP - NHS`);
+      it(`should have a title of '${title} - NHS'`, () => {
+        expect($('head title').text()).to.equal(`${title} - Select your GP - NHS`);
       });
 
       it('should have an H1 of \'Select your GP to get you to the right service\'', () => {
@@ -93,7 +100,7 @@ describe('GP results page', () => {
         expect(results.length).to.equal(resultCount);
         results.each((i, elem) => {
           const href = $(elem).find('.results__gp__selection').prop('href');
-          const searchParams = new URL(`http://domain.dummy${href}`).searchParams;
+          const { searchParams } = new URL(`http://domain.dummy${href}`);
           const gpName = $(elem).find('.results__name').text();
           const ccgid = searchParams.get('ccgid');
 
@@ -122,11 +129,11 @@ describe('GP results page', () => {
       before('make request', async () => {
         const query = '   a   b   c   ';
         const locals = { query: cleanedQuery };
-        const body = createBody(constants.types.GP, locals);
+        const body = createBody(GP, locals);
 
         nockRequests.withResponseBody(path, body, 200, 'search/tenResults.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+        response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${GP}&query=${query}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
       });
@@ -148,11 +155,11 @@ describe('GP results page', () => {
       before('make request', async () => {
         const query = 'one result';
         const locals = { query };
-        const body = createBody(constants.types.GP, locals);
+        const body = createBody(GP, locals);
 
         nockRequests.withResponseBody(path, body, 200, 'search/oneResult.json');
 
-        response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+        response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${GP}&query=${query}`);
         $ = cheerio.load(response.text);
         iExpect.htmlWithStatus(response, 200);
       });
@@ -178,10 +185,10 @@ describe('GP results page', () => {
 
     before('make request', async () => {
       const locals = { query };
-      const body = createBody(constants.types.GP, locals);
+      const body = createBody(GP, locals);
       nockRequests.withResponseBody(path, body, 200, 'search/zeroResults.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${encodedQuery}`);
+      const response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${GP}&query=${encodedQuery}`);
       iExpect.htmlWithStatus(response, 200);
       $ = cheerio.load(response.text);
     });
@@ -192,15 +199,15 @@ describe('GP results page', () => {
     });
 
     it('has a \'search again\' link to the start page with the previously entered query', () => {
-      iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`, 'searching again using different search terms', '.results__search__again');
+      iExpect.backLinkContent($, `${siteRoot}${routes.search.path}?query=${encodedQuery}`, 'searching again using different search terms', '.results__search__again');
     });
 
     it('has an encoded back link to the start page with the previously entered query', () => {
-      iExpect.backLinkContent($, `${constants.siteRoot}${routes.search.path}?query=${encodedQuery}`);
+      iExpect.backLinkContent($, `${siteRoot}${routes.search.path}?query=${encodedQuery}`);
     });
 
-    it(`should have the page title - '${constants.app.title} - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS'`, () => {
-      expect($('head title').text()).to.equal(`${constants.app.title} - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS`);
+    it(`should have the page title - '${title} - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS'`, () => {
+      expect($('head title').text()).to.equal(`${title} - Sorry, we couldn't find any GP surgeries matching '${query}' - NHS`);
     });
   });
 
@@ -208,67 +215,67 @@ describe('GP results page', () => {
     it('should display an error page for a 400 response', async () => {
       const query = '400response';
       const locals = { query };
-      const body = createBody(constants.types.GP, locals);
+      const body = createBody(GP, locals);
 
       nockRequests.withResponseBody(path, body, 400, 'search/400.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${GP}&query=${query}`);
       iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a 403 response', async () => {
       const query = '403response';
       const locals = { query };
-      const body = createBody(constants.types.GP, locals);
+      const body = createBody(GP, locals);
 
       nockRequests.withNoResponseBody(path, body, 403);
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${GP}&query=${query}`);
       iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a 404 response', async () => {
       const query = '404response';
       const locals = { query };
-      const body = createBody(constants.types.GP, locals);
+      const body = createBody(GP, locals);
 
       nockRequests.withResponseBody(path, body, 404, 'search/404.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${GP}&query=${query}`);
       iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a 415 response', async () => {
       const query = '415response';
       const locals = { query };
-      const body = createBody(constants.types.GP, locals);
+      const body = createBody(GP, locals);
 
       nockRequests.withResponseBody(path, body, 415, 'search/415.json');
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${GP}&query=${query}`);
       iExpect.errorPageContent(response);
     });
 
     it('should display an error page for a response that can not be parsed', async () => {
       const query = 'notJSON';
       const locals = { query };
-      const body = createBody(constants.types.GP, locals);
+      const body = createBody(GP, locals);
 
       nockRequests.withNoResponseBody(path, body, 500);
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${GP}&query=${query}`);
       iExpect.errorPageContent(response);
     });
 
     it('should display an error page when an error is returned from the API', async () => {
       const query = 'error';
       const locals = { query };
-      const body = createBody(constants.types.GP, locals);
+      const body = createBody(GP, locals);
       const error = { message: 'something went wrong' };
 
       nockRequests.withError(path, body, error);
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${GP}&query=${query}`);
       iExpect.errorPageContent(response);
     });
   });
@@ -279,7 +286,7 @@ describe('GP results page', () => {
     it('should display an error message when no query is entered', async () => {
       const query = '';
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${GP}&query=${query}`);
       iExpect.htmlWithStatus(response, 200);
 
       const $ = cheerio.load(response.text);
@@ -291,7 +298,7 @@ describe('GP results page', () => {
     it('should display an error message when the query only consists of white space', async () => {
       const query = '%20';
 
-      const response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&query=${query}`);
+      const response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${GP}&query=${query}`);
       iExpect.htmlWithStatus(response, 200);
 
       const $ = cheerio.load(response.text);

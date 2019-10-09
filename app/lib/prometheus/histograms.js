@@ -1,5 +1,5 @@
-const promClient = require('./bundle').promClient;
-const buckets = require('../constants').promHistogramBuckets;
+const { promClient } = require('./bundle');
+const { promHistogramBuckets: buckets } = require('../constants');
 
 module.exports = {
   gpSearch: new promClient.Histogram({ buckets, help: 'Duration histogram of request to get GP suggestions', name: 'gp_suggest' }),

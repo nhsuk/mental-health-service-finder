@@ -2,7 +2,7 @@ const chai = require('chai');
 const cheerio = require('cheerio');
 const constants = require('../../app/lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 function htmlWithStatus(res, status) {
   expect(res).to.have.status(status);

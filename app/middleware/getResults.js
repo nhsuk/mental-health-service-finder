@@ -3,7 +3,7 @@ const VError = require('verror');
 const constants = require('../lib/constants');
 const log = require('../lib/logger');
 const mapResults = require('../lib/mapResults');
-const searchHistogram = require('../lib/prometheus/selectHistogram').search;
+const { search: searchHistogram } = require('../lib/prometheus/selectHistogram');
 const searchRequest = require('../lib/requests/searchRequest');
 
 const northCumbria = require('../../data/northCumbriaCCG');
@@ -33,8 +33,7 @@ function getIAPTServiceWithNoODSCodeData(query) {
 }
 
 async function getResults(req, res, next) {
-  const query = res.locals.query;
-  const type = res.locals.type;
+  const { locals: { query, type } } = res;
 
   if (isQueryForIAPTsAndForACCGWithAServiceWithNoODSCode(type, query)) {
     res.locals.results = getIAPTServiceWithNoODSCodeData(query);

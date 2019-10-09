@@ -6,19 +6,19 @@ function mapWebsite(input) {
   const contacts = JSON.parse(input.Contacts);
   if (contacts) {
     const websiteContact = contacts.find(
-      contact => contact.OrganisationContactMethodType
+      (contact) => contact.OrganisationContactMethodType
         === constants.websiteContactMethodType
     );
 
     if (websiteContact) {
-      // eslint-disable-next-line no-param-reassign
+      // eslint-disable-next-line no-param-reassign, prefer-destructuring
       input.website = websiteContact.OrganisationContactValue;
     }
   }
 }
 
 function metricValue(metrics, metricId) {
-  const metricToMap = metrics.find(metric => metric.MetricID === metricId);
+  const metricToMap = metrics.find((metric) => metric.MetricID === metricId);
   return metricToMap ? metricToMap.Value : undefined;
 }
 

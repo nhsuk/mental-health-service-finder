@@ -2,7 +2,7 @@ const chai = require('chai');
 
 const cleanQuery = require('../../../app/lib/utils/cleanQuery');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('cleanQuery', () => {
   it('should remove leading whitespace', () => {

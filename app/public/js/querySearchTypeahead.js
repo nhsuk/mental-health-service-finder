@@ -36,14 +36,14 @@ NHSUK.queryTypeahead = ((global) => {
         /* eslint-enable no-param-reassign */
         return settings;
       },
-      transform: response => response.value,
+      transform: (response) => response.value,
       url: suggestUrl,
     },
   });
 
   function scrollInputForNarrowView() {
     if (global.innerWidth < 641) {
-      const top = $(`${mainId} .form-group`).offset().top;
+      const { top } = $(`${mainId} .form-group`).offset();
       global.scrollTo(0, top);
     }
   }
@@ -88,7 +88,7 @@ NHSUK.queryTypeahead = ((global) => {
       minLength: 2,
     },
     {
-      display: data => data.OrganisationName,
+      display: (data) => data.OrganisationName,
       limit: maxResultCount,
       name: '-suggestions',
       source: suggestions,

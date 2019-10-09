@@ -1,8 +1,8 @@
 const chai = require('chai');
 const canonicalUrl = require('../../../app/lib/canonicalUrl');
-const siteRoot = require('../../../app/lib/constants').siteRoot;
+const { siteRoot } = require('../../../app/lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('canonicalUrl', () => {
   it('should return the current URL via https', () => {

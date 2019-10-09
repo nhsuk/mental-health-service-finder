@@ -1,11 +1,11 @@
 const chai = require('chai');
 const VError = require('verror');
 
-const Counter = require('../../../../app/lib/prometheus/bundle').promClient.Counter;
+const { promClient: { Counter } } = require('../../../../app/lib/prometheus/bundle');
 const selectCounter = require('../../../../app/lib/prometheus/selectCounter');
-const types = require('../../../../app/lib/constants').types;
+const { types } = require('../../../../app/lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('selectCounter', () => {
   describe('searchErrors', () => {
@@ -32,7 +32,7 @@ describe('selectCounter', () => {
 
   describe('applicationStarts', () => {
     it('should return a Counter for app_starts', () => {
-      const counter = selectCounter.applicationStarts;
+      const { applicationStarts: counter } = selectCounter;
 
       expect(counter).to.be.an.instanceof(Counter);
       expect(counter.name).to.equal('app_starts');
@@ -41,7 +41,7 @@ describe('selectCounter', () => {
 
   describe('emptyGPSearches', () => {
     it('should return a Counter for empty_GP_searches', () => {
-      const counter = selectCounter.emptyGPSearches;
+      const { emptyGPSearches: counter } = selectCounter;
 
       expect(counter).to.be.an.instanceof(Counter);
       expect(counter.name).to.equal('empty_GP_searches');
@@ -50,7 +50,7 @@ describe('selectCounter', () => {
 
   describe('errorPageViews', () => {
     it('should return a Counter for error_page_views', () => {
-      const counter = selectCounter.errorPageViews;
+      const { errorPageViews: counter } = selectCounter;
 
       expect(counter).to.be.an.instanceof(Counter);
       expect(counter.name).to.equal('error_page_views');

@@ -4,7 +4,7 @@ const constants = require('../constants');
 const log = require('../logger');
 
 function forGPSearch(locals) {
-  const search = locals.query.split(' ').map(s => `${s}*`).join(' ');
+  const search = locals.query.split(' ').map((s) => `${s}*`).join(' ');
   return {
     count: true,
     filter: 'OrganisationTypeID eq \'GPB\'',

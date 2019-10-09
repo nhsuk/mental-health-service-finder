@@ -2,25 +2,35 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
-const constants = require('../../app/lib/constants');
-const getHrefFromA = require('../lib/helpers').getHrefFromA;
+const {
+  ccgs: {
+    northCumbria: northCumbriaId,
+    redBridge: redBridgeId,
+    towerHamlets: towerHamletsIds,
+    westHampshire: westHampshireId,
+  },
+  siteRoot,
+  types: {
+    IAPT: type,
+  },
+} = require('../../app/lib/constants');
+const { getHrefFromA } = require('../lib/helpers');
 const iExpect = require('../lib/expectations');
 const routes = require('../../config/routes');
 const server = require('../../server');
 
-const northCumbriaData = require('../../data/northCumbriaCCG')[0];
-const redBridgeData = require('../../data/redBridgeCCG')[0];
-const towerHamletsData = require('../../data/towerHamletsCCG')[0];
-const westHampshireData = require('../../data/westHampshireCCG')[0];
+const [northCumbriaData] = require('../../data/northCumbriaCCG');
+const [redBridgeData] = require('../../data/redBridgeCCG');
+const [towerHamletsData] = require('../../data/towerHamletsCCG');
+const [westHampshireData] = require('../../data/westHampshireCCG');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
 describe('IAPT results page for services with no ODS codes', () => {
   let $;
   let response;
-  const type = constants.types.IAPT;
   const lat = 50;
   const lon = -1;
   const gpName = 'gpName';
@@ -28,9 +38,7 @@ describe('IAPT results page for services with no ODS codes', () => {
 
   describe('North Cumbria', () => {
     before('make request', async () => {
-      const northCumbriaId = constants.ccgs.northCumbria;
-
-      response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${northCumbriaId}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
+      response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${type}&ccgid=${northCumbriaId}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
 
       $ = cheerio.load(response.text);
       iExpect.htmlWithStatus(response, 200);
@@ -62,9 +70,7 @@ describe('IAPT results page for services with no ODS codes', () => {
 
   describe('Red Bridge', () => {
     before('make request', async () => {
-      const redBridgeId = constants.ccgs.redBridge;
-
-      response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${redBridgeId}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
+      response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${type}&ccgid=${redBridgeId}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
 
       $ = cheerio.load(response.text);
       iExpect.htmlWithStatus(response, 200);
@@ -96,9 +102,7 @@ describe('IAPT results page for services with no ODS codes', () => {
 
   describe('Tower Hamlets', () => {
     before('make request', async () => {
-      const towerHamletsIds = constants.ccgs.towerHamlets;
-
-      response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${towerHamletsIds}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
+      response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${type}&ccgid=${towerHamletsIds}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
 
       $ = cheerio.load(response.text);
       iExpect.htmlWithStatus(response, 200);
@@ -128,9 +132,7 @@ describe('IAPT results page for services with no ODS codes', () => {
 
   describe('West Hampshire', () => {
     before('make request', async () => {
-      const westHampshireId = constants.ccgs.westHampshire;
-
-      response = await chai.request(server).get(`${constants.siteRoot}${routes.results.path}?type=${type}&ccgid=${westHampshireId}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
+      response = await chai.request(server).get(`${siteRoot}${routes.results.path}?type=${type}&ccgid=${westHampshireId}&gpname=${gpName}&lat=${lat}&lon=${lon}`);
 
       $ = cheerio.load(response.text);
       iExpect.htmlWithStatus(response, 200);

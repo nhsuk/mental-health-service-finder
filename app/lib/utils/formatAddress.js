@@ -1,4 +1,4 @@
-const joinTruthyValues = require('./utils').joinTruthyValues;
+const { joinTruthyValues } = require('./utils');
 
 function formatAddress(address) {
   if (!address || Object.keys(address).length === 0) { return undefined; }

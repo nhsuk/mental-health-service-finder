@@ -7,7 +7,7 @@ const iExpect = require('../lib/expectations');
 const routes = require('../../config/routes');
 const server = require('../../server');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -16,7 +16,8 @@ describe('Page links back to Choices', () => {
   const testRoutes = Object.keys(routes);
   expect(testRoutes).to.have.lengthOf.at.least(2);
   testRoutes.forEach(async (route) => {
-    const path = routes[route].path;
+    // eslint-disable-next-line prefer-destructuring
+    const { path } = routes[route];
     const res = await chai.request(server).get(`${constants.siteRoot}${path}`);
 
     describe(`for page ${path}`, () => {

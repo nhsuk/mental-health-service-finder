@@ -1,11 +1,11 @@
 const chai = require('chai');
 const VError = require('verror');
 
-const Histogram = require('../../../../app/lib/prometheus/bundle').promClient.Histogram;
+const { promClient: { Histogram } } = require('../../../../app/lib/prometheus/bundle');
 const selectHistogram = require('../../../../app/lib/prometheus/selectHistogram');
-const types = require('../../../../app/lib/constants').types;
+const { types } = require('../../../../app/lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('selectHistogram', () => {
   describe('search', () => {

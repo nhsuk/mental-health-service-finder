@@ -4,12 +4,12 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const nunjucks = require('nunjucks');
 
-const constants = require('../app/lib/constants');
-const errorCounter = require('../app/lib/prometheus/counters').errorPageViews;
+const { siteRoot } = require('../app/lib/constants');
+const { errorPageViews: errorCounter } = require('../app/lib/prometheus/counters');
 const locals = require('../app/middleware/locals');
 const helmet = require('./helmet');
 const log = require('../app/lib/logger');
-const promBundle = require('../app/lib/prometheus/bundle').middleware;
+const { middleware: promBundle } = require('../app/lib/prometheus/bundle');
 const router = require('./router');
 
 module.exports = (app, config) => {
@@ -42,20 +42,20 @@ module.exports = (app, config) => {
   app.use(cookieParser());
   app.use(compression());
 
-  app.use(constants.siteRoot, express.static(`${config.app.root}/public`));
+  app.use(siteRoot, express.static(`${config.app.root}/public`));
 
   // metrics needs to be registered before routes wishing to have metrics generated
   // see https://github.com/jochen-schweizer/express-prom-bundle#sample-uusage
   app.use(promBundle);
-  app.use(constants.siteRoot, router);
-  app.use(constants.siteRoot, (req, res) => {
+  app.use(siteRoot, router);
+  app.use(siteRoot, (req, res) => {
     log.warn({ req }, 404);
     res.status(404);
     res.render('error-404');
   });
 
   // eslint-disable-next-line no-unused-vars
-  app.use(constants.siteRoot, (err, req, res, next) => {
+  app.use(siteRoot, (err, req, res, next) => {
     const statusCode = err.statusCode || 500;
 
     errorCounter.inc(1);
@@ -69,6 +69,6 @@ module.exports = (app, config) => {
   });
 
   app.get('/', (req, res) => {
-    res.redirect(constants.siteRoot);
+    res.redirect(siteRoot);
   });
 };

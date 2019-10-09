@@ -1,26 +1,31 @@
 const canonicalUrl = require('../lib/canonicalUrl');
-const constants = require('../lib/constants');
+const {
+  app, assetsUrl, siteRoot, types: {
+    IAPT,
+  },
+} = require('../lib/constants');
 const digitalData = require('../lib/digitalData');
-const search = require('../../config/config').search;
-const trim = require('../lib/utils/utils').trim;
+const { search } = require('../../config/config');
+const { trim } = require('../lib/utils/utils');
 
 function getQuery(type, query) {
-  return type === constants.types.IAPT ? query.ccgid : query.query;
+  return type === IAPT ? query.ccgid : query.query;
 }
 
 const apiUrl = `https://${search.host}/service-search/suggest?api-version=${search.version}`;
 
-module.exports = config => (req, res, next) => {
+module.exports = (config) => (req, res, next) => {
+  /* eslint-disable prefer-destructuring */
   res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
   res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
 
   res.locals.COOKIEBOT_SCRIPT_URL = config.cookiebot.scriptUrl;
 
-  res.locals.app = constants.app;
-  res.locals.assetsUrl = constants.assetsUrl;
+  res.locals.app = app;
+  res.locals.assetsUrl = assetsUrl;
   res.locals.canonicalUrl = canonicalUrl(req);
   res.locals.digitalData = digitalData(req);
-  res.locals.siteRoot = constants.siteRoot;
+  res.locals.siteRoot = siteRoot;
 
   res.locals.location = trim(req.query.location);
   const type = req.query.type && req.query.type.toUpperCase();
@@ -35,5 +40,6 @@ module.exports = config => (req, res, next) => {
   res.locals.apiKey = search.apiKey;
   res.locals.apiOrgSuggester = search.suggesters.organisation;
   res.locals.apiUrl = apiUrl;
+  /* eslint-enable prefer-destructuring */
   next();
 };

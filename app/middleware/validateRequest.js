@@ -1,8 +1,8 @@
 const cleanQuery = require('../lib/utils/cleanQuery');
-const emptyGPSearchCounter = require('../../app/lib/prometheus/selectCounter').emptyGPSearches;
+const { emptyGPSearches: emptyGPSearchCounter } = require('../../app/lib/prometheus/selectCounter');
 
 function validateRequest(req, res, next) {
-  const query = res.locals.query;
+  const { locals: { query } } = res;
   if (!query || !query.trim()) {
     emptyGPSearchCounter.inc(1);
     res.locals.errorMessage = 'Enter the name of your GP surgery or which street it\'s on.';

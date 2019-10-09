@@ -2,9 +2,9 @@ const chai = require('chai');
 const VError = require('verror');
 
 const mapResults = require('../../../app/lib/mapResults');
-const { metrics, types } = require('../../../app/lib/constants');
+const { metrics: { IAPTEmail, IAPTPhone }, types } = require('../../../app/lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('mapResults', () => {
   Object.keys(types).forEach((type) => {
@@ -43,7 +43,7 @@ describe('mapResults', () => {
   });
 
   describe('for GP type', () => {
-    const type = types.GP;
+    const { GP: type } = types;
 
     it('should not add a property for \'fullAddress\' when there is no address information', () => {
       const noValue = '{ "value": [{},{}] }';
@@ -51,7 +51,7 @@ describe('mapResults', () => {
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(2);
-      results.forEach(item => expect(item.fullAddress).to.be.undefined);
+      results.forEach((item) => expect(item.fullAddress).to.be.undefined);
     });
 
     it('should add a property for \'fullAddress\' when there is address information available', () => {
@@ -60,12 +60,12 @@ describe('mapResults', () => {
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(2);
-      results.forEach(item => expect(item.fullAddress).to.equal('Address1'));
+      results.forEach((item) => expect(item.fullAddress).to.equal('Address1'));
     });
   });
 
   describe('for IAPT type', () => {
-    const type = types.IAPT;
+    const { IAPT: type } = types;
 
     it('should not add a property for \'email\', \'telephone\' or \'website\' when no information', () => {
       const noValue = '{ "value": [{},{}] }';
@@ -73,9 +73,9 @@ describe('mapResults', () => {
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(2);
-      results.forEach(item => expect(item.email).to.be.undefined);
-      results.forEach(item => expect(item.telephone).to.be.undefined);
-      results.forEach(item => expect(item.website).to.be.undefined);
+      results.forEach((item) => expect(item.email).to.be.undefined);
+      results.forEach((item) => expect(item.telephone).to.be.undefined);
+      results.forEach((item) => expect(item.website).to.be.undefined);
     });
 
     it('should add a property for \'email\', \'telephone\' or \'website\' when there is information', () => {
@@ -86,8 +86,8 @@ describe('mapResults', () => {
         { OrganisationContactMethodType: 'Website', OrganisationContactValue: website },
       ]);
       const inputMetrics = JSON.stringify([
-        { MetricID: metrics.IAPTPhone, Value: telephone },
-        { MetricID: metrics.IAPTEmail, Value: email },
+        { MetricID: IAPTPhone, Value: telephone },
+        { MetricID: IAPTEmail, Value: email },
       ]);
       const someValue = {
         value: [
@@ -100,9 +100,9 @@ describe('mapResults', () => {
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(2);
-      results.forEach(item => expect(item.email).to.equal(email));
-      results.forEach(item => expect(item.telephone).to.equal(telephone));
-      results.forEach(item => expect(item.website).to.equal(website));
+      results.forEach((item) => expect(item.email).to.equal(email));
+      results.forEach((item) => expect(item.telephone).to.equal(telephone));
+      results.forEach((item) => expect(item.website).to.equal(website));
     });
 
     it('should remove Sign Health from results', () => {

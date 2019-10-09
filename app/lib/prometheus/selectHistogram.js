@@ -1,7 +1,7 @@
 const VError = require('verror');
 
 const histograms = require('./histograms');
-const types = require('../constants').types;
+const { types } = require('../constants');
 
 function search(type) {
   switch (type) {

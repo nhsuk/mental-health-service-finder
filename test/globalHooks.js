@@ -3,7 +3,7 @@ const chai = require('chai');
 
 const log = require('../app/lib/logger');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 after('Check all nocks have been called. This is due to incorrectly \'nocked\' requests. Have any requests been changed or added?', () => {
   try {

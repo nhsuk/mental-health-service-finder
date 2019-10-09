@@ -15,7 +15,7 @@
 /* eslint-disable no-underscore-dangle */
 ((global) => {
   const window = global;
-  const document = global.document;
+  const { document } = global;
   const $ = global.jQuery;
 
   const details = {
@@ -150,7 +150,7 @@
     },
 
     // Cross-browser character code / key pressed
-    charCode: e => ((typeof e.which === 'number') ? e.which : e.keyCode),
+    charCode: (e) => ((typeof e.which === 'number') ? e.which : e.keyCode),
 
     destroy: (node) => {
       details.removeEvent(node, 'click');

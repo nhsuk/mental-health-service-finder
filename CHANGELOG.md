@@ -1,6 +1,7 @@
 0.21.0 / 2019-10-TBD
 ===================
 - Use service specific contact details
+- Update npm dependencies
 
 0.20.0 / 2019-09-26
 ===================

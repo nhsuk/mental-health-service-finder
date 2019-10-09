@@ -1,9 +1,9 @@
 const chai = require('chai');
 
-const { post, pre } = require('../../../app/lib/constants').highlights;
+const { highlights: { post, pre } } = require('../../../app/lib/constants');
 const mapGPResults = require('../../../app/lib/mapGPResults');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('mapGPResults', () => {
   describe('with no matches', () => {

@@ -4,7 +4,7 @@ const chaiHttp = require('chai-http');
 const constants = require('../../app/lib/constants');
 const server = require('../../server');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 

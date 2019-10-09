@@ -2,7 +2,7 @@ const VError = require('verror');
 
 const mapGPResults = require('./mapGPResults');
 const mapIAPTResults = require('./mapIAPTResults');
-const types = require('../lib/constants').types;
+const { types } = require('../lib/constants');
 
 function removeSignHealth(item) {
   return item.NACSCode !== 'AM701';
