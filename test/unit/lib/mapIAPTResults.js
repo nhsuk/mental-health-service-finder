@@ -1,5 +1,5 @@
 const chai = require('chai');
-const constants = require('../../../app/lib/constants');
+const { metrics } = require('../../../app/lib/constants');
 const mapIAPTResults = require('../../../app/lib/mapIAPTResults');
 
 const expect = chai.expect;
@@ -43,15 +43,18 @@ describe('mapIAPTResults', () => {
     const contacts = [
       { OrganisationContactMethodType: 'Website', OrganisationContactValue: website },
     ];
-    const metrics = [
-      { MetricID: constants.metrics.IAPTPhone, Value: telephone },
-      { MetricID: constants.metrics.IAPTPhoneExt, Value: telephoneExt },
-      { MetricID: constants.metrics.IAPTEmail, Value: email },
-      { MetricID: constants.metrics.IAPTUrl, Value: linkUrl },
+    const inputMetrics = [
+      { MetricID: metrics.IAPTPhone, Value: telephone },
+      { MetricID: metrics.IAPTPhoneExt, Value: telephoneExt },
+      { MetricID: metrics.IAPTEmail, Value: email },
+      { MetricID: metrics.IAPTUrl, Value: linkUrl },
     ];
 
     before('execute function', () => {
-      input = { Contacts: JSON.stringify(contacts), Metrics: JSON.stringify(metrics) };
+      input = {
+        Contacts: JSON.stringify(contacts),
+        Metrics: JSON.stringify(inputMetrics),
+      };
 
       mapIAPTResults(input);
     });
