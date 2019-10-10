@@ -16,8 +16,8 @@
     "test": "nyc --nycrc-path=.nycrc.json mocha --exit --recursive test",
     "test-and-upload-coverage": "yarn test && yarn coverage-generate && yarn coverage-upload-coveralls",
     "test-unit": "nyc --nycrc-path=.nycrc.unit.json mocha --recursive test/unit",
-    "test-unit-watch": "mocha --recursive test/unit --reporter min --watch",
-    "test-watch": "mocha --recursive test --reporter min --watch"
+    "test-unit-watch": "yarn test-unit --watch",
+    "test-watch": "yarn test --watch"
   },
   "husky": {
     "hooks": {
