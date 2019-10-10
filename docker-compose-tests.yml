@@ -22,22 +22,11 @@ services:
       - node_modules:/code/node_modules
       - .:/code
 
-  tests-integration:
-    extends:
-      file: docker-compose.yml
-      service: base-app
-    command: yarn run test-integration-watch
-    volumes:
-      - node_modules:/code/node_modules
-      - .:/code
-    environment:
-      SEARCH_API_HOST: ${SEARCH_API_HOST-https://dummy.url}
-
   test-ci:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn run test-ci
+    command: yarn test-and-upload-coverage
     user: root
     volumes:
       - node_modules:/code/node_modules
