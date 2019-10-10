@@ -6,7 +6,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn run test-watch
+    command: yarn test-watch
     volumes:
       - node_modules:/code/node_modules
       - .:/code
@@ -17,7 +17,7 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn run test-unit-watch
+    command: yarn test-unit-watch
     volumes:
       - node_modules:/code/node_modules
       - .:/code
