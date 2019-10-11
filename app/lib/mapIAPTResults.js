@@ -1,21 +1,25 @@
 const constants = require('./constants');
 
-function mapContactMethod(input, contacts, methodType) {
-  const result = contacts.find(contact => contact.OrganisationContactMethodType === methodType);
-  if (result) {
-    // eslint-disable-next-line no-param-reassign
-    input[methodType.toLowerCase()] = result.OrganisationContactValue;
-  }
-}
-
-function mapContacts(input) {
+function mapWebsite(input) {
   if (!input.Contacts) { return; }
 
   const contacts = JSON.parse(input.Contacts);
-  const methodTypes = constants.contactMethodTypes;
   if (contacts) {
-    methodTypes.forEach(methodType => mapContactMethod(input, contacts, methodType));
+    const websiteContact = contacts.find(
+      contact => contact.OrganisationContactMethodType
+        === constants.websiteContactMethodType
+    );
+
+    if (websiteContact) {
+      // eslint-disable-next-line no-param-reassign
+      input.website = websiteContact.OrganisationContactValue;
+    }
   }
+}
+
+function metricValue(metrics, metricId) {
+  const metricToMap = metrics.find(metric => metric.MetricID === metricId);
+  return metricToMap ? metricToMap.Value : undefined;
 }
 
 function mapMetrics(input) {
@@ -23,16 +27,17 @@ function mapMetrics(input) {
 
   const metrics = JSON.parse(input.Metrics);
   if (metrics) {
-    const metric6265 = metrics.find(metric => metric.MetricID === constants.metrics.selfReferral);
-    if (metric6265) {
-      // eslint-disable-next-line no-param-reassign
-      input.selfReferral = metric6265.LinkUrl;
-    }
+    // eslint-disable-next-line no-param-reassign
+    input.telephone = metricValue(metrics, constants.metrics.IAPTPhone);
+    // eslint-disable-next-line no-param-reassign
+    input.email = metricValue(metrics, constants.metrics.IAPTEmail);
+    // eslint-disable-next-line no-param-reassign
+    input.selfReferral = metricValue(metrics, constants.metrics.IAPTUrl);
   }
 }
 
 function mapIAPTResults(input) {
-  mapContacts(input);
+  mapWebsite(input);
   mapMetrics(input);
 }
 

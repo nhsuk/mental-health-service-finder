@@ -75,14 +75,14 @@ describe('IAPT results page', () => {
       it('should display contact information for each result', () => {
         $('.results__item').each((i, item) => {
           const email = $(item).find('.results__email');
-          expect(email.text()).to.equal(`Email: email@result.${i}`);
+          expect(email.text()).to.equal(`Email: iapt.email@result.${i}`);
           const emailHref = getHrefFromA(email);
-          expect(emailHref).to.equal(`mailto:email@result.${i}`);
+          expect(emailHref).to.equal(`mailto:iapt.email@result.${i}`);
 
           const tel = $(item).find('.results__telephone');
-          expect(tel.text()).to.equal(`Telephone: result ${i} telephone`);
+          expect(tel.text()).to.equal(`Telephone: result ${i} IAPT telephone`);
           const telHref = getHrefFromA(tel);
-          expect(telHref).to.equal(`tel:result ${i} telephone`);
+          expect(telHref).to.equal(`tel:result ${i} IAPT telephone`);
 
           const orgName = $(item).find('.results__name').text();
           const website = $(item).find('.results__website');
@@ -97,8 +97,8 @@ describe('IAPT results page', () => {
         expect(selfReferralElements.length).to.equal(2);
         const selfReferralElement0Href = getHrefFromA(selfReferralElements.eq(0));
         const selfReferralElement2Href = getHrefFromA(selfReferralElements.eq(1));
-        expect(selfReferralElement0Href).to.equal('https://self.referral.0');
-        expect(selfReferralElement2Href).to.equal('https://self.referral.2');
+        expect(selfReferralElement0Href).to.equal('https://iapt.self.referral.0');
+        expect(selfReferralElement2Href).to.equal('https://iapt.self.referral.2');
       });
 
       it('should display no message about online referrals not being available when there is no available option', () => {

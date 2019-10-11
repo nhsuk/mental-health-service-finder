@@ -1,6 +1,7 @@
-0.21.0 / 2019-10-TBD
+0.21.0 / 2019-10-11
 ===================
 - Replace (deprecated) `istanbul` with `nyc`
+- Use service specific contact details
 
 0.20.0 / 2019-09-26
 ===================

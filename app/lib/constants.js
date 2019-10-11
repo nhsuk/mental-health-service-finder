@@ -18,10 +18,12 @@ module.exports = {
     towerHamlets: '462934',
     westHampshire: '463042',
   },
-  contactMethodTypes: ['Email', 'Telephone', 'Website'],
   highlights: { post: '</span>', pre: '<span class="highlight">' },
   metrics: {
-    selfReferral: 6265,
+    IAPTEmail: 9463,
+    IAPTPhone: 9461,
+    IAPTPhoneExt: 9462,
+    IAPTUrl: 9464,
   },
   promHistogramBuckets: [0.01, 0.05, 0.1, 0.2, 0.3, 0.5, 1, 1.5, 5, 10],
   siteRoot: '/find-a-psychological-therapies-service',
@@ -29,4 +31,5 @@ module.exports = {
     GP: 'GP',
     IAPT: 'IAPT',
   },
+  websiteContactMethodType: 'Website',
 };
