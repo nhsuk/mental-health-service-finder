@@ -6,44 +6,33 @@ services:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn run test-watch
+    command: yarn test-watch
     volumes:
       - node_modules:/code/node_modules
       - .:/code
     environment:
-      SEARCH_API_HOST: ${SEARCH_API_HOST-https://dummy.url}
+      SEARCH_API_HOST: https://dummy.url
 
   tests-unit:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn run test-unit-watch
+    command: yarn test-unit-watch
     volumes:
       - node_modules:/code/node_modules
       - .:/code
-
-  tests-integration:
-    extends:
-      file: docker-compose.yml
-      service: base-app
-    command: yarn run test-integration-watch
-    volumes:
-      - node_modules:/code/node_modules
-      - .:/code
-    environment:
-      SEARCH_API_HOST: ${SEARCH_API_HOST-https://dummy.url}
 
   test-ci:
     extends:
       file: docker-compose.yml
       service: base-app
-    command: yarn run test-ci
+    command: yarn test-and-upload-coverage
     user: root
     volumes:
       - node_modules:/code/node_modules
     environment:
       COVERALLS_REPO_TOKEN: ${COVERALLS_REPO_TOKEN}
-      SEARCH_API_HOST: ${SEARCH_API_HOST-https://dummy.url}
+      SEARCH_API_HOST: https://dummy.url
       TRAVIS: ${TRAVIS}
       TRAVIS_BRANCH: ${TRAVIS_BRANCH}
       TRAVIS_COMMIT: ${TRAVIS_COMMIT}
