@@ -1,6 +1,6 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}Introduction - {% endblock %}
+{% block pageTitle %}Introduction{% endblock %}
 
 {% block robots %}
 <meta name='robots' content='nofollow'>
@@ -19,6 +19,10 @@
 <h2 class="nhsuk-heading-m">Who can get psychological therapies on the NHS?</h2>
 <p>Anyone who is registered with a GP. If you are not registered, <a href="https://www.nhs.uk/Service-Search/GP/LocationSearch/4" class="button__gp__search">search for a GP</a>.</p>
 
-<p><a href="{{ siteRoot }}/check" class="button button__start">Find help</a></p>
+{{ button({
+  "text": "Continue",
+  "href": siteRoot + "/check"
+}) }}
+
 {% include "includes/urgent-help-callout.nunjucks" %}
 {% endblock %}

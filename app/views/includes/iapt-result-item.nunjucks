@@ -1,7 +1,7 @@
 <h3 class="results__name">{{ result.OrganisationName }}</h3>
 
 {% if result.website %}
-<p class="results__website"><a href="{{ result.website }}">Visit <span class="visually-hidden">{{ result.OrganisationName }}'s </span>website</a></p>
+<p class="results__website"><a href="{{ result.website }}">Visit <span class="nhsuk-u-visually-hidden">{{ result.OrganisationName }}'s </span>website</a></p>
 {% endif %}
 
 {% if result.telephone %}
@@ -13,5 +13,5 @@
 {% endif %}
 
 {% if result.selfReferral %}
-<p class="results__self__referral"><a class="button" href="{{ result.selfReferral }}">Refer yourself online<span class="visually-hidden"> to {{ result.OrganisationName }}</span></a></p>
+<p class="results__self__referral"><a class="button" href="{{ result.selfReferral }}">Refer yourself online<span class="nhsuk-u-visually-hidden"> to {{ result.OrganisationName }}</span></a></p>
 {% endif %}

@@ -1,10 +1,19 @@
 {% extends 'layout.nunjucks' %}
 {% set resultsLength = results.length %}
 {% set msg = 'There are no services available for \'' + gpname + '\'' %}
+{% if origin === 'search' %}
+{% set href = siteRoot + "/search?query=" + gpquery | urlencode %}
+{% else %}
+{% set href = siteRoot + "/results?type=gp&query=" + gpquery | urlencode %}
+{% endif %}
 
-{% block pageTitle %}{% if results.length > 0 %}Services you can refer yourself to{% else %}{{ msg }}{% endif %} - {% endblock %}
+{% block pageTitle %}{% if results.length > 0 %}Services you can refer yourself to{% else %}{{ msg }}{% endif %}{% endblock %}
 
 {% block header %}
+{{ backLink({
+  "href": href,
+  "text": "Go back"
+}) }}
 <h1>Refer yourself using these contact details</h1>
 {% endblock %}
 
@@ -23,13 +32,13 @@
 
 {% if resultsLength > 0 %}
 <div>
-  <ol class="inline-list" role="list">
+  <ol class="nhsuk-list inline-list">
     {% for result in results %}
-      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}" role="listitem">
+      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}">
+        <hr />
         <div>
           {% include "includes/iapt-result-item.nunjucks" %}
         </div>
-        <!--[if IE]><div style="clear: both;" class="clear-both"></div><![endif]-->
       </li>
     {% endfor %}
   </ol>
