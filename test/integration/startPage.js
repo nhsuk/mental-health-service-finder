@@ -20,12 +20,12 @@ describe('Start page', () => {
   });
 
   it('has a link to the next page', () => {
-    expect($('.button__start').text()).to.equal('Find help');
-    expect($('.button__start').prop('href')).to.equal(`${constants.siteRoot}${routes.check.path}`);
+    expect($('.nhsuk-button').text()).to.contain('Continue');
+    expect($('.nhsuk-button').prop('href')).to.equal(`${constants.siteRoot}${routes.check.path}`);
   });
 
   it('has a link to the GP finder', () => {
-    expect($('.nhsuk-page-content').find('a').prop('href')).to.equal('https://www.nhs.uk/Service-Search/GP/LocationSearch/4');
+    expect($('main').find('a').prop('href')).to.equal('https://www.nhs.uk/Service-Search/GP/LocationSearch/4');
   });
 
   it('has an urgent help call out', () => {

@@ -20,17 +20,9 @@ describe('Page links back to Choices', () => {
     const res = await chai.request(server).get(`${constants.siteRoot}${path}`);
 
     describe(`for page ${path}`, () => {
-      it('the breadcrumbs should have 2 levels of links', () => {
+      it('the breadcrumbs should have 3 levels of links', () => {
         const $ = cheerio.load(res.text);
         iExpect.breadcrumbContent($);
-      });
-
-      it('the banner should link back to the root of the site', () => {
-        const $ = cheerio.load(res.text);
-
-        expect($('.back-to-choices').text()).to.equal('Find psychological therapies using our old finder.');
-        expect($('.back-to-choices').attr('href'))
-          .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
       });
     });
   });
