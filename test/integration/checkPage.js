@@ -21,8 +21,8 @@ describe('Check page', () => {
   });
 
   it('has a link to the next page', () => {
-    expect($('.button__check').text()).to.equal('Next');
-    expect($('.button__check').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}`);
+    expect($('.nhsuk-button').text()).to.contain('Continue');
+    expect($('.nhsuk-button').prop('href')).to.contain(`${constants.siteRoot}${routes.search.path}`);
   });
 
   it('has an urgent help call out', () => {
@@ -31,6 +31,6 @@ describe('Check page', () => {
   });
 
   it('has a back link to the start page', () => {
-    iExpect.backLinkContent($, `${constants.siteRoot}/`);
+    iExpect.backLinkContent($);
   });
 });
