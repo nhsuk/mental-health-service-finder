@@ -17,7 +17,7 @@
           <div class="search-container" id="search-container">
             <form class="c-search" action="https://www.nhs.uk/search/" method="get" role="search">
               <div class="c-search__container">
-                <label class="c-search__label visually-hidden" for="q">Search the NHS website</label>
+                <label class="c-search__label nhsuk-u-visually-hidden" for="q">Search the NHS website</label>
                 <input aria-labelledby="q" class="c-search__input" id="q" placeholder="Enter a search term" autocomplete="off" name="q" type="search">
                 <button type="submit" class="c-search__submit">
                   {% include "./icon-search-blue.svg" %}
@@ -27,7 +27,7 @@
             <div class="search-close">
               <button class="search-close__link">
                 {% include "./icon-close.svg" %}
-                <span class="visually-hidden">Close search</span>
+                <span class="nhsuk-u-visually-hidden">Close search</span>
               </button>
             </div>
           </div>
@@ -43,7 +43,7 @@
       <p class="c-nav-primary__title"><span id="mainmenulabel">Menu</span>
       <button class="c-nav-primary__close-link">
         {% include "./icon-close.svg" %}
-        <span class="visually-hidden">Close menu</span>
+        <span class="nhsuk-u-visually-hidden">Close menu</span>
       </button>
       </p>
       <ul class="c-nav-primary__list">
