@@ -1,8 +1,12 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}What happens next - {% endblock %}
+{% block pageTitle %}What happens next{% endblock %}
 
 {% block header %}
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back"
+}) }}
 <h1>What happens when you refer yourself</h1>
 {% endblock %}
 
@@ -17,12 +21,10 @@
 <h2 class="nhsuk-heading-m">Psychological therapies are offered in different ways</h2>
 <p>For example, using a self-help workbook, as an online course, one to one or in a group.</p>
 
-<p><a href="{{ siteRoot }}/search" class="button button__check">Next</a></p>
-
-{% set href = siteRoot + "/" %}
-{{ linkBack(href) }}
+{{ button({
+  "text": "Continue",
+  "href": siteRoot + "/search"
+}) }}
 
 {% include "includes/urgent-help-callout.nunjucks" %}
 {% endblock %}
-
-{% block back %}{% endblock %}

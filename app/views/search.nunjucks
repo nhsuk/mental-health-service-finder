@@ -1,51 +1,54 @@
+{% from 'input/macro.njk' import input %}
+{% from 'details/macro.njk' import details %}
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}{% if errorMessage %}Please correct the error. {{ errorMessage }}{% else %}Search for your GP{% endif %} - {% endblock %}
+{% block pageTitle %}{% if errorMessage %}Please correct the error. {{ errorMessage }}{% else %}Search for your GP{% endif %}{% endblock %}
 
 {% block header %}
+{{ backLink({
+  "href": siteRoot + "/check",
+  "text": "Go back"
+}) }}
 <h1>We need to know where your GP is</h1>
 <p>This helps us get you to the right psychological therapies service.</p>
 {% endblock %}
 
 {% block content %}
-{% if errorMessage %}
-<div class="error-message" id="error-message" role="alert"><h2>{% if errorMessage %}{{ errorMessage }}{% endif %}</h2></div>
-{% endif %}
 
-<div class="nhsuk-app__search">
-  <div class="search-container">
-    <form method="get" class="form" action="{{ siteRoot }}/results">
-      <input type="hidden" id="type" name="type" value="gp" />
-      <input type="hidden" id="gpquery" name="gpquery" value="" />
-      <input type="hidden" id="gpname" name="gpname" value="" />
-      <input type="hidden" id="ccgid" name="ccgid" value="" />
-      <input type="hidden" id="origin" name="origin" value="" />
-      <input type="hidden" id="lat" name="lat" value="" />
-      <input type="hidden" id="lon" name="lon" value="" />
-      <div>
-        <div class="form-group {% if errorMessage %}error{% endif %}">
-          <p>
-            <label for="query">Enter the name of your GP surgery (or the street name):</label>
-          </p>
-          <input aria-labelledby="query" autocomplete="off" autocorrect="off" auotcapitalize="off" spellcheck="off" type="text" class="c-search__input form-control" name="query" id="query" value="{{ query }}"{% if errorMessage %} aria-describedby="error-message" aria-invalid="true"{% endif %}>
-        </div>
-        <div>
-          <details class="nhsuk-c-details">
-            <summary role="button" class="nhsuk-c-summary" class="nhsuk-c-summary__title">Does my GP need to know?</span></summary>
-            <div class="nhsuk-c-summary__content">
-              <p>The service will only tell your GP with your permission.</p>
-              <p>The only time they will contact your GP without your permission is if they believe you are at risk harming yourself or other people.</p>
-            </div>
-          </details>
-          <input type="submit" class="button button__search" value="Find">
-        </div>
-      </div>
-    </form>
+<form method="get" class="form" action="{{ siteRoot }}/results">
+  <input type="hidden" id="type" name="type" value="gp" />
+  <input type="hidden" id="gpquery" name="gpquery" value="" />
+  <input type="hidden" id="gpname" name="gpname" value="" />
+  <input type="hidden" id="ccgid" name="ccgid" value="" />
+  <input type="hidden" id="origin" name="origin" value="" />
+  <input type="hidden" id="lat" name="lat" value="" />
+  <input type="hidden" id="lon" name="lon" value="" />
+  <div class="nhsuk-form-group {{ 'nhsuk-form-group--error' if errorMessage  }}">
+    {{ input({
+      "label": {
+        "text": "Enter the name of your GP surgery (or the street name):"
+      },
+      "id": "query",
+      "name": "query",
+      "classes": "nhsuk-input--width-20",
+      "value": query,
+      "errorMessage": {
+        "text": errorMessage
+      } if errorMessage
+    }) }}
   </div>
-</div>
-{% endblock %}
+  
+  {{ details({
+    "text": "Does my GP need to know?",
+    "HTML": "
+      <p>The service will only tell your GP with your permission.</p>
+      <p>The only time they will contact your GP without your permission is if they believe you are at risk harming yourself or other people.</p>
+    "
+  }) }}
 
-{% block back %}
-{% set href = siteRoot + "/check" %}
-{{ linkBack(href) }}
+  {{ button({
+    "text": "Continue"
+  }) }}
+  
+</form>
 {% endblock %}
