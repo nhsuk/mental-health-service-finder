@@ -1,5 +1,0 @@
-{% macro linkBack(href='javascript:history.go(-1)', text='Back') %}
-<p class="nhsuk-c-panel">
-  <a href="{{ href }}" class="link-back">{{ text }}</a>
-</p>
-{% endmacro %}
