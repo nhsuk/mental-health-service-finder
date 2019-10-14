@@ -50,17 +50,11 @@ describe('GP results page', () => {
       });
 
       it('should have an H1 of \'Select your GP to get you to the right service\'', () => {
-        expect($('.nhsuk-page-heading h1').text()).to.equal('Select your GP to see available services');
+        expect($('h1').text()).to.equal('Select your GP to see available services');
       });
 
-      it('the breadcrumbs should have 2 levels of links', () => {
+      it('the breadcrumbs should have 3 levels of links', () => {
         iExpect.breadcrumbContent($);
-      });
-
-      it('the banner should link back to Choices IAPT service search', () => {
-        expect($('.back-to-choices').text()).to.equal('Find psychological therapies using our old finder.');
-        expect($('.back-to-choices').attr('href'))
-          .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
       });
 
       it('should display all of the results that were returned', () => {
@@ -158,7 +152,7 @@ describe('GP results page', () => {
       });
 
       it('should have an H1 of \'Select your GP to get you to the right service\'', () => {
-        expect($('.nhsuk-page-heading h1').text()).to.equal('Select your GP to see available services');
+        expect($('h1').text()).to.equal('Select your GP to see available services');
       });
 
       it('should display all of the results that were returned', () => {
@@ -187,7 +181,7 @@ describe('GP results page', () => {
     });
 
     it('should display no results message when no results returned', () => {
-      expect($('.nhsuk-page-heading h1').text())
+      expect($('h1').text())
         .to.equal(`Sorry, we couldn't find any GP surgeries matching '${query}'`);
     });
 
@@ -284,7 +278,7 @@ describe('GP results page', () => {
 
       const $ = cheerio.load(response.text);
 
-      expect($('.error-message').text()).to.equal(errorMessage);
+      expect($('.nhsuk-error-message').text()).to.contain(errorMessage);
       expect($('head title').text()).to.equal(`Find psychological therapies services - Please correct the error. ${errorMessage} - NHS`);
     });
 
@@ -296,7 +290,7 @@ describe('GP results page', () => {
 
       const $ = cheerio.load(response.text);
 
-      expect($('.error-message').text()).to.equal(errorMessage);
+      expect($('.nhsuk-error-message').text()).to.contains(errorMessage);
       expect($('head title').text()).to.equal(`Find psychological therapies services - Please correct the error. ${errorMessage} - NHS`);
     });
   });

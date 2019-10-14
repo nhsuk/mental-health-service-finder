@@ -19,7 +19,7 @@ NHSUK.headerSearchTypeahead = ((global) => {
   });
 
   function hideSecondInputForScreenReaders() {
-    $(`${headerId} .c-search__input--shadow`).attr('aria-hidden', 'true').addClass('visually-hidden');
+    $(`${headerId} .c-search__input--shadow`).attr('aria-hidden', 'true').addClass('nhsuk-u-visually-hidden');
     $(`${headerId} .c-search__input.tt-input`).attr('role', 'textbox');
   }
 
