@@ -8,9 +8,6 @@ module.exports = {
   paths: {
     watched: ['scss', 'app/public/js'],
   },
-  conventions: {
-    ignored: 'scss/app-ie.scss',
-  },
   overrides: {
     development: {
       sourceMaps: true,
@@ -35,19 +32,12 @@ module.exports = {
     stylesheets: {
       joinTo: {
         'nhsuk.css': /app.scss/,
-        'nhsukie78.css': /app-ie78.scss/,
-        'print.css': /app-print.scss/,
       },
     },
   },
   plugins: {
     babel: {
       presets: ['@babel/preset-env'],
-    },
-    sass: {
-      options: {
-        includePaths: ['scss-live'],
-      },
     },
     fingerprint: {
       srcBasePath: 'public/',
