@@ -1,6 +1,10 @@
 0.22.0 / TBC
 ===================
 - Remove Greenkeeper - it is done automatically by the service
+- Remove special case for West Hampshire CCG
+- Remove special case for Redbridge CCG
+- Remove special case for Tower Hamlets CCG
+- Remove special case for North Cumbria CCG
 
 0.21.0 / 2019-10-11
 ===================
