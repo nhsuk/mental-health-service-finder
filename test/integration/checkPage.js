@@ -25,11 +25,6 @@ describe('Check page', () => {
     expect($('.nhsuk-button').prop('href')).to.contain(`${constants.siteRoot}${routes.search.path}`);
   });
 
-  it('has an urgent help call out', () => {
-    expect($('.samaritans__call').text()).to.equal('116 123');
-    expect($('.samaritans__email').text()).to.equal('jo@samaritans.org');
-  });
-
   it('has a back link to the start page', () => {
     iExpect.backLinkContent($);
   });

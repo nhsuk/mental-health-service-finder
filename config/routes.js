@@ -13,7 +13,7 @@ module.exports = {
     title: 'Search for your GP',
   },
   start: {
-    h1: 'Find help with stress, anxiety or depression (England only)',
+    h1: 'Find a psychological therapies service (England only)',
     path: '/',
     title: 'Introduction',
   },

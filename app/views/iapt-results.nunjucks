@@ -14,7 +14,7 @@
   "href": href,
   "text": "Go back"
 }) }}
-<h1>Refer yourself using these contact details</h1>
+<h1>Contact a psychological therapies service</h1>
 {% endblock %}
 
 {% block content %}

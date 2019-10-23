@@ -11,20 +11,18 @@
 {% endblock %}
 
 {% block content %}
-<h2 class="nhsuk-heading-m">You will be offered an assessment</h2>
-<p>Someone from the psychological therapies service will get in touch. They'll ask about the problems you're having.</p>
 
-<h2 class="nhsuk-heading-m">The service will recommend a therapy for you</h2>
-<p>The therapy will depend on what problems you're experiencing and how severe they are.</p>
-<p>They will also tell you how long you'll wait for your first therapy session.</p>
-
-<h2 class="nhsuk-heading-m">Psychological therapies are offered in different ways</h2>
-<p>For example, using a self-help workbook, as an online course, one to one or in a group.</p>
+<h2>1. The service will contact you</h2>
+<p>Someone from the psychological therapies service will get in touch to ask about the problems you're having.</p>
+<h2>2. You'll be recommended a therapy</h2>
+<p>The therapy you're offered will depend on the problems you're experiencing and how severe they are.</p>
+<p>The service will also tell you how long you'll wait for your first therapy session.</p>
+<p>There are different types of psychological therapies available, but they all involve working with a trained therapist.</p>
+<p>Read about the different <a href="https://www.nhs.uk/conditions/stress-anxiety-depression/types-of-therapy/">types of talking therapy</a>.</p>
 
 {{ button({
   "text": "Continue",
   "href": siteRoot + "/search"
 }) }}
 
-{% include "includes/urgent-help-callout.nunjucks" %}
 {% endblock %}
