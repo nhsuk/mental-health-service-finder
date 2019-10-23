@@ -20,7 +20,7 @@ describe('Start page', () => {
   });
 
   it('has a link to the next page', () => {
-    expect($('.nhsuk-button').text()).to.contain('Continue');
+    expect($('.nhsuk-button').text()).to.contain('Start');
     expect($('.nhsuk-button').prop('href')).to.equal(`${constants.siteRoot}${routes.check.path}`);
   });
 
@@ -30,6 +30,5 @@ describe('Start page', () => {
 
   it('has an urgent help call out', () => {
     expect($('.samaritans__call').text()).to.equal('116 123');
-    expect($('.samaritans__email').text()).to.equal('jo@samaritans.org');
   });
 });

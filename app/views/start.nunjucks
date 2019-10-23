@@ -1,4 +1,5 @@
 {% extends 'layout.nunjucks' %}
+{% from 'warning-callout/macro.njk' import warningCallout %}
 
 {% block pageTitle %}Introduction{% endblock %}
 
@@ -7,22 +8,29 @@
 {% endblock %}
 
 {% block header %}
-<h1>Find help with stress, anxiety or depression (England only)</h1>
-<div class="nhsuk-reading-width">
-<p class="nhsuk-body-l nhsuk-page-intro">You can refer yourself directly to a psychological therapies service without seeing your GP.</p>
-</div>
+<h1>Find a psychological therapies service (England only)</h1>
 {% endblock %}
 
 {% block content %}
-<p>These offer therapies like cognitive behavioural therapy (CBT) for common problems like stress, anxiety, depression, OCD and phobias.</p>
-
-<h2 class="nhsuk-heading-m">Who can get psychological therapies on the NHS?</h2>
-<p>Anyone who is registered with a GP. If you are not registered, <a href="https://www.nhs.uk/Service-Search/GP/LocationSearch/4" class="button__gp__search">search for a GP</a>.</p>
+<p>You can refer yourself directly to a psychological therapies service without seeing your GP.</p>
+<p>These services offer therapies, such as cognitive behavioural therapy (CBT), for common problems including:</p>
+<ul>
+  <li>stress</li>
+  <li>anxiety</li>
+  <li>depression</li>
+  <li>obsessive compulsive disorder (OCD)</li>
+  <li>phobias</li>
+</ul>
+<p>Anyone who is registered with a GP can access psychological therapies on the NHS. If you’re not registered with a GP, <a href="https://www.nhs.uk/Service-Search/GP/LocationSearch/4">search for a GP</a>.</p>
 
 {{ button({
-  "text": "Continue",
+  "text": "Start",
   "href": siteRoot + "/check"
 }) }}
 
-{% include "includes/urgent-help-callout.nunjucks" %}
+{{ warningCallout({
+  "heading": "Important",
+  "HTML": "<p>You can also call <a href='https://www.samaritans.org/how-we-can-help/contact-samaritan/'>Samaritans</a> free on <a href='call:116123' class='samaritans__call'>116 123</a> if you want to talk to someone now.</p>"
+}) }}
+
 {% endblock %}
