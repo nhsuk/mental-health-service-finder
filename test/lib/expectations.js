@@ -9,13 +9,15 @@ function htmlWithStatus(res, status) {
   expect(res).to.be.html;
 }
 
-function breadcrumbContent($) {
+function breadcrumbContent($, path) {
   expect($('.nhsuk-breadcrumb__item').eq(0).text().trim()).to.equal('Home');
   expect($('.nhsuk-breadcrumb__item').eq(0).find('a').prop('href')).to.equal('https://www.nhs.uk');
   expect($('.nhsuk-breadcrumb__item').eq(1).text().trim()).to.equal('Services near you');
   expect($('.nhsuk-breadcrumb__item').eq(1).find('a').prop('href')).to.equal('https://www.nhs.uk/service-search');
-  expect($('.nhsuk-breadcrumb__item').eq(2).text().trim()).to.equal('Find a psychological therapies service');
-  expect($('.nhsuk-breadcrumb__item').eq(2).find('a').prop('href')).to.equal(constants.siteRoot);
+  if (path !== '/') {
+    expect($('.nhsuk-breadcrumb__item').eq(2).text().trim()).to.equal('Find a psychological therapies service');
+    expect($('.nhsuk-breadcrumb__item').eq(2).find('a').prop('href')).to.equal(constants.siteRoot);
+  }
 }
 
 // eslint-disable-next-line no-script-url
