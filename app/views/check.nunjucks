@@ -14,7 +14,7 @@
 		text: "Services near you"
 		}
 		],
-		href: siteRoot,
+		href: siteRoot + routes.start.path,
 		text: "Find a psychological therapies service"
 	}) }}
 {% endblock %}
@@ -32,11 +32,11 @@
 
 {{ button({
   "text": "Continue",
-  "href": siteRoot + "/search"
+  "href": siteRoot + routes.search.path
 }) }}
 
 {{ backLink({
-  "href": siteRoot,
+  "href": siteRoot + routes.start.path,
   "text": "Go back"
 }) }}
 

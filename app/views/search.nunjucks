@@ -16,7 +16,7 @@
 		text: "Services near you"
 		}
 		],
-		href: siteRoot,
+		href: siteRoot + routes.start.path,
 		text: "Find a psychological therapies service"
 	}) }}
 {% endblock %}
@@ -25,7 +25,7 @@
 
 <h1>We need to know where your GP is</h1>
 
-<form method="get" class="form" action="{{ siteRoot }}/results">
+<form method="get" class="form" action="{{ siteRoot }}{{ routes.results.path }}">
   <input type="hidden" id="type" name="type" value="gp" />
   <input type="hidden" id="gpquery" name="gpquery" value="" />
   <input type="hidden" id="gpname" name="gpname" value="" />
@@ -61,7 +61,7 @@
   }) }}
 
   {{ backLink({
-    "href": siteRoot + "/check",
+    "href": siteRoot + routes.check.path,
     "text": "Go back"
   }) }}
   

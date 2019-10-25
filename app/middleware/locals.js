@@ -3,6 +3,7 @@ const constants = require('../lib/constants');
 const digitalData = require('../lib/digitalData');
 const search = require('../../config/config').search;
 const trim = require('../lib/utils/utils').trim;
+const routes = require('../../config/routes');
 
 function getQuery(type, query) {
   return type === constants.types.IAPT ? query.ccgid : query.query;
@@ -21,6 +22,7 @@ module.exports = config => (req, res, next) => {
   res.locals.canonicalUrl = canonicalUrl(req);
   res.locals.digitalData = digitalData(req);
   res.locals.siteRoot = constants.siteRoot;
+  res.locals.routes = routes;
 
   res.locals.location = trim(req.query.location);
   const type = req.query.type && req.query.type.toUpperCase();
