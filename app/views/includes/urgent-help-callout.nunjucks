@@ -1,9 +1,0 @@
-{% from 'care-card/macro.njk' import careCard %}
-
-{{ careCard({
-  "type": "urgent",
-  "heading": "If you need urgent help:",
-  "HTML": "
-    <p>Call Samaritans free on <a class='samaritans__call' href='tel:116123'>116 123</a> or email <a class='samaritans__email' href='mailto:jo@samaritans.org'>jo@samaritans.org</a></p>
-  "
-}) }}

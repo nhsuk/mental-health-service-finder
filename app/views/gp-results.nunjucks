@@ -4,19 +4,29 @@
 
 {% block pageTitle %}{% if results.length > 0 %}Select your GP{% else %}{{ msg }}{% endif %}{% endblock %}
 
-{% block header %}
-{{ backLink({
-  "href": href,
-  "text": "Go back"
-}) }}
+{% block breadcrumbs %}
+  {{ breadcrumb({
+		items: [
+		{
+		href: "https://www.nhs.uk",
+		text: "Home"
+		},
+		{
+		href: "https://www.nhs.uk/service-search",
+		text: "Services near you"
+		}
+		],
+		href: siteRoot,
+		text: "Find a psychological therapies service"
+	}) }}
+{% endblock %}
+
+{% block content %}
 {% if results.length > 0 %}
 <h1>Select your GP to see available services</h1>
 {% else %}
 <h1>{{ msg }}</h1>
 {% endif %}
-{% endblock %}
-
-{% block content %}
 {% if results.length > 0 %}
 <h2 class="nhsuk-body-l"><span role="text">We found <span class="results__count">{{ results.length }}</span> GP surgeries using <span class="results__search__term">'{{ query }}'</span>.</span></h2>
 
@@ -41,4 +51,8 @@
     <li>checking your spelling</li>
   </ul>
 {% endif %}
+{{ backLink({
+  "href": href,
+  "text": "Go back"
+}) }}
 {% endblock %}
