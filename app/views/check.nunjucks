@@ -36,7 +36,7 @@
 }) }}
 
 {{ backLink({
-  "href": "javascript:history.go(-1)",
+  "href": siteRoot,
   "text": "Go back"
 }) }}
 
