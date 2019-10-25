@@ -2,16 +2,26 @@
 
 {% block pageTitle %}What happens next{% endblock %}
 
-{% block header %}
-{{ backLink({
-  "href": "javascript:history.go(-1)",
-  "text": "Go back"
-}) }}
-<h1>What happens when you refer yourself</h1>
+{% block breadcrumbs %}
+  {{ breadcrumb({
+		items: [
+		{
+		href: "https://www.nhs.uk",
+		text: "Home"
+		},
+		{
+		href: "https://www.nhs.uk/service-search",
+		text: "Services near you"
+		}
+		],
+		href: siteRoot,
+		text: "Find a psychological therapies service"
+	}) }}
 {% endblock %}
 
 {% block content %}
 
+<h1>What happens when you refer yourself</h1>
 <h2>1. The service will contact you</h2>
 <p>Someone from the psychological therapies service will get in touch to ask about the problems you're having.</p>
 <h2>2. You'll be recommended a therapy</h2>
@@ -23,6 +33,11 @@
 {{ button({
   "text": "Continue",
   "href": siteRoot + "/search"
+}) }}
+
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back"
 }) }}
 
 {% endblock %}

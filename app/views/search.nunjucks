@@ -4,15 +4,26 @@
 
 {% block pageTitle %}{% if errorMessage %}Please correct the error. {{ errorMessage }}{% else %}Search for your GP{% endif %}{% endblock %}
 
-{% block header %}
-{{ backLink({
-  "href": siteRoot + "/check",
-  "text": "Go back"
-}) }}
-<h1>We need to know where your GP is</h1>
+{% block breadcrumbs %}
+  {{ breadcrumb({
+		items: [
+		{
+		href: "https://www.nhs.uk",
+		text: "Home"
+		},
+		{
+		href: "https://www.nhs.uk/service-search",
+		text: "Services near you"
+		}
+		],
+		href: siteRoot,
+		text: "Find a psychological therapies service"
+	}) }}
 {% endblock %}
 
 {% block content %}
+
+<h1>We need to know where your GP is</h1>
 
 <form method="get" class="form" action="{{ siteRoot }}/results">
   <input type="hidden" id="type" name="type" value="gp" />
@@ -47,6 +58,11 @@
 
   {{ button({
     "text": "Continue"
+  }) }}
+
+  {{ backLink({
+    "href": siteRoot + "/check",
+    "text": "Go back"
   }) }}
   
 </form>
