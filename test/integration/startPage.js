@@ -14,7 +14,7 @@ describe('Start page', () => {
   let $;
 
   before('request page', async () => {
-    const res = await chai.request(server).get(`${constants.siteRoot}`);
+    const res = await chai.request(server).get(`${constants.siteRoot}${routes.start.path}`);
 
     $ = cheerio.load(res.text);
   });

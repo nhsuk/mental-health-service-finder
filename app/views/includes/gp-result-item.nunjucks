@@ -4,7 +4,7 @@
   <p class="results__address" role="text">{{ result.fullAddress | safe }}</p>
 {% endif %}
 
-<p><a class="results__gp__selection" href="{{ siteRoot }}/results?type=iapt&ccgid={{ result.CCG[0] }}&gpquery={{ query | urlencode }}&gpname={{ result.OrganisationName | urlencode }}&lat={{ result.Latitude }}&lon={{ result.Longitude }}">
+<p><a class="results__gp__selection" href="{{ siteRoot }}{{ routes.results.path }}?type=iapt&ccgid={{ result.CCG[0] }}&gpquery={{ query | urlencode }}&gpname={{ result.OrganisationName | urlencode }}&lat={{ result.Latitude }}&lon={{ result.Longitude }}">
   <span class="nhsuk-u-visually-hidden">{{ result.OrganisationName }}</span>
   <span aria-hidden="true">This</span> is my GP</a>
 </p>
