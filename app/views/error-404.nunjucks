@@ -14,7 +14,7 @@
 		text: "Services near you"
 		}
 		],
-		href: siteRoot,
+		href: siteRoot + routes.start.path,
 		text: "Find a psychological therapies service"
 	}) }}
 {% endblock %}

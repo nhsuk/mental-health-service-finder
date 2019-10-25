@@ -20,7 +20,7 @@ describe('Page links back to Choices', () => {
     const res = await chai.request(server).get(`${constants.siteRoot}${path}`);
 
     describe(`for page ${path}`, () => {
-      it('the breadcrumbs should have 2 levels of links', () => {
+      it('the breadcrumbs should have correct levels of links', () => {
         const $ = cheerio.load(res.text);
         iExpect.breadcrumbContent($, path);
       });
