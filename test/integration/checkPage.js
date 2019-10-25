@@ -26,6 +26,6 @@ describe('Check page', () => {
   });
 
   it('has a back link to the start page', () => {
-    iExpect.backLinkContent($);
+    iExpect.backLinkContent($, constants.siteRoot);
   });
 });
