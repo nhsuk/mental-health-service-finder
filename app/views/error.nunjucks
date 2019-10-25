@@ -4,13 +4,30 @@
 
 {% block pageTitle %}{{ message }}{% endblock %}
 
-{% block header %}
+{% block breadcrumbs %}
+  {{ breadcrumb({
+		items: [
+		{
+		href: "https://www.nhs.uk",
+		text: "Home"
+		},
+		{
+		href: "https://www.nhs.uk/service-search",
+		text: "Services near you"
+		}
+		],
+		href: siteRoot,
+		text: "Find a psychological therapies service"
+	}) }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ message }}.</h1>
+<div class="nhsuk-reading-width">
+<p class="nhsuk-body-l nhsuk-page-intro">Please try again later.</p>
 {{ backLink({
   "href": "javascript:history.go(-1)",
   "text": "Go back"
 }) }}
-<h1>{{ message }}.</h1>
-<div class="nhsuk-reading-width">
-<p class="nhsuk-body-l nhsuk-page-intro">Please try again later.</p>
 </div>
 {% endblock %}

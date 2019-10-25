@@ -9,15 +9,25 @@
 
 {% block pageTitle %}{% if results.length > 0 %}Services you can refer yourself to{% else %}{{ msg }}{% endif %}{% endblock %}
 
-{% block header %}
-{{ backLink({
-  "href": href,
-  "text": "Go back"
-}) }}
-<h1>Contact a psychological therapies service</h1>
+{% block breadcrumbs %}
+  {{ breadcrumb({
+		items: [
+		{
+		href: "https://www.nhs.uk",
+		text: "Home"
+		},
+		{
+		href: "https://www.nhs.uk/service-search",
+		text: "Services near you"
+		}
+		],
+		href: siteRoot,
+		text: "Find a psychological therapies service"
+	}) }}
 {% endblock %}
 
 {% block content %}
+<h1>Contact a psychological therapies service</h1>
 <h2 class="nhsuk-body-l">
   <span role="text">
 {% if resultsLength === 0 %}
@@ -46,13 +56,13 @@
 {% else %}
   <p class="no-results">No results</p>
 {% endif %}
-{% endblock %}
-
 {% if origin === 'search' %}
 {% set href = siteRoot + "/search?query=" + gpquery | urlencode %}
 {% else %}
 {% set href = siteRoot + "/results?type=gp&query=" + gpquery | urlencode %}
 {% endif %}
-{% block back %}
-{{ linkBack(href) }}
+{{ backLink({
+  "href": href,
+  "text": "Go back"
+}) }}
 {% endblock %}
