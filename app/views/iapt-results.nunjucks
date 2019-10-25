@@ -2,9 +2,9 @@
 {% set resultsLength = results.length %}
 {% set msg = 'There are no services available for \'' + gpname + '\'' %}
 {% if origin === 'search' %}
-{% set href = siteRoot + "/search?query=" + gpquery | urlencode %}
+{% set href = siteRoot + routes.search.path + "?query=" + gpquery | urlencode %}
 {% else %}
-{% set href = siteRoot + "/results?type=gp&query=" + gpquery | urlencode %}
+{% set href = siteRoot + routes.results.path + "?type=gp&query=" + gpquery | urlencode %}
 {% endif %}
 
 {% block pageTitle %}{% if results.length > 0 %}Services you can refer yourself to{% else %}{{ msg }}{% endif %}{% endblock %}
@@ -21,7 +21,7 @@
 		text: "Services near you"
 		}
 		],
-		href: siteRoot,
+		href: siteRoot + routes.start.path,
 		text: "Find a psychological therapies service"
 	}) }}
 {% endblock %}
@@ -57,9 +57,9 @@
   <p class="no-results">No results</p>
 {% endif %}
 {% if origin === 'search' %}
-{% set href = siteRoot + "/search?query=" + gpquery | urlencode %}
+{% set href = siteRoot + routes.search.path + "?query=" + gpquery | urlencode %}
 {% else %}
-{% set href = siteRoot + "/results?type=gp&query=" + gpquery | urlencode %}
+{% set href = siteRoot + routes.results.path + "?type=gp&query=" + gpquery | urlencode %}
 {% endif %}
 {{ backLink({
   "href": href,

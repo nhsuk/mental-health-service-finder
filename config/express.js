@@ -11,6 +11,7 @@ const helmet = require('./helmet');
 const log = require('../app/lib/logger');
 const promBundle = require('../app/lib/prometheus/bundle').middleware;
 const router = require('./router');
+const { path: startPath } = require('./routes').start;
 
 module.exports = (app, config) => {
   // start collecting default metrics
@@ -79,6 +80,6 @@ module.exports = (app, config) => {
   });
 
   app.get('/', (req, res) => {
-    res.redirect(constants.siteRoot);
+    res.redirect(constants.siteRoot + startPath);
   });
 };
