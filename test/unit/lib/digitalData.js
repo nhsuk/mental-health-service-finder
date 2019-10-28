@@ -7,7 +7,7 @@ const expect = chai.expect;
 
 describe('digitalData', () => {
   // assumes siteRoot contains two segments
-  const [ primaryCategory, subCategory1 ] = siteRoot.split('/').filter(Boolean);
+  const [primaryCategory, subCategory1] = siteRoot.split('/').filter(Boolean);
   const secondLevelPath = 'second';
   const thirdLevelPath = 'third';
   const fourthLevelPath = 'fourth';
@@ -52,7 +52,8 @@ describe('digitalData', () => {
     expect(dd.page).to.have.property('pageInfo');
     expect(dd.page.pageInfo).to.have.property('pageName');
     expect(dd.page.pageInfo.pageName).to.equal(
-      `nhs:web:${primaryCategory}:${subCategory1}:${secondLevelPath}`);
+      `nhs:web:${primaryCategory}:${subCategory1}:${secondLevelPath}`
+    );
   });
 
   it('should contain 4 categories for third level pages', () => {
@@ -74,7 +75,8 @@ describe('digitalData', () => {
     expect(dd.page).to.have.property('pageInfo');
     expect(dd.page.pageInfo).to.have.property('pageName');
     expect(dd.page.pageInfo.pageName).to.equal(
-      `nhs:web:${primaryCategory}:${subCategory1}:${secondLevelPath}:${thirdLevelPath}`);
+      `nhs:web:${primaryCategory}:${subCategory1}:${secondLevelPath}:${thirdLevelPath}`
+    );
   });
 
   // max of 4 categories - extra levels are ignored
@@ -97,6 +99,7 @@ describe('digitalData', () => {
     expect(dd.page).to.have.property('pageInfo');
     expect(dd.page.pageInfo).to.have.property('pageName');
     expect(dd.page.pageInfo.pageName).to.equal(
-      `nhs:web:${primaryCategory}:${subCategory1}:${secondLevelPath}:${thirdLevelPath}`);
+      `nhs:web:${primaryCategory}:${subCategory1}:${secondLevelPath}:${thirdLevelPath}`
+    );
   });
 });
