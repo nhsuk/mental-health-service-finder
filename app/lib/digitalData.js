@@ -1,9 +1,10 @@
-function getPageName(path) {
-  return `nhs:beta${path.replace(/\/$/, '').replace(/\//g, ':')}`;
+function getPageName(categories) {
+  return `nhs:web:${categories.join(':')}`;
 }
 
 function getCategories(path) {
-  return path.split('/').filter(Boolean);
+  // Max 4 categories, additional URL segments are ignored
+  return path.split('/').filter(Boolean).splice(0, 4);
 }
 
 function digitalData(req) {
@@ -18,7 +19,7 @@ function digitalData(req) {
         subCategory3: categories[3],
       },
       pageInfo: {
-        pageName: getPageName(path),
+        pageName: getPageName(categories),
       },
     },
   };
