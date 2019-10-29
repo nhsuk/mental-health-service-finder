@@ -12,12 +12,6 @@ module.exports = {
     },
   },
   assetsUrl: 'https://assets.nhs.uk',
-  ccgs: {
-    northCumbria: '462881',
-    redBridge: '463329',
-    towerHamlets: '462934',
-    westHampshire: '463042',
-  },
   highlights: { post: '</span>', pre: '<span class="highlight">' },
   metrics: {
     IAPTEmail: 9463,
