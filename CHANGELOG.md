@@ -1,3 +1,7 @@
+0.22.0 / TBC
+===================
+- Remove Greenkeeper - it is done automatically by the service
+
 0.21.0 / 2019-10-11
 ===================
 - Replace (deprecated) `istanbul` with `nyc`
