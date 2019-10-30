@@ -20,7 +20,7 @@
         <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
           <collectionProp name="Arguments.arguments"/>
         </elementProp>
-        <stringProp name="HTTPSampler.domain">${__P(hostname,staging.beta.nhschoices.net)}</stringProp>
+        <stringProp name="HTTPSampler.domain">${__P(hostname,nhswebsite-staging.nhs.uk)}</stringProp>
         <stringProp name="HTTPSampler.port">${__P(port,443)}</stringProp>
         <stringProp name="HTTPSampler.protocol">${__P(protocol,https)}</stringProp>
         <stringProp name="HTTPSampler.contentEncoding"></stringProp>
@@ -93,7 +93,7 @@
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CCG Ids" enabled="true">
             <stringProp name="filename">./data/${__P(csvfile,ccgids.csv)}</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="variableNames">ccgid</stringProp>
+            <stringProp name="variableNames">ccgid,lat,lon</stringProp>
             <stringProp name="delimiter">,</stringProp>
             <boolProp name="quotedData">false</boolProp>
             <boolProp name="recycle">true</boolProp>
@@ -194,7 +194,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/find-a-psychological-therapies-service/results?type=iapt&amp;ccgid=${ccgid}</stringProp>
+            <stringProp name="HTTPSampler.path">/find-a-psychological-therapies-service/results?type=iapt&amp;ccgid=${ccgid}&amp;lat=${lat}&amp;lon=${lon}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
