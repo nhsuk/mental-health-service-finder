@@ -1,4 +1,4 @@
-0.22.0 / TBC
+0.22.0 / 2019-10-31
 ===================
 - Remove Greenkeeper - it is done automatically by the service
 - Remove special case for West Hampshire CCG
