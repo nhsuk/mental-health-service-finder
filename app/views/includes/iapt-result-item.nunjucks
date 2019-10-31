@@ -13,5 +13,5 @@
 {% endif %}
 
 {% if result.selfReferral %}
-<p class="results__self__referral"><a class="button" href="{{ result.selfReferral }}">Refer yourself online<span class="nhsuk-u-visually-hidden"> to {{ result.OrganisationName }}</span></a></p>
+<p class="results__self__referral"><a class="button nhsuk-button" href="{{ result.selfReferral }}">Refer yourself online<span class="nhsuk-u-visually-hidden"> to {{ result.OrganisationName }}</span></a></p>
 {% endif %}
