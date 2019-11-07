@@ -22,7 +22,7 @@
 
 {% block content %}
 <h1>Find a psychological therapies service (England only)</h1>
-<p>You can refer yourself directly to a psychological therapies service without seeing your GP.</p>
+<p>You can refer yourself directly to a psychological therapies service (IAPT) without seeing your GP.</p>
 <p>These services offer therapies, such as cognitive behavioural therapy (CBT), for common problems including:</p>
 <ul>
   <li>stress</li>
