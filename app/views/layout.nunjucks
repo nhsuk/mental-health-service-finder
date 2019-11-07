@@ -87,6 +87,10 @@
 
   <body class="{% block bodyClass %}{% endblock %}">
 
+	<div class="notification-banner nhsuk-u-padding-top-2 nhsuk-u-padding-bottom-2">
+		<p class="nhsuk-width-container nhsuk-body-s  nhsuk-u-margin-bottom-0">This is new. <a href="https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008">Find psychological therapies using our old finder.</a></p>
+	</div>
+
 	{{ skipLink({
 		"href": "#maincontent",
 		"text": "Skip to main content"
