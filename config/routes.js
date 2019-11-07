@@ -1,7 +1,7 @@
 module.exports = {
   check: {
     h1: 'What happens when you refer yourself',
-    path: '/check',
+    path: '/what-happens-when-you-refer-yourself',
     title: 'What happens next',
   },
   results: {
@@ -9,7 +9,7 @@ module.exports = {
   },
   search: {
     h1: 'We need to know where your GP is',
-    path: '/search',
+    path: '/find-your-gp',
     title: 'Search for your GP',
   },
   start: {
