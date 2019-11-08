@@ -1,5 +1,4 @@
 {% extends 'layout.nunjucks' %}
-{% from 'warning-callout/macro.njk' import warningCallout %}
 
 {% block pageTitle %}Introduction{% endblock %}
 
@@ -21,6 +20,7 @@
 {% endblock %}
 
 {% block content %}
+
 <h1>Find a psychological therapies service (England only)</h1>
 <p>You can refer yourself directly to a psychological therapies service (IAPT) without seeing your GP.</p>
 <p>These services offer therapies, such as cognitive behavioural therapy (CBT), for common problems including:</p>
@@ -36,11 +36,6 @@
 {{ button({
   "text": "Start now",
   "href": siteRoot + routes.check.path
-}) }}
-
-{{ warningCallout({
-  "heading": "Important",
-  "HTML": "<p>You can also call <a href='https://www.samaritans.org/how-we-can-help/contact-samaritan/'>Samaritans</a> free on <a href='call:116123' class='samaritans__call'>116 123</a> if you want to talk to someone now.</p>"
 }) }}
 
 {% endblock %}

@@ -1,4 +1,5 @@
 {% extends 'layout.nunjucks' %}
+{% from 'warning-callout/macro.njk' import warningCallout %}
 
 {% block pageTitle %}What happens next{% endblock %}
 
@@ -17,6 +18,11 @@
 <p>The service will also tell you how long you'll wait for your first therapy session.</p>
 <p>There are different types of psychological therapies available, including online therapy programmes, but they all involve working with a trained therapist.</p>
 <p>Read about the different <a href="https://www.nhs.uk/conditions/stress-anxiety-depression/types-of-therapy/">types of talking therapy</a>.</p>
+
+{{ warningCallout({
+  "heading": "Important",
+  "HTML": "<p>You can also call <a href='https://www.samaritans.org/how-we-can-help/contact-samaritan/'>Samaritans</a> free on <a href='call:116123' class='samaritans__call'>116 123</a> if you want to talk to someone now.</p>"
+}) }}
 
 {{ button({
   "text": "Continue",
