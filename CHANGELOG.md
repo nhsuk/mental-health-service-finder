@@ -1,3 +1,8 @@
+0.23.0 / TBC
+===================
+- Update UI to latest frontend library
+- Updates to content based on stakeholder signoff
+
 0.22.0 / 2019-10-31
 ===================
 - Remove Greenkeeper - it is done automatically by the service
