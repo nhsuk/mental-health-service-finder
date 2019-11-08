@@ -4,24 +4,11 @@
 
 {% block pageTitle %}{% if results.length > 0 %}Select your GP{% else %}{{ msg }}{% endif %}{% endblock %}
 
-{% block breadcrumbs %}
-  {{ breadcrumb({
-		items: [
-		{
-		href: "https://www.nhs.uk",
-		text: "Home"
-		},
-		{
-		href: "https://www.nhs.uk/service-search",
-		text: "Services near you"
-		}
-		],
-		href: siteRoot + routes.start.path,
-		text: "Find a psychological therapies service"
-	}) }}
-{% endblock %}
-
 {% block content %}
+{{ backLink({
+  "href": href,
+  "text": "Go back"
+}) }}
 {% if results.length > 0 %}
 <h1>Select your GP to see available services</h1>
 {% else %}
@@ -51,8 +38,4 @@
     <li>checking your spelling</li>
   </ul>
 {% endif %}
-{{ backLink({
-  "href": href,
-  "text": "Go back"
-}) }}
 {% endblock %}

@@ -4,24 +4,12 @@
 
 {% block pageTitle %}{% if errorMessage %}Please correct the error. {{ errorMessage }}{% else %}Search for your GP{% endif %}{% endblock %}
 
-{% block breadcrumbs %}
-  {{ breadcrumb({
-		items: [
-		{
-		href: "https://www.nhs.uk",
-		text: "Home"
-		},
-		{
-		href: "https://www.nhs.uk/service-search",
-		text: "Services near you"
-		}
-		],
-		href: siteRoot + routes.start.path,
-		text: "Find a psychological therapies service"
-	}) }}
-{% endblock %}
-
 {% block content %}
+
+ {{ backLink({
+    "href": siteRoot + routes.check.path,
+    "text": "Go back"
+  }) }}
 
 <h1>We need to know where your GP is</h1>
 <p>This is so we can get you to the right psychological therapies service</p>
@@ -59,11 +47,6 @@
 
   {{ button({
     "text": "Continue"
-  }) }}
-
-  {{ backLink({
-    "href": siteRoot + routes.check.path,
-    "text": "Go back"
   }) }}
   
 </form>
