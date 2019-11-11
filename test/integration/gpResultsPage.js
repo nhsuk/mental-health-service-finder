@@ -53,10 +53,6 @@ describe('GP results page', () => {
         expect($('h1').text()).to.equal('Select your GP to see available services');
       });
 
-      it('the breadcrumbs should have 3 levels of links', () => {
-        iExpect.breadcrumbContent($);
-      });
-
       it('should display all of the results that were returned', () => {
         expect($('.results__item').length).to.equal(resultCount);
       });

@@ -28,4 +28,8 @@ describe('Check page', () => {
   it('has a back link to the start page', () => {
     iExpect.backLinkContent($, constants.siteRoot + routes.start.path);
   });
+
+  it('has an urgent help call out', () => {
+    expect($('.samaritans__call').text()).to.equal('116 123');
+  });
 });

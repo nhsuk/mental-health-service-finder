@@ -53,10 +53,6 @@ describe('IAPT results page', () => {
         expect($('h1').text()).to.equal('Contact a psychological therapies service');
       });
 
-      it('the breadcrumbs should have 3 levels of links', () => {
-        iExpect.breadcrumbContent($);
-      });
-
       it('should display all of the results that were returned', () => {
         expect($('.results__count').text()).to.equal(resultCount.toString());
         expect($('.results__item').length).to.equal(resultCount);

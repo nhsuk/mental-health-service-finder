@@ -3,6 +3,7 @@ const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
 const constants = require('../../app/lib/constants');
+const iExpect = require('../lib/expectations');
 const routes = require('../../config/routes');
 const server = require('../../server');
 
@@ -28,7 +29,7 @@ describe('Start page', () => {
     expect($('main').find('a').prop('href')).to.equal('https://www.nhs.uk/Service-Search/GP/LocationSearch/4');
   });
 
-  it('has an urgent help call out', () => {
-    expect($('.samaritans__call').text()).to.equal('116 123');
+  it('the breadcrumbs should have correct levels of links', () => {
+    iExpect.breadcrumbContent($, `${constants.siteRoot}${routes.start.path}`);
   });
 });
