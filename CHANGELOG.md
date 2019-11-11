@@ -1,7 +1,8 @@
 0.23.0 / TBC
 ===================
-- Update UI to latest frontend library
-- Updates to content based on stakeholder signoff
+- Use `nhsuk-frontend` for views, scss and JS
+- Remove redundant JS and SCSS replaced by `nhsuk-frontend`
+- Update site root to include `/service-search`
 
 0.22.0 / 2019-10-31
 ===================
