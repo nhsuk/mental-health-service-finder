@@ -31,7 +31,7 @@
   <li>obsessive compulsive disorder (OCD)</li>
   <li>phobias</li>
 </ul>
-<p>Anyone who is registered with a GP can access psychological therapies on the NHS. If you’re not registered with a GP, <a href="https://www.nhs.uk/Service-Search/GP/LocationSearch/4">search for a GP</a>.</p>
+<p>Anyone who is registered with a GP can access psychological therapies on the NHS. If you're not registered with a GP, <a href="https://www.nhs.uk/Service-Search/GP/LocationSearch/4">search for a GP</a>.</p>
 
 {{ button({
   "text": "Start now",
