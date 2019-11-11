@@ -12,7 +12,7 @@
   }) }}
 
 <h1>We need to know where your GP is</h1>
-<p>This is so we can get you to the right psychological therapies service</p>
+<p>This is so we can get you to the right psychological therapies service.</p>
 
 <form method="get" class="form" action="{{ siteRoot }}{{ routes.results.path }}">
   <input type="hidden" id="type" name="type" value="gp" />
@@ -41,7 +41,7 @@
     "text": "Does my GP need to know?",
     "HTML": "
       <p>The service will only tell your GP with your permission.</p>
-      <p>The only time they will contact your GP without your permission is if they believe you are at risk harming yourself or other people.</p>
+      <p>The only time they will contact your GP without your permission is if they believe you are at risk of harming yourself or other people.</p>
     "
   }) }}
 

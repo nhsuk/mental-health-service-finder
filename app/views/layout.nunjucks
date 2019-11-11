@@ -56,6 +56,7 @@
     {% endif %}
 
 	<script src="{{ siteRoot }}/nhsuk.min.js" defer></script>
+    <script src="{{ siteRoot }}/js/app.js" defer></script>
 
     <!--[if IE]><link rel="shortcut icon" href="{{ siteRoot }}/assets/images/favicon.ico"><![endif]-->
     <!-- Touch Icons - iOS and Android 2.1+ 180x180 pixels in size. -->
