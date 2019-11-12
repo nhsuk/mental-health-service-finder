@@ -1,4 +1,4 @@
-0.23.0 / TBC
+0.23.0 / 2019-11-18
 ===================
 - Use `nhsuk-frontend` for views, scss and JS
 - Remove redundant JS and SCSS replaced by `nhsuk-frontend`
