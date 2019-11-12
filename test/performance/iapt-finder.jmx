@@ -110,7 +110,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/find-a-psychological-therapies-service/</stringProp>
+            <stringProp name="HTTPSampler.path">/service-search/find-a-psychological-therapies-service/</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -131,7 +131,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/find-a-psychological-therapies-service/what-happens-when-you-refer-yourself</stringProp>
+            <stringProp name="HTTPSampler.path">/service-search/find-a-psychological-therapies-service/what-happens-when-you-refer-yourself</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -152,7 +152,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/find-a-psychological-therapies-service/find-your-gp</stringProp>
+            <stringProp name="HTTPSampler.path">/service-search/find-a-psychological-therapies-service/find-your-gp</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -173,7 +173,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/find-a-psychological-therapies-service/results?type=gp&amp;query=${searchterm}</stringProp>
+            <stringProp name="HTTPSampler.path">/service-search/find-a-psychological-therapies-service/results?type=gp&amp;query=${searchterm}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -194,7 +194,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">/find-a-psychological-therapies-service/results?type=iapt&amp;ccgid=${ccgid}&amp;lat=${lat}&amp;lon=${lon}</stringProp>
+            <stringProp name="HTTPSampler.path">/service-search/find-a-psychological-therapies-service/results?type=iapt&amp;ccgid=${ccgid}&amp;lat=${lat}&amp;lon=${lon}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
