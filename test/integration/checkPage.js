@@ -21,16 +21,15 @@ describe('Check page', () => {
   });
 
   it('has a link to the next page', () => {
-    expect($('.button__check').text()).to.equal('Next');
-    expect($('.button__check').prop('href')).to.equal(`${constants.siteRoot}${routes.search.path}`);
+    expect($('.nhsuk-button').text()).to.contain('Continue');
+    expect($('.nhsuk-button').prop('href')).to.contain(`${constants.siteRoot}${routes.search.path}`);
+  });
+
+  it('has a back link to the start page', () => {
+    iExpect.backLinkContent($, constants.siteRoot + routes.start.path);
   });
 
   it('has an urgent help call out', () => {
     expect($('.samaritans__call').text()).to.equal('116 123');
-    expect($('.samaritans__email').text()).to.equal('jo@samaritans.org');
-  });
-
-  it('has a back link to the start page', () => {
-    iExpect.backLinkContent($, `${constants.siteRoot}/`);
   });
 });

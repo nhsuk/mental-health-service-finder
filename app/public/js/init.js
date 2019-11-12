@@ -1,7 +1,2 @@
-// Require all modules neeeded for the application
-require('./detailsPolyfill');
-require('./headerMobileMenuToggle');
-require('./headerMobileSearchToggle');
-require('./headerSearchTypeahead');
-require('./querySearchTypeahead');
-require('./skiplinkFix');
+const inputError = document.querySelectorAll('.nhsuk-input--error');
+if (inputError.length) inputError[0].focus();

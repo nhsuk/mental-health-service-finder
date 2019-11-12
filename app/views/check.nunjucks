@@ -1,28 +1,32 @@
 {% extends 'layout.nunjucks' %}
+{% from 'warning-callout/macro.njk' import warningCallout %}
 
-{% block pageTitle %}What happens next - {% endblock %}
-
-{% block header %}
-<h1>What happens when you refer yourself</h1>
-{% endblock %}
+{% block pageTitle %}What happens next{% endblock %}
 
 {% block content %}
-<h2 class="nhsuk-heading-m">You will be offered an assessment</h2>
-<p>Someone from the psychological therapies service will get in touch. They'll ask about the problems you're having.</p>
 
-<h2 class="nhsuk-heading-m">The service will recommend a therapy for you</h2>
-<p>The therapy will depend on what problems you're experiencing and how severe they are.</p>
-<p>They will also tell you how long you'll wait for your first therapy session.</p>
+{{ backLink({
+  "href": siteRoot + routes.start.path,
+  "text": "Go back"
+}) }}
 
-<h2 class="nhsuk-heading-m">Psychological therapies are offered in different ways</h2>
-<p>For example, using a self-help workbook, as an online course, one to one or in a group.</p>
+<h1>What happens when you refer yourself</h1>
+<h2>1. The service will contact you</h2>
+<p>Someone from the psychological therapies service will get in touch to ask about the problems you're having.</p>
+<h2>2. You'll be recommended a therapy</h2>
+<p>The therapy you're offered will depend on the problems you're experiencing and how severe they are.</p>
+<p>The service will also tell you how long you'll wait for your first therapy session.</p>
+<p>There are different types of psychological therapies available, including online therapy programmes, but they all involve working with a trained therapist.</p>
+<p>Read about the different <a href="https://www.nhs.uk/conditions/stress-anxiety-depression/types-of-therapy/">types of talking therapy</a>.</p>
 
-<p><a href="{{ siteRoot }}/search" class="button button__check">Next</a></p>
+{{ warningCallout({
+  "heading": "Important",
+  "HTML": "<p>You can also call <a href='https://www.samaritans.org/how-we-can-help/contact-samaritan/'>Samaritans</a> free on <a href='call:116123' class='samaritans__call'>116 123</a> if you want to talk to someone now.</p>"
+}) }}
 
-{% set href = siteRoot + "/" %}
-{{ linkBack(href) }}
+{{ button({
+  "text": "Continue",
+  "href": siteRoot + routes.search.path
+}) }}
 
-{% include "includes/urgent-help-callout.nunjucks" %}
 {% endblock %}
-
-{% block back %}{% endblock %}

@@ -50,17 +50,7 @@ describe('IAPT results page', () => {
       });
 
       it('should have an H1 of \'Psychological therapies services\'', () => {
-        expect($('h1').text()).to.equal('Refer yourself using these contact details');
-      });
-
-      it('the breadcrumbs should have 2 levels of links', () => {
-        iExpect.breadcrumbContent($);
-      });
-
-      it('the banner should link back to Choices IAPT service search', () => {
-        expect($('.back-to-choices').text()).to.equal('Find psychological therapies using our old finder.');
-        expect($('.back-to-choices').attr('href'))
-          .to.equal('https://www.nhs.uk/service-search/Psychological-therapies-(IAPT)/LocationSearch/10008');
+        expect($('h1').text()).to.equal('Contact a psychological therapies service');
       });
 
       it('should display all of the results that were returned', () => {

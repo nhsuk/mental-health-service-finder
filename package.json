@@ -1,6 +1,6 @@
 {
   "name": "mental-health-service-finder",
-  "version": "0.22.0",
+  "version": "0.23.0",
   "description": "Helping to connect people to mental health services.",
   "main": "app.js",
   "scripts": {
@@ -58,6 +58,7 @@
     "map-replace": "^1.0.2",
     "moment": "^2.22.0",
     "nhsuk-bunyan-logger": "^1.7.0",
+    "nhsuk-frontend": "^2.3.2",
     "node-sass": "^4.9.2",
     "nunjucks": "^3.1.4",
     "prom-client": "^11.2.1",

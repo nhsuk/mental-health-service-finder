@@ -1,24 +1,41 @@
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}Introduction - {% endblock %}
+{% block pageTitle %}Introduction{% endblock %}
 
 {% block robots %}
 <meta name='robots' content='nofollow'>
 {% endblock %}
 
-{% block header %}
-<h1>Find help with stress, anxiety or depression (England only)</h1>
-<div class="nhsuk-reading-width">
-<p class="nhsuk-body-l nhsuk-page-intro">You can refer yourself directly to a psychological therapies service without seeing your GP.</p>
-</div>
+{% block breadcrumbs %}
+{{ breadcrumb({
+		items: [
+		{
+		href: "https://www.nhs.uk",
+		text: "Home"
+		}
+    ],
+		href: "https://www.nhs.uk/service-search",
+		text: "Services near you"
+	}) }}
 {% endblock %}
 
 {% block content %}
-<p>These offer therapies like cognitive behavioural therapy (CBT) for common problems like stress, anxiety, depression, OCD and phobias.</p>
 
-<h2 class="nhsuk-heading-m">Who can get psychological therapies on the NHS?</h2>
-<p>Anyone who is registered with a GP. If you are not registered, <a href="https://www.nhs.uk/Service-Search/GP/LocationSearch/4" class="button__gp__search">search for a GP</a>.</p>
+<h1>Find a psychological therapies service (England only)</h1>
+<p>You can refer yourself directly to a psychological therapies service (IAPT) without seeing your GP.</p>
+<p>These services offer therapies, such as cognitive behavioural therapy (CBT), for common problems including:</p>
+<ul>
+  <li>stress</li>
+  <li>anxiety</li>
+  <li>depression</li>
+  <li>obsessive compulsive disorder (OCD)</li>
+  <li>phobias</li>
+</ul>
+<p>Anyone who is registered with a GP can access psychological therapies on the NHS. If you're not registered with a GP, <a href="https://www.nhs.uk/Service-Search/GP/LocationSearch/4">search for a GP</a>.</p>
 
-<p><a href="{{ siteRoot }}/check" class="button button__start">Find help</a></p>
-{% include "includes/urgent-help-callout.nunjucks" %}
+{{ button({
+  "text": "Start now",
+  "href": siteRoot + routes.check.path
+}) }}
+
 {% endblock %}

@@ -10,20 +10,20 @@ function htmlWithStatus(res, status) {
 }
 
 function breadcrumbContent($) {
-  expect($('.nhsuk-c-breadcrumb__item').eq(0).text().trim()).to.equal('Home');
-  expect($('.nhsuk-c-breadcrumb__item').eq(0).find('a').prop('href')).to.equal('https://www.nhs.uk');
-  expect($('.nhsuk-c-breadcrumb__item').eq(1).text().trim()).to.equal('Find a psychological therapies service');
-  expect($('.nhsuk-c-breadcrumb__item').eq(1).find('a').prop('href')).to.equal(constants.siteRoot);
+  expect($('.nhsuk-breadcrumb__item').eq(0).text().trim()).to.equal('Home');
+  expect($('.nhsuk-breadcrumb__item').eq(0).find('a').prop('href')).to.equal('https://www.nhs.uk');
+  expect($('.nhsuk-breadcrumb__item').eq(1).text().trim()).to.equal('Services near you');
+  expect($('.nhsuk-breadcrumb__item').eq(1).find('a').prop('href')).to.equal('https://www.nhs.uk/service-search');
 }
 
 // eslint-disable-next-line no-script-url
-function backLinkContent($, href = 'javascript:history.go(-1)', text = 'Back', selector = '.link-back') {
-  expect($(selector).prop('href')).to.equal(href);
-  expect($(selector).text()).to.equal(text);
+function backLinkContent($, href = 'javascript:history.go(-1)', text = 'Go back', selector = '.nhsuk-back-link__link') {
+  expect($(selector).prop('href')).to.contain(href);
+  expect($(selector).text()).to.contain(text);
 }
 
 function checkPageContent($, h1, intro) {
-  expect($('.nhsuk-page-heading h1').text().trim()).to.equal(h1);
+  expect($('h1').text().trim()).to.equal(h1);
   expect($('.nhsuk-page-intro').text().trim()).to.equal(intro);
 }
 

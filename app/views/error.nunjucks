@@ -2,15 +2,15 @@
 
 {% set message = 'Sorry, we are experiencing technical problems' %}
 
-{% block pageTitle %}{{ message }} - {% endblock %}
+{% block pageTitle %}{{ message }}{% endblock %}
 
-{% block header %}
+{% block content %}
+{{ backLink({
+  "href": "javascript:history.go(-1)",
+  "text": "Go back"
+}) }}
 <h1>{{ message }}.</h1>
 <div class="nhsuk-reading-width">
 <p class="nhsuk-body-l nhsuk-page-intro">Please try again later.</p>
 </div>
-{% endblock %}
-
-{% block back %}
-{{ linkBack() }}
 {% endblock %}

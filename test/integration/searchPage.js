@@ -22,7 +22,7 @@ describe('Search page', () => {
     });
 
     it('has a link to the next page', () => {
-      expect($('.button__search').val()).to.equal('Find');
+      expect($('.nhsuk-button').text()).to.contain('Continue');
       expect($('.form').prop('action')).to.equal(`${constants.siteRoot}${routes.results.path}`);
       expect($('.form input[name=type]').val().toUpperCase()).to.equal(`${constants.types.GP}`);
     });

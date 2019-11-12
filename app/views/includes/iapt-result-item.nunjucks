@@ -1,7 +1,7 @@
 <h3 class="results__name">{{ result.OrganisationName }}</h3>
 
 {% if result.website %}
-<p class="results__website"><a href="{{ result.website }}">Visit <span class="visually-hidden">{{ result.OrganisationName }}'s </span>website</a></p>
+<p class="results__website"><a href="{{ result.website }}">Visit <span class="nhsuk-u-visually-hidden">{{ result.OrganisationName }}'s </span>website</a></p>
 {% endif %}
 
 {% if result.telephone %}
@@ -13,5 +13,13 @@
 {% endif %}
 
 {% if result.selfReferral %}
-<p class="results__self__referral"><a class="button" href="{{ result.selfReferral }}">Refer yourself online<span class="visually-hidden"> to {{ result.OrganisationName }}</span></a></p>
+<div class="nhsuk-action-link results__self__referral">
+  <a class="nhsuk-action-link__link" href="{{ result.selfReferral }}">
+    <svg class="nhsuk-icon nhsuk-icon__arrow-right-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"></path>
+    </svg>
+    <span class="nhsuk-action-link__text">Refer yourself online<span class="nhsuk-u-visually-hidden"> to {{ result.OrganisationName }}</span></span>
+  </a>
+</div>
 {% endif %}
