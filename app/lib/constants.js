@@ -1,7 +1,7 @@
 module.exports = {
   IAPTServiceCode: 'SRV0339',
   app: {
-    description: 'Find psychological therapies services.',
+    description: 'Find help with stress, anxiety or depression (England only). You can refer yourself directly to a psychological therapies service without seeing your GP.',
     locale: 'en_GB',
     siteName: 'nhs.uk',
     title: 'Find psychological therapies services',
