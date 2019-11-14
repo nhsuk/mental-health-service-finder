@@ -21,7 +21,7 @@
 
 {{ warningCallout({
   "heading": "Important",
-  "HTML": "<p>You can also call <a href='https://www.samaritans.org/how-we-can-help/contact-samaritan/'>Samaritans</a> free on <a href='call:116123' class='samaritans__call'>116 123</a> if you want to talk to someone now.</p>"
+  "HTML": "<p>You can also call <a href='https://www.samaritans.org/how-we-can-help/contact-samaritan/'>Samaritans</a> free on <a href='tel:116123' class='samaritans__call'>116 123</a> if you want to talk to someone now.</p>"
 }) }}
 
 {{ button({
