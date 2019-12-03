@@ -1,6 +1,7 @@
 0.24.0 / TBC
 ===================
 - Update npm dependencies
+- Update basic auth creds
 
 0.23.0 / 2019-11-18
 ===================
