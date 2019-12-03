@@ -1,3 +1,7 @@
+0.24.0 / TBC
+===================
+- Update npm dependencies
+
 0.23.0 / 2019-11-18
 ===================
 - Use `nhsuk-frontend` for views, scss and JS
