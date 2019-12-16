@@ -47,7 +47,7 @@
     "babel-brunch": "^7.0.0",
     "babel-preset-env": "^1.7.0",
     "body-parser": "^1.18.2",
-    "brunch": "^2.10.16",
+    "brunch": "^3.0.0",
     "compression": "^1.7.1",
     "cookie-parser": "^1.4.3",
     "eslint-config-airbnb": "^18.0.1",
