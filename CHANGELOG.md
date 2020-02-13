@@ -1,7 +1,8 @@
-0.24.0 / TBC
+0.24.0 / 2020-02-14
 ===================
 - Update npm dependencies
 - Update basic auth creds
+- Remove new service notification banner
 
 0.23.0 / 2019-11-18
 ===================
