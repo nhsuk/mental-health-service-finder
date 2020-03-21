@@ -52,7 +52,7 @@
     "cookie-parser": "^1.4.3",
     "eslint-config-airbnb": "^18.0.1",
     "express": "^4.16.2",
-    "express-prom-bundle": "^5.0.2",
+    "express-prom-bundle": "^6.0.0",
     "fingerprint-brunch": "^2.0.5",
     "helmet": "^3.11.0",
     "map-replace": "^1.0.2",
