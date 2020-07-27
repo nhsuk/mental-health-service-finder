@@ -1,6 +1,8 @@
 const rp = require('request-promise-native');
 const NodeCache = require('node-cache');
 
+const { endpoint } = require('../../config/config').headerFooterApi;
+
 const headerFooterCache = new NodeCache();
 
 module.exports = async (_, res, next) => {
@@ -18,7 +20,7 @@ module.exports = async (_, res, next) => {
     }
 
     // Get data from Wagtail endpoint
-    const data = await rp(process.env.HEADER_FOOTER_API_ENDPOINT);
+    const data = await rp(endpoint);
     const { header, footer } = JSON.parse(data);
 
     // Map data for Nunjucks due to template key inconsistencies
