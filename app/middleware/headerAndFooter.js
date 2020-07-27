@@ -20,8 +20,12 @@ module.exports = async (_, res, next) => {
     }
 
     // Get data from Wagtail endpoint
-    const data = await rp(endpoint);
-    const { header, footer } = JSON.parse(data);
+    const { header, footer } = await rp(endpoint, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      json: true,
+    });
 
     // Map data for Nunjucks due to template key inconsistencies
     const headerLinks = header.items;
