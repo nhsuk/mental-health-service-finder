@@ -25,6 +25,7 @@ module.exports = async (_, res, next) => {
         'Content-Type': 'application/json',
       },
       json: true,
+      rejectUnauthorized: false,
     });
 
     // Map data for Nunjucks due to template key inconsistencies
