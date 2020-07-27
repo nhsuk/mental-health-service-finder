@@ -16,6 +16,9 @@ module.exports = {
   cookiebot: {
     scriptUrl: process.env.COOKIEBOT_SCRIPT_URL || '//assets.nhs.uk/scripts/cookie-consent.js',
   },
+  headerFooterApi: {
+    endpoint: process.HEADER_FOOTER_API_ENDPOINT || 'https://nhsuk-live.nhswebsite-integration.nhs.uk/content-api/header-footer.json',
+  },
   search: {
     apiKey: process.env.SEARCH_API_KEY,
     host: process.env.SEARCH_API_HOST || 'api.nhs.uk',
