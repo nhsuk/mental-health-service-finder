@@ -60,6 +60,7 @@ environment.
 | `SEARCH_API_HOST`                  | Host name for the [NHS Developer API](https://developer.api.nhs.uk/)                                | api.nhs.uk                                          | Yes        |
 | `SEARCH_API_KEY`                   | `subscription-key` for the [NHS Developer API](https://developer.api.nhs.uk/)                       |                                                     | Yes        |
 | `SEARCH_API_VERSION`               | Version of the [NHS Developer API](https://developer.api.nhs.uk/)                                   | 1                                                   | Yes        |
+| `HEADER_FOOTER_API_ENDPOINT`               | JSON endpoint for NHS.UK header and footer API                  | `https://nhsuk-live.nhswebsite-integration.nhs.uk/content-api/header-footer.json`                   | Yes        |
 
 ## FAQ
 
