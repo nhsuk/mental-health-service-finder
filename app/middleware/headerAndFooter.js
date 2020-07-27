@@ -18,7 +18,7 @@ module.exports = async (_, res, next) => {
     }
 
     // Get data from Wagtail endpoint
-    const data = await rp('https://www.nhs.uk/content-api/header-footer.json');
+    const data = await rp(process.env.HEADER_FOOTER_API_ENDPOINT);
     const { header, footer } = JSON.parse(data);
 
     // Map data for Nunjucks due to template key inconsistencies
