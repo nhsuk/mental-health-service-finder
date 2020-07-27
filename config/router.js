@@ -3,12 +3,15 @@ const router = require('express').Router();
 const getResults = require('../app/middleware/getResults');
 const routes = require('./routes');
 const validateRequest = require('../app/middleware/validateRequest');
+const headerAndFooter = require('../app/middleware/headerAndFooter');
 
-router.get(routes.start.path, (req, res) => res.render('start'));
+router.use(headerAndFooter);
 
-router.get(routes.check.path, (req, res) => res.render('check'));
+router.get(routes.start.path, (_, res) => res.render('start'));
 
-router.get(routes.search.path, (req, res) => res.render('search'));
+router.get(routes.check.path, (_, res) => res.render('check'));
+
+router.get(routes.search.path, (_, res) => res.render('search'));
 
 router.get(
   routes.results.path,
