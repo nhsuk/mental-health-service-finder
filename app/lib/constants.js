@@ -1,7 +1,7 @@
 module.exports = {
   IAPTServiceCode: 'SRV0339',
   app: {
-    description: 'Find help with stress, anxiety or depression (England only). You can refer yourself directly to a psychological therapies service without seeing your GP.',
+    description: 'If you live in England, you can refer yourself to an NHS psychological therapies service (IAPT). IAPT services offer NICE recommended therapies, such as CBT, for common problems involving stress, anxiety and depression.',
     locale: 'en_GB',
     siteName: 'nhs.uk',
     title: 'Find psychological therapies services',
