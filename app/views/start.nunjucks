@@ -1,3 +1,4 @@
+{% from 'details/macro.njk' import details %}
 {% extends 'layout.nunjucks' %}
 
 {% block pageTitle %}Introduction{% endblock %}
@@ -24,18 +25,25 @@
 <h1>Find an NHS psychological therapies service (IAPT)</h1>
 <p>If you live in England, you can refer yourself to an NHS psychological therapies service (IAPT).</p>
 <p>IAPT (Improving Access to Psychological Therapies) services offer NICE recommended therapies, such as cognitive behavioural therapy (CBT), for common problems involving stress, anxiety and depression.</p>
-<p>The problems that IAPT services can treat include:</p>
-<ul>
-  <li>depression</li>
-  <li>generalized anxiety</li>
-  <li>social anxiety</li>
-  <li>panic and agoraphobia</li>
-  <li>other phobias</li>
-  <li>obsessive-compulsive disorder (OCD)</li>
-  <li>post-traumatic stress disorder (PTSD)</li>
-  <li>irritable bowel syndrome (IBS)</li>
-  <li>body dysmorphic disorder</li>
-</ul>
+
+{{ details({
+  "classes": "nhsuk-expander",
+  "text": "See problems that IAPT services can treat",
+  "HTML": "
+  <p>The problems that IAPT services can treat include:</p>
+  <ul>
+    <li>depression</li>
+    <li>generalized anxiety</li>
+    <li>social anxiety</li>
+    <li>panic and agoraphobia</li>
+    <li>other phobias</li>
+    <li>obsessive-compulsive disorder (OCD)</li>
+    <li>post-traumatic stress disorder (PTSD)</li>
+    <li>irritable bowel syndrome (IBS)</li>
+    <li>body dysmorphic disorder</li>
+  </ul>"
+}) }}
+
 <p>Anyone who is registered with a GP can access IAPT services on the NHS. If you're not registered with a GP, <a href="https://www.nhs.uk/service-search/find-a-gp">search for a GP</a>.</p>
 
 {{ button({
