@@ -2,20 +2,20 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
 
-const search = require('../../config/config').search;
+const { search } = require('../../config/config');
 const constants = require('../../app/lib/constants');
-const deepClone = require('../../app/lib/utils/utils').deepClone;
+const { deepClone } = require('../../app/lib/utils/utils');
 const iExpect = require('../lib/expectations');
 const routes = deepClone(require('../../config/routes'));
 const server = require('../../server');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
 describe('Page attributes', () => {
   Object.keys(routes).forEach(async (route) => {
-    const path = routes[route].path;
+    const { path } = routes[route];
 
     const res = await chai.request(server).get(`${constants.siteRoot}${path}`);
 
@@ -30,7 +30,7 @@ describe('Page attributes', () => {
 
       describe('titles', () => {
         if (path !== routes.results.path) {
-          const title = routes[route].title;
+          const { title } = routes[route];
           it(`should be '${constants.app.title} - ${title} - NHS'`, () => {
             expect($('head title').text()).to.equal(`${constants.app.title} - ${title} - NHS`);
           });
@@ -40,7 +40,7 @@ describe('Page attributes', () => {
       describe('h1s', () => {
         if (path !== routes.results.path) {
           it('should be correct', () => {
-            const h1 = routes[route].h1;
+            const { h1 } = routes[route];
             expect($('h1').text()).to.equal(h1);
           });
         }

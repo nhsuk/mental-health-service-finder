@@ -2,7 +2,7 @@ const chai = require('chai');
 const { metrics } = require('../../../app/lib/constants');
 const mapIAPTResults = require('../../../app/lib/mapIAPTResults');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('mapIAPTResults', () => {
   describe('unhappy path', () => {

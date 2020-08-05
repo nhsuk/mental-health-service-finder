@@ -1,7 +1,7 @@
 const chai = require('chai');
 const utils = require('../../../../app/lib/utils/utils');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('utils', () => {
   describe('joinTruthyValues', () => {

@@ -4,7 +4,7 @@ function deepClone(obj) {
 
 function joinTruthyValues(obj) {
   return Object.values(obj)
-    .filter(value => value)
+    .filter((value) => value)
     .join(', ');
 }
 

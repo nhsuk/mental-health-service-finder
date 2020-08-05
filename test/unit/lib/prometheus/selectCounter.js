@@ -1,11 +1,11 @@
 const chai = require('chai');
 const VError = require('verror');
 
-const Counter = require('../../../../app/lib/prometheus/bundle').promClient.Counter;
+const { Counter } = require('../../../../app/lib/prometheus/bundle').promClient;
 const selectCounter = require('../../../../app/lib/prometheus/selectCounter');
-const types = require('../../../../app/lib/constants').types;
+const { types } = require('../../../../app/lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('selectCounter', () => {
   describe('searchErrors', () => {

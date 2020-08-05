@@ -2,7 +2,7 @@ const chai = require('chai');
 
 const highlighter = require('../../../app/lib/utils/highlighter');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('highlighter', () => {
   const post = 'post';

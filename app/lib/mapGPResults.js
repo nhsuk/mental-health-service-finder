@@ -1,4 +1,4 @@
-const highlights = require('./constants').highlights;
+const { highlights } = require('./constants');
 const highlighter = require('./utils/highlighter');
 
 function mapGPResults(results, query) {

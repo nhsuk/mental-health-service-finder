@@ -2,7 +2,7 @@ const rp = require('request-promise-native');
 
 const headers = require('./headers');
 const createBody = require('./createBody');
-const search = require('../../../config/config').search;
+const { search } = require('../../../config/config');
 
 async function request(type, locals) {
   const query = createBody(type, locals);

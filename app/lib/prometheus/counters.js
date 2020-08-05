@@ -1,4 +1,4 @@
-const promClient = require('./bundle').promClient;
+const { promClient } = require('./bundle');
 
 module.exports = {
   applicationStarts: new promClient.Counter({ help: 'The number of times the application has been started', name: 'app_starts' }),

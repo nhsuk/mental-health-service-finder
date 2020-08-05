@@ -1,4 +1,4 @@
-const promClient = require('./bundle').promClient;
+const { promClient } = require('./bundle');
 const buckets = require('../constants').promHistogramBuckets;
 
 module.exports = {

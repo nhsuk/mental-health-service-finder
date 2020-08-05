@@ -4,13 +4,13 @@ const cheerio = require('cheerio');
 
 const constants = require('../../app/lib/constants');
 const createBody = require('../../app/lib/requests/createBody');
-const getHrefFromA = require('../lib/helpers').getHrefFromA;
+const { getHrefFromA } = require('../lib/helpers');
 const iExpect = require('../lib/expectations');
 const nockRequests = require('../lib/nockRequests');
 const routes = require('../../config/routes');
 const server = require('../../server');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 

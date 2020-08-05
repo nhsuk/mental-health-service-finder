@@ -7,4 +7,3 @@ function getSampleResponse(responseName) {
 }
 
 module.exports = getSampleResponse;
-
