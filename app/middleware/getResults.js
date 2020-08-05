@@ -6,8 +6,8 @@ const searchHistogram = require('../lib/prometheus/selectHistogram').search;
 const searchRequest = require('../lib/requests/searchRequest');
 
 async function getResults(req, res, next) {
-  const query = res.locals.query;
-  const type = res.locals.type;
+  const { query } = res.locals;
+  const { type } = res.locals;
 
   const endTimer = searchHistogram(type).startTimer();
   try {

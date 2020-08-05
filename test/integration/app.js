@@ -5,7 +5,7 @@ const constants = require('../../app/lib/constants');
 const { path: startPath } = require('../../config/routes').start;
 const server = require('../../server');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 

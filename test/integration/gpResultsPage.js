@@ -1,7 +1,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const cheerio = require('cheerio');
-const URL = require('url').URL;
+const { URL } = require('url');
 
 const constants = require('../../app/lib/constants');
 const createBody = require('../../app/lib/requests/createBody');
@@ -10,7 +10,7 @@ const nockRequests = require('../lib/nockRequests');
 const routes = require('../../config/routes');
 const server = require('../../server');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 
@@ -83,7 +83,7 @@ describe('GP results page', () => {
         expect(results.length).to.equal(resultCount);
         results.each((i, elem) => {
           const href = $(elem).find('.results__gp__selection').prop('href');
-          const searchParams = new URL(`http://domain.dummy${href}`).searchParams;
+          const { searchParams } = new URL(`http://domain.dummy${href}`);
           const gpName = $(elem).find('.results__name').text();
           const ccgid = searchParams.get('ccgid');
 

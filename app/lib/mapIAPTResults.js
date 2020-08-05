@@ -6,7 +6,7 @@ function mapWebsite(input) {
   const contacts = JSON.parse(input.Contacts);
   if (contacts) {
     const websiteContact = contacts.find(
-      contact => contact.OrganisationContactMethodType
+      (contact) => contact.OrganisationContactMethodType
         === constants.websiteContactMethodType
     );
 
@@ -18,7 +18,7 @@ function mapWebsite(input) {
 }
 
 function metricValue(metrics, metricId) {
-  const metricToMap = metrics.find(metric => metric.MetricID === metricId);
+  const metricToMap = metrics.find((metric) => metric.MetricID === metricId);
   return metricToMap ? metricToMap.Value : undefined;
 }
 

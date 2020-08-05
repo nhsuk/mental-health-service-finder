@@ -10,7 +10,7 @@ const nockRequests = require('../lib/nockRequests');
 const routes = require('../../config/routes');
 const server = require('../../server');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 chai.use(chaiHttp);
 

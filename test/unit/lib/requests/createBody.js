@@ -3,7 +3,7 @@ const VError = require('verror');
 
 const createBody = require('../../../../app/lib/requests/createBody');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('createBody', () => {
   describe('unknown type', () => {

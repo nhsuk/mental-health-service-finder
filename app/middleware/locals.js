@@ -1,8 +1,8 @@
 const canonicalUrl = require('../lib/canonicalUrl');
 const constants = require('../lib/constants');
 const digitalData = require('../lib/digitalData');
-const search = require('../../config/config').search;
-const trim = require('../lib/utils/utils').trim;
+const { search } = require('../../config/config');
+const { trim } = require('../lib/utils/utils');
 const routes = require('../../config/routes');
 
 function getQuery(type, query) {
@@ -11,7 +11,7 @@ function getQuery(type, query) {
 
 const apiUrl = `https://${search.host}/service-search/suggest?api-version=${search.version}`;
 
-module.exports = config => (req, res, next) => {
+module.exports = (config) => (req, res, next) => {
   res.locals.ADOBE_TRACKING_URL = config.analytics.adobeTrackingUrl;
   res.locals.HOTJAR_ANALYTICS_TRACKING_ID = config.analytics.hotjarId;
 

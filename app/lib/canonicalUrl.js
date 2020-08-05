@@ -1,3 +1,3 @@
-const siteRoot = require('./constants').siteRoot;
+const { siteRoot } = require('./constants');
 
-module.exports = req => `https://${req.hostname}${siteRoot}/`;
+module.exports = (req) => `https://${req.hostname}${siteRoot}/`;

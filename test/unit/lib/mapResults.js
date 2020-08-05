@@ -4,7 +4,7 @@ const VError = require('verror');
 const mapResults = require('../../../app/lib/mapResults');
 const { metrics, types } = require('../../../app/lib/constants');
 
-const expect = chai.expect;
+const { expect } = chai;
 
 describe('mapResults', () => {
   Object.keys(types).forEach((type) => {
@@ -51,7 +51,7 @@ describe('mapResults', () => {
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(2);
-      results.forEach(item => expect(item.fullAddress).to.be.undefined);
+      results.forEach((item) => expect(item.fullAddress).to.be.undefined);
     });
 
     it('should add a property for \'fullAddress\' when there is address information available', () => {
@@ -60,7 +60,7 @@ describe('mapResults', () => {
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(2);
-      results.forEach(item => expect(item.fullAddress).to.equal('Address1'));
+      results.forEach((item) => expect(item.fullAddress).to.equal('Address1'));
     });
   });
 
@@ -73,9 +73,9 @@ describe('mapResults', () => {
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(2);
-      results.forEach(item => expect(item.email).to.be.undefined);
-      results.forEach(item => expect(item.telephone).to.be.undefined);
-      results.forEach(item => expect(item.website).to.be.undefined);
+      results.forEach((item) => expect(item.email).to.be.undefined);
+      results.forEach((item) => expect(item.telephone).to.be.undefined);
+      results.forEach((item) => expect(item.website).to.be.undefined);
     });
 
     it('should add a property for \'email\', \'telephone\' or \'website\' when there is information', () => {
@@ -100,9 +100,9 @@ describe('mapResults', () => {
 
       expect(results).to.be.an('array');
       expect(results.length).to.equal(2);
-      results.forEach(item => expect(item.email).to.equal(email));
-      results.forEach(item => expect(item.telephone).to.equal(telephone));
-      results.forEach(item => expect(item.website).to.equal(website));
+      results.forEach((item) => expect(item.email).to.equal(email));
+      results.forEach((item) => expect(item.telephone).to.equal(telephone));
+      results.forEach((item) => expect(item.website).to.equal(website));
     });
 
     it('should remove Sign Health from results', () => {
