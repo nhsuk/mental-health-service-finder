@@ -1,3 +1,7 @@
+0.25.0 / 2020-08-05
+===================
+- Start page content updates
+
 0.24.0 / 2020-02-14
 ===================
 - Update npm dependencies

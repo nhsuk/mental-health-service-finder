@@ -26,7 +26,7 @@ describe('Start page', () => {
   });
 
   it('has a link to the GP finder', () => {
-    expect($('main').find('a').prop('href')).to.equal('https://www.nhs.uk/Service-Search/GP/LocationSearch/4');
+    expect($('main').find('a').prop('href')).to.equal('https://www.nhs.uk/service-search/find-a-gp');
   });
 
   it('the breadcrumbs should have correct levels of links', () => {
