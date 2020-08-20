@@ -1,7 +1,7 @@
 const rp = require('request-promise-native');
 const NodeCache = require('node-cache');
 
-const { endpoint } = require('../../config/config').headerFooterApi;
+const { endpoint, cacheTimeout } = require('../../config/config').headerFooterApi;
 
 const headerFooterCache = new NodeCache();
 
@@ -39,7 +39,7 @@ module.exports = async (_, res, next) => {
     headerFooterCache.set('nhsHeaderFooterApi', {
       footerLinks,
       headerLinks,
-    }, 300);
+    }, cacheTimeout);
 
     // Attach data to response
     res.locals = {
