@@ -39,7 +39,7 @@ module.exports = async (_, res, next) => {
     headerFooterCache.set('nhsHeaderFooterApi', {
       footerLinks,
       headerLinks,
-    }, 10000);
+    }, 300);
 
     // Attach data to response
     res.locals = {
