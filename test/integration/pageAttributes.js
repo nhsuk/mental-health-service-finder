@@ -30,10 +30,16 @@ describe('Page attributes', () => {
 
       describe('titles', () => {
         if (path !== routes.results.path) {
-          const title = routes[route].title;
-          it(`should be '${constants.app.title} - ${title} - NHS'`, () => {
-            expect($('head title').text()).to.equal(`${constants.app.title} - ${title} - NHS`);
-          });
+          if (routes[route].title) {
+            const title = routes[route].title;
+            it(`should be '${constants.app.title} - ${title} - NHS'`, () => {
+              expect($('head title').text()).to.equal(`${constants.app.title} - ${title} - NHS`);
+            });
+          } else {
+            it(`should be '${constants.app.title} - NHS'`, () => {
+              expect($('head title').text()).to.equal(`${constants.app.title} - NHS`);
+            });
+          }
         }
       });
 
