@@ -4,7 +4,7 @@ module.exports = {
     description: 'If you live in England, you can refer yourself to an NHS psychological therapies service (IAPT). IAPT services offer NICE recommended therapies, such as CBT, for common problems involving stress, anxiety and depression.',
     locale: 'en_GB',
     siteName: 'nhs.uk',
-    title: 'Find psychological therapies services',
+    title: 'Find an NHS psychological therapies service (IAPT)',
     twitter: {
       card: 'summary_large_image',
       creator: '@nhsuk',

@@ -2,7 +2,7 @@
 {% from 'details/macro.njk' import details %}
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}{% if errorMessage %}Please correct the error. {{ errorMessage }}{% else %}Search for your GP{% endif %}{% endblock %}
+{% block pageTitle %}{% if errorMessage %}Please correct the error. {{ errorMessage }}{% else %}Search for your GP{% endif %} - NHS{% endblock %}
 
 {% block content %}
 

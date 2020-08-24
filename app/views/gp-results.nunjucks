@@ -2,7 +2,7 @@
 {% set href = siteRoot + routes.search.path + "?query=" + query | urlencode %}
 {% set msg = "Sorry, we couldn\'t find any GP surgeries matching \'" + query + "\'" %}
 
-{% block pageTitle %}{% if results.length > 0 %}Select your GP{% else %}{{ msg }}{% endif %}{% endblock %}
+{% block pageTitle %}{% if results.length > 0 %}Select your GP{% else %}{{ msg }}{% endif %} - NHS{% endblock %}
 
 {% block content %}
 {{ backLink({
