@@ -19,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="description" content="{{ app.description }}"/>
 
-	<title>{{ app.title }} - {% block pageTitle %}{% endblock %} - NHS</title>
+	<title>{{ app.title }} - {% block pageTitle %}NHS{% endblock %}</title>
 
 	<link href="https://assets-staging.nhs.uk/" rel="preconnect" crossorigin>
 	<link href="https://assets.nhs.uk/" rel="preconnect" crossorigin>

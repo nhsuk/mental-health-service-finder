@@ -1,7 +1,7 @@
 {% extends 'layout.nunjucks' %}
 {% from 'warning-callout/macro.njk' import warningCallout %}
 
-{% block pageTitle %}What happens next{% endblock %}
+{% block pageTitle %}What happens next - NHS{% endblock %}
 
 {% block content %}
 

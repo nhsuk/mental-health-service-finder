@@ -1,8 +1,6 @@
 {% from 'details/macro.njk' import details %}
 {% extends 'layout.nunjucks' %}
 
-{% block pageTitle %}Introduction{% endblock %}
-
 {% block robots %}
 <meta name='robots' content='nofollow'>
 {% endblock %}

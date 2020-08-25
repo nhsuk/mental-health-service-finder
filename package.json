@@ -1,6 +1,6 @@
 {
   "name": "mental-health-service-finder",
-  "version": "0.25.0",
+  "version": "0.26.0",
   "description": "Helping to connect people to mental health services.",
   "main": "app.js",
   "scripts": {

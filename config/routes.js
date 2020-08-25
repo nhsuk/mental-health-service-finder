@@ -15,6 +15,5 @@ module.exports = {
   start: {
     h1: 'Find an NHS psychological therapies service (IAPT)',
     path: '/',
-    title: 'Introduction',
   },
 };

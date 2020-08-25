@@ -275,7 +275,7 @@ describe('GP results page', () => {
       const $ = cheerio.load(response.text);
 
       expect($('.nhsuk-error-message').text()).to.contain(errorMessage);
-      expect($('head title').text()).to.equal(`Find psychological therapies services - Please correct the error. ${errorMessage} - NHS`);
+      expect($('head title').text()).to.equal(`Find an NHS psychological therapies service (IAPT) - Please correct the error. ${errorMessage} - NHS`);
     });
 
     it('should display an error message when the query only consists of white space', async () => {
@@ -287,7 +287,7 @@ describe('GP results page', () => {
       const $ = cheerio.load(response.text);
 
       expect($('.nhsuk-error-message').text()).to.contains(errorMessage);
-      expect($('head title').text()).to.equal(`Find psychological therapies services - Please correct the error. ${errorMessage} - NHS`);
+      expect($('head title').text()).to.equal(`Find an NHS psychological therapies service (IAPT) - Please correct the error. ${errorMessage} - NHS`);
     });
   });
 });
