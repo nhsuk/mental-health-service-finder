@@ -23,7 +23,7 @@ module.exports = async (_, res, next) => {
     const { header, footer } = await rp(endpoint, {
       headers: {
         'Content-Type': 'application/json',
-        'subscription-key': subscriptionKey,
+        'Subscription-Key': subscriptionKey,
       },
       json: true,
       rejectUnauthorized: false,
