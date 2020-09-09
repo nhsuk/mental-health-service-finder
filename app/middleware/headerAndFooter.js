@@ -1,7 +1,7 @@
 const rp = require('request-promise-native');
 const NodeCache = require('node-cache');
 
-const { endpoint, cacheTimeout } = require('../../config/config').headerFooterApi;
+const { endpoint, cacheTimeout, subscriptionKey } = require('../../config/config').headerFooterApi;
 
 const headerFooterCache = new NodeCache();
 
@@ -23,6 +23,7 @@ module.exports = async (_, res, next) => {
     const { header, footer } = await rp(endpoint, {
       headers: {
         'Content-Type': 'application/json',
+        'subscription-key': subscriptionKey,
       },
       json: true,
       rejectUnauthorized: false,

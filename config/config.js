@@ -18,7 +18,8 @@ module.exports = {
   },
   headerFooterApi: {
     cacheTimeout: process.env.HEADER_FOOTER_API_CACHE_TIMEOUT || 300,
-    endpoint: process.env.HEADER_FOOTER_API_ENDPOINT || 'https://nhsuk-live.nhswebsite-integration.nhs.uk/content-api/header-footer.json',
+    endpoint: process.env.HEADER_FOOTER_API_ENDPOINT || 'https://nhsuk-apim-int-uks.azure-api.net/menu',
+    subscriptionKey: process.env.HEADER_FOOTER_API_KEY || null,
   },
   search: {
     apiKey: process.env.SEARCH_API_KEY,
