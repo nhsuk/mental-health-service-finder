@@ -51,6 +51,12 @@ module.exports = async (_, res, next) => {
 
     return next();
   } catch (error) {
-    return next(error);
+    // On error set links to be empty
+    res.locals = {
+      ...res.locals,
+      footerLinks: [],
+      headerLinks: [],
+    };
+    return next();
   }
 };
