@@ -16,6 +16,11 @@ module.exports = {
   cookiebot: {
     scriptUrl: process.env.COOKIEBOT_SCRIPT_URL || '//assets.nhs.uk/scripts/cookie-consent.js',
   },
+  headerFooterApi: {
+    cacheTimeout: process.env.HEADER_FOOTER_API_CACHE_TIMEOUT || 300,
+    endpoint: process.env.HEADER_FOOTER_API_ENDPOINT || 'https://nhsuk-apim-int-uks.azure-api.net/menu',
+    subscriptionKey: process.env.HEADER_FOOTER_API_KEY || null,
+  },
   search: {
     apiKey: process.env.SEARCH_API_KEY,
     host: process.env.SEARCH_API_HOST || 'api.nhs.uk',

@@ -49,7 +49,7 @@ Environment variables are used to set application level settings for each
 environment.
 
 | Variable                           | Description                                                                                         | Default                                             | Required   |
-| :--------------------------------- | :-------------------------------------------------------------------------------------------------- | :----------------------------------------           | :--------- |
+| :--------------------------------- | :-------------------------------------------------------------------------------------------------- | :---------------------------------------------------| :--------- |
 | `ADOBE_TRACKING_URL`               | [Adobe Analytics](https://www.adobe.com/analytics/adobe-analytics.html) Dynamic Tag Management URL  |                                                     | No         |
 | `BASIC_AUTH`                       | An MD5 encrypted [htpasswd](https://httpd.apache.org/docs/2.4/misc/password_encryptions.html)       | See value set in Vault for `BASIC_AUTH` in defaults |            |
 | `COOKIEBOT_SCRIPT_URL`             | The URL for the in-house implementation of Cookiebot                                                | //assets.nhs.uk/scripts/cookie-consent.js           |            |
@@ -60,6 +60,9 @@ environment.
 | `SEARCH_API_HOST`                  | Host name for the [NHS Developer API](https://developer.api.nhs.uk/)                                | api.nhs.uk                                          | Yes        |
 | `SEARCH_API_KEY`                   | `subscription-key` for the [NHS Developer API](https://developer.api.nhs.uk/)                       |                                                     | Yes        |
 | `SEARCH_API_VERSION`               | Version of the [NHS Developer API](https://developer.api.nhs.uk/)                                   | 1                                                   | Yes        |
+| `HEADER_FOOTER_API_ENDPOINT`       | JSON endpoint for NHS.UK header and footer API                                                      | `https://nhsuk-apim-int-uks.azure-api.net/menu` | Yes        |
+| `HEADER_FOOTER_API_CACHE_TIMEOUT`  | Time in seconds for the expiry of the header and footer data cache                                  | 300                                                 | Yes        |
+| `HEADER_FOOTER_API_KEY`            | `subscription-key` needed for higher environments of the NHS.UK header and footer API               |                                                     | No         |
 
 ## FAQ
 
