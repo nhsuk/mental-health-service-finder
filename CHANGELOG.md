@@ -1,4 +1,4 @@
-0.27.0 / TBA
+0.27.0 / 2020-10-15
 ===================
 - Update NHSUK Frontend
 - Build header and footer from APIs
