@@ -97,9 +97,7 @@
 
   {{ header({
     "showNav": "true",
-    "showSearch": "true",
-    "searchAction": 'https://www.nhs.uk/search/',
-    "searchInputName": 'q',
+    "showSearch": "false",
     "primaryLinks": headerLinks
   })}}
 
