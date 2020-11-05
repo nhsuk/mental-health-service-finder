@@ -18,7 +18,7 @@ module.exports = {
   },
   headerFooterApi: {
     cacheTimeout: process.env.HEADER_FOOTER_API_CACHE_TIMEOUT || 300,
-    endpoint: process.env.HEADER_FOOTER_API_ENDPOINT || 'https://nhsuk-apim-int-uks.azure-api.net/menu',
+    endpoint: process.env.HEADER_FOOTER_API_ENDPOINT || 'https://nhsuk-apim-dev-uks.azure-api.net/menu/?api-version=1',
     subscriptionKey: process.env.HEADER_FOOTER_API_KEY || null,
   },
   search: {

@@ -60,7 +60,7 @@ environment.
 | `SEARCH_API_HOST`                  | Host name for the [NHS Developer API](https://developer.api.nhs.uk/)                                | api.nhs.uk                                          | Yes        |
 | `SEARCH_API_KEY`                   | `subscription-key` for the [NHS Developer API](https://developer.api.nhs.uk/)                       |                                                     | Yes        |
 | `SEARCH_API_VERSION`               | Version of the [NHS Developer API](https://developer.api.nhs.uk/)                                   | 1                                                   | Yes        |
-| `HEADER_FOOTER_API_ENDPOINT`       | JSON endpoint for NHS.UK header and footer API                                                      | `https://nhsuk-apim-int-uks.azure-api.net/menu` | Yes        |
+| `HEADER_FOOTER_API_ENDPOINT`       | JSON endpoint for NHS.UK header and footer API                                                      | `https://nhsuk-apim-dev-uks.azure-api.net/menu/?api-version=1` | Yes        |
 | `HEADER_FOOTER_API_CACHE_TIMEOUT`  | Time in seconds for the expiry of the header and footer data cache                                  | 300                                                 | Yes        |
 | `HEADER_FOOTER_API_KEY`            | `subscription-key` needed for higher environments of the NHS.UK header and footer API               |                                                     | No         |
 
