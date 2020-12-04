@@ -1,4 +1,8 @@
-0.27.0 / TBA
+0.28.0 / 2020/12/8
+===================
+- Add header and footer variables to Rancher
+
+0.27.0 / 2020/12/1
 ===================
 - Update NHSUK Frontend
 - Build header and footer from APIs

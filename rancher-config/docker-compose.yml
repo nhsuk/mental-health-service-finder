@@ -11,6 +11,9 @@ services:
       NODE_ENV: production
       SEARCH_API_HOST: ${SEARCH_API_HOST}
       SEARCH_API_KEY: ${SEARCH_API_KEY}
+      HEADER_FOOTER_API_CACHE_TIMEOUT: ${HEADER_FOOTER_API_CACHE_TIMEOUT}
+      HEADER_FOOTER_API_ENDPOINT: ${HEADER_FOOTER_API_ENDPOINT}
+      HEADER_FOOTER_API_KEY: ${HEADER_FOOTER_API_KEY}
     labels:
       io.rancher.container.pull_image: always
       prometheus.monitoring: true
