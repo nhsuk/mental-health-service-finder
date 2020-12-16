@@ -25,8 +25,8 @@ describe('Start page', () => {
     expect($('.nhsuk-button').prop('href')).to.equal(`${constants.siteRoot}${routes.check.path}`);
   });
 
-  it('has a link to the GP finder', () => {
-    expect($('main').find('a').prop('href')).to.equal('https://www.nhs.uk/service-search/find-a-gp');
+  it('has a link to how to register with a GP', () => {
+    expect($('main').find('a').prop('href')).to.equal('/nhs-services/gps/how-to-register-with-a-gp-surgery/');
   });
 
   it('the breadcrumbs should have correct levels of links', () => {
