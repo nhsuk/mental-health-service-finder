@@ -27,6 +27,13 @@
   </span>
 </h2>
 
+<div class="nhsuk-inset-text">
+  <span class="nhsuk-u-visually-hidden">Information: </span>
+  <p>Please note: If your GP is in London, please select the service in the borough where your GP is based.</p>
+  <p>You may not be eligible for the other services being shown.</p>
+  <p>We are working to fix this as soon as possible.</p>
+</div>
+
 {% if resultsLength > 0 %}
 <div>
   <ol class="nhsuk-list inline-list">
