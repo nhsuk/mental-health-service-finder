@@ -1,8 +1,12 @@
-0.28.0 / 2020/12/8
+0.29.0 / 2020-12-17
+===================
+-- Temporary note to advise users in London to pick service for their borough.
+
+0.28.0 / 2020-12-08
 ===================
 - Add header and footer variables to Rancher
 
-0.27.0 / 2020/12/1
+0.27.0 / 2020-12-01
 ===================
 - Update NHSUK Frontend
 - Build header and footer from APIs

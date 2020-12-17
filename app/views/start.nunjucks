@@ -21,8 +21,13 @@
 {% block content %}
 
 <h1>Find an NHS psychological therapies service (IAPT)</h1>
-<p>If you live in England, you can refer yourself to an NHS psychological therapies service (IAPT).</p>
-<p>IAPT (Improving Access to Psychological Therapies) services offer NICE recommended therapies, such as cognitive behavioural therapy (CBT), for common problems involving stress, anxiety and depression.</p>
+<p>If you live in England and are aged 18 or over, you can access NHS psychological therapies (IAPT) services.</p>
+<p>A GP can refer you, or you can refer yourself directly without a referral.</p>
+<p>IAPT (Improving Access to Psychological Therapies) services offer:</p>
+<ul>
+  <li>talking therapies, such as cognitive behavioural therapy (CBT), counselling, other therapies, and guided self-help</li>
+  <li>help for common mental health problems, like anxiety and depression</li>
+</ul>
 
 {{ details({
   "classes": "nhsuk-expander",
@@ -42,7 +47,8 @@
   </ul>"
 }) }}
 
-<p>Anyone who is registered with a GP can access IAPT services on the NHS. If you're not registered with a GP, <a href="https://www.nhs.uk/service-search/find-a-gp">search for a GP</a>.</p>
+<p>You need to be registered with a GP to get talking therapies on the NHS.</p>
+<p>If you're not registered with a GP, <a href="/nhs-services/gps/how-to-register-with-a-gp-surgery/">read about how to register with a GP surgery</a>.</p>
 
 {{ button({
   "text": "Start now",
