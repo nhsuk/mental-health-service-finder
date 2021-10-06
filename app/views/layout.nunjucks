@@ -7,8 +7,7 @@
 {% from 'button/macro.njk' import button %}
 
 <!DOCTYPE html>
-<!--[if lt IE 9]><html class="lte-ie8" lang="en"><![endif]--><!--[if IE 9]><html class="ie9" lang="en"><![endif]--><!--[if gt IE 9]><!--><html lang="en" class="no-js"><!--<![endif]-->
-
+<html lang="en" class="no-js">
   <head>
     {% block robots %}
     <meta name='robots' content='noindex'>
