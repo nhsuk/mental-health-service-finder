@@ -38,7 +38,7 @@
 <div>
   <ol class="nhsuk-list inline-list">
     {% for result in results %}
-      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}">
+      <li class="results__item" data-index="{{ loop.index }}">
         <hr />
         <div>
           {% include "includes/iapt-result-item.nunjucks" %}

@@ -22,7 +22,7 @@
 <div>
   <ol class="nhsuk-list inline-list" role="list">
     {% for result in results %}
-      <li class="nhsuk-c-panel results__item" data-index="{{ loop.index }}" role="listitem">
+      <li class="results__item" data-index="{{ loop.index }}" role="listitem">
         <hr />
         <div>
           {% include "includes/gp-result-item.nunjucks" %}

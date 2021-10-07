@@ -1,3 +1,7 @@
+0.30.0 / 2020-10-07
+===================
+- Update NHSUK Frontend
+
 0.29.0 / 2020-12-17
 ===================
 -- Temporary note to advise users in London to pick service for their borough.

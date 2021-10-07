@@ -58,7 +58,7 @@
     "map-replace": "^1.0.2",
     "moment": "^2.22.0",
     "nhsuk-bunyan-logger": "^1.7.0",
-    "nhsuk-frontend": "^3.1.0",
+    "nhsuk-frontend": "^5.2.0",
     "node-cache": "^5.1.2",
     "node-sass": "^4.9.2",
     "nunjucks": "^3.1.4",
